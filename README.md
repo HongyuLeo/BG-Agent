@@ -1,10 +1,24 @@
 # BG-Agent · 酒馆战棋 AI 研究工程
 
+![BG-Agent — Train. Evaluate. Share.](docs/assets/bg-agent-banner.svg)
+
 [English](README.en.md) · [训练指南](training/README.zh-CN.md) · [规则版本](docs/RULES_VERSION.zh-CN.md) · [AutoTavern 研究与优化方向](docs/AUTOTAVERN.zh-CN.md)
 
 让更多人能够研究、训练和改进游戏 AI。**技术应当平权。**
 
 BG-Agent 提供可检查的酒馆战棋规则适配、结构化策略网络、完整对局 PPO 训练、评估与恢复代码，以及独立的 Windows 桌面和实战研究工具源码。规则后端基于 [AutoTavern / TavernGym](https://github.com/MCG-NJU/AutoTavern) 发展，保留上游许可和贡献归属；这不是 TavernAgent 的官方训练代码。
+
+
+## 第一次来，从这里开始
+
+| 你想做什么 | 入口 |
+|---|---|
+| 看懂项目与研究边界 | [首个研究预览](https://github.com/HongyuLeo/BG-Agent/releases/tag/v0.1.0-research) |
+| 在自己的CPU上跑一次短测 | [中文训练指南](training/README.zh-CN.md) |
+| 贡献代码、规则或算力实验 | [开放任务](https://github.com/HongyuLeo/BG-Agent/issues) · [贡献规范](CONTRIBUTING.md) |
+| 帮朋友了解这个项目 | [可转发介绍与视频提纲](docs/SHARE.zh-CN.md) |
+
+喜欢这个研究方向，可以 Star 方便找回；想收到版本更新，可在 GitHub 的 Watch 自定义选项中选择 Releases。最有帮助的反馈是一次可复现的短测、一个具体规则差异或一份独立评测。
 
 ## 当前版本与持续更新
 

@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 开始训练 / Start training
+    url: https://github.com/HongyuLeo/BG-Agent/tree/main/training
+    about: 安装、训练、暂停与续训 / Setup, train, pause and resume
+  - name: 贡献指南 / Contribution guide
+    url: https://github.com/HongyuLeo/BG-Agent/blob/main/CONTRIBUTING.md
+    about: 算力、规则、实验与数据 / Compute, rules, experiments and data

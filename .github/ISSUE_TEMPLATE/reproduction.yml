@@ -1,0 +1,35 @@
+name: 复现报告 / Reproduction report
+description: 分享训练短测、安装问题或独立评测 / Share setup and training evidence
+title: "[Reproduction] "
+body:
+  - type: markdown
+    attributes:
+      value: "感谢帮助复现。请只提交去除私人信息的摘要，不上传账号、原始日志或不可信模型。Thanks for reproducing; share sanitized summaries, not accounts or raw logs."
+  - type: input
+    id: revision
+    attributes:
+      label: 代码版本 / Source revision
+      placeholder: Commit SHA or release tag
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 环境 / Environment
+      description: OS, Python, PyTorch, CPU/GPU model, RAM/VRAM; omit identifiers and local user paths.
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: 命令和配置 / Commands and configuration
+      description: Include preset, worker count, evaluation settings, rules fingerprint and opponent source.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: 结果 / Results
+      description: Completed normal lobbies, optimizer updates, elapsed time, pause/resume result, failures and exclusions. Small smoke checks do not establish strength.
+    validations:
+      required: true

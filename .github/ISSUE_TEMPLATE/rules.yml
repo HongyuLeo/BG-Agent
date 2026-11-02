@@ -1,0 +1,24 @@
+name: 规则问题 / Rule discrepancy
+description: 报告具体版本和最小复现 / Report a versioned minimal reproduction
+title: "[Rules] "
+body:
+  - type: input
+    id: version
+    attributes:
+      label: 游戏与源码版本 / Game and source versions
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期与来源 / Expected behavior and source
+      description: Link an official patch note or explain the evidence. Separate observed behavior from assumptions.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: 最小复现与实际结果 / Minimal reproduction and observed result
+      description: Supply a sanitized offline fixture if possible. Avoid private snapshots, player identifiers and account information.
+    validations:
+      required: true

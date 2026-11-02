@@ -1,10 +1,24 @@
 # BG-Agent · Hearthstone Battlegrounds AI Research
 
+![BG-Agent — Train. Evaluate. Share.](docs/assets/bg-agent-banner.svg)
+
 [简体中文](README.md) · [Training guide](training/README.en.md) · [Rule versions](docs/RULES_VERSION.en.md) · [AutoTavern analysis](docs/AUTOTAVERN.en.md)
 
 Make game AI research, training, and improvement accessible to more people. **Technology should be accessible to everyone.**
 
 BG-Agent publishes a rule adaptation, structured policy network, complete-game PPO trainer, evaluation and recovery tools, and separate Windows desktop/live research source. The rule backend builds on [AutoTavern / TavernGym](https://github.com/MCG-NJU/AutoTavern), preserving its license and attribution. This is not the official TavernAgent training implementation.
+
+
+## New here?
+
+| Goal | Start here |
+|---|---|
+| Understand the research preview | [First release](https://github.com/HongyuLeo/BG-Agent/releases/tag/v0.1.0-research) |
+| Run a CPU smoke check | [English training guide](training/README.en.md) |
+| Contribute code, rules or experiments | [Open tasks](https://github.com/HongyuLeo/BG-Agent/issues) · [Contribution guide](CONTRIBUTING.md) |
+| Share the project | [Reusable introduction](docs/SHARE.en.md) |
+
+Star to find the project again, or use GitHub's custom Watch options to follow Releases. Reproduction reports, concrete rule discrepancies and independent evaluations are especially useful.
 
 ## Version and ongoing maintenance
 
