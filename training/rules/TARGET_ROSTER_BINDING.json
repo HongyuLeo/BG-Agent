@@ -1,0 +1,5891 @@
+{
+  "manifest": {
+    "ruleset_id": "target37-cn-solos-dated-rotation-v2+azshara-maxwell-conditional-v1+offer10-dual-affinity-v1+current-derived-provenance-v1+named-paradox-five-v1+maxwell-36.2.2-direct-removal-v1",
+    "target_build": "37.0.0.255130",
+    "source_qualified": true,
+    "public_offer": {
+      "minion": [
+        "BG20_100",
+        "BG20_101",
+        "BG20_104",
+        "BG21_004",
+        "BG21_015",
+        "BG22_403",
+        "BG23_017",
+        "BG23_318",
+        "BG23_357",
+        "BG24_018",
+        "BG24_500",
+        "BG24_715",
+        "BG25_001",
+        "BG25_008",
+        "BG25_009",
+        "BG25_010",
+        "BG25_011",
+        "BG25_013",
+        "BG25_016",
+        "BG25_022",
+        "BG25_354",
+        "BG26_135",
+        "BG26_137",
+        "BG26_146",
+        "BG26_147",
+        "BG26_152",
+        "BG26_174",
+        "BG26_175",
+        "BG26_354",
+        "BG26_523",
+        "BG26_524",
+        "BG26_525",
+        "BG26_537",
+        "BG26_802",
+        "BG26_805",
+        "BG26_810",
+        "BG26_814",
+        "BG26_817",
+        "BG26_963",
+        "BG26_ICC_901",
+        "BG27_000",
+        "BG27_005",
+        "BG27_084",
+        "BG27_556",
+        "BG28_300",
+        "BG28_303",
+        "BG28_309",
+        "BG28_550",
+        "BG28_582",
+        "BG28_583",
+        "BG28_633",
+        "BG28_707",
+        "BG28_741",
+        "BG29_300",
+        "BG29_611",
+        "BG29_813",
+        "BG29_816",
+        "BG29_888",
+        "BG30_121",
+        "BG30_123",
+        "BG30_125",
+        "BG31_148",
+        "BG31_149",
+        "BG31_177",
+        "BG31_320",
+        "BG31_323",
+        "BG31_326",
+        "BG31_327",
+        "BG31_801",
+        "BG31_803",
+        "BG31_809",
+        "BG31_810",
+        "BG31_812",
+        "BG31_815",
+        "BG31_816",
+        "BG31_818",
+        "BG31_835",
+        "BG32_111",
+        "BG32_231",
+        "BG32_235",
+        "BG32_236",
+        "BG32_237",
+        "BG32_324",
+        "BG32_330",
+        "BG32_336",
+        "BG32_340",
+        "BG32_341",
+        "BG32_860",
+        "BG32_873",
+        "BG32_880",
+        "BG33_155",
+        "BG33_318",
+        "BG33_430",
+        "BG33_821",
+        "BG33_822",
+        "BG33_823",
+        "BG33_825",
+        "BG33_828",
+        "BG33_830",
+        "BG33_883",
+        "BG33_885",
+        "BG33_886",
+        "BG33_891",
+        "BG33_924",
+        "BG34_140",
+        "BG34_142",
+        "BG34_170",
+        "BG34_170t",
+        "BG34_170t2",
+        "BG34_170t3",
+        "BG34_171",
+        "BG34_403",
+        "BG34_405",
+        "BG34_500",
+        "BG34_604",
+        "BG34_633",
+        "BG34_682",
+        "BG34_684",
+        "BG34_690",
+        "BG34_692",
+        "BG34_856",
+        "BG34_858",
+        "BG34_865",
+        "BG35_123",
+        "BG35_150",
+        "BG35_155",
+        "BG35_341",
+        "BG35_342",
+        "BG35_602",
+        "BG35_604",
+        "BG35_814",
+        "BG35_881",
+        "BG35_882",
+        "BG35_883",
+        "BG36_097",
+        "BG36_098",
+        "BG36_099",
+        "BG36_100",
+        "BG36_101",
+        "BG36_102",
+        "BG36_103",
+        "BG36_104",
+        "BG36_106",
+        "BG36_108",
+        "BG36_109",
+        "BG36_110",
+        "BG36_112",
+        "BG36_113",
+        "BG36_114",
+        "BG36_115",
+        "BG36_116",
+        "BG36_180",
+        "BG36_181",
+        "BG36_200",
+        "BG36_201",
+        "BG36_202",
+        "BG36_204",
+        "BG36_206",
+        "BG36_207",
+        "BG36_208",
+        "BG36_209",
+        "BG36_210",
+        "BG36_211",
+        "BG36_240",
+        "BG36_241",
+        "BG36_242",
+        "BG36_243",
+        "BG36_245",
+        "BG36_300",
+        "BG36_308",
+        "BG36_311",
+        "BG36_312",
+        "BG36_318",
+        "BG36_320",
+        "BG36_330",
+        "BG36_331",
+        "BG36_332",
+        "BG36_341",
+        "BG36_342",
+        "BG36_343",
+        "BG36_344",
+        "BG36_345",
+        "BG36_346",
+        "BG36_352",
+        "BG36_354",
+        "BG36_356",
+        "BG36_360t3",
+        "BG36_360t4",
+        "BG36_360t5",
+        "BG36_360t6",
+        "BG36_360t9",
+        "BG36_362",
+        "BG36_364",
+        "BG36_366",
+        "BG36_367",
+        "BG36_369",
+        "BG36_370",
+        "BG36_372",
+        "BG36_503",
+        "BG36_506",
+        "BG36_511",
+        "BG36_514",
+        "BG36_515",
+        "BG36_520",
+        "BG36_521",
+        "BG36_523",
+        "BG36_524",
+        "BG36_620",
+        "BG36_621",
+        "BG36_640",
+        "BG36_700",
+        "BG36_701",
+        "BG36_703",
+        "BG36_704",
+        "BG36_730",
+        "BG36_731",
+        "BG36_733",
+        "BG36_762",
+        "BG36_763",
+        "BG36_764",
+        "BG36_848",
+        "BG36_849",
+        "BG36_851",
+        "BG36_853",
+        "BG36_854",
+        "BGFYM_005",
+        "BGS_004",
+        "BGS_008",
+        "BGS_018",
+        "BGS_020",
+        "BGS_034",
+        "BGS_040",
+        "BGS_041",
+        "BGS_115",
+        "BGS_116",
+        "BGS_119",
+        "BGS_123",
+        "BGS_126",
+        "BGS_131",
+        "BG_BOT_911",
+        "BG_DEEP_015",
+        "BG_LOE_077"
+      ],
+      "hero": [
+        "BG20_HERO_100",
+        "BG20_HERO_101",
+        "BG20_HERO_102",
+        "BG20_HERO_103",
+        "BG20_HERO_201",
+        "BG20_HERO_202",
+        "BG20_HERO_242",
+        "BG20_HERO_280",
+        "BG20_HERO_282",
+        "BG20_HERO_283",
+        "BG20_HERO_301",
+        "BG21_HERO_000",
+        "BG21_HERO_010",
+        "BG21_HERO_020",
+        "BG21_HERO_030",
+        "BG22_HERO_000",
+        "BG22_HERO_001",
+        "BG22_HERO_002",
+        "BG22_HERO_003",
+        "BG22_HERO_004",
+        "BG22_HERO_200",
+        "BG22_HERO_201",
+        "BG22_HERO_305",
+        "BG23_HERO_201",
+        "BG23_HERO_303",
+        "BG23_HERO_305",
+        "BG23_HERO_306",
+        "BG24_HERO_100",
+        "BG24_HERO_204",
+        "BG25_HERO_100",
+        "BG25_HERO_103",
+        "BG25_HERO_105",
+        "BG26_HERO_101",
+        "BG26_HERO_102",
+        "BG26_HERO_104",
+        "BG27_HERO_801",
+        "BG28_HERO_400",
+        "BG28_HERO_800",
+        "BG28_HERO_801",
+        "BG30_HERO_304",
+        "BG31_HERO_003",
+        "BG31_HERO_005",
+        "BG31_HERO_006",
+        "BG31_HERO_801",
+        "BG31_HERO_802",
+        "BG31_HERO_811",
+        "BG32_HERO_001",
+        "BG32_HERO_002",
+        "BG33_HERO_001",
+        "BG34_HERO_000",
+        "BG34_HERO_001",
+        "BG34_HERO_002",
+        "BG34_HERO_004",
+        "BG35_HERO_001",
+        "BG36_HERO_000",
+        "BG36_HERO_002",
+        "BG36_HERO_101",
+        "BG36_HERO_105",
+        "TB_BaconShop_HERO_01",
+        "TB_BaconShop_HERO_02",
+        "TB_BaconShop_HERO_08",
+        "TB_BaconShop_HERO_10",
+        "TB_BaconShop_HERO_11",
+        "TB_BaconShop_HERO_12",
+        "TB_BaconShop_HERO_14",
+        "TB_BaconShop_HERO_15",
+        "TB_BaconShop_HERO_16",
+        "TB_BaconShop_HERO_17",
+        "TB_BaconShop_HERO_18",
+        "TB_BaconShop_HERO_21",
+        "TB_BaconShop_HERO_22",
+        "TB_BaconShop_HERO_23",
+        "TB_BaconShop_HERO_25",
+        "TB_BaconShop_HERO_27",
+        "TB_BaconShop_HERO_28",
+        "TB_BaconShop_HERO_29",
+        "TB_BaconShop_HERO_33",
+        "TB_BaconShop_HERO_34",
+        "TB_BaconShop_HERO_35",
+        "TB_BaconShop_HERO_36",
+        "TB_BaconShop_HERO_37",
+        "TB_BaconShop_HERO_38",
+        "TB_BaconShop_HERO_39",
+        "TB_BaconShop_HERO_40",
+        "TB_BaconShop_HERO_41",
+        "TB_BaconShop_HERO_42",
+        "TB_BaconShop_HERO_43",
+        "TB_BaconShop_HERO_45",
+        "TB_BaconShop_HERO_49",
+        "TB_BaconShop_HERO_50",
+        "TB_BaconShop_HERO_52",
+        "TB_BaconShop_HERO_53",
+        "TB_BaconShop_HERO_55",
+        "TB_BaconShop_HERO_56",
+        "TB_BaconShop_HERO_57",
+        "TB_BaconShop_HERO_58",
+        "TB_BaconShop_HERO_59",
+        "TB_BaconShop_HERO_60",
+        "TB_BaconShop_HERO_62",
+        "TB_BaconShop_HERO_64",
+        "TB_BaconShop_HERO_67",
+        "TB_BaconShop_HERO_68",
+        "TB_BaconShop_HERO_70",
+        "TB_BaconShop_HERO_702",
+        "TB_BaconShop_HERO_71",
+        "TB_BaconShop_HERO_72",
+        "TB_BaconShop_HERO_74",
+        "TB_BaconShop_HERO_75",
+        "TB_BaconShop_HERO_76",
+        "TB_BaconShop_HERO_78",
+        "TB_BaconShop_HERO_90",
+        "TB_BaconShop_HERO_91",
+        "TB_BaconShop_HERO_92",
+        "TB_BaconShop_HERO_93",
+        "TB_BaconShop_HERO_94",
+        "TB_BaconShop_HERO_95"
+      ],
+      "tavern_spell": [
+        "BG28_168",
+        "BG28_169",
+        "BG28_500",
+        "BG28_503",
+        "BG28_504",
+        "BG28_512",
+        "BG28_518",
+        "BG28_520",
+        "BG28_521",
+        "BG28_571",
+        "BG28_573",
+        "BG28_601",
+        "BG28_603",
+        "BG28_604",
+        "BG28_607",
+        "BG28_698",
+        "BG28_800",
+        "BG28_805",
+        "BG28_810",
+        "BG28_825",
+        "BG28_827",
+        "BG28_830",
+        "BG28_838",
+        "BG28_845",
+        "BG28_849",
+        "BG28_882",
+        "BG28_884",
+        "BG28_886",
+        "BG28_888",
+        "BG28_897",
+        "BG28_966",
+        "BG28_GIL_836",
+        "BG30_804",
+        "BG31_819",
+        "BG31_880",
+        "BG31_881",
+        "BG31_886",
+        "BG31_890",
+        "BG31_892",
+        "BG32_337",
+        "BG33_101",
+        "BG33_811",
+        "BG33_812",
+        "BG33_813",
+        "BG33_814",
+        "BG33_815",
+        "BG34_330",
+        "BG34_444",
+        "BG34_689",
+        "BG34_888",
+        "BG34_889",
+        "BG34_990",
+        "BG35_912",
+        "BG35_951",
+        "BG36_246",
+        "BG36_301t",
+        "BG36_303",
+        "BG36_371",
+        "BG36_624",
+        "BG36_880",
+        "BG36_883",
+        "BG36_884",
+        "EBG_Spell_017",
+        "EBG_Spell_032",
+        "EBG_Spell_037",
+        "EBG_Spell_038"
+      ],
+      "trinket": [
+        "BG30_MagicItem_301",
+        "BG30_MagicItem_310",
+        "BG30_MagicItem_403",
+        "BG30_MagicItem_406",
+        "BG30_MagicItem_410",
+        "BG30_MagicItem_410t2",
+        "BG30_MagicItem_411",
+        "BG30_MagicItem_416",
+        "BG30_MagicItem_418",
+        "BG30_MagicItem_420",
+        "BG30_MagicItem_420t",
+        "BG30_MagicItem_423",
+        "BG30_MagicItem_425",
+        "BG30_MagicItem_426",
+        "BG30_MagicItem_426t",
+        "BG30_MagicItem_430",
+        "BG30_MagicItem_431",
+        "BG30_MagicItem_434",
+        "BG30_MagicItem_435",
+        "BG30_MagicItem_437",
+        "BG30_MagicItem_439",
+        "BG30_MagicItem_442",
+        "BG30_MagicItem_540",
+        "BG30_MagicItem_541",
+        "BG30_MagicItem_544",
+        "BG30_MagicItem_544t",
+        "BG30_MagicItem_545",
+        "BG30_MagicItem_546",
+        "BG30_MagicItem_547",
+        "BG30_MagicItem_547t",
+        "BG30_MagicItem_555",
+        "BG30_MagicItem_700",
+        "BG30_MagicItem_701",
+        "BG30_MagicItem_703",
+        "BG30_MagicItem_705",
+        "BG30_MagicItem_706",
+        "BG30_MagicItem_707",
+        "BG30_MagicItem_713",
+        "BG30_MagicItem_801",
+        "BG30_MagicItem_804",
+        "BG30_MagicItem_821",
+        "BG30_MagicItem_841",
+        "BG30_MagicItem_847",
+        "BG30_MagicItem_868",
+        "BG30_MagicItem_876",
+        "BG30_MagicItem_879t",
+        "BG30_MagicItem_886",
+        "BG30_MagicItem_888",
+        "BG30_MagicItem_891",
+        "BG30_MagicItem_900",
+        "BG30_MagicItem_902",
+        "BG30_MagicItem_914",
+        "BG30_MagicItem_914t",
+        "BG30_MagicItem_924",
+        "BG30_MagicItem_924t",
+        "BG30_MagicItem_931",
+        "BG30_MagicItem_942",
+        "BG30_MagicItem_943",
+        "BG30_MagicItem_951",
+        "BG30_MagicItem_952",
+        "BG30_MagicItem_962",
+        "BG30_MagicItem_981",
+        "BG30_MagicItem_987",
+        "BG30_MagicItem_988",
+        "BG30_MagicItem_988t",
+        "BG30_MagicItem_989t",
+        "BG30_MagicItem_993",
+        "BG30_MagicItem_994",
+        "BG30_MagicItem_995",
+        "BG30_MagicItem_996",
+        "BG30_MagicItem_998",
+        "BG31_MagicItem_903",
+        "BG32_MagicItem_170",
+        "BG32_MagicItem_172",
+        "BG32_MagicItem_200",
+        "BG32_MagicItem_205",
+        "BG32_MagicItem_232",
+        "BG32_MagicItem_270t",
+        "BG32_MagicItem_271",
+        "BG32_MagicItem_276",
+        "BG32_MagicItem_278",
+        "BG32_MagicItem_283",
+        "BG32_MagicItem_284",
+        "BG32_MagicItem_286",
+        "BG32_MagicItem_301",
+        "BG32_MagicItem_306",
+        "BG32_MagicItem_350",
+        "BG32_MagicItem_360",
+        "BG32_MagicItem_361",
+        "BG32_MagicItem_361t",
+        "BG32_MagicItem_362t",
+        "BG32_MagicItem_363",
+        "BG32_MagicItem_364",
+        "BG32_MagicItem_366",
+        "BG32_MagicItem_367",
+        "BG32_MagicItem_400",
+        "BG32_MagicItem_416",
+        "BG32_MagicItem_428",
+        "BG32_MagicItem_801t",
+        "BG32_MagicItem_807",
+        "BG32_MagicItem_808",
+        "BG32_MagicItem_808t",
+        "BG32_MagicItem_817",
+        "BG32_MagicItem_821",
+        "BG32_MagicItem_822",
+        "BG32_MagicItem_831",
+        "BG32_MagicItem_844",
+        "BG32_MagicItem_858",
+        "BG32_MagicItem_860",
+        "BG32_MagicItem_860t",
+        "BG32_MagicItem_888",
+        "BG32_MagicItem_892",
+        "BG32_MagicItem_893",
+        "BG32_MagicItem_894",
+        "BG32_MagicItem_901",
+        "BG32_MagicItem_925",
+        "BG32_MagicItem_926",
+        "BG32_MagicItem_951",
+        "BG32_MagicItem_957",
+        "BG32_MagicItem_998",
+        "BG35_MagicItem_150",
+        "BG35_MagicItem_152",
+        "BG35_MagicItem_154",
+        "BG35_MagicItem_156",
+        "BG35_MagicItem_300",
+        "BG35_MagicItem_301",
+        "BG35_MagicItem_302",
+        "BG35_MagicItem_305",
+        "BG35_MagicItem_306",
+        "BG35_MagicItem_434",
+        "BG35_MagicItem_700",
+        "BG35_MagicItem_701",
+        "BG35_MagicItem_710",
+        "BG35_MagicItem_711",
+        "BG35_MagicItem_712",
+        "BG35_MagicItem_713",
+        "BG35_MagicItem_731",
+        "BG35_MagicItem_732",
+        "BG35_MagicItem_733",
+        "BG35_MagicItem_740",
+        "BG35_MagicItem_741",
+        "BG35_MagicItem_742",
+        "BG35_MagicItem_743",
+        "BG35_MagicItem_750",
+        "BG35_MagicItem_752",
+        "BG35_MagicItem_753",
+        "BG35_MagicItem_754",
+        "BG35_MagicItem_755",
+        "BG35_MagicItem_801",
+        "BG35_MagicItem_812",
+        "BG35_MagicItem_814",
+        "BG35_MagicItem_815",
+        "BG35_MagicItem_816",
+        "BG35_MagicItem_816t",
+        "BG35_MagicItem_817",
+        "BG35_MagicItem_818",
+        "BG35_MagicItem_820",
+        "BG35_MagicItem_823",
+        "BG35_MagicItem_823t",
+        "BG35_MagicItem_838",
+        "BG35_MagicItem_840",
+        "BG35_MagicItem_840t",
+        "BG35_MagicItem_850",
+        "BG35_MagicItem_850t",
+        "BG35_MagicItem_851",
+        "BG35_MagicItem_861",
+        "BG35_MagicItem_862",
+        "BG35_MagicItem_871",
+        "BG35_MagicItem_872",
+        "BG35_MagicItem_890",
+        "BG35_MagicItem_930",
+        "BG35_MagicItem_931",
+        "BG35_MagicItem_931t",
+        "BG36_MagicItem_200",
+        "BG36_MagicItem_201",
+        "BG36_MagicItem_202",
+        "BG36_MagicItem_203",
+        "BG36_MagicItem_204",
+        "BG36_MagicItem_205",
+        "BG36_MagicItem_206",
+        "BG36_MagicItem_208",
+        "BG36_MagicItem_211",
+        "BG36_MagicItem_212",
+        "BG36_MagicItem_213",
+        "BG36_MagicItem_214",
+        "BG36_MagicItem_215",
+        "BG36_MagicItem_216",
+        "BG36_MagicItem_217",
+        "BG36_MagicItem_220",
+        "BG36_MagicItem_300",
+        "BG36_MagicItem_301",
+        "BG36_MagicItem_302",
+        "BG36_MagicItem_302t",
+        "BG36_MagicItem_303",
+        "BG36_MagicItem_303t",
+        "BG36_MagicItem_307",
+        "BG36_MagicItem_308",
+        "BG36_MagicItem_309",
+        "BG36_MagicItem_363",
+        "BG36_MagicItem_370",
+        "BG36_MagicItem_371",
+        "BG36_MagicItem_372",
+        "BG36_MagicItem_373",
+        "BG36_MagicItem_390",
+        "BG36_MagicItem_400",
+        "BG36_MagicItem_402",
+        "BG36_MagicItem_403",
+        "BG36_MagicItem_403t",
+        "BG36_MagicItem_404",
+        "BG36_MagicItem_404t",
+        "BG36_MagicItem_406",
+        "BG36_MagicItem_407",
+        "BG36_MagicItem_408",
+        "BG36_MagicItem_409",
+        "BG36_MagicItem_410",
+        "BG36_MagicItem_411",
+        "BG36_MagicItem_414",
+        "BG36_MagicItem_416",
+        "BG36_MagicItem_417",
+        "BG36_MagicItem_418",
+        "BG36_MagicItem_423",
+        "BG36_MagicItem_423t",
+        "BG36_MagicItem_424",
+        "BG36_MagicItem_430",
+        "BG36_MagicItem_450",
+        "BG36_MagicItem_600",
+        "BG36_MagicItem_602",
+        "BG36_MagicItem_606",
+        "BG36_MagicItem_609",
+        "BG36_MagicItem_610",
+        "BG36_MagicItem_611",
+        "BG36_MagicItem_800",
+        "BG36_MagicItem_801",
+        "BG36_MagicItem_810",
+        "BG36_MagicItem_810t",
+        "BG36_MagicItem_811",
+        "BG36_MagicItem_812",
+        "BG36_MagicItem_820",
+        "BG36_MagicItem_830",
+        "BG36_MagicItem_831",
+        "BG36_MagicItem_840",
+        "BG36_MagicItem_850",
+        "BG36_MagicItem_852"
+      ]
+    },
+    "supported_derived": [
+      "BG19_010",
+      "BG19_010_G",
+      "BG20_100_G",
+      "BG20_101_G",
+      "BG20_104_G",
+      "BG20_GEM",
+      "BG20_HERO_100_Buddy_G",
+      "BG20_HERO_100p",
+      "BG20_HERO_101_Buddy_G",
+      "BG20_HERO_101p",
+      "BG20_HERO_102_Buddy_G",
+      "BG20_HERO_102p",
+      "BG20_HERO_103_Buddy_G",
+      "BG20_HERO_103p",
+      "BG20_HERO_201_Buddy_G",
+      "BG20_HERO_201p",
+      "BG20_HERO_202_Buddy_G",
+      "BG20_HERO_202p",
+      "BG20_HERO_242_Buddy_G",
+      "BG20_HERO_242p",
+      "BG20_HERO_280_Buddy_G",
+      "BG20_HERO_280p5",
+      "BG20_HERO_282_Buddy_G",
+      "BG20_HERO_282p",
+      "BG20_HERO_283_Buddy_G",
+      "BG20_HERO_283p",
+      "BG20_HERO_283p_t1",
+      "BG20_HERO_283p_t2",
+      "BG20_HERO_283p_t3",
+      "BG20_HERO_301_Buddy_G",
+      "BG20_HERO_301p",
+      "BG21_004_G",
+      "BG21_015_G",
+      "BG21_HERO_000_Buddy_G",
+      "BG21_HERO_000p",
+      "BG21_HERO_010_Buddy_G",
+      "BG21_HERO_010p",
+      "BG21_HERO_020_Buddy_G",
+      "BG21_HERO_020p",
+      "BG21_HERO_030_Buddy_G",
+      "BG21_HERO_030p",
+      "BG22_403_G",
+      "BG22_HERO_000_Buddy_G",
+      "BG22_HERO_000p_Alt",
+      "BG22_HERO_001p",
+      "BG22_HERO_001p_t1",
+      "BG22_HERO_001p_t2",
+      "BG22_HERO_001p_t3",
+      "BG22_HERO_001p_t4",
+      "BG22_HERO_002_Buddy_G",
+      "BG22_HERO_002p",
+      "BG22_HERO_003_Buddy_G",
+      "BG22_HERO_003p",
+      "BG22_HERO_004_Buddy_G",
+      "BG22_HERO_004p",
+      "BG22_HERO_007_Buddy_G",
+      "BG22_HERO_007p",
+      "BG22_HERO_007p2",
+      "BG22_HERO_200_Buddy_G",
+      "BG22_HERO_200p",
+      "BG22_HERO_201_Buddy_G",
+      "BG22_HERO_201p",
+      "BG22_HERO_305_Buddy_G",
+      "BG22_HERO_305p",
+      "BG22_HERO_305t_G",
+      "BG23_000_G",
+      "BG23_000_Gt",
+      "BG23_000t",
+      "BG23_002_G",
+      "BG23_004_G",
+      "BG23_004_Gt",
+      "BG23_004t",
+      "BG23_007_G",
+      "BG23_007_Gt",
+      "BG23_007t",
+      "BG23_008_G",
+      "BG23_008_Gt",
+      "BG23_008t",
+      "BG23_009_G",
+      "BG23_017_G",
+      "BG23_318_G",
+      "BG23_357_G",
+      "BG23_HERO_201_Buddy_G",
+      "BG23_HERO_201p",
+      "BG23_HERO_201pt2_G",
+      "BG23_HERO_201pt3_G",
+      "BG23_HERO_201pt4_G",
+      "BG23_HERO_201pt5_G",
+      "BG23_HERO_201pt6_G",
+      "BG23_HERO_201pt_G",
+      "BG23_HERO_303_Buddy_G",
+      "BG23_HERO_303p2",
+      "BG23_HERO_304_Buddy_G",
+      "BG23_HERO_304p",
+      "BG23_HERO_305_Buddy_G",
+      "BG23_HERO_305p",
+      "BG23_HERO_306_Buddy_G",
+      "BG23_HERO_306p",
+      "BG24_018_G",
+      "BG24_500_G",
+      "BG24_715_G",
+      "BG24_HERO_100_Buddy_G",
+      "BG24_HERO_100p",
+      "BG24_HERO_204_Buddy_G",
+      "BG24_HERO_204p",
+      "BG24_Quest_114",
+      "BG24_Quest_123",
+      "BG24_Quest_124",
+      "BG24_Quest_126",
+      "BG24_Quest_151",
+      "BG24_Quest_313",
+      "BG24_Quest_314",
+      "BG24_Quest_352",
+      "BG24_Reward_718t",
+      "BG24_Reward_719t",
+      "BG25_001_G",
+      "BG25_008_G",
+      "BG25_009_G",
+      "BG25_010_G",
+      "BG25_010_Gt",
+      "BG25_011_G",
+      "BG25_013_G",
+      "BG25_016_G",
+      "BG25_022_G",
+      "BG25_034",
+      "BG25_034_G",
+      "BG25_354_G",
+      "BG25_HERO_100_Buddy_G",
+      "BG25_HERO_100p",
+      "BG25_HERO_103_Buddy_G",
+      "BG25_HERO_103p",
+      "BG25_HERO_105_Buddy_G",
+      "BG25_HERO_105p",
+      "BG26_135_G",
+      "BG26_137_G",
+      "BG26_146_G",
+      "BG26_147_G",
+      "BG26_149",
+      "BG26_149_G",
+      "BG26_152_G",
+      "BG26_174_G",
+      "BG26_175_G",
+      "BG26_350",
+      "BG26_350_G",
+      "BG26_354_G",
+      "BG26_501_Gt",
+      "BG26_501t",
+      "BG26_502_Gt",
+      "BG26_502t",
+      "BG26_505_G",
+      "BG26_523_G",
+      "BG26_524_G",
+      "BG26_525_G",
+      "BG26_537_G",
+      "BG26_802_G",
+      "BG26_805_G",
+      "BG26_810_G",
+      "BG26_813t",
+      "BG26_814_G",
+      "BG26_817_G",
+      "BG26_963_G",
+      "BG26_HERO_101_Buddy_G",
+      "BG26_HERO_101p",
+      "BG26_HERO_102_Buddy_G",
+      "BG26_HERO_102p",
+      "BG26_HERO_102p2",
+      "BG26_HERO_104_Buddy_G",
+      "BG26_HERO_104p",
+      "BG26_ICC_901_G",
+      "BG27_000_G",
+      "BG27_004_Gt",
+      "BG27_004t",
+      "BG27_005_G",
+      "BG27_016",
+      "BG27_016_G",
+      "BG27_017",
+      "BG27_017_G",
+      "BG27_084_G",
+      "BG27_513",
+      "BG27_513_G",
+      "BG27_514",
+      "BG27_514_G",
+      "BG27_514t",
+      "BG27_514t_G",
+      "BG27_556_G",
+      "BG27_Anomaly_755t",
+      "BG27_HERO_801_Buddy_G",
+      "BG27_HERO_801p2",
+      "BG27_Quest_801",
+      "BG27_Quest_802",
+      "BG27_Reward_504t",
+      "BG28_300_G",
+      "BG28_303_G",
+      "BG28_309_G",
+      "BG28_507",
+      "BG28_550_G",
+      "BG28_582_G",
+      "BG28_583_G",
+      "BG28_603t_G",
+      "BG28_633_G",
+      "BG28_707_G",
+      "BG28_741_G",
+      "BG28_HERO_400_Buddy_G",
+      "BG28_HERO_400p",
+      "BG28_HERO_800_Buddy_G",
+      "BG28_HERO_800p",
+      "BG28_HERO_801_Buddy_G",
+      "BG28_HERO_801p",
+      "BG28_Quest_500",
+      "BG29_300_G",
+      "BG29_611_G",
+      "BG29_813_G",
+      "BG29_816_G",
+      "BG29_888_G",
+      "BG30_117_Gt",
+      "BG30_117t",
+      "BG30_121_G",
+      "BG30_123_G",
+      "BG30_125_G",
+      "BG30_HERO_304p",
+      "BG30_MagicItem_416t",
+      "BG30_MagicItem_442t_G",
+      "BG31_035_G",
+      "BG31_148_G",
+      "BG31_149_G",
+      "BG31_176",
+      "BG31_176_G",
+      "BG31_177_G",
+      "BG31_320_G",
+      "BG31_320_Gt",
+      "BG31_320_Gt2",
+      "BG31_320t",
+      "BG31_320t2",
+      "BG31_323_G",
+      "BG31_326_G",
+      "BG31_326t",
+      "BG31_326t2",
+      "BG31_327_G",
+      "BG31_330_G",
+      "BG31_360",
+      "BG31_360_G",
+      "BG31_801_G",
+      "BG31_803_G",
+      "BG31_809_G",
+      "BG31_810_G",
+      "BG31_812_G",
+      "BG31_815_G",
+      "BG31_816_G",
+      "BG31_818_G",
+      "BG31_826",
+      "BG31_826_G",
+      "BG31_835_G",
+      "BG31_880t",
+      "BG31_880t2",
+      "BG31_881t",
+      "BG31_881t2",
+      "BG31_886t",
+      "BG31_889",
+      "BG31_890t",
+      "BG31_890t2",
+      "BG31_893",
+      "BG31_896",
+      "BG31_920_G",
+      "BG31_920_Gt",
+      "BG31_920t",
+      "BG31_924_G",
+      "BG31_924_Gt",
+      "BG31_924t",
+      "BG31_925_G",
+      "BG31_999",
+      "BG31_999_G",
+      "BG31_Anomaly_102t",
+      "BG31_Anomaly_115t",
+      "BG31_Anomaly_124t4",
+      "BG31_HERO_003p",
+      "BG31_HERO_005p",
+      "BG31_HERO_006p",
+      "BG31_HERO_801p",
+      "BG31_HERO_801pt_G",
+      "BG31_HERO_801pta",
+      "BG31_HERO_801pta2",
+      "BG31_HERO_801pta3",
+      "BG31_HERO_801pta4",
+      "BG31_HERO_801pta5",
+      "BG31_HERO_801pta6",
+      "BG31_HERO_801pta7",
+      "BG31_HERO_801ptb",
+      "BG31_HERO_801ptb2",
+      "BG31_HERO_801ptb3",
+      "BG31_HERO_801ptb4",
+      "BG31_HERO_801ptb5",
+      "BG31_HERO_801ptb6",
+      "BG31_HERO_801ptb7",
+      "BG31_HERO_801ptc",
+      "BG31_HERO_801ptc2",
+      "BG31_HERO_801ptc3",
+      "BG31_HERO_801ptc4",
+      "BG31_HERO_801ptc5",
+      "BG31_HERO_801ptc6",
+      "BG31_HERO_801ptc7",
+      "BG31_HERO_801ptd",
+      "BG31_HERO_801ptd2",
+      "BG31_HERO_801ptd3",
+      "BG31_HERO_801ptd4",
+      "BG31_HERO_801ptd5",
+      "BG31_HERO_801ptd6",
+      "BG31_HERO_801ptd7",
+      "BG31_HERO_801pte",
+      "BG31_HERO_801pte2",
+      "BG31_HERO_801pte3",
+      "BG31_HERO_801pte4",
+      "BG31_HERO_801pte5",
+      "BG31_HERO_801pte6",
+      "BG31_HERO_801pte7",
+      "BG31_HERO_801ptf",
+      "BG31_HERO_801ptf2",
+      "BG31_HERO_801ptf3",
+      "BG31_HERO_801ptf4",
+      "BG31_HERO_801pth",
+      "BG31_HERO_801pth2",
+      "BG31_HERO_801pth3",
+      "BG31_HERO_801pti",
+      "BG31_HERO_801pti2",
+      "BG31_HERO_801ptj",
+      "BG31_HERO_801ptj2",
+      "BG31_HERO_802p",
+      "BG31_HERO_802pt1_G",
+      "BG31_HERO_802pt1t_G",
+      "BG31_HERO_802pt4_G",
+      "BG31_HERO_802pt5_G",
+      "BG31_HERO_802pt7_G",
+      "BG31_HERO_802pt_G",
+      "BG31_HERO_811p",
+      "BG31_HERO_811p2",
+      "BG31_HERO_811p3",
+      "BG31_HERO_811t10_G",
+      "BG31_HERO_811t2_G",
+      "BG31_HERO_811t3_G",
+      "BG31_HERO_811t4_G",
+      "BG31_HERO_811t5_G",
+      "BG31_HERO_811t6_G",
+      "BG31_HERO_811t7_G",
+      "BG31_HERO_811t8_G",
+      "BG31_HERO_811t9_G",
+      "BG31_HERO_811t_G",
+      "BG32_111_G",
+      "BG32_231_G",
+      "BG32_235_G",
+      "BG32_236_G",
+      "BG32_237_G",
+      "BG32_237_Gt",
+      "BG32_237_Gt2",
+      "BG32_237t",
+      "BG32_237t2",
+      "BG32_324_G",
+      "BG32_330_G",
+      "BG32_336_G",
+      "BG32_340_G",
+      "BG32_341_G",
+      "BG32_820_G",
+      "BG32_835_G",
+      "BG32_835_Gt",
+      "BG32_835t",
+      "BG32_837_G",
+      "BG32_860_G",
+      "BG32_873_G",
+      "BG32_880_G",
+      "BG32_HERO_001p",
+      "BG32_HERO_002p",
+      "BG32_MagicItem_205t",
+      "BG32_MagicItem_892t",
+      "BG33_155_G",
+      "BG33_318_G",
+      "BG33_319_G",
+      "BG33_319_Gt",
+      "BG33_319t",
+      "BG33_430_G",
+      "BG33_817",
+      "BG33_821_G",
+      "BG33_822_G",
+      "BG33_823_G",
+      "BG33_825_G",
+      "BG33_828_G",
+      "BG33_830_G",
+      "BG33_883_G",
+      "BG33_885_G",
+      "BG33_886_G",
+      "BG33_890t",
+      "BG33_891_G",
+      "BG33_924_G",
+      "BG33_HERO_000_Buddy_G",
+      "BG33_HERO_001p_ALT",
+      "BG33_Reward_012t",
+      "BG34_140_G",
+      "BG34_142_G",
+      "BG34_145",
+      "BG34_145_G",
+      "BG34_170_G",
+      "BG34_170t2_G",
+      "BG34_170t3_G",
+      "BG34_170t_G",
+      "BG34_171_G",
+      "BG34_272",
+      "BG34_319",
+      "BG34_319_G",
+      "BG34_320",
+      "BG34_320_G",
+      "BG34_322",
+      "BG34_322_G",
+      "BG34_403_G",
+      "BG34_405_G",
+      "BG34_500_G",
+      "BG34_604_G",
+      "BG34_633_G",
+      "BG34_682_G",
+      "BG34_684_G",
+      "BG34_690_G",
+      "BG34_692_G",
+      "BG34_856_G",
+      "BG34_858_G",
+      "BG34_865_G",
+      "BG34_925_G",
+      "BG34_950",
+      "BG34_950_G",
+      "BG34_Giant_314",
+      "BG34_Giant_314_G",
+      "BG34_HERO_000p",
+      "BG34_HERO_001p",
+      "BG34_HERO_002p",
+      "BG34_HERO_004p",
+      "BG35_123_G",
+      "BG35_150_G",
+      "BG35_150t",
+      "BG35_150t_G",
+      "BG35_155_G",
+      "BG35_341_G",
+      "BG35_342_G",
+      "BG35_602_G",
+      "BG35_604_G",
+      "BG35_814_G",
+      "BG35_881_G",
+      "BG35_882_G",
+      "BG35_883_G",
+      "BG35_921_G",
+      "BG35_Anomaly_001t",
+      "BG35_HERO_001p",
+      "BG35_MagicItem_306t",
+      "BG35_MagicItem_733t",
+      "BG35_MagicItem_755t",
+      "BG35_MagicItem_812t",
+      "BG35_MagicItem_817t",
+      "BG35_MagicItem_838t",
+      "BG35_MagicItem_872t",
+      "BG36_097_G",
+      "BG36_098_G",
+      "BG36_099_G",
+      "BG36_100_G",
+      "BG36_101_G",
+      "BG36_102_G",
+      "BG36_103_G",
+      "BG36_104_G",
+      "BG36_106_G",
+      "BG36_108_G",
+      "BG36_109_G",
+      "BG36_110_G",
+      "BG36_111",
+      "BG36_111_G",
+      "BG36_112_G",
+      "BG36_113_G",
+      "BG36_114_G",
+      "BG36_115_G",
+      "BG36_116_G",
+      "BG36_180_G",
+      "BG36_181_G",
+      "BG36_200_G",
+      "BG36_200_Gt",
+      "BG36_201_G",
+      "BG36_202_G",
+      "BG36_204_G",
+      "BG36_205",
+      "BG36_205_G",
+      "BG36_206_G",
+      "BG36_207_G",
+      "BG36_208_G",
+      "BG36_209_G",
+      "BG36_210_G",
+      "BG36_211_G",
+      "BG36_240_G",
+      "BG36_241_G",
+      "BG36_242_G",
+      "BG36_243_G",
+      "BG36_245_G",
+      "BG36_300_G",
+      "BG36_308_G",
+      "BG36_311_G",
+      "BG36_312_G",
+      "BG36_318_G",
+      "BG36_320_G",
+      "BG36_330_G",
+      "BG36_330_Gt",
+      "BG36_330_Gt2",
+      "BG36_330t",
+      "BG36_330t2",
+      "BG36_331_G",
+      "BG36_332_G",
+      "BG36_332_Gt",
+      "BG36_332_Gt2",
+      "BG36_332t",
+      "BG36_332t2",
+      "BG36_333",
+      "BG36_333_G",
+      "BG36_341_G",
+      "BG36_341_Gt",
+      "BG36_341_Gt2",
+      "BG36_341t",
+      "BG36_341t2",
+      "BG36_342_G",
+      "BG36_343_G",
+      "BG36_344_G",
+      "BG36_345_G",
+      "BG36_346_G",
+      "BG36_352_G",
+      "BG36_354_G",
+      "BG36_356_G",
+      "BG36_360",
+      "BG36_360_G",
+      "BG36_360_Gt3",
+      "BG36_360_Gt4",
+      "BG36_360_Gt5",
+      "BG36_360_Gt6",
+      "BG36_360_Gt9",
+      "BG36_362_G",
+      "BG36_364_G",
+      "BG36_366_G",
+      "BG36_367_G",
+      "BG36_369_G",
+      "BG36_370_G",
+      "BG36_372_G",
+      "BG36_503_G",
+      "BG36_506_G",
+      "BG36_508_G",
+      "BG36_511_G",
+      "BG36_514_G",
+      "BG36_515_G",
+      "BG36_520_G",
+      "BG36_520t",
+      "BG36_521_G",
+      "BG36_523_G",
+      "BG36_524_G",
+      "BG36_620_G",
+      "BG36_621_G",
+      "BG36_622_G",
+      "BG36_640_G",
+      "BG36_700_G",
+      "BG36_701_G",
+      "BG36_703_G",
+      "BG36_704_G",
+      "BG36_730_G",
+      "BG36_731_G",
+      "BG36_733_G",
+      "BG36_762_G",
+      "BG36_763_G",
+      "BG36_764_G",
+      "BG36_848_G",
+      "BG36_849_G",
+      "BG36_851_G",
+      "BG36_853_G",
+      "BG36_854_G",
+      "BG36_921_G",
+      "BG36_HERO_000p",
+      "BG36_HERO_002p",
+      "BG36_HERO_101p",
+      "BG36_HERO_105p",
+      "BG36_MagicItem_208t",
+      "BG36_MagicItem_417t",
+      "BGDUO31_201_G",
+      "BGDUO31_202_G",
+      "BGDUO31_203_G",
+      "BGDUO31_205_G",
+      "BGDUO31_207_G",
+      "BGDUO31_208_G",
+      "BGDUO31_209t",
+      "BGDUO31_211_G",
+      "BGDUO31_212_G",
+      "BGDUO33_140_G",
+      "BGDUO33_150_G",
+      "BGDUO_100_G",
+      "BGDUO_104_G",
+      "BGDUO_107_G",
+      "BGDUO_108_G",
+      "BGDUO_109_G",
+      "BGDUO_110_G",
+      "BGDUO_111_G",
+      "BGDUO_112_G",
+      "BGDUO_113",
+      "BGDUO_114_G",
+      "BGDUO_115_G",
+      "BGDUO_117_G",
+      "BGDUO_118_G",
+      "BGDUO_119",
+      "BGDUO_119_G",
+      "BGDUO_120_G",
+      "BGDUO_120_Gt",
+      "BGDUO_120t",
+      "BGDUO_121_G",
+      "BGDUO_125_G",
+      "BGDUO_700_G",
+      "BGDUO_701_G",
+      "BGFYM_002t",
+      "BGFYM_002t_G",
+      "BGFYM_005_G",
+      "BGS_115t_G",
+      "BG_DEEP_015_G",
+      "BG_EX1_014t",
+      "BG_EX1_564",
+      "BG_EX1_564_G",
+      "TB_BaconShop_HERO_01_Buddy_G",
+      "TB_BaconShop_HERO_02_Buddy_G",
+      "TB_BaconShop_HERO_08_Buddy_G",
+      "TB_BaconShop_HERO_10_Buddy_G",
+      "TB_BaconShop_HERO_11_Buddy_G",
+      "TB_BaconShop_HERO_12_Buddy_G",
+      "TB_BaconShop_HERO_14_Buddy_G",
+      "TB_BaconShop_HERO_15_Buddy_G",
+      "TB_BaconShop_HERO_16_Buddy_G",
+      "TB_BaconShop_HERO_17_Buddy_G",
+      "TB_BaconShop_HERO_18_Buddy_G",
+      "TB_BaconShop_HERO_21_Buddy_G",
+      "TB_BaconShop_HERO_22_Buddy_G",
+      "TB_BaconShop_HERO_23_Buddy_G",
+      "TB_BaconShop_HERO_25_Buddy_G",
+      "TB_BaconShop_HERO_27_Buddy_G",
+      "TB_BaconShop_HERO_28_Buddy_G",
+      "TB_BaconShop_HERO_29_Buddy_G",
+      "TB_BaconShop_HERO_33_Buddy_G",
+      "TB_BaconShop_HERO_34_Buddy_G",
+      "TB_BaconShop_HERO_35_Buddy_G",
+      "TB_BaconShop_HERO_36_Buddy_G",
+      "TB_BaconShop_HERO_37_Buddy_G",
+      "TB_BaconShop_HERO_38_Buddy_G",
+      "TB_BaconShop_HERO_39_Buddy_G",
+      "TB_BaconShop_HERO_40_Buddy_G",
+      "TB_BaconShop_HERO_41_Buddy_G",
+      "TB_BaconShop_HERO_42_Buddy_G",
+      "TB_BaconShop_HERO_43_Buddy_G",
+      "TB_BaconShop_HERO_45_Buddy_G",
+      "TB_BaconShop_HERO_49_Buddy_G",
+      "TB_BaconShop_HERO_50_Buddy_G",
+      "TB_BaconShop_HERO_52_Buddy_G",
+      "TB_BaconShop_HERO_53_Buddy_G",
+      "TB_BaconShop_HERO_55_Buddy_G",
+      "TB_BaconShop_HERO_56_Buddy_G",
+      "TB_BaconShop_HERO_57_Buddy_G",
+      "TB_BaconShop_HERO_58_Buddy_G",
+      "TB_BaconShop_HERO_59_Buddy_G",
+      "TB_BaconShop_HERO_60_Buddy_G",
+      "TB_BaconShop_HERO_62_Buddy_G",
+      "TB_BaconShop_HERO_64_Buddy_G",
+      "TB_BaconShop_HERO_67_Buddy_G",
+      "TB_BaconShop_HERO_68_Buddy_G",
+      "TB_BaconShop_HERO_702_Buddy_G",
+      "TB_BaconShop_HERO_70_Buddy_G",
+      "TB_BaconShop_HERO_71_Buddy_G",
+      "TB_BaconShop_HERO_72_Buddy_G",
+      "TB_BaconShop_HERO_74_Buddy_G",
+      "TB_BaconShop_HERO_75_Buddy_G",
+      "TB_BaconShop_HERO_76_Buddy_G",
+      "TB_BaconShop_HERO_78_Buddy_G",
+      "TB_BaconShop_HERO_90_Buddy_G",
+      "TB_BaconShop_HERO_92_Buddy_G",
+      "TB_BaconShop_HERO_93_Buddy_G",
+      "TB_BaconShop_HERO_94_Buddy_G",
+      "TB_BaconShop_HERO_95_Buddy_G",
+      "TB_BaconShop_HP_001",
+      "TB_BaconShop_HP_008",
+      "TB_BaconShop_HP_010",
+      "TB_BaconShop_HP_011",
+      "TB_BaconShop_HP_014",
+      "TB_BaconShop_HP_015",
+      "TB_BaconShop_HP_020",
+      "TB_BaconShop_HP_022",
+      "TB_BaconShop_HP_022t_G",
+      "TB_BaconShop_HP_024",
+      "TB_BaconShop_HP_028",
+      "TB_BaconShop_HP_033",
+      "TB_BaconShop_HP_033t_G",
+      "TB_BaconShop_HP_035",
+      "TB_BaconShop_HP_036",
+      "TB_BaconShop_HP_037a",
+      "TB_BaconShop_HP_038",
+      "TB_BaconShop_HP_039t",
+      "TB_BaconShop_HP_040",
+      "TB_BaconShop_HP_041",
+      "TB_BaconShop_HP_041a",
+      "TB_BaconShop_HP_041b",
+      "TB_BaconShop_HP_041c",
+      "TB_BaconShop_HP_041d",
+      "TB_BaconShop_HP_041f",
+      "TB_BaconShop_HP_041g",
+      "TB_BaconShop_HP_041h",
+      "TB_BaconShop_HP_041i",
+      "TB_BaconShop_HP_041j",
+      "TB_BaconShop_HP_041k",
+      "TB_BaconShop_HP_042",
+      "TB_BaconShop_HP_044",
+      "TB_BaconShop_HP_046",
+      "TB_BaconShop_HP_047",
+      "TB_BaconShop_HP_048",
+      "TB_BaconShop_HP_049",
+      "TB_BaconShop_HP_052",
+      "TB_BaconShop_HP_053",
+      "TB_BaconShop_HP_054",
+      "TB_BaconShop_HP_056",
+      "TB_BaconShop_HP_057",
+      "TB_BaconShop_HP_061",
+      "TB_BaconShop_HP_062",
+      "TB_BaconShop_HP_063",
+      "TB_BaconShop_HP_064",
+      "TB_BaconShop_HP_065",
+      "TB_BaconShop_HP_066",
+      "TB_BaconShop_HP_068",
+      "TB_BaconShop_HP_069",
+      "TB_BaconShop_HP_072",
+      "TB_BaconShop_HP_074",
+      "TB_BaconShop_HP_075",
+      "TB_BaconShop_HP_076",
+      "TB_BaconShop_HP_077",
+      "TB_BaconShop_HP_080",
+      "TB_BaconShop_HP_081",
+      "TB_BaconShop_HP_082",
+      "TB_BaconShop_HP_084",
+      "TB_BaconShop_HP_085t",
+      "TB_BaconShop_HP_086",
+      "TB_BaconShop_HP_087",
+      "TB_BaconShop_HP_087t",
+      "TB_BaconShop_HP_088",
+      "TB_BaconShop_HP_101",
+      "TB_BaconShop_HP_102",
+      "TB_BaconShop_HP_103",
+      "TB_BaconShop_HP_104",
+      "TB_BaconShop_HP_105",
+      "TB_BaconShop_HP_105t",
+      "TB_BaconShop_HP_106",
+      "TB_BaconShop_HP_107",
+      "TB_BaconShop_HP_702t",
+      "TB_BaconUps_045",
+      "TB_BaconUps_057",
+      "TB_BaconUps_079",
+      "TB_BaconUps_085",
+      "TB_BaconUps_089",
+      "TB_BaconUps_099",
+      "TB_BaconUps_109",
+      "TB_BaconUps_149",
+      "TB_BaconUps_154",
+      "TB_BaconUps_156",
+      "TB_BaconUps_159",
+      "TB_BaconUps_162",
+      "TB_BaconUps_166",
+      "TB_BaconUps_167",
+      "TB_BaconUps_251",
+      "TB_BaconUps_307",
+      "TB_Bacon_Secrets_12",
+      "BG22_HERO_007t",
+      "BG22_HERO_007_Buddy",
+      "BG20_HERO_100_Buddy",
+      "BG20_HERO_101_Buddy",
+      "BG20_HERO_102_Buddy",
+      "BG20_HERO_103_Buddy",
+      "BG20_HERO_201_Buddy",
+      "BG20_HERO_202_Buddy",
+      "BG20_HERO_242_Buddy",
+      "BG20_HERO_280_Buddy",
+      "BG20_HERO_282_Buddy",
+      "BG20_HERO_283_Buddy",
+      "BG20_HERO_301_Buddy",
+      "BG21_HERO_000_Buddy",
+      "BG21_HERO_010_Buddy",
+      "BG21_HERO_020_Buddy",
+      "BG21_HERO_030_Buddy",
+      "BG22_HERO_000_Buddy",
+      "BG22_HERO_002_Buddy",
+      "BG22_HERO_003_Buddy",
+      "BG22_HERO_004_Buddy",
+      "BG22_HERO_200_Buddy",
+      "BG22_HERO_201_Buddy",
+      "BG22_HERO_305_Buddy",
+      "BG22_HERO_305t",
+      "BG23_HERO_201_Buddy",
+      "BG23_HERO_201pt",
+      "BG23_HERO_303_Buddy",
+      "BG23_HERO_305_Buddy",
+      "BG23_HERO_306_Buddy",
+      "BG24_HERO_100_Buddy",
+      "BG24_HERO_204_Buddy",
+      "BG25_010t",
+      "BG25_HERO_100_Buddy",
+      "BG25_HERO_103_Buddy",
+      "BG25_HERO_105_Buddy",
+      "BG26_HERO_101_Buddy",
+      "BG26_HERO_102_Buddy",
+      "BG26_HERO_104_Buddy",
+      "BG27_HERO_801_Buddy",
+      "BG28_603t",
+      "BG28_HERO_400_Buddy",
+      "BG28_HERO_800_Buddy",
+      "BG28_HERO_801_Buddy",
+      "BG30_MagicItem_442t",
+      "BG31_HERO_801pt",
+      "BG31_HERO_802pt",
+      "BG31_HERO_802pt1",
+      "BG31_HERO_802pt1t",
+      "BG31_HERO_802pt4",
+      "BG31_HERO_802pt5",
+      "BG31_HERO_802pt7",
+      "BG31_HERO_811t",
+      "BG31_HERO_811t10",
+      "BG31_HERO_811t2",
+      "BG31_HERO_811t3",
+      "BG31_HERO_811t4",
+      "BG31_HERO_811t5",
+      "BG31_HERO_811t6",
+      "BG31_HERO_811t7",
+      "BG31_HERO_811t8",
+      "BG31_HERO_811t9",
+      "BG33_HERO_000_Buddy",
+      "BG36_200t",
+      "BGS_115t",
+      "TB_BaconShop_HERO_01_Buddy",
+      "TB_BaconShop_HERO_02_Buddy",
+      "TB_BaconShop_HERO_08_Buddy",
+      "TB_BaconShop_HERO_10_Buddy",
+      "TB_BaconShop_HERO_11_Buddy",
+      "TB_BaconShop_HERO_12_Buddy",
+      "TB_BaconShop_HERO_14_Buddy",
+      "TB_BaconShop_HERO_15_Buddy",
+      "TB_BaconShop_HERO_16_Buddy",
+      "TB_BaconShop_HERO_17_Buddy",
+      "TB_BaconShop_HERO_18_Buddy",
+      "TB_BaconShop_HERO_21_Buddy",
+      "TB_BaconShop_HERO_22_Buddy",
+      "TB_BaconShop_HERO_23_Buddy",
+      "TB_BaconShop_HERO_25_Buddy",
+      "TB_BaconShop_HERO_27_Buddy",
+      "TB_BaconShop_HERO_28_Buddy",
+      "TB_BaconShop_HERO_29_Buddy",
+      "TB_BaconShop_HERO_33_Buddy",
+      "TB_BaconShop_HERO_34_Buddy",
+      "TB_BaconShop_HERO_35_Buddy",
+      "TB_BaconShop_HERO_36_Buddy",
+      "TB_BaconShop_HERO_37_Buddy",
+      "TB_BaconShop_HERO_38_Buddy",
+      "TB_BaconShop_HERO_39_Buddy",
+      "TB_BaconShop_HERO_40_Buddy",
+      "TB_BaconShop_HERO_41_Buddy",
+      "TB_BaconShop_HERO_42_Buddy",
+      "TB_BaconShop_HERO_43_Buddy",
+      "TB_BaconShop_HERO_45_Buddy",
+      "TB_BaconShop_HERO_49_Buddy",
+      "TB_BaconShop_HERO_50_Buddy",
+      "TB_BaconShop_HERO_52_Buddy",
+      "TB_BaconShop_HERO_53_Buddy",
+      "TB_BaconShop_HERO_55_Buddy",
+      "TB_BaconShop_HERO_56_Buddy",
+      "TB_BaconShop_HERO_57_Buddy",
+      "TB_BaconShop_HERO_58_Buddy",
+      "TB_BaconShop_HERO_59_Buddy",
+      "TB_BaconShop_HERO_60_Buddy",
+      "TB_BaconShop_HERO_62_Buddy",
+      "TB_BaconShop_HERO_64_Buddy",
+      "TB_BaconShop_HERO_67_Buddy",
+      "TB_BaconShop_HERO_68_Buddy",
+      "TB_BaconShop_HERO_702_Buddy",
+      "TB_BaconShop_HERO_70_Buddy",
+      "TB_BaconShop_HERO_71_Buddy",
+      "TB_BaconShop_HERO_72_Buddy",
+      "TB_BaconShop_HERO_74_Buddy",
+      "TB_BaconShop_HERO_75_Buddy",
+      "TB_BaconShop_HERO_76_Buddy",
+      "TB_BaconShop_HERO_78_Buddy",
+      "TB_BaconShop_HERO_90_Buddy",
+      "TB_BaconShop_HERO_92_Buddy",
+      "TB_BaconShop_HERO_93_Buddy",
+      "TB_BaconShop_HERO_94_Buddy",
+      "TB_BaconShop_HERO_95_Buddy",
+      "TB_BaconShop_HP_033t",
+      "TB_BaconShop_HP_036t"
+    ],
+    "excluded": [
+      "BG20_203",
+      "BG20_203_G",
+      "BG20_301",
+      "BG20_301_G",
+      "BG21_005",
+      "BG21_005_G",
+      "BG21_014",
+      "BG21_014_G",
+      "BG21_018",
+      "BG21_018_G",
+      "BG22_202",
+      "BG22_202_G",
+      "BG22_HERO_007",
+      "BG23_000",
+      "BG23_002",
+      "BG23_004",
+      "BG23_007",
+      "BG23_008",
+      "BG23_009",
+      "BG23_018",
+      "BG23_018_G",
+      "BG23_HERO_304",
+      "BG24_004",
+      "BG24_004_G",
+      "BG24_009",
+      "BG24_009_G",
+      "BG24_707",
+      "BG24_707_G",
+      "BG25_032",
+      "BG25_032_G",
+      "BG25_039",
+      "BG25_039_G",
+      "BG25_041",
+      "BG25_041_G",
+      "BG25_806",
+      "BG25_806_G",
+      "BG26_148",
+      "BG26_148_G",
+      "BG26_157",
+      "BG26_157_G",
+      "BG26_159",
+      "BG26_159_G",
+      "BG26_160",
+      "BG26_160_G",
+      "BG26_162",
+      "BG26_162_G",
+      "BG26_199",
+      "BG26_199_G",
+      "BG26_501",
+      "BG26_501_G",
+      "BG26_502",
+      "BG26_502_G",
+      "BG26_505",
+      "BG26_529",
+      "BG26_529_G",
+      "BG26_801",
+      "BG26_801_G",
+      "BG26_867",
+      "BG26_867_G",
+      "BG27_002",
+      "BG27_002_G",
+      "BG27_004",
+      "BG27_004_G",
+      "BG27_080",
+      "BG27_080_G",
+      "BG28_308",
+      "BG28_308_G",
+      "BG28_519",
+      "BG28_551",
+      "BG28_551_G",
+      "BG28_595",
+      "BG28_595_G",
+      "BG28_606",
+      "BG29_503",
+      "BG29_503_G",
+      "BG29_806",
+      "BG29_806_G",
+      "BG29_807",
+      "BG29_807_G",
+      "BG29_808",
+      "BG29_808_G",
+      "BG29_810",
+      "BG29_810_G",
+      "BG29_840",
+      "BG29_840_G",
+      "BG29_862",
+      "BG29_862_G",
+      "BG30_117",
+      "BG30_117_G",
+      "BG30_122",
+      "BG30_122_G",
+      "BG30_129",
+      "BG30_129_G",
+      "BG30_802",
+      "BG30_MagicItem_303",
+      "BG30_MagicItem_422",
+      "BG30_MagicItem_422t",
+      "BG30_MagicItem_427",
+      "BG30_MagicItem_427t",
+      "BG30_MagicItem_828",
+      "BG30_MagicItem_864",
+      "BG30_MagicItem_900t",
+      "BG30_MagicItem_917",
+      "BG30_MagicItem_919",
+      "BG30_MagicItem_920",
+      "BG30_MagicItem_944",
+      "BG30_MagicItem_973",
+      "BG30_MagicItem_999",
+      "BG31_035",
+      "BG31_171",
+      "BG31_171_G",
+      "BG31_175",
+      "BG31_175_G",
+      "BG31_178",
+      "BG31_178_G",
+      "BG31_242",
+      "BG31_243",
+      "BG31_244",
+      "BG31_330",
+      "BG31_820",
+      "BG31_820_G",
+      "BG31_824",
+      "BG31_824_G",
+      "BG31_843",
+      "BG31_843_G",
+      "BG31_859",
+      "BG31_859_G",
+      "BG31_920",
+      "BG31_924",
+      "BG31_925",
+      "BG32_170",
+      "BG32_170_G",
+      "BG32_172",
+      "BG32_172_G",
+      "BG32_204",
+      "BG32_204_G",
+      "BG32_234",
+      "BG32_234_G",
+      "BG32_430",
+      "BG32_430_G",
+      "BG32_815",
+      "BG32_820",
+      "BG32_821",
+      "BG32_821_G",
+      "BG32_822",
+      "BG32_822_G",
+      "BG32_835",
+      "BG32_837",
+      "BG32_841",
+      "BG32_841_G",
+      "BG32_842",
+      "BG32_842_G",
+      "BG32_846",
+      "BG32_846_G",
+      "BG32_891",
+      "BG32_891_G",
+      "BG32_MagicItem_300",
+      "BG32_MagicItem_803",
+      "BG32_MagicItem_830",
+      "BG32_MagicItem_920",
+      "BG32_MagicItem_922",
+      "BG32_MagicItem_930",
+      "BG32_MagicItem_931",
+      "BG33_140",
+      "BG33_140_G",
+      "BG33_154",
+      "BG33_154_G",
+      "BG33_156",
+      "BG33_156_G",
+      "BG33_240",
+      "BG33_240_G",
+      "BG33_241",
+      "BG33_241_G",
+      "BG33_319",
+      "BG33_323",
+      "BG33_323_G",
+      "BG33_809",
+      "BG33_809_G",
+      "BG33_820",
+      "BG33_820_G",
+      "BG33_888",
+      "BG33_888_G",
+      "BG33_893",
+      "BG33_893_G",
+      "BG33_894",
+      "BG33_894_G",
+      "BG33_899",
+      "BG33_920",
+      "BG33_920_G",
+      "BG33_923",
+      "BG33_923_G",
+      "BG34_175",
+      "BG34_175_G",
+      "BG34_231",
+      "BG34_231_G",
+      "BG34_312",
+      "BG34_312_G",
+      "BG34_321",
+      "BG34_321_G",
+      "BG34_523",
+      "BG34_523_G",
+      "BG34_630",
+      "BG34_630_G",
+      "BG34_632",
+      "BG34_632_G",
+      "BG34_634_Gt",
+      "BG34_634t",
+      "BG34_635_Gt",
+      "BG34_635t",
+      "BG34_636_Gt",
+      "BG34_636t",
+      "BG34_637_Gt",
+      "BG34_637t",
+      "BG34_638_Gt",
+      "BG34_638t",
+      "BG34_683",
+      "BG34_683_G",
+      "BG34_694",
+      "BG34_694_G",
+      "BG34_731",
+      "BG34_731_G",
+      "BG34_765",
+      "BG34_765_G",
+      "BG34_781",
+      "BG34_781_G",
+      "BG34_920",
+      "BG34_920_G",
+      "BG34_921",
+      "BG34_921_G",
+      "BG34_922",
+      "BG34_922_G",
+      "BG34_925",
+      "BG34_926",
+      "BG34_926_G",
+      "BG34_Giant_031",
+      "BG34_Giant_031_G",
+      "BG34_Giant_078",
+      "BG34_Giant_078_G",
+      "BG34_PreMadeChamp_090",
+      "BG34_PreMadeChamp_090_G",
+      "BG35_140",
+      "BG35_140_G",
+      "BG35_141",
+      "BG35_141_G",
+      "BG35_142",
+      "BG35_142_G",
+      "BG35_143",
+      "BG35_143_G",
+      "BG35_149",
+      "BG35_151",
+      "BG35_151_G",
+      "BG35_152",
+      "BG35_152_G",
+      "BG35_153",
+      "BG35_153_G",
+      "BG35_334",
+      "BG35_334_G",
+      "BG35_340",
+      "BG35_340_G",
+      "BG35_431",
+      "BG35_431_G",
+      "BG35_433",
+      "BG35_433_G",
+      "BG35_437",
+      "BG35_437_G",
+      "BG35_601",
+      "BG35_601_G",
+      "BG35_701",
+      "BG35_701_G",
+      "BG35_702",
+      "BG35_702_G",
+      "BG35_801",
+      "BG35_801_G",
+      "BG35_890",
+      "BG35_890_G",
+      "BG35_895",
+      "BG35_895_G",
+      "BG35_910",
+      "BG35_911",
+      "BG35_921",
+      "BG35_922",
+      "BG35_952",
+      "BG35_MagicItem_151",
+      "BG35_MagicItem_151t",
+      "BG35_MagicItem_300t",
+      "BG35_MagicItem_309",
+      "BG35_MagicItem_430",
+      "BG35_MagicItem_431t",
+      "BG35_MagicItem_432",
+      "BG35_MagicItem_433",
+      "BG35_MagicItem_435",
+      "BG35_MagicItem_714",
+      "BG35_MagicItem_803",
+      "BG35_MagicItem_803t",
+      "BG35_MagicItem_821",
+      "BG35_MagicItem_821t",
+      "BG35_MagicItem_834",
+      "BG35_MagicItem_863",
+      "BG35_MagicItem_870",
+      "BG35_MagicItem_920",
+      "BG35_MagicItem_922",
+      "BG35_MagicItem_923",
+      "BG35_MagicItem_924",
+      "BG35_MagicItem_925",
+      "BG36_351",
+      "BG36_351_G",
+      "BG36_507",
+      "BG36_507_G",
+      "BG36_508",
+      "BG36_509",
+      "BG36_509_G",
+      "BG36_510",
+      "BG36_510_G",
+      "BG36_622",
+      "BG36_760",
+      "BG36_760_G",
+      "BG36_921",
+      "BG36_MagicItem_305",
+      "BG36_MagicItem_361",
+      "BG36_MagicItem_362",
+      "BG36_MagicItem_380",
+      "BG36_MagicItem_412",
+      "BG36_MagicItem_412t2",
+      "BG36_MagicItem_841",
+      "BGDUO31_201",
+      "BGDUO31_202",
+      "BGDUO31_203",
+      "BGDUO31_205",
+      "BGDUO31_207",
+      "BGDUO31_208",
+      "BGDUO31_209",
+      "BGDUO31_209_G",
+      "BGDUO31_209t_G",
+      "BGDUO31_211",
+      "BGDUO31_212",
+      "BGDUO33_140",
+      "BGDUO33_150",
+      "BGDUO_100",
+      "BGDUO_104",
+      "BGDUO_105",
+      "BGDUO_105_G",
+      "BGDUO_107",
+      "BGDUO_108",
+      "BGDUO_109",
+      "BGDUO_110",
+      "BGDUO_111",
+      "BGDUO_112",
+      "BGDUO_114",
+      "BGDUO_115",
+      "BGDUO_117",
+      "BGDUO_118",
+      "BGDUO_120",
+      "BGDUO_121",
+      "BGDUO_122",
+      "BGDUO_122_G",
+      "BGDUO_125",
+      "BGDUO_700",
+      "BGDUO_701",
+      "BGDUO_HERO_100",
+      "BGDUO_HERO_100p",
+      "BGDUO_HERO_101",
+      "BGDUO_HERO_101p",
+      "BGDUO_HERO_104",
+      "BGDUO_HERO_104p",
+      "BGDUO_HERO_222",
+      "BGDUO_HERO_222p",
+      "BGDUO_HERO_223",
+      "BGDUO_HERO_223p",
+      "BGDUO_MagicItem_001",
+      "BGDUO_MagicItem_002",
+      "BGDUO_MagicItem_003",
+      "BGDUO_MagicItem_005",
+      "BGDUO_MagicItem_006",
+      "BGDUO_MagicItem_007",
+      "BGDUO_MagicItem_008",
+      "BGDUO_MagicItem_010",
+      "BGDUO_MagicItem_010t",
+      "BGS_012",
+      "BGS_030",
+      "BGS_049",
+      "BGS_071",
+      "BGS_078",
+      "BGS_104",
+      "BGS_121",
+      "BGS_127",
+      "BG_TTN_401",
+      "BG_TTN_401_G",
+      "EBG_Spell_014",
+      "TB_BaconUps_087",
+      "TB_BaconUps_100",
+      "TB_BaconUps_123",
+      "TB_BaconUps_127",
+      "TB_BaconUps_135",
+      "TB_BaconUps_165",
+      "TB_BaconUps_201",
+      "TB_Baconups_202"
+    ],
+    "source_unknown": [
+      "BG23_HERO_201pt2",
+      "BG23_HERO_201pt3",
+      "BG23_HERO_201pt4",
+      "BG23_HERO_201pt5",
+      "BG23_HERO_201pt6",
+      "BG23_HERO_304_Buddy",
+      "BG24_Reward_107",
+      "BG24_Reward_109",
+      "BG24_Reward_111",
+      "BG24_Reward_129",
+      "BG24_Reward_130",
+      "BG24_Reward_134",
+      "BG24_Reward_135",
+      "BG24_Reward_138",
+      "BG24_Reward_306",
+      "BG24_Reward_313",
+      "BG24_Reward_350",
+      "BG24_Reward_361",
+      "BG24_Reward_363",
+      "BG24_Reward_718",
+      "BG24_Reward_719",
+      "BG27_Anomaly_000",
+      "BG27_Anomaly_002",
+      "BG27_Anomaly_005",
+      "BG27_Anomaly_103",
+      "BG27_Anomaly_301",
+      "BG27_Anomaly_302",
+      "BG27_Anomaly_303",
+      "BG27_Anomaly_501",
+      "BG27_Anomaly_503",
+      "BG27_Anomaly_504",
+      "BG27_Anomaly_559",
+      "BG27_Anomaly_562",
+      "BG27_Anomaly_570",
+      "BG27_Anomaly_571",
+      "BG27_Anomaly_572",
+      "BG27_Anomaly_573",
+      "BG27_Anomaly_575",
+      "BG27_Anomaly_577",
+      "BG27_Anomaly_580",
+      "BG27_Anomaly_711",
+      "BG27_Anomaly_715",
+      "BG27_Anomaly_716",
+      "BG27_Anomaly_718",
+      "BG27_Anomaly_720",
+      "BG27_Anomaly_721",
+      "BG27_Anomaly_723",
+      "BG27_Anomaly_750",
+      "BG27_Anomaly_751",
+      "BG27_Anomaly_754",
+      "BG27_Anomaly_755",
+      "BG27_Anomaly_801",
+      "BG27_Anomaly_803",
+      "BG27_Anomaly_805",
+      "BG27_Anomaly_810",
+      "BG27_Anomaly_822",
+      "BG27_Anomaly_900",
+      "BG27_Anomaly_Prizes2",
+      "BG27_Reward_504",
+      "BG27_Reward_802",
+      "BG27_Reward_803",
+      "BG27_Reward_806",
+      "BG27_Reward_811",
+      "BG27_Reward_812",
+      "BG28_Reward_500",
+      "BG28_Reward_501",
+      "BG28_Reward_504",
+      "BG28_Reward_506",
+      "BG28_Reward_508",
+      "BG28_Reward_509",
+      "BG28_Reward_510",
+      "BG28_Reward_513",
+      "BG28_Reward_514",
+      "BG28_Reward_515",
+      "BG31_Anomaly_101",
+      "BG31_Anomaly_102",
+      "BG31_Anomaly_104",
+      "BG31_Anomaly_105",
+      "BG31_Anomaly_106",
+      "BG31_Anomaly_109",
+      "BG31_Anomaly_111",
+      "BG31_Anomaly_112",
+      "BG31_Anomaly_114",
+      "BG31_Anomaly_115",
+      "BG31_Anomaly_116",
+      "BG31_Anomaly_117",
+      "BG31_Anomaly_117t",
+      "BG31_Anomaly_120",
+      "BG31_Anomaly_123",
+      "BG31_Anomaly_124",
+      "BG31_Anomaly_126",
+      "BG31_Anomaly_127",
+      "BG32_Anomaly_001",
+      "BG32_Anomaly_002",
+      "BG32_Anomaly_003",
+      "BG33_Reward_010",
+      "BG33_Reward_011",
+      "BG33_Reward_012",
+      "BG33_Reward_013",
+      "BG33_Reward_014",
+      "BG33_Reward_015",
+      "BG33_Reward_020",
+      "BG34_Anomaly_800",
+      "BG34_Anomaly_800t",
+      "BG34_Anomaly_801",
+      "BG34_Anomaly_802",
+      "BG34_Anomaly_804",
+      "BG34_Anomaly_805",
+      "BG34_Anomaly_809",
+      "BG35_Anomaly_001",
+      "BG35_Anomaly_002",
+      "BG35_Anomaly_002t",
+      "BG35_Anomaly_004",
+      "BG35_Anomaly_005",
+      "BG35_Anomaly_006",
+      "BG35_Anomaly_007",
+      "BG35_Anomaly_007t",
+      "BG35_Anomaly_008",
+      "BG35_Anomaly_008t",
+      "BG35_MagicItem_921",
+      "TB_BaconShop_HP_022t",
+      "TB_BaconShop_HP_065t2"
+    ],
+    "derived_parents": [
+      {
+        "parent": "BG35_604",
+        "child": "BG19_010"
+      },
+      {
+        "parent": "BG19_010",
+        "child": "BG19_010_G"
+      },
+      {
+        "parent": "BG35_604_G",
+        "child": "BG19_010_G"
+      },
+      {
+        "parent": "BG20_100",
+        "child": "BG20_100_G"
+      },
+      {
+        "parent": "BG20_101",
+        "child": "BG20_101_G"
+      },
+      {
+        "parent": "BG20_104",
+        "child": "BG20_104_G"
+      },
+      {
+        "parent": "BG20_100",
+        "child": "BG20_GEM"
+      },
+      {
+        "parent": "BG20_101",
+        "child": "BG20_GEM"
+      },
+      {
+        "parent": "BG20_104",
+        "child": "BG20_GEM"
+      },
+      {
+        "parent": "BG20_HERO_103",
+        "child": "BG20_GEM"
+      },
+      {
+        "parent": "BG20_HERO_100_Buddy",
+        "child": "BG20_HERO_100_Buddy_G"
+      },
+      {
+        "parent": "BG20_HERO_100",
+        "child": "BG20_HERO_100p"
+      },
+      {
+        "parent": "BG20_HERO_101_Buddy",
+        "child": "BG20_HERO_101_Buddy_G"
+      },
+      {
+        "parent": "BG20_HERO_101",
+        "child": "BG20_HERO_101p"
+      },
+      {
+        "parent": "BG20_HERO_102_Buddy",
+        "child": "BG20_HERO_102_Buddy_G"
+      },
+      {
+        "parent": "BG20_HERO_102",
+        "child": "BG20_HERO_102p"
+      },
+      {
+        "parent": "BG20_HERO_103_Buddy",
+        "child": "BG20_HERO_103_Buddy_G"
+      },
+      {
+        "parent": "BG20_HERO_103",
+        "child": "BG20_HERO_103p"
+      },
+      {
+        "parent": "BG20_HERO_201_Buddy",
+        "child": "BG20_HERO_201_Buddy_G"
+      },
+      {
+        "parent": "BG20_HERO_201",
+        "child": "BG20_HERO_201p"
+      },
+      {
+        "parent": "BG20_HERO_202_Buddy",
+        "child": "BG20_HERO_202_Buddy_G"
+      },
+      {
+        "parent": "BG20_HERO_202",
+        "child": "BG20_HERO_202p"
+      },
+      {
+        "parent": "BG20_HERO_242_Buddy",
+        "child": "BG20_HERO_242_Buddy_G"
+      },
+      {
+        "parent": "BG20_HERO_242",
+        "child": "BG20_HERO_242p"
+      },
+      {
+        "parent": "BG20_HERO_280_Buddy",
+        "child": "BG20_HERO_280_Buddy_G"
+      },
+      {
+        "parent": "BG20_HERO_280",
+        "child": "BG20_HERO_280p5"
+      },
+      {
+        "parent": "BG20_HERO_282_Buddy",
+        "child": "BG20_HERO_282_Buddy_G"
+      },
+      {
+        "parent": "BG20_HERO_282",
+        "child": "BG20_HERO_282p"
+      },
+      {
+        "parent": "BG20_HERO_283_Buddy",
+        "child": "BG20_HERO_283_Buddy_G"
+      },
+      {
+        "parent": "BG20_HERO_283",
+        "child": "BG20_HERO_283p"
+      },
+      {
+        "parent": "BG20_HERO_283",
+        "child": "BG20_HERO_283p_t1"
+      },
+      {
+        "parent": "BG20_HERO_283",
+        "child": "BG20_HERO_283p_t2"
+      },
+      {
+        "parent": "BG20_HERO_283",
+        "child": "BG20_HERO_283p_t3"
+      },
+      {
+        "parent": "BG20_HERO_301_Buddy",
+        "child": "BG20_HERO_301_Buddy_G"
+      },
+      {
+        "parent": "BG20_HERO_301",
+        "child": "BG20_HERO_301p"
+      },
+      {
+        "parent": "BG21_004",
+        "child": "BG21_004_G"
+      },
+      {
+        "parent": "BG21_015",
+        "child": "BG21_015_G"
+      },
+      {
+        "parent": "BG21_HERO_000_Buddy",
+        "child": "BG21_HERO_000_Buddy_G"
+      },
+      {
+        "parent": "BG21_HERO_000",
+        "child": "BG21_HERO_000p"
+      },
+      {
+        "parent": "BG21_HERO_010_Buddy",
+        "child": "BG21_HERO_010_Buddy_G"
+      },
+      {
+        "parent": "BG21_HERO_010",
+        "child": "BG21_HERO_010p"
+      },
+      {
+        "parent": "BG21_HERO_020_Buddy",
+        "child": "BG21_HERO_020_Buddy_G"
+      },
+      {
+        "parent": "BG21_HERO_020",
+        "child": "BG21_HERO_020p"
+      },
+      {
+        "parent": "BG21_HERO_030_Buddy",
+        "child": "BG21_HERO_030_Buddy_G"
+      },
+      {
+        "parent": "BG21_HERO_030",
+        "child": "BG21_HERO_030p"
+      },
+      {
+        "parent": "BG22_403",
+        "child": "BG22_403_G"
+      },
+      {
+        "parent": "BG22_HERO_000_Buddy",
+        "child": "BG22_HERO_000_Buddy_G"
+      },
+      {
+        "parent": "BG22_HERO_000",
+        "child": "BG22_HERO_000p_Alt"
+      },
+      {
+        "parent": "BG22_HERO_001",
+        "child": "BG22_HERO_001p"
+      },
+      {
+        "parent": "BG22_HERO_001",
+        "child": "BG22_HERO_001p_t1"
+      },
+      {
+        "parent": "BG22_HERO_001",
+        "child": "BG22_HERO_001p_t2"
+      },
+      {
+        "parent": "BG22_HERO_001",
+        "child": "BG22_HERO_001p_t3"
+      },
+      {
+        "parent": "BG22_HERO_001",
+        "child": "BG22_HERO_001p_t4"
+      },
+      {
+        "parent": "BG22_HERO_002_Buddy",
+        "child": "BG22_HERO_002_Buddy_G"
+      },
+      {
+        "parent": "BG22_HERO_002",
+        "child": "BG22_HERO_002p"
+      },
+      {
+        "parent": "BG22_HERO_003_Buddy",
+        "child": "BG22_HERO_003_Buddy_G"
+      },
+      {
+        "parent": "BG22_HERO_003",
+        "child": "BG22_HERO_003p"
+      },
+      {
+        "parent": "BG22_HERO_004_Buddy",
+        "child": "BG22_HERO_004_Buddy_G"
+      },
+      {
+        "parent": "BG22_HERO_004",
+        "child": "BG22_HERO_004p"
+      },
+      {
+        "parent": "BG22_HERO_007_Buddy",
+        "child": "BG22_HERO_007_Buddy_G"
+      },
+      {
+        "parent": "BG22_HERO_007",
+        "child": "BG22_HERO_007p"
+      },
+      {
+        "parent": "BG22_HERO_007",
+        "child": "BG22_HERO_007p2"
+      },
+      {
+        "parent": "BG22_HERO_007p",
+        "child": "BG22_HERO_007p2"
+      },
+      {
+        "parent": "BG22_HERO_200_Buddy",
+        "child": "BG22_HERO_200_Buddy_G"
+      },
+      {
+        "parent": "BG22_HERO_200",
+        "child": "BG22_HERO_200p"
+      },
+      {
+        "parent": "BG22_HERO_201_Buddy",
+        "child": "BG22_HERO_201_Buddy_G"
+      },
+      {
+        "parent": "BG22_HERO_201",
+        "child": "BG22_HERO_201p"
+      },
+      {
+        "parent": "BG22_HERO_305_Buddy",
+        "child": "BG22_HERO_305_Buddy_G"
+      },
+      {
+        "parent": "BG22_HERO_305",
+        "child": "BG22_HERO_305p"
+      },
+      {
+        "parent": "BG22_HERO_305t",
+        "child": "BG22_HERO_305t_G"
+      },
+      {
+        "parent": "BG23_000",
+        "child": "BG23_000_G"
+      },
+      {
+        "parent": "BG23_000_G",
+        "child": "BG23_000_Gt"
+      },
+      {
+        "parent": "BG23_000",
+        "child": "BG23_000t"
+      },
+      {
+        "parent": "BG23_002",
+        "child": "BG23_002_G"
+      },
+      {
+        "parent": "BG23_004",
+        "child": "BG23_004_G"
+      },
+      {
+        "parent": "BG23_004_G",
+        "child": "BG23_004_Gt"
+      },
+      {
+        "parent": "BG23_004",
+        "child": "BG23_004_Gt"
+      },
+      {
+        "parent": "BG23_004",
+        "child": "BG23_004t"
+      },
+      {
+        "parent": "BG23_007",
+        "child": "BG23_007_G"
+      },
+      {
+        "parent": "BG23_007_G",
+        "child": "BG23_007_Gt"
+      },
+      {
+        "parent": "BG23_007",
+        "child": "BG23_007t"
+      },
+      {
+        "parent": "BG23_008",
+        "child": "BG23_008_G"
+      },
+      {
+        "parent": "BG23_008_G",
+        "child": "BG23_008_Gt"
+      },
+      {
+        "parent": "BG23_008",
+        "child": "BG23_008t"
+      },
+      {
+        "parent": "BG23_009",
+        "child": "BG23_009_G"
+      },
+      {
+        "parent": "BG23_017",
+        "child": "BG23_017_G"
+      },
+      {
+        "parent": "BG23_318",
+        "child": "BG23_318_G"
+      },
+      {
+        "parent": "BG23_357",
+        "child": "BG23_357_G"
+      },
+      {
+        "parent": "BG23_HERO_201_Buddy",
+        "child": "BG23_HERO_201_Buddy_G"
+      },
+      {
+        "parent": "BG23_HERO_201",
+        "child": "BG23_HERO_201p"
+      },
+      {
+        "parent": "BG23_HERO_201pt2",
+        "child": "BG23_HERO_201pt2_G"
+      },
+      {
+        "parent": "BG23_HERO_201pt3",
+        "child": "BG23_HERO_201pt3_G"
+      },
+      {
+        "parent": "BG23_HERO_201pt4",
+        "child": "BG23_HERO_201pt4_G"
+      },
+      {
+        "parent": "BG23_HERO_201pt5",
+        "child": "BG23_HERO_201pt5_G"
+      },
+      {
+        "parent": "BG23_HERO_201pt6",
+        "child": "BG23_HERO_201pt6_G"
+      },
+      {
+        "parent": "BG23_HERO_201pt",
+        "child": "BG23_HERO_201pt_G"
+      },
+      {
+        "parent": "BG23_HERO_303_Buddy",
+        "child": "BG23_HERO_303_Buddy_G"
+      },
+      {
+        "parent": "BG23_HERO_303",
+        "child": "BG23_HERO_303p2"
+      },
+      {
+        "parent": "BG23_HERO_304_Buddy",
+        "child": "BG23_HERO_304_Buddy_G"
+      },
+      {
+        "parent": "BG23_HERO_304",
+        "child": "BG23_HERO_304p"
+      },
+      {
+        "parent": "BG23_HERO_305_Buddy",
+        "child": "BG23_HERO_305_Buddy_G"
+      },
+      {
+        "parent": "BG23_HERO_305",
+        "child": "BG23_HERO_305p"
+      },
+      {
+        "parent": "BG23_HERO_306_Buddy",
+        "child": "BG23_HERO_306_Buddy_G"
+      },
+      {
+        "parent": "BG23_HERO_306",
+        "child": "BG23_HERO_306p"
+      },
+      {
+        "parent": "BG24_018",
+        "child": "BG24_018_G"
+      },
+      {
+        "parent": "BG24_500",
+        "child": "BG24_500_G"
+      },
+      {
+        "parent": "BG24_715",
+        "child": "BG24_715_G"
+      },
+      {
+        "parent": "BG31_Anomaly_120",
+        "child": "BG24_715_G"
+      },
+      {
+        "parent": "BG24_HERO_100_Buddy",
+        "child": "BG24_HERO_100_Buddy_G"
+      },
+      {
+        "parent": "BG24_HERO_100",
+        "child": "BG24_HERO_100p"
+      },
+      {
+        "parent": "BG27_Anomaly_822",
+        "child": "BG24_HERO_100p"
+      },
+      {
+        "parent": "BG24_HERO_204_Buddy",
+        "child": "BG24_HERO_204_Buddy_G"
+      },
+      {
+        "parent": "BG24_HERO_204",
+        "child": "BG24_HERO_204p"
+      },
+      {
+        "parent": "BG24_Reward_718",
+        "child": "BG24_Reward_718t"
+      },
+      {
+        "parent": "BG24_Reward_719",
+        "child": "BG24_Reward_719t"
+      },
+      {
+        "parent": "BG25_001",
+        "child": "BG25_001_G"
+      },
+      {
+        "parent": "BG34_403_G",
+        "child": "BG25_008_G"
+      },
+      {
+        "parent": "BG25_009_G",
+        "child": "BG25_008_G"
+      },
+      {
+        "parent": "BG25_009",
+        "child": "BG25_008_G"
+      },
+      {
+        "parent": "BG36_MagicItem_216",
+        "child": "BG25_008_G"
+      },
+      {
+        "parent": "BG25_008",
+        "child": "BG25_008_G"
+      },
+      {
+        "parent": "BG25_009",
+        "child": "BG25_009_G"
+      },
+      {
+        "parent": "BG25_010",
+        "child": "BG25_010_G"
+      },
+      {
+        "parent": "BG25_010",
+        "child": "BG25_010_Gt"
+      },
+      {
+        "parent": "BG25_010t",
+        "child": "BG25_010_Gt"
+      },
+      {
+        "parent": "BG25_011",
+        "child": "BG25_011_G"
+      },
+      {
+        "parent": "BG25_013",
+        "child": "BG25_013_G"
+      },
+      {
+        "parent": "BG25_016",
+        "child": "BG25_016_G"
+      },
+      {
+        "parent": "BG25_022",
+        "child": "BG25_022_G"
+      },
+      {
+        "parent": "BG25_034",
+        "child": "BG25_034_G"
+      },
+      {
+        "parent": "BG25_354",
+        "child": "BG25_354_G"
+      },
+      {
+        "parent": "BG25_HERO_100_Buddy",
+        "child": "BG25_HERO_100_Buddy_G"
+      },
+      {
+        "parent": "BG25_HERO_100",
+        "child": "BG25_HERO_100p"
+      },
+      {
+        "parent": "BG25_HERO_103_Buddy",
+        "child": "BG25_HERO_103_Buddy_G"
+      },
+      {
+        "parent": "BG25_HERO_103",
+        "child": "BG25_HERO_103p"
+      },
+      {
+        "parent": "BG25_HERO_105_Buddy",
+        "child": "BG25_HERO_105_Buddy_G"
+      },
+      {
+        "parent": "BG25_HERO_105",
+        "child": "BG25_HERO_105p"
+      },
+      {
+        "parent": "BG26_135",
+        "child": "BG26_135_G"
+      },
+      {
+        "parent": "BG26_137",
+        "child": "BG26_137_G"
+      },
+      {
+        "parent": "BG26_146",
+        "child": "BG26_146_G"
+      },
+      {
+        "parent": "BG26_147",
+        "child": "BG26_147_G"
+      },
+      {
+        "parent": "BG35_MagicItem_741",
+        "child": "BG26_149"
+      },
+      {
+        "parent": "BG26_149",
+        "child": "BG26_149_G"
+      },
+      {
+        "parent": "BG26_152",
+        "child": "BG26_152_G"
+      },
+      {
+        "parent": "BG26_174",
+        "child": "BG26_174_G"
+      },
+      {
+        "parent": "BG26_175",
+        "child": "BG26_175_G"
+      },
+      {
+        "parent": "BG32_MagicItem_301",
+        "child": "BG26_350"
+      },
+      {
+        "parent": "BG26_350",
+        "child": "BG26_350_G"
+      },
+      {
+        "parent": "BG26_354",
+        "child": "BG26_354_G"
+      },
+      {
+        "parent": "BG26_501_G",
+        "child": "BG26_501_Gt"
+      },
+      {
+        "parent": "BG26_501",
+        "child": "BG26_501t"
+      },
+      {
+        "parent": "BG26_502_G",
+        "child": "BG26_502_Gt"
+      },
+      {
+        "parent": "BG26_502",
+        "child": "BG26_502t"
+      },
+      {
+        "parent": "BG26_505",
+        "child": "BG26_505_G"
+      },
+      {
+        "parent": "BG26_523",
+        "child": "BG26_523_G"
+      },
+      {
+        "parent": "BG26_524",
+        "child": "BG26_524_G"
+      },
+      {
+        "parent": "BG26_525",
+        "child": "BG26_525_G"
+      },
+      {
+        "parent": "BG26_537",
+        "child": "BG26_537_G"
+      },
+      {
+        "parent": "BG26_802",
+        "child": "BG26_802_G"
+      },
+      {
+        "parent": "BG26_805",
+        "child": "BG26_805_G"
+      },
+      {
+        "parent": "BG26_810",
+        "child": "BG26_810_G"
+      },
+      {
+        "parent": "BG30_MagicItem_435",
+        "child": "BG26_813t"
+      },
+      {
+        "parent": "BG27_Anomaly_751",
+        "child": "BG26_813t"
+      },
+      {
+        "parent": "BG26_814",
+        "child": "BG26_814_G"
+      },
+      {
+        "parent": "BG26_817",
+        "child": "BG26_817_G"
+      },
+      {
+        "parent": "BG26_963",
+        "child": "BG26_963_G"
+      },
+      {
+        "parent": "BG26_HERO_101_Buddy",
+        "child": "BG26_HERO_101_Buddy_G"
+      },
+      {
+        "parent": "BG26_HERO_101",
+        "child": "BG26_HERO_101p"
+      },
+      {
+        "parent": "BG26_HERO_102_Buddy",
+        "child": "BG26_HERO_102_Buddy_G"
+      },
+      {
+        "parent": "BG26_HERO_102",
+        "child": "BG26_HERO_102p"
+      },
+      {
+        "parent": "BG26_HERO_102",
+        "child": "BG26_HERO_102p2"
+      },
+      {
+        "parent": "BG26_HERO_104_Buddy",
+        "child": "BG26_HERO_104_Buddy_G"
+      },
+      {
+        "parent": "BG26_HERO_104",
+        "child": "BG26_HERO_104p"
+      },
+      {
+        "parent": "BG26_ICC_901",
+        "child": "BG26_ICC_901_G"
+      },
+      {
+        "parent": "BG27_000",
+        "child": "BG27_000_G"
+      },
+      {
+        "parent": "BG27_004_G",
+        "child": "BG27_004_Gt"
+      },
+      {
+        "parent": "BG27_004",
+        "child": "BG27_004t"
+      },
+      {
+        "parent": "BG27_005",
+        "child": "BG27_005_G"
+      },
+      {
+        "parent": "BG27_016",
+        "child": "BG27_016_G"
+      },
+      {
+        "parent": "BG27_017",
+        "child": "BG27_017_G"
+      },
+      {
+        "parent": "BG27_084",
+        "child": "BG27_084_G"
+      },
+      {
+        "parent": "BG32_MagicItem_926",
+        "child": "BG27_513"
+      },
+      {
+        "parent": "BG27_513",
+        "child": "BG27_513_G"
+      },
+      {
+        "parent": "BG27_514",
+        "child": "BG27_514_G"
+      },
+      {
+        "parent": "BG27_514",
+        "child": "BG27_514t"
+      },
+      {
+        "parent": "BG27_514_G",
+        "child": "BG27_514t_G"
+      },
+      {
+        "parent": "BG27_556",
+        "child": "BG27_556_G"
+      },
+      {
+        "parent": "BG27_Anomaly_755",
+        "child": "BG27_Anomaly_755t"
+      },
+      {
+        "parent": "BG27_HERO_801_Buddy",
+        "child": "BG27_HERO_801_Buddy_G"
+      },
+      {
+        "parent": "BG27_HERO_801",
+        "child": "BG27_HERO_801p2"
+      },
+      {
+        "parent": "BG27_Reward_504",
+        "child": "BG27_Reward_504t"
+      },
+      {
+        "parent": "BG28_300",
+        "child": "BG28_300_G"
+      },
+      {
+        "parent": "BG28_303",
+        "child": "BG28_303_G"
+      },
+      {
+        "parent": "BG28_309",
+        "child": "BG28_309_G"
+      },
+      {
+        "parent": "BG28_550",
+        "child": "BG28_550_G"
+      },
+      {
+        "parent": "BG28_582",
+        "child": "BG28_582_G"
+      },
+      {
+        "parent": "BG28_583",
+        "child": "BG28_583_G"
+      },
+      {
+        "parent": "BG28_603t",
+        "child": "BG28_603t_G"
+      },
+      {
+        "parent": "BG28_633",
+        "child": "BG28_633_G"
+      },
+      {
+        "parent": "BG28_707",
+        "child": "BG28_707_G"
+      },
+      {
+        "parent": "BG28_741",
+        "child": "BG28_741_G"
+      },
+      {
+        "parent": "BG28_HERO_400_Buddy",
+        "child": "BG28_HERO_400_Buddy_G"
+      },
+      {
+        "parent": "BG28_HERO_400",
+        "child": "BG28_HERO_400p"
+      },
+      {
+        "parent": "BG28_HERO_800_Buddy",
+        "child": "BG28_HERO_800_Buddy_G"
+      },
+      {
+        "parent": "BG28_HERO_800",
+        "child": "BG28_HERO_800p"
+      },
+      {
+        "parent": "BG28_HERO_801_Buddy",
+        "child": "BG28_HERO_801_Buddy_G"
+      },
+      {
+        "parent": "BG28_HERO_801",
+        "child": "BG28_HERO_801p"
+      },
+      {
+        "parent": "BG29_300",
+        "child": "BG29_300_G"
+      },
+      {
+        "parent": "BG29_611",
+        "child": "BG29_611_G"
+      },
+      {
+        "parent": "BG29_813",
+        "child": "BG29_813_G"
+      },
+      {
+        "parent": "BG29_816",
+        "child": "BG29_816_G"
+      },
+      {
+        "parent": "BG29_888",
+        "child": "BG29_888_G"
+      },
+      {
+        "parent": "BG30_117_G",
+        "child": "BG30_117_Gt"
+      },
+      {
+        "parent": "BG30_117",
+        "child": "BG30_117t"
+      },
+      {
+        "parent": "BG30_121",
+        "child": "BG30_121_G"
+      },
+      {
+        "parent": "BG30_123",
+        "child": "BG30_123_G"
+      },
+      {
+        "parent": "BG30_125",
+        "child": "BG30_125_G"
+      },
+      {
+        "parent": "BG32_Anomaly_002",
+        "child": "BG30_HERO_304p"
+      },
+      {
+        "parent": "BG30_HERO_304",
+        "child": "BG30_HERO_304p"
+      },
+      {
+        "parent": "BG30_MagicItem_416",
+        "child": "BG30_MagicItem_416t"
+      },
+      {
+        "parent": "BG30_MagicItem_442t",
+        "child": "BG30_MagicItem_442t_G"
+      },
+      {
+        "parent": "BG31_035",
+        "child": "BG31_035_G"
+      },
+      {
+        "parent": "BG31_148",
+        "child": "BG31_148_G"
+      },
+      {
+        "parent": "BG31_149",
+        "child": "BG31_149_G"
+      },
+      {
+        "parent": "BG32_MagicItem_172",
+        "child": "BG31_176"
+      },
+      {
+        "parent": "BG31_176",
+        "child": "BG31_176_G"
+      },
+      {
+        "parent": "BG31_177",
+        "child": "BG31_177_G"
+      },
+      {
+        "parent": "BG31_320",
+        "child": "BG31_320_G"
+      },
+      {
+        "parent": "BG31_320",
+        "child": "BG31_320_Gt"
+      },
+      {
+        "parent": "BG31_320",
+        "child": "BG31_320_Gt2"
+      },
+      {
+        "parent": "BG31_320",
+        "child": "BG31_320t"
+      },
+      {
+        "parent": "BG31_320",
+        "child": "BG31_320t2"
+      },
+      {
+        "parent": "BG31_323",
+        "child": "BG31_323_G"
+      },
+      {
+        "parent": "BG31_326",
+        "child": "BG31_326_G"
+      },
+      {
+        "parent": "BG31_326",
+        "child": "BG31_326t"
+      },
+      {
+        "parent": "BG31_326",
+        "child": "BG31_326t2"
+      },
+      {
+        "parent": "BG31_327",
+        "child": "BG31_327_G"
+      },
+      {
+        "parent": "BG31_330",
+        "child": "BG31_330_G"
+      },
+      {
+        "parent": "BG32_MagicItem_998",
+        "child": "BG31_360"
+      },
+      {
+        "parent": "BG31_360",
+        "child": "BG31_360_G"
+      },
+      {
+        "parent": "BG31_801",
+        "child": "BG31_801_G"
+      },
+      {
+        "parent": "BG31_803",
+        "child": "BG31_803_G"
+      },
+      {
+        "parent": "BG31_809",
+        "child": "BG31_809_G"
+      },
+      {
+        "parent": "BG31_810",
+        "child": "BG31_810_G"
+      },
+      {
+        "parent": "BG31_812",
+        "child": "BG31_812_G"
+      },
+      {
+        "parent": "BG31_815",
+        "child": "BG31_815_G"
+      },
+      {
+        "parent": "BG31_816",
+        "child": "BG31_816_G"
+      },
+      {
+        "parent": "BG31_818",
+        "child": "BG31_818_G"
+      },
+      {
+        "parent": "BG32_MagicItem_957",
+        "child": "BG31_826"
+      },
+      {
+        "parent": "BG31_826",
+        "child": "BG31_826_G"
+      },
+      {
+        "parent": "BG31_835",
+        "child": "BG31_835_G"
+      },
+      {
+        "parent": "BG31_880",
+        "child": "BG31_880t"
+      },
+      {
+        "parent": "BG31_880",
+        "child": "BG31_880t2"
+      },
+      {
+        "parent": "BG31_881",
+        "child": "BG31_881t"
+      },
+      {
+        "parent": "BG31_881",
+        "child": "BG31_881t2"
+      },
+      {
+        "parent": "BG31_890",
+        "child": "BG31_890t"
+      },
+      {
+        "parent": "BG31_890",
+        "child": "BG31_890t2"
+      },
+      {
+        "parent": "BG31_320_G",
+        "child": "BG31_893"
+      },
+      {
+        "parent": "BG31_326_G",
+        "child": "BG31_893"
+      },
+      {
+        "parent": "BG31_320_Gt2",
+        "child": "BG31_893"
+      },
+      {
+        "parent": "BG31_320t2",
+        "child": "BG31_893"
+      },
+      {
+        "parent": "BG31_320",
+        "child": "BG31_893"
+      },
+      {
+        "parent": "BG31_326",
+        "child": "BG31_893"
+      },
+      {
+        "parent": "BG31_920",
+        "child": "BG31_920_G"
+      },
+      {
+        "parent": "BG31_920",
+        "child": "BG31_920_Gt"
+      },
+      {
+        "parent": "BG31_920_G",
+        "child": "BG31_920_Gt"
+      },
+      {
+        "parent": "BG31_920",
+        "child": "BG31_920t"
+      },
+      {
+        "parent": "BG31_924",
+        "child": "BG31_924_G"
+      },
+      {
+        "parent": "BG31_924_G",
+        "child": "BG31_924_Gt"
+      },
+      {
+        "parent": "BG31_924",
+        "child": "BG31_924_Gt"
+      },
+      {
+        "parent": "BG31_924",
+        "child": "BG31_924t"
+      },
+      {
+        "parent": "BG31_925",
+        "child": "BG31_925_G"
+      },
+      {
+        "parent": "BG31_999",
+        "child": "BG31_999_G"
+      },
+      {
+        "parent": "BG31_Anomaly_102",
+        "child": "BG31_Anomaly_102t"
+      },
+      {
+        "parent": "BG31_Anomaly_115",
+        "child": "BG31_Anomaly_115t"
+      },
+      {
+        "parent": "BG31_Anomaly_124",
+        "child": "BG31_Anomaly_124t4"
+      },
+      {
+        "parent": "BG31_HERO_003",
+        "child": "BG31_HERO_003p"
+      },
+      {
+        "parent": "BG31_HERO_005",
+        "child": "BG31_HERO_005p"
+      },
+      {
+        "parent": "BG31_HERO_006",
+        "child": "BG31_HERO_006p"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801p"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801pt_G"
+      },
+      {
+        "parent": "BG31_HERO_801pt",
+        "child": "BG31_HERO_801pt_G"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801pta"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801pta2"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801pta3"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801pta4"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801pta5"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801pta6"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801pta7"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptb"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptb2"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptb3"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptb4"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptb5"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptb6"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptb7"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptc"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptc2"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptc3"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptc4"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptc5"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptc6"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptc7"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptd"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptd2"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptd3"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptd4"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptd5"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptd6"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptd7"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801pte"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801pte2"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801pte3"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801pte4"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801pte5"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801pte6"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801pte7"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptf"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptf2"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptf3"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptf4"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801pth"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801pth2"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801pth3"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801pti"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801pti2"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptj"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801ptj2"
+      },
+      {
+        "parent": "BG31_HERO_802",
+        "child": "BG31_HERO_802p"
+      },
+      {
+        "parent": "BG31_HERO_802pt1",
+        "child": "BG31_HERO_802pt1_G"
+      },
+      {
+        "parent": "BG31_HERO_802pt1t",
+        "child": "BG31_HERO_802pt1t_G"
+      },
+      {
+        "parent": "BG31_HERO_802pt4",
+        "child": "BG31_HERO_802pt4_G"
+      },
+      {
+        "parent": "BG31_HERO_802pt5",
+        "child": "BG31_HERO_802pt5_G"
+      },
+      {
+        "parent": "BG31_HERO_802pt7",
+        "child": "BG31_HERO_802pt7_G"
+      },
+      {
+        "parent": "BG31_HERO_802pt",
+        "child": "BG31_HERO_802pt_G"
+      },
+      {
+        "parent": "BG31_HERO_811",
+        "child": "BG31_HERO_811p"
+      },
+      {
+        "parent": "BG31_HERO_811",
+        "child": "BG31_HERO_811p2"
+      },
+      {
+        "parent": "BG31_HERO_811",
+        "child": "BG31_HERO_811p3"
+      },
+      {
+        "parent": "BG31_HERO_811t10",
+        "child": "BG31_HERO_811t10_G"
+      },
+      {
+        "parent": "BG31_HERO_811t2",
+        "child": "BG31_HERO_811t2_G"
+      },
+      {
+        "parent": "BG31_HERO_811t3",
+        "child": "BG31_HERO_811t3_G"
+      },
+      {
+        "parent": "BG31_HERO_811t4",
+        "child": "BG31_HERO_811t4_G"
+      },
+      {
+        "parent": "BG31_HERO_811t5",
+        "child": "BG31_HERO_811t5_G"
+      },
+      {
+        "parent": "BG31_HERO_811t6",
+        "child": "BG31_HERO_811t6_G"
+      },
+      {
+        "parent": "BG31_HERO_811t7",
+        "child": "BG31_HERO_811t7_G"
+      },
+      {
+        "parent": "BG31_HERO_811t8",
+        "child": "BG31_HERO_811t8_G"
+      },
+      {
+        "parent": "BG31_HERO_811t9",
+        "child": "BG31_HERO_811t9_G"
+      },
+      {
+        "parent": "BG31_HERO_811t",
+        "child": "BG31_HERO_811t_G"
+      },
+      {
+        "parent": "BG32_111",
+        "child": "BG32_111_G"
+      },
+      {
+        "parent": "BG32_231",
+        "child": "BG32_231_G"
+      },
+      {
+        "parent": "BG32_235",
+        "child": "BG32_235_G"
+      },
+      {
+        "parent": "BG32_236",
+        "child": "BG32_236_G"
+      },
+      {
+        "parent": "BG32_237",
+        "child": "BG32_237_G"
+      },
+      {
+        "parent": "BG32_237",
+        "child": "BG32_237_Gt"
+      },
+      {
+        "parent": "BG32_237",
+        "child": "BG32_237_Gt2"
+      },
+      {
+        "parent": "BG32_237",
+        "child": "BG32_237t"
+      },
+      {
+        "parent": "BG32_237",
+        "child": "BG32_237t2"
+      },
+      {
+        "parent": "BG32_324",
+        "child": "BG32_324_G"
+      },
+      {
+        "parent": "BG32_330",
+        "child": "BG32_330_G"
+      },
+      {
+        "parent": "BG32_336",
+        "child": "BG32_336_G"
+      },
+      {
+        "parent": "BG32_340",
+        "child": "BG32_340_G"
+      },
+      {
+        "parent": "BG32_341",
+        "child": "BG32_341_G"
+      },
+      {
+        "parent": "BG32_820",
+        "child": "BG32_820_G"
+      },
+      {
+        "parent": "BG32_835",
+        "child": "BG32_835_G"
+      },
+      {
+        "parent": "BG32_835_G",
+        "child": "BG32_835_Gt"
+      },
+      {
+        "parent": "BG32_835",
+        "child": "BG32_835_Gt"
+      },
+      {
+        "parent": "BG32_835",
+        "child": "BG32_835t"
+      },
+      {
+        "parent": "BG32_837",
+        "child": "BG32_837_G"
+      },
+      {
+        "parent": "BG32_860",
+        "child": "BG32_860_G"
+      },
+      {
+        "parent": "BG32_873",
+        "child": "BG32_873_G"
+      },
+      {
+        "parent": "BG32_880",
+        "child": "BG32_880_G"
+      },
+      {
+        "parent": "BG32_HERO_001",
+        "child": "BG32_HERO_001p"
+      },
+      {
+        "parent": "BG31_Anomaly_106",
+        "child": "BG32_HERO_002p"
+      },
+      {
+        "parent": "BG32_HERO_002",
+        "child": "BG32_HERO_002p"
+      },
+      {
+        "parent": "BG32_Anomaly_001",
+        "child": "BG32_HERO_002p"
+      },
+      {
+        "parent": "BG32_MagicItem_205",
+        "child": "BG32_MagicItem_205t"
+      },
+      {
+        "parent": "BG32_MagicItem_892",
+        "child": "BG32_MagicItem_892t"
+      },
+      {
+        "parent": "BG33_155",
+        "child": "BG33_155_G"
+      },
+      {
+        "parent": "BG33_318",
+        "child": "BG33_318_G"
+      },
+      {
+        "parent": "BG33_319",
+        "child": "BG33_319_G"
+      },
+      {
+        "parent": "BG33_319_G",
+        "child": "BG33_319_Gt"
+      },
+      {
+        "parent": "BG33_319",
+        "child": "BG33_319t"
+      },
+      {
+        "parent": "BG33_430",
+        "child": "BG33_430_G"
+      },
+      {
+        "parent": "BG33_809_G",
+        "child": "BG33_817"
+      },
+      {
+        "parent": "BG33_809",
+        "child": "BG33_817"
+      },
+      {
+        "parent": "BG33_821",
+        "child": "BG33_821_G"
+      },
+      {
+        "parent": "BG33_822",
+        "child": "BG33_822_G"
+      },
+      {
+        "parent": "BG33_823",
+        "child": "BG33_823_G"
+      },
+      {
+        "parent": "BG33_825",
+        "child": "BG33_825_G"
+      },
+      {
+        "parent": "BG33_828",
+        "child": "BG33_828_G"
+      },
+      {
+        "parent": "BG33_830",
+        "child": "BG33_830_G"
+      },
+      {
+        "parent": "BG33_883",
+        "child": "BG33_883_G"
+      },
+      {
+        "parent": "BG33_885",
+        "child": "BG33_885_G"
+      },
+      {
+        "parent": "BG33_886",
+        "child": "BG33_886_G"
+      },
+      {
+        "parent": "BG33_891_G",
+        "child": "BG33_890t"
+      },
+      {
+        "parent": "BG35_MagicItem_750",
+        "child": "BG33_890t"
+      },
+      {
+        "parent": "BG33_891",
+        "child": "BG33_890t"
+      },
+      {
+        "parent": "BG33_891",
+        "child": "BG33_891_G"
+      },
+      {
+        "parent": "BG33_924",
+        "child": "BG33_924_G"
+      },
+      {
+        "parent": "BG33_HERO_000_Buddy",
+        "child": "BG33_HERO_000_Buddy_G"
+      },
+      {
+        "parent": "BG33_HERO_001",
+        "child": "BG33_HERO_001p_ALT"
+      },
+      {
+        "parent": "BG33_Reward_012",
+        "child": "BG33_Reward_012t"
+      },
+      {
+        "parent": "BG34_140",
+        "child": "BG34_140_G"
+      },
+      {
+        "parent": "BG34_142",
+        "child": "BG34_142_G"
+      },
+      {
+        "parent": "BG34_145",
+        "child": "BG34_145_G"
+      },
+      {
+        "parent": "BG34_170",
+        "child": "BG34_170_G"
+      },
+      {
+        "parent": "BG34_170",
+        "child": "BG34_170t2_G"
+      },
+      {
+        "parent": "BG34_170t2",
+        "child": "BG34_170t2_G"
+      },
+      {
+        "parent": "BG34_170",
+        "child": "BG34_170t3_G"
+      },
+      {
+        "parent": "BG34_170t3",
+        "child": "BG34_170t3_G"
+      },
+      {
+        "parent": "BG34_170",
+        "child": "BG34_170t_G"
+      },
+      {
+        "parent": "BG34_170t",
+        "child": "BG34_170t_G"
+      },
+      {
+        "parent": "BG34_171",
+        "child": "BG34_171_G"
+      },
+      {
+        "parent": "BG36_MagicItem_611",
+        "child": "BG34_272"
+      },
+      {
+        "parent": "BG34_319",
+        "child": "BG34_319_G"
+      },
+      {
+        "parent": "BG34_320",
+        "child": "BG34_320_G"
+      },
+      {
+        "parent": "BG34_322",
+        "child": "BG34_322_G"
+      },
+      {
+        "parent": "BG34_403",
+        "child": "BG34_403_G"
+      },
+      {
+        "parent": "BG34_405",
+        "child": "BG34_405_G"
+      },
+      {
+        "parent": "BG34_500",
+        "child": "BG34_500_G"
+      },
+      {
+        "parent": "BG34_604",
+        "child": "BG34_604_G"
+      },
+      {
+        "parent": "BG34_633",
+        "child": "BG34_633_G"
+      },
+      {
+        "parent": "BG34_682",
+        "child": "BG34_682_G"
+      },
+      {
+        "parent": "BG34_684",
+        "child": "BG34_684_G"
+      },
+      {
+        "parent": "BG34_690",
+        "child": "BG34_690_G"
+      },
+      {
+        "parent": "BG34_692",
+        "child": "BG34_692_G"
+      },
+      {
+        "parent": "BG34_856",
+        "child": "BG34_856_G"
+      },
+      {
+        "parent": "BG34_858",
+        "child": "BG34_858_G"
+      },
+      {
+        "parent": "BG34_865",
+        "child": "BG34_865_G"
+      },
+      {
+        "parent": "BG34_925",
+        "child": "BG34_925_G"
+      },
+      {
+        "parent": "BG34_950",
+        "child": "BG34_950_G"
+      },
+      {
+        "parent": "BG32_MagicItem_364",
+        "child": "BG34_Giant_314"
+      },
+      {
+        "parent": "BG34_Giant_314",
+        "child": "BG34_Giant_314_G"
+      },
+      {
+        "parent": "BG34_HERO_000",
+        "child": "BG34_HERO_000p"
+      },
+      {
+        "parent": "BG35_Anomaly_005",
+        "child": "BG34_HERO_000p"
+      },
+      {
+        "parent": "BG34_HERO_001",
+        "child": "BG34_HERO_001p"
+      },
+      {
+        "parent": "BG34_HERO_002",
+        "child": "BG34_HERO_002p"
+      },
+      {
+        "parent": "BG34_HERO_004",
+        "child": "BG34_HERO_004p"
+      },
+      {
+        "parent": "BG35_Anomaly_004",
+        "child": "BG34_HERO_004p"
+      },
+      {
+        "parent": "BG35_123",
+        "child": "BG35_123_G"
+      },
+      {
+        "parent": "BG35_150",
+        "child": "BG35_150_G"
+      },
+      {
+        "parent": "BG35_151_G",
+        "child": "BG35_150t"
+      },
+      {
+        "parent": "BG35_151",
+        "child": "BG35_150t"
+      },
+      {
+        "parent": "BG36_730_G",
+        "child": "BG35_150t"
+      },
+      {
+        "parent": "BG35_155",
+        "child": "BG35_150t"
+      },
+      {
+        "parent": "BG36_730",
+        "child": "BG35_150t"
+      },
+      {
+        "parent": "BG35_155_G",
+        "child": "BG35_150t"
+      },
+      {
+        "parent": "BG35_150_G",
+        "child": "BG35_150t"
+      },
+      {
+        "parent": "BG35_150",
+        "child": "BG35_150t"
+      },
+      {
+        "parent": "BG35_150t",
+        "child": "BG35_150t_G"
+      },
+      {
+        "parent": "BG35_150",
+        "child": "BG35_150t_G"
+      },
+      {
+        "parent": "BG35_155",
+        "child": "BG35_155_G"
+      },
+      {
+        "parent": "BG35_341",
+        "child": "BG35_341_G"
+      },
+      {
+        "parent": "BG35_342",
+        "child": "BG35_342_G"
+      },
+      {
+        "parent": "BG35_602",
+        "child": "BG35_602_G"
+      },
+      {
+        "parent": "BG35_604",
+        "child": "BG35_604_G"
+      },
+      {
+        "parent": "BG35_814",
+        "child": "BG35_814_G"
+      },
+      {
+        "parent": "BG35_881",
+        "child": "BG35_881_G"
+      },
+      {
+        "parent": "BG35_882",
+        "child": "BG35_882_G"
+      },
+      {
+        "parent": "BG35_883",
+        "child": "BG35_883_G"
+      },
+      {
+        "parent": "BG35_921",
+        "child": "BG35_921_G"
+      },
+      {
+        "parent": "BG35_Anomaly_001",
+        "child": "BG35_Anomaly_001t"
+      },
+      {
+        "parent": "BG35_HERO_001",
+        "child": "BG35_HERO_001p"
+      },
+      {
+        "parent": "BG35_MagicItem_306",
+        "child": "BG35_MagicItem_306t"
+      },
+      {
+        "parent": "BG35_MagicItem_733",
+        "child": "BG35_MagicItem_733t"
+      },
+      {
+        "parent": "BG35_MagicItem_755",
+        "child": "BG35_MagicItem_755t"
+      },
+      {
+        "parent": "BG35_MagicItem_812",
+        "child": "BG35_MagicItem_812t"
+      },
+      {
+        "parent": "BG35_MagicItem_817",
+        "child": "BG35_MagicItem_817t"
+      },
+      {
+        "parent": "BG35_MagicItem_838",
+        "child": "BG35_MagicItem_838t"
+      },
+      {
+        "parent": "BG35_MagicItem_872",
+        "child": "BG35_MagicItem_872t"
+      },
+      {
+        "parent": "BG36_097",
+        "child": "BG36_097_G"
+      },
+      {
+        "parent": "BG36_098",
+        "child": "BG36_098_G"
+      },
+      {
+        "parent": "BG36_099",
+        "child": "BG36_099_G"
+      },
+      {
+        "parent": "BG36_100",
+        "child": "BG36_100_G"
+      },
+      {
+        "parent": "BG36_101",
+        "child": "BG36_101_G"
+      },
+      {
+        "parent": "BG36_102",
+        "child": "BG36_102_G"
+      },
+      {
+        "parent": "BG36_103",
+        "child": "BG36_103_G"
+      },
+      {
+        "parent": "BG36_104",
+        "child": "BG36_104_G"
+      },
+      {
+        "parent": "BG36_106",
+        "child": "BG36_106_G"
+      },
+      {
+        "parent": "BG36_108",
+        "child": "BG36_108_G"
+      },
+      {
+        "parent": "BG36_109",
+        "child": "BG36_109_G"
+      },
+      {
+        "parent": "BG36_110",
+        "child": "BG36_110_G"
+      },
+      {
+        "parent": "BG36_111",
+        "child": "BG36_111_G"
+      },
+      {
+        "parent": "BG36_112",
+        "child": "BG36_112_G"
+      },
+      {
+        "parent": "BG36_113",
+        "child": "BG36_113_G"
+      },
+      {
+        "parent": "BG36_114",
+        "child": "BG36_114_G"
+      },
+      {
+        "parent": "BG36_115",
+        "child": "BG36_115_G"
+      },
+      {
+        "parent": "BG36_116",
+        "child": "BG36_116_G"
+      },
+      {
+        "parent": "BG36_180",
+        "child": "BG36_180_G"
+      },
+      {
+        "parent": "BG36_181",
+        "child": "BG36_181_G"
+      },
+      {
+        "parent": "BG36_200",
+        "child": "BG36_200_G"
+      },
+      {
+        "parent": "BG36_200",
+        "child": "BG36_200_Gt"
+      },
+      {
+        "parent": "BG36_200t",
+        "child": "BG36_200_Gt"
+      },
+      {
+        "parent": "BG36_201",
+        "child": "BG36_201_G"
+      },
+      {
+        "parent": "BG36_202",
+        "child": "BG36_202_G"
+      },
+      {
+        "parent": "BG36_210_G",
+        "child": "BG36_202_G"
+      },
+      {
+        "parent": "BG36_204",
+        "child": "BG36_204_G"
+      },
+      {
+        "parent": "BG36_206",
+        "child": "BG36_205"
+      },
+      {
+        "parent": "BG36_201",
+        "child": "BG36_205"
+      },
+      {
+        "parent": "BG36_205",
+        "child": "BG36_205_G"
+      },
+      {
+        "parent": "BG36_206_G",
+        "child": "BG36_205_G"
+      },
+      {
+        "parent": "BG36_201_G",
+        "child": "BG36_205_G"
+      },
+      {
+        "parent": "BG36_206",
+        "child": "BG36_206_G"
+      },
+      {
+        "parent": "BG36_207",
+        "child": "BG36_207_G"
+      },
+      {
+        "parent": "BG36_208",
+        "child": "BG36_208_G"
+      },
+      {
+        "parent": "BG36_209",
+        "child": "BG36_209_G"
+      },
+      {
+        "parent": "BG36_210",
+        "child": "BG36_210_G"
+      },
+      {
+        "parent": "BG36_211",
+        "child": "BG36_211_G"
+      },
+      {
+        "parent": "BG36_240",
+        "child": "BG36_240_G"
+      },
+      {
+        "parent": "BG36_241",
+        "child": "BG36_241_G"
+      },
+      {
+        "parent": "BG36_242",
+        "child": "BG36_242_G"
+      },
+      {
+        "parent": "BG36_243",
+        "child": "BG36_243_G"
+      },
+      {
+        "parent": "BG36_245",
+        "child": "BG36_245_G"
+      },
+      {
+        "parent": "BG36_300",
+        "child": "BG36_300_G"
+      },
+      {
+        "parent": "BG36_308",
+        "child": "BG36_308_G"
+      },
+      {
+        "parent": "BG36_311",
+        "child": "BG36_311_G"
+      },
+      {
+        "parent": "BG36_312",
+        "child": "BG36_312_G"
+      },
+      {
+        "parent": "BG36_318",
+        "child": "BG36_318_G"
+      },
+      {
+        "parent": "BG36_320",
+        "child": "BG36_320_G"
+      },
+      {
+        "parent": "BG36_330",
+        "child": "BG36_330_G"
+      },
+      {
+        "parent": "BG36_330",
+        "child": "BG36_330_Gt"
+      },
+      {
+        "parent": "BG36_330",
+        "child": "BG36_330_Gt2"
+      },
+      {
+        "parent": "BG36_330",
+        "child": "BG36_330t"
+      },
+      {
+        "parent": "BG36_330",
+        "child": "BG36_330t2"
+      },
+      {
+        "parent": "BG36_331",
+        "child": "BG36_331_G"
+      },
+      {
+        "parent": "BG36_332",
+        "child": "BG36_332_G"
+      },
+      {
+        "parent": "BG36_332",
+        "child": "BG36_332_Gt"
+      },
+      {
+        "parent": "BG36_332",
+        "child": "BG36_332_Gt2"
+      },
+      {
+        "parent": "BG36_332",
+        "child": "BG36_332t"
+      },
+      {
+        "parent": "BG36_332",
+        "child": "BG36_332t2"
+      },
+      {
+        "parent": "BG36_333",
+        "child": "BG36_333_G"
+      },
+      {
+        "parent": "BG36_341",
+        "child": "BG36_341_G"
+      },
+      {
+        "parent": "BG36_341",
+        "child": "BG36_341_Gt"
+      },
+      {
+        "parent": "BG36_341",
+        "child": "BG36_341_Gt2"
+      },
+      {
+        "parent": "BG36_341",
+        "child": "BG36_341t"
+      },
+      {
+        "parent": "BG36_341",
+        "child": "BG36_341t2"
+      },
+      {
+        "parent": "BG36_342",
+        "child": "BG36_342_G"
+      },
+      {
+        "parent": "BG36_343",
+        "child": "BG36_343_G"
+      },
+      {
+        "parent": "BG36_344",
+        "child": "BG36_344_G"
+      },
+      {
+        "parent": "BG36_345",
+        "child": "BG36_345_G"
+      },
+      {
+        "parent": "BG36_346",
+        "child": "BG36_346_G"
+      },
+      {
+        "parent": "BG36_352",
+        "child": "BG36_352_G"
+      },
+      {
+        "parent": "BG36_354",
+        "child": "BG36_354_G"
+      },
+      {
+        "parent": "BG36_356",
+        "child": "BG36_356_G"
+      },
+      {
+        "parent": "BG36_360t9",
+        "child": "BG36_360"
+      },
+      {
+        "parent": "BG36_360t6",
+        "child": "BG36_360"
+      },
+      {
+        "parent": "BG36_360t5",
+        "child": "BG36_360"
+      },
+      {
+        "parent": "BG36_360t4",
+        "child": "BG36_360"
+      },
+      {
+        "parent": "BG36_360t3",
+        "child": "BG36_360"
+      },
+      {
+        "parent": "BG36_360",
+        "child": "BG36_360_G"
+      },
+      {
+        "parent": "BG36_360_Gt9",
+        "child": "BG36_360_G"
+      },
+      {
+        "parent": "BG36_360_Gt6",
+        "child": "BG36_360_G"
+      },
+      {
+        "parent": "BG36_360_Gt5",
+        "child": "BG36_360_G"
+      },
+      {
+        "parent": "BG36_360_Gt4",
+        "child": "BG36_360_G"
+      },
+      {
+        "parent": "BG36_360_Gt3",
+        "child": "BG36_360_G"
+      },
+      {
+        "parent": "BG36_360",
+        "child": "BG36_360_Gt3"
+      },
+      {
+        "parent": "BG36_360t3",
+        "child": "BG36_360_Gt3"
+      },
+      {
+        "parent": "BG36_360",
+        "child": "BG36_360_Gt4"
+      },
+      {
+        "parent": "BG36_360t4",
+        "child": "BG36_360_Gt4"
+      },
+      {
+        "parent": "BG36_360",
+        "child": "BG36_360_Gt5"
+      },
+      {
+        "parent": "BG36_360t5",
+        "child": "BG36_360_Gt5"
+      },
+      {
+        "parent": "BG36_360",
+        "child": "BG36_360_Gt6"
+      },
+      {
+        "parent": "BG36_360t6",
+        "child": "BG36_360_Gt6"
+      },
+      {
+        "parent": "BG36_360",
+        "child": "BG36_360_Gt9"
+      },
+      {
+        "parent": "BG36_360t9",
+        "child": "BG36_360_Gt9"
+      },
+      {
+        "parent": "BG36_362",
+        "child": "BG36_362_G"
+      },
+      {
+        "parent": "BG36_364",
+        "child": "BG36_364_G"
+      },
+      {
+        "parent": "BG36_366",
+        "child": "BG36_366_G"
+      },
+      {
+        "parent": "BG36_367",
+        "child": "BG36_367_G"
+      },
+      {
+        "parent": "BG36_369",
+        "child": "BG36_369_G"
+      },
+      {
+        "parent": "BG36_370",
+        "child": "BG36_370_G"
+      },
+      {
+        "parent": "BG36_372",
+        "child": "BG36_372_G"
+      },
+      {
+        "parent": "BG36_503",
+        "child": "BG36_503_G"
+      },
+      {
+        "parent": "BG36_506",
+        "child": "BG36_506_G"
+      },
+      {
+        "parent": "BG36_508",
+        "child": "BG36_508_G"
+      },
+      {
+        "parent": "BG36_511",
+        "child": "BG36_511_G"
+      },
+      {
+        "parent": "BG36_514",
+        "child": "BG36_514_G"
+      },
+      {
+        "parent": "BG36_515",
+        "child": "BG36_515_G"
+      },
+      {
+        "parent": "BG36_520",
+        "child": "BG36_520_G"
+      },
+      {
+        "parent": "BG36_523",
+        "child": "BG36_520t"
+      },
+      {
+        "parent": "BG36_MagicItem_301",
+        "child": "BG36_520t"
+      },
+      {
+        "parent": "BG36_521_G",
+        "child": "BG36_520t"
+      },
+      {
+        "parent": "BG36_521",
+        "child": "BG36_520t"
+      },
+      {
+        "parent": "BG36_523_G",
+        "child": "BG36_520t"
+      },
+      {
+        "parent": "BG36_520",
+        "child": "BG36_520t"
+      },
+      {
+        "parent": "BG36_520_G",
+        "child": "BG36_520t"
+      },
+      {
+        "parent": "BG36_521",
+        "child": "BG36_521_G"
+      },
+      {
+        "parent": "BG36_MagicItem_363",
+        "child": "BG36_523_G"
+      },
+      {
+        "parent": "BG36_523",
+        "child": "BG36_523_G"
+      },
+      {
+        "parent": "BG36_524",
+        "child": "BG36_524_G"
+      },
+      {
+        "parent": "BG36_620",
+        "child": "BG36_620_G"
+      },
+      {
+        "parent": "BG36_621",
+        "child": "BG36_621_G"
+      },
+      {
+        "parent": "BG36_622",
+        "child": "BG36_622_G"
+      },
+      {
+        "parent": "BG36_640",
+        "child": "BG36_640_G"
+      },
+      {
+        "parent": "BG36_700",
+        "child": "BG36_700_G"
+      },
+      {
+        "parent": "BG36_701",
+        "child": "BG36_701_G"
+      },
+      {
+        "parent": "BG36_703",
+        "child": "BG36_703_G"
+      },
+      {
+        "parent": "BG36_704",
+        "child": "BG36_704_G"
+      },
+      {
+        "parent": "BG36_730",
+        "child": "BG36_730_G"
+      },
+      {
+        "parent": "BG36_731",
+        "child": "BG36_731_G"
+      },
+      {
+        "parent": "BG36_733",
+        "child": "BG36_733_G"
+      },
+      {
+        "parent": "BG36_762",
+        "child": "BG36_762_G"
+      },
+      {
+        "parent": "BG36_763",
+        "child": "BG36_763_G"
+      },
+      {
+        "parent": "BG36_764",
+        "child": "BG36_764_G"
+      },
+      {
+        "parent": "BG36_848",
+        "child": "BG36_848_G"
+      },
+      {
+        "parent": "BG36_849",
+        "child": "BG36_849_G"
+      },
+      {
+        "parent": "BG36_851",
+        "child": "BG36_851_G"
+      },
+      {
+        "parent": "BG36_853",
+        "child": "BG36_853_G"
+      },
+      {
+        "parent": "BG36_854",
+        "child": "BG36_854_G"
+      },
+      {
+        "parent": "BG36_921",
+        "child": "BG36_921_G"
+      },
+      {
+        "parent": "BG36_HERO_000",
+        "child": "BG36_HERO_000p"
+      },
+      {
+        "parent": "BG36_HERO_002",
+        "child": "BG36_HERO_002p"
+      },
+      {
+        "parent": "BG36_HERO_101",
+        "child": "BG36_HERO_101p"
+      },
+      {
+        "parent": "BG36_HERO_105",
+        "child": "BG36_HERO_105p"
+      },
+      {
+        "parent": "BG36_MagicItem_208",
+        "child": "BG36_MagicItem_208t"
+      },
+      {
+        "parent": "BG36_MagicItem_417",
+        "child": "BG36_MagicItem_417t"
+      },
+      {
+        "parent": "BGDUO31_201",
+        "child": "BGDUO31_201_G"
+      },
+      {
+        "parent": "BGDUO31_202",
+        "child": "BGDUO31_202_G"
+      },
+      {
+        "parent": "BGDUO31_203",
+        "child": "BGDUO31_203_G"
+      },
+      {
+        "parent": "BGDUO31_205",
+        "child": "BGDUO31_205_G"
+      },
+      {
+        "parent": "BGDUO31_207",
+        "child": "BGDUO31_207_G"
+      },
+      {
+        "parent": "BGDUO31_208",
+        "child": "BGDUO31_208_G"
+      },
+      {
+        "parent": "BGDUO31_209",
+        "child": "BGDUO31_209t"
+      },
+      {
+        "parent": "BGDUO31_211",
+        "child": "BGDUO31_211_G"
+      },
+      {
+        "parent": "BGDUO31_212",
+        "child": "BGDUO31_212_G"
+      },
+      {
+        "parent": "BGDUO33_140",
+        "child": "BGDUO33_140_G"
+      },
+      {
+        "parent": "BGDUO33_150",
+        "child": "BGDUO33_150_G"
+      },
+      {
+        "parent": "BGDUO_100",
+        "child": "BGDUO_100_G"
+      },
+      {
+        "parent": "BGDUO_104",
+        "child": "BGDUO_104_G"
+      },
+      {
+        "parent": "BGDUO_107",
+        "child": "BGDUO_107_G"
+      },
+      {
+        "parent": "BGDUO_108",
+        "child": "BGDUO_108_G"
+      },
+      {
+        "parent": "BGDUO_109",
+        "child": "BGDUO_109_G"
+      },
+      {
+        "parent": "BGDUO_110",
+        "child": "BGDUO_110_G"
+      },
+      {
+        "parent": "BGDUO_111",
+        "child": "BGDUO_111_G"
+      },
+      {
+        "parent": "BGDUO_112",
+        "child": "BGDUO_112_G"
+      },
+      {
+        "parent": "BGDUO_MagicItem_005",
+        "child": "BGDUO_113"
+      },
+      {
+        "parent": "BGDUO_114",
+        "child": "BGDUO_114_G"
+      },
+      {
+        "parent": "BGDUO_115",
+        "child": "BGDUO_115_G"
+      },
+      {
+        "parent": "BGDUO_117",
+        "child": "BGDUO_117_G"
+      },
+      {
+        "parent": "BGDUO_118",
+        "child": "BGDUO_118_G"
+      },
+      {
+        "parent": "BGDUO_MagicItem_007",
+        "child": "BGDUO_119"
+      },
+      {
+        "parent": "BGDUO_119",
+        "child": "BGDUO_119_G"
+      },
+      {
+        "parent": "BGDUO_120",
+        "child": "BGDUO_120_G"
+      },
+      {
+        "parent": "BGDUO_120_G",
+        "child": "BGDUO_120_Gt"
+      },
+      {
+        "parent": "BGDUO_120",
+        "child": "BGDUO_120t"
+      },
+      {
+        "parent": "BGDUO_121",
+        "child": "BGDUO_121_G"
+      },
+      {
+        "parent": "BGDUO_125",
+        "child": "BGDUO_125_G"
+      },
+      {
+        "parent": "BGDUO_700",
+        "child": "BGDUO_700_G"
+      },
+      {
+        "parent": "BGDUO_701",
+        "child": "BGDUO_701_G"
+      },
+      {
+        "parent": "BG36_098",
+        "child": "BGFYM_002t"
+      },
+      {
+        "parent": "BG36_116_G",
+        "child": "BGFYM_002t"
+      },
+      {
+        "parent": "BG36_116",
+        "child": "BGFYM_002t"
+      },
+      {
+        "parent": "BG36_098_G",
+        "child": "BGFYM_002t"
+      },
+      {
+        "parent": "BGFYM_002t",
+        "child": "BGFYM_002t_G"
+      },
+      {
+        "parent": "BGFYM_005",
+        "child": "BGFYM_005_G"
+      },
+      {
+        "parent": "BGS_115t",
+        "child": "BGS_115t_G"
+      },
+      {
+        "parent": "BG_DEEP_015",
+        "child": "BG_DEEP_015_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_38_Buddy",
+        "child": "BG_EX1_014t"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_38_Buddy_G",
+        "child": "BG_EX1_014t"
+      },
+      {
+        "parent": "BG30_MagicItem_876",
+        "child": "BG_EX1_564"
+      },
+      {
+        "parent": "BG27_Anomaly_577",
+        "child": "BG_EX1_564"
+      },
+      {
+        "parent": "BG_EX1_564",
+        "child": "BG_EX1_564_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_38",
+        "child": "BG_EX1_014t"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_01_Buddy",
+        "child": "TB_BaconShop_HERO_01_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_02_Buddy",
+        "child": "TB_BaconShop_HERO_02_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_08_Buddy",
+        "child": "TB_BaconShop_HERO_08_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_10_Buddy",
+        "child": "TB_BaconShop_HERO_10_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_11_Buddy",
+        "child": "TB_BaconShop_HERO_11_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_12_Buddy",
+        "child": "TB_BaconShop_HERO_12_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_14_Buddy",
+        "child": "TB_BaconShop_HERO_14_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_15_Buddy",
+        "child": "TB_BaconShop_HERO_15_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_16_Buddy",
+        "child": "TB_BaconShop_HERO_16_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_17_Buddy",
+        "child": "TB_BaconShop_HERO_17_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_18_Buddy",
+        "child": "TB_BaconShop_HERO_18_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_21_Buddy",
+        "child": "TB_BaconShop_HERO_21_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_22_Buddy",
+        "child": "TB_BaconShop_HERO_22_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_23_Buddy",
+        "child": "TB_BaconShop_HERO_23_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_25_Buddy",
+        "child": "TB_BaconShop_HERO_25_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_27_Buddy",
+        "child": "TB_BaconShop_HERO_27_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_28_Buddy",
+        "child": "TB_BaconShop_HERO_28_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_29_Buddy",
+        "child": "TB_BaconShop_HERO_29_Buddy_G"
+      },
+      {
+        "parent": "BG32_MagicItem_807",
+        "child": "TB_BaconShop_HERO_33_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_33_Buddy",
+        "child": "TB_BaconShop_HERO_33_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_34_Buddy",
+        "child": "TB_BaconShop_HERO_34_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_35_Buddy",
+        "child": "TB_BaconShop_HERO_35_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_36_Buddy",
+        "child": "TB_BaconShop_HERO_36_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_37_Buddy",
+        "child": "TB_BaconShop_HERO_37_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_38_Buddy",
+        "child": "TB_BaconShop_HERO_38_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_39_Buddy",
+        "child": "TB_BaconShop_HERO_39_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_40_Buddy",
+        "child": "TB_BaconShop_HERO_40_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_41_Buddy",
+        "child": "TB_BaconShop_HERO_41_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_42_Buddy",
+        "child": "TB_BaconShop_HERO_42_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_43_Buddy",
+        "child": "TB_BaconShop_HERO_43_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_45_Buddy",
+        "child": "TB_BaconShop_HERO_45_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_49_Buddy",
+        "child": "TB_BaconShop_HERO_49_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_50_Buddy",
+        "child": "TB_BaconShop_HERO_50_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_52_Buddy",
+        "child": "TB_BaconShop_HERO_52_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_53_Buddy",
+        "child": "TB_BaconShop_HERO_53_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_55_Buddy",
+        "child": "TB_BaconShop_HERO_55_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_56_Buddy",
+        "child": "TB_BaconShop_HERO_56_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_57_Buddy",
+        "child": "TB_BaconShop_HERO_57_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_58_Buddy",
+        "child": "TB_BaconShop_HERO_58_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_59_Buddy",
+        "child": "TB_BaconShop_HERO_59_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_60_Buddy",
+        "child": "TB_BaconShop_HERO_60_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_62_Buddy",
+        "child": "TB_BaconShop_HERO_62_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_64_Buddy",
+        "child": "TB_BaconShop_HERO_64_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_67_Buddy",
+        "child": "TB_BaconShop_HERO_67_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_68_Buddy",
+        "child": "TB_BaconShop_HERO_68_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_702_Buddy",
+        "child": "TB_BaconShop_HERO_702_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_70_Buddy",
+        "child": "TB_BaconShop_HERO_70_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_71_Buddy",
+        "child": "TB_BaconShop_HERO_71_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_72_Buddy",
+        "child": "TB_BaconShop_HERO_72_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_74_Buddy",
+        "child": "TB_BaconShop_HERO_74_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_75_Buddy",
+        "child": "TB_BaconShop_HERO_75_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_76_Buddy",
+        "child": "TB_BaconShop_HERO_76_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_78_Buddy",
+        "child": "TB_BaconShop_HERO_78_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_90_Buddy",
+        "child": "TB_BaconShop_HERO_90_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_92_Buddy",
+        "child": "TB_BaconShop_HERO_92_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_93_Buddy",
+        "child": "TB_BaconShop_HERO_93_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_94_Buddy",
+        "child": "TB_BaconShop_HERO_94_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_95_Buddy",
+        "child": "TB_BaconShop_HERO_95_Buddy_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_01",
+        "child": "TB_BaconShop_HP_001"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_10",
+        "child": "TB_BaconShop_HP_008"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_15",
+        "child": "TB_BaconShop_HP_010"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_02",
+        "child": "TB_BaconShop_HP_011"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_27",
+        "child": "TB_BaconShop_HP_014"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_17",
+        "child": "TB_BaconShop_HP_015"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_21",
+        "child": "TB_BaconShop_HP_020"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_23",
+        "child": "TB_BaconShop_HP_022"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_23",
+        "child": "TB_BaconShop_HP_022t_G"
+      },
+      {
+        "parent": "TB_BaconShop_HP_022t",
+        "child": "TB_BaconShop_HP_022t_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_22",
+        "child": "TB_BaconShop_HP_024"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_28",
+        "child": "TB_BaconShop_HP_028"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_33",
+        "child": "TB_BaconShop_HP_033"
+      },
+      {
+        "parent": "TB_BaconShop_HP_033t",
+        "child": "TB_BaconShop_HP_033t_G"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_34",
+        "child": "TB_BaconShop_HP_035"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_37",
+        "child": "TB_BaconShop_HP_036"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_14",
+        "child": "TB_BaconShop_HP_037a"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_38",
+        "child": "TB_BaconShop_HP_038"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_35",
+        "child": "TB_BaconShop_HP_039t"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_39",
+        "child": "TB_BaconShop_HP_040"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_12",
+        "child": "TB_BaconShop_HP_041"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_12",
+        "child": "TB_BaconShop_HP_041a"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_12",
+        "child": "TB_BaconShop_HP_041b"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_12",
+        "child": "TB_BaconShop_HP_041c"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_12",
+        "child": "TB_BaconShop_HP_041d"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_12",
+        "child": "TB_BaconShop_HP_041f"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_12",
+        "child": "TB_BaconShop_HP_041g"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_12",
+        "child": "TB_BaconShop_HP_041h"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_12",
+        "child": "TB_BaconShop_HP_041i"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_12",
+        "child": "TB_BaconShop_HP_041j"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_12",
+        "child": "TB_BaconShop_HP_041k"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_36",
+        "child": "TB_BaconShop_HP_042"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_16",
+        "child": "TB_BaconShop_HP_044"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_41",
+        "child": "TB_BaconShop_HP_046"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_42",
+        "child": "TB_BaconShop_HP_047"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_43",
+        "child": "TB_BaconShop_HP_048"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_25",
+        "child": "TB_BaconShop_HP_049"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_58",
+        "child": "TB_BaconShop_HP_052"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_45",
+        "child": "TB_BaconShop_HP_053"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_49",
+        "child": "TB_BaconShop_HP_054"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_55",
+        "child": "TB_BaconShop_HP_056"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_40",
+        "child": "TB_BaconShop_HP_057"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_52",
+        "child": "TB_BaconShop_HP_061"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_53",
+        "child": "TB_BaconShop_HP_062"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_57",
+        "child": "TB_BaconShop_HP_063"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_56",
+        "child": "TB_BaconShop_HP_064"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_59",
+        "child": "TB_BaconShop_HP_065"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_60",
+        "child": "TB_BaconShop_HP_066"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_62",
+        "child": "TB_BaconShop_HP_068"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_08",
+        "child": "TB_BaconShop_HP_069"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_18",
+        "child": "TB_BaconShop_HP_072"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_64",
+        "child": "TB_BaconShop_HP_074"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_67",
+        "child": "TB_BaconShop_HP_075"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_68",
+        "child": "TB_BaconShop_HP_076"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_50",
+        "child": "TB_BaconShop_HP_077"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_70",
+        "child": "TB_BaconShop_HP_080"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_72",
+        "child": "TB_BaconShop_HP_081"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_74",
+        "child": "TB_BaconShop_HP_082"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_71",
+        "child": "TB_BaconShop_HP_084"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_75",
+        "child": "TB_BaconShop_HP_085t"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_76",
+        "child": "TB_BaconShop_HP_086"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_11",
+        "child": "TB_BaconShop_HP_087"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_11",
+        "child": "TB_BaconShop_HP_087t"
+      },
+      {
+        "parent": "TB_BaconShop_HP_087",
+        "child": "TB_BaconShop_HP_087t"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_78",
+        "child": "TB_BaconShop_HP_088"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_90",
+        "child": "TB_BaconShop_HP_101"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_91",
+        "child": "TB_BaconShop_HP_102"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_92",
+        "child": "TB_BaconShop_HP_103"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_29",
+        "child": "TB_BaconShop_HP_104"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_93",
+        "child": "TB_BaconShop_HP_105"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_93",
+        "child": "TB_BaconShop_HP_105t"
+      },
+      {
+        "parent": "BG30_MagicItem_821",
+        "child": "TB_BaconShop_HP_105t"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_94",
+        "child": "TB_BaconShop_HP_106"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_95",
+        "child": "TB_BaconShop_HP_107"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_702",
+        "child": "TB_BaconShop_HP_702t"
+      },
+      {
+        "parent": "BG_LOE_077",
+        "child": "TB_BaconUps_045"
+      },
+      {
+        "parent": "BGS_008",
+        "child": "TB_BaconUps_057"
+      },
+      {
+        "parent": "BGS_004",
+        "child": "TB_BaconUps_079"
+      },
+      {
+        "parent": "BGS_018",
+        "child": "TB_BaconUps_085"
+      },
+      {
+        "parent": "BGS_020",
+        "child": "TB_BaconUps_089"
+      },
+      {
+        "parent": "BG_BOT_911",
+        "child": "TB_BaconUps_099"
+      },
+      {
+        "parent": "BGS_041",
+        "child": "TB_BaconUps_109"
+      },
+      {
+        "parent": "BGS_034",
+        "child": "TB_BaconUps_149"
+      },
+      {
+        "parent": "BGS_040",
+        "child": "TB_BaconUps_154"
+      },
+      {
+        "parent": "BGS_115",
+        "child": "TB_BaconUps_156"
+      },
+      {
+        "parent": "BGS_119",
+        "child": "TB_BaconUps_159"
+      },
+      {
+        "parent": "BGS_123",
+        "child": "TB_BaconUps_162"
+      },
+      {
+        "parent": "BGS_126",
+        "child": "TB_BaconUps_166"
+      },
+      {
+        "parent": "BGS_116",
+        "child": "TB_BaconUps_167"
+      },
+      {
+        "parent": "BGS_131",
+        "child": "TB_BaconUps_251"
+      },
+      {
+        "parent": "TB_BaconShop_HP_105t",
+        "child": "TB_BaconUps_307"
+      },
+      {
+        "parent": "BG35_MagicItem_820",
+        "child": "TB_Bacon_Secrets_12"
+      },
+      {
+        "parent": "BG22_HERO_007t",
+        "child": "BG22_HERO_007p2"
+      },
+      {
+        "parent": "BG22_HERO_007t",
+        "child": "BG22_HERO_007_Buddy"
+      },
+      {
+        "parent": "BG20_HERO_100",
+        "child": "BG20_HERO_100_Buddy"
+      },
+      {
+        "parent": "BG20_HERO_101",
+        "child": "BG20_HERO_101_Buddy"
+      },
+      {
+        "parent": "BG20_HERO_102",
+        "child": "BG20_HERO_102_Buddy"
+      },
+      {
+        "parent": "BG20_HERO_103",
+        "child": "BG20_HERO_103_Buddy"
+      },
+      {
+        "parent": "BG20_HERO_201",
+        "child": "BG20_HERO_201_Buddy"
+      },
+      {
+        "parent": "BG20_HERO_202",
+        "child": "BG20_HERO_202_Buddy"
+      },
+      {
+        "parent": "BG20_HERO_242",
+        "child": "BG20_HERO_242_Buddy"
+      },
+      {
+        "parent": "BG20_HERO_280",
+        "child": "BG20_HERO_280_Buddy"
+      },
+      {
+        "parent": "BG20_HERO_282",
+        "child": "BG20_HERO_282_Buddy"
+      },
+      {
+        "parent": "BG20_HERO_283",
+        "child": "BG20_HERO_283_Buddy"
+      },
+      {
+        "parent": "BG20_HERO_301",
+        "child": "BG20_HERO_301_Buddy"
+      },
+      {
+        "parent": "BG21_HERO_000",
+        "child": "BG21_HERO_000_Buddy"
+      },
+      {
+        "parent": "BG21_HERO_010",
+        "child": "BG21_HERO_010_Buddy"
+      },
+      {
+        "parent": "BG21_HERO_020",
+        "child": "BG21_HERO_020_Buddy"
+      },
+      {
+        "parent": "BG21_HERO_030",
+        "child": "BG21_HERO_030_Buddy"
+      },
+      {
+        "parent": "BG22_HERO_000",
+        "child": "BG22_HERO_000_Buddy"
+      },
+      {
+        "parent": "BG22_HERO_002",
+        "child": "BG22_HERO_002_Buddy"
+      },
+      {
+        "parent": "BG22_HERO_003",
+        "child": "BG22_HERO_003_Buddy"
+      },
+      {
+        "parent": "BG22_HERO_004",
+        "child": "BG22_HERO_004_Buddy"
+      },
+      {
+        "parent": "BG22_HERO_200",
+        "child": "BG22_HERO_200_Buddy"
+      },
+      {
+        "parent": "BG22_HERO_201",
+        "child": "BG22_HERO_201_Buddy"
+      },
+      {
+        "parent": "BG22_HERO_305",
+        "child": "BG22_HERO_305_Buddy"
+      },
+      {
+        "parent": "BG22_HERO_305",
+        "child": "BG22_HERO_305t"
+      },
+      {
+        "parent": "BG23_HERO_201",
+        "child": "BG23_HERO_201_Buddy"
+      },
+      {
+        "parent": "BG23_HERO_201",
+        "child": "BG23_HERO_201pt"
+      },
+      {
+        "parent": "BG23_HERO_303",
+        "child": "BG23_HERO_303_Buddy"
+      },
+      {
+        "parent": "BG23_HERO_305",
+        "child": "BG23_HERO_305_Buddy"
+      },
+      {
+        "parent": "BG23_HERO_306",
+        "child": "BG23_HERO_306_Buddy"
+      },
+      {
+        "parent": "BG24_HERO_100",
+        "child": "BG24_HERO_100_Buddy"
+      },
+      {
+        "parent": "BG24_HERO_204",
+        "child": "BG24_HERO_204_Buddy"
+      },
+      {
+        "parent": "BG25_010",
+        "child": "BG25_010t"
+      },
+      {
+        "parent": "BG25_HERO_100",
+        "child": "BG25_HERO_100_Buddy"
+      },
+      {
+        "parent": "BG25_HERO_103",
+        "child": "BG25_HERO_103_Buddy"
+      },
+      {
+        "parent": "BG25_HERO_105",
+        "child": "BG25_HERO_105_Buddy"
+      },
+      {
+        "parent": "BG26_HERO_101",
+        "child": "BG26_HERO_101_Buddy"
+      },
+      {
+        "parent": "BG26_HERO_102",
+        "child": "BG26_HERO_102_Buddy"
+      },
+      {
+        "parent": "BG26_HERO_104",
+        "child": "BG26_HERO_104_Buddy"
+      },
+      {
+        "parent": "BG27_HERO_801",
+        "child": "BG27_HERO_801_Buddy"
+      },
+      {
+        "parent": "BG28_603",
+        "child": "BG28_603t"
+      },
+      {
+        "parent": "BG28_HERO_400",
+        "child": "BG28_HERO_400_Buddy"
+      },
+      {
+        "parent": "BG28_HERO_800",
+        "child": "BG28_HERO_800_Buddy"
+      },
+      {
+        "parent": "BG28_HERO_801",
+        "child": "BG28_HERO_801_Buddy"
+      },
+      {
+        "parent": "BG30_MagicItem_442",
+        "child": "BG30_MagicItem_442t"
+      },
+      {
+        "parent": "BG31_HERO_801",
+        "child": "BG31_HERO_801pt"
+      },
+      {
+        "parent": "BG31_HERO_802",
+        "child": "BG31_HERO_802pt"
+      },
+      {
+        "parent": "BG31_HERO_802",
+        "child": "BG31_HERO_802pt1"
+      },
+      {
+        "parent": "BG31_HERO_802",
+        "child": "BG31_HERO_802pt1t"
+      },
+      {
+        "parent": "BG31_HERO_802",
+        "child": "BG31_HERO_802pt4"
+      },
+      {
+        "parent": "BG31_HERO_802",
+        "child": "BG31_HERO_802pt5"
+      },
+      {
+        "parent": "BG31_HERO_802",
+        "child": "BG31_HERO_802pt7"
+      },
+      {
+        "parent": "BG31_HERO_811",
+        "child": "BG31_HERO_811t"
+      },
+      {
+        "parent": "BG31_HERO_811",
+        "child": "BG31_HERO_811t10"
+      },
+      {
+        "parent": "BG31_HERO_811",
+        "child": "BG31_HERO_811t2"
+      },
+      {
+        "parent": "BG31_HERO_811",
+        "child": "BG31_HERO_811t3"
+      },
+      {
+        "parent": "BG31_HERO_811",
+        "child": "BG31_HERO_811t4"
+      },
+      {
+        "parent": "BG31_HERO_811",
+        "child": "BG31_HERO_811t5"
+      },
+      {
+        "parent": "BG31_HERO_811",
+        "child": "BG31_HERO_811t6"
+      },
+      {
+        "parent": "BG31_HERO_811",
+        "child": "BG31_HERO_811t7"
+      },
+      {
+        "parent": "BG31_HERO_811",
+        "child": "BG31_HERO_811t8"
+      },
+      {
+        "parent": "BG31_HERO_811",
+        "child": "BG31_HERO_811t9"
+      },
+      {
+        "parent": "BG33_HERO_001",
+        "child": "BG33_HERO_000_Buddy"
+      },
+      {
+        "parent": "BG36_200",
+        "child": "BG36_200t"
+      },
+      {
+        "parent": "BGS_115",
+        "child": "BGS_115t"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_01",
+        "child": "TB_BaconShop_HERO_01_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_02",
+        "child": "TB_BaconShop_HERO_02_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_08",
+        "child": "TB_BaconShop_HERO_08_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_10",
+        "child": "TB_BaconShop_HERO_10_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_11",
+        "child": "TB_BaconShop_HERO_11_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_12",
+        "child": "TB_BaconShop_HERO_12_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_14",
+        "child": "TB_BaconShop_HERO_14_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_15",
+        "child": "TB_BaconShop_HERO_15_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_16",
+        "child": "TB_BaconShop_HERO_16_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_17",
+        "child": "TB_BaconShop_HERO_17_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_18",
+        "child": "TB_BaconShop_HERO_18_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_21",
+        "child": "TB_BaconShop_HERO_21_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_22",
+        "child": "TB_BaconShop_HERO_22_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_23",
+        "child": "TB_BaconShop_HERO_23_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_25",
+        "child": "TB_BaconShop_HERO_25_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_27",
+        "child": "TB_BaconShop_HERO_27_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_28",
+        "child": "TB_BaconShop_HERO_28_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_29",
+        "child": "TB_BaconShop_HERO_29_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_33",
+        "child": "TB_BaconShop_HERO_33_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_34",
+        "child": "TB_BaconShop_HERO_34_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_35",
+        "child": "TB_BaconShop_HERO_35_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_36",
+        "child": "TB_BaconShop_HERO_36_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_37",
+        "child": "TB_BaconShop_HERO_37_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_38",
+        "child": "TB_BaconShop_HERO_38_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_39",
+        "child": "TB_BaconShop_HERO_39_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_40",
+        "child": "TB_BaconShop_HERO_40_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_41",
+        "child": "TB_BaconShop_HERO_41_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_42",
+        "child": "TB_BaconShop_HERO_42_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_43",
+        "child": "TB_BaconShop_HERO_43_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_45",
+        "child": "TB_BaconShop_HERO_45_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_49",
+        "child": "TB_BaconShop_HERO_49_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_50",
+        "child": "TB_BaconShop_HERO_50_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_52",
+        "child": "TB_BaconShop_HERO_52_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_53",
+        "child": "TB_BaconShop_HERO_53_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_55",
+        "child": "TB_BaconShop_HERO_55_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_56",
+        "child": "TB_BaconShop_HERO_56_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_57",
+        "child": "TB_BaconShop_HERO_57_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_58",
+        "child": "TB_BaconShop_HERO_58_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_59",
+        "child": "TB_BaconShop_HERO_59_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_60",
+        "child": "TB_BaconShop_HERO_60_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_62",
+        "child": "TB_BaconShop_HERO_62_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_64",
+        "child": "TB_BaconShop_HERO_64_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_67",
+        "child": "TB_BaconShop_HERO_67_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_68",
+        "child": "TB_BaconShop_HERO_68_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_702",
+        "child": "TB_BaconShop_HERO_702_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_70",
+        "child": "TB_BaconShop_HERO_70_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_71",
+        "child": "TB_BaconShop_HERO_71_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_72",
+        "child": "TB_BaconShop_HERO_72_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_74",
+        "child": "TB_BaconShop_HERO_74_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_75",
+        "child": "TB_BaconShop_HERO_75_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_76",
+        "child": "TB_BaconShop_HERO_76_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_78",
+        "child": "TB_BaconShop_HERO_78_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_90",
+        "child": "TB_BaconShop_HERO_90_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_92",
+        "child": "TB_BaconShop_HERO_92_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_93",
+        "child": "TB_BaconShop_HERO_93_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_94",
+        "child": "TB_BaconShop_HERO_94_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_95",
+        "child": "TB_BaconShop_HERO_95_Buddy"
+      },
+      {
+        "parent": "TB_BaconShop_HERO_33",
+        "child": "TB_BaconShop_HP_033t"
+      },
+      {
+        "parent": "TB_BaconShop_HP_036",
+        "child": "TB_BaconShop_HP_036t"
+      }
+    ],
+    "denied_gift_pairs": [
+      {
+        "minion": "BG32_340",
+        "gift": "BG36_MidGameEffect_000t10"
+      },
+      {
+        "minion": "BG32_340_G",
+        "gift": "BG36_MidGameEffect_000t10"
+      },
+      {
+        "minion": "BG23_318",
+        "gift": "BG36_MidGameEffect_000t16"
+      },
+      {
+        "minion": "BG23_318_G",
+        "gift": "BG36_MidGameEffect_000t16"
+      },
+      {
+        "minion": "BG36_360t5",
+        "gift": "BG36_MidGameEffect_000t15"
+      },
+      {
+        "minion": "BG36_360_Gt5",
+        "gift": "BG36_MidGameEffect_000t15"
+      },
+      {
+        "minion": "BG36_849",
+        "gift": "BG36_MidGameEffect_000t60"
+      },
+      {
+        "minion": "BG36_849_G",
+        "gift": "BG36_MidGameEffect_000t60"
+      }
+    ],
+    "execution_identity_bindings": [
+      {
+        "source_parent": "TB_BaconShop_HERO_38",
+        "source_power": "TB_BaconShop_HP_038",
+        "source_child_id": "EX1_014t",
+        "source_child_dbf": 1694,
+        "execution_child_id": "BG_EX1_014t",
+        "execution_child_dbf": 122906,
+        "decision_sha256": "70d124053eb457b2994c0058735698f7abbfd4b6fbee0fa49fd278acd43676bb",
+        "evidence_sha256": "56b5b01d500ccb1128caae7a51f6b507ddab6cedaff062446b70a81cc2ca0fb3"
+      }
+    ]
+  },
+  "manifest_sha256": "b95fde796b59a5f429d99579629cb2e137b78777e553c6e009b6aeb65205877e"
+}

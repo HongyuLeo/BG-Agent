@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-03",
+  "scope": "Public snapshot only; no real-client interaction",
+  "tracked_files_checked": 382,
+  "python_syntax_files": 139,
+  "syntax_errors": [],
+  "training_manifest_entries_checked_against_git_index": 224,
+  "manifest_issues": [],
+  "private_path_and_credential_pattern_findings": [],
+  "maintained_document_broken_links": [],
+  "limitations": [
+    "Pattern scan is not a formal guarantee of absence of sensitive material",
+    "Windows desktop and live folders are source references, not portable installers",
+    "Training evidence is recorded separately in training/VALIDATION.json"
+  ],
+  "test_fixture_corrections": [
+    "Gold remains explicitly unknown when observer is absent; schema now emits unknown leaves instead of omitting gold",
+    "Explicit single-game fixture expects completed; default auto-queue quarantines a zero-decision terminal fixture and pauses"
+  ],
+  "selected_tests": {
+    "passed": 38,
+    "subtests_passed": 13,
+    "duration_seconds": 38.79,
+    "suites": [
+      "desktop/app/tests/test_lifecycle.py",
+      "desktop/app/tests/desktop/test_service.py",
+      "desktop/app/tests/live/test_live.py"
+    ],
+    "real_client_input": false
+  }
+}

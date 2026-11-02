@@ -1,0 +1,4 @@
+# Public snapshot preserves frozen rule source byte hashes across platforms.
+* -text
+*.zip binary
+*.png binary

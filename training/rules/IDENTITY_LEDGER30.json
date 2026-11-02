@@ -1,0 +1,2259 @@
+{
+  "denominator": 30,
+  "normalized_objects": 16,
+  "minion_families": 14,
+  "minion_normal_gold_identities": 28,
+  "hero_and_power_identities": 2,
+  "qualification_unknown_IDs_preserved": [
+    "BG33_319",
+    "BG33_319_G"
+  ],
+  "rows": [
+    {
+      "id": "BG23_002",
+      "normal_id": "BG23_002",
+      "component": "W1",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": true,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG23_002_G",
+          "origin": "formal",
+          "relation": "golden"
+        },
+        {
+          "id": "BG23_002_G",
+          "origin": "upstream",
+          "relation": "golden"
+        }
+      ],
+      "definition": {
+        "id": "BG23_002",
+        "dbf_id": 80740,
+        "name": "Shell Collector",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "<b>Battlecry:</b> Get a Tavern Coin.",
+        "atk": 4,
+        "health": 3,
+        "card_race": 92,
+        "tech_level": 2,
+        "cost": 3,
+        "triple_upgrade_id": 82646,
+        "evolution_card_id": 104436,
+        "subset_naga": true,
+        "battlecry": true,
+        "is_pool_minion": true,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "贝类收藏家",
+        "text_zh": "<b>战吼：</b>获取\n一张酒馆币。",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": [
+          "test_batch_battlecry.py",
+          "test_batch_hero_actives2.py"
+        ]
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_battlecry.py",
+          "line": 71,
+          "end_line": 110,
+          "sha256": "ddb6659b4e3b1c6e916b510932a45a00fa288ce5eb16ff718f0c5681e9ed73a0"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG23_002_G",
+      "normal_id": "BG23_002",
+      "component": "W1",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": false,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG23_002",
+          "origin": "upstream",
+          "relation": "normal"
+        }
+      ],
+      "definition": {
+        "id": "BG23_002_G",
+        "dbf_id": 82646,
+        "name": "Shell Collector",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "[x]<b>Battlecry:</b> Get\n2 Tavern Coins.",
+        "atk": 8,
+        "health": 6,
+        "card_race": 92,
+        "tech_level": 2,
+        "cost": 3,
+        "triple_base_id": 80740,
+        "evolution_card_id": 104436,
+        "battlecry": true,
+        "is_pool_minion": false,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "贝类收藏家",
+        "text_zh": "<b>战吼：</b>获取\n2张酒馆币。",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": [
+          "test_batch_battlecry.py"
+        ]
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_battlecry.py",
+          "line": 71,
+          "end_line": 110,
+          "sha256": "ddb6659b4e3b1c6e916b510932a45a00fa288ce5eb16ff718f0c5681e9ed73a0"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG26_505",
+      "normal_id": "BG26_505",
+      "component": "W1",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": true,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG26_505_G",
+          "origin": "upstream",
+          "relation": "golden"
+        },
+        {
+          "id": "BG26_505_G",
+          "origin": "formal",
+          "relation": "golden"
+        }
+      ],
+      "definition": {
+        "id": "BG26_505",
+        "dbf_id": 99054,
+        "name": "Zesty Shaker",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "[x]Once per turn, when a\n<b>Spellcraft</b> spell is played on\n_this, get a new copy of it.",
+        "atk": 6,
+        "health": 7,
+        "card_race": 92,
+        "tech_level": 4,
+        "cost": 3,
+        "triple_upgrade_id": 99066,
+        "subset_naga": true,
+        "is_pool_minion": true,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "热情沙锤手",
+        "text_zh": "每回合一次：当<b>塑造法术</b>的法术被用于本随从时，获取它的一张新复制。",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": [
+          "test_batch_econ_misc.py"
+        ]
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_econ_misc.py",
+          "line": 355,
+          "end_line": 413,
+          "sha256": "19765fbdb7c4a87eb7548d690728746e8e71950d23b24bb5b8a909704cb901f7"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG26_505_G",
+      "normal_id": "BG26_505",
+      "component": "W1",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": false,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG26_505",
+          "origin": "upstream",
+          "relation": "normal"
+        }
+      ],
+      "definition": {
+        "id": "BG26_505_G",
+        "dbf_id": 99066,
+        "name": "Zesty Shaker",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "[x]Once per turn, when a\n<b>Spellcraft</b> spell is played on\n_this, get 2 new copies of it.",
+        "atk": 12,
+        "health": 14,
+        "card_race": 92,
+        "tech_level": 4,
+        "cost": 3,
+        "triple_base_id": 99054,
+        "is_pool_minion": false,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "热情沙锤手",
+        "text_zh": "每回合一次：当<b>塑造法术</b>的法术被用于本随从时，获取它的2张新复制。",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": [
+          "test_batch_econ_misc.py"
+        ]
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_econ_misc.py",
+          "line": 355,
+          "end_line": 413,
+          "sha256": "19765fbdb7c4a87eb7548d690728746e8e71950d23b24bb5b8a909704cb901f7"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG36_622",
+      "normal_id": "BG36_622",
+      "component": "W1",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": true,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG36_622_G",
+          "origin": "upstream",
+          "relation": "golden"
+        },
+        {
+          "id": "BG36_622_G",
+          "origin": "formal",
+          "relation": "golden"
+        }
+      ],
+      "definition": {
+        "id": "BG36_622",
+        "dbf_id": 133707,
+        "name": "Torrential Ruiner",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "Whenever you cast a spell on a Naga, give your minions +{0}/+{1}.",
+        "atk": 6,
+        "health": 3,
+        "card_race": 92,
+        "tech_level": 6,
+        "cost": 3,
+        "script_data_num_1": 2,
+        "script_data_num_2": 3,
+        "triple_upgrade_id": 133708,
+        "subset_naga": true,
+        "is_pool_minion": true,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "涌流毁灭者",
+        "text_zh": "每当你对纳迦施放法术，使你的随从获得+{0}/+{1}。",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": [
+          "test_batch_econ_misc2.py"
+        ]
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_econ_misc2.py",
+          "line": 451,
+          "end_line": 493,
+          "sha256": "c7e0a705b96313e4531e5ce4209b6876fd052f37c1669d753b379a627aca6028"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG36_622_G",
+      "normal_id": "BG36_622",
+      "component": "W1",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": false,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG36_622",
+          "origin": "upstream",
+          "relation": "normal"
+        }
+      ],
+      "definition": {
+        "id": "BG36_622_G",
+        "dbf_id": 133708,
+        "name": "Torrential Ruiner",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "Whenever you cast a spell on a Naga, give your minions +{0}/+{1}.",
+        "atk": 12,
+        "health": 6,
+        "card_race": 92,
+        "tech_level": 6,
+        "cost": 3,
+        "script_data_num_1": 4,
+        "script_data_num_2": 6,
+        "triple_base_id": 133707,
+        "is_pool_minion": false,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "涌流毁灭者",
+        "text_zh": "每当你对纳迦施放法术，使你的随从获得+{0}/+{1}。",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": [
+          "test_batch_econ_misc2.py"
+        ]
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_econ_misc2.py",
+          "line": 451,
+          "end_line": 493,
+          "sha256": "c7e0a705b96313e4531e5ce4209b6876fd052f37c1669d753b379a627aca6028"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG36_921",
+      "normal_id": "BG36_921",
+      "component": "W1",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": true,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG36_921_G",
+          "origin": "upstream",
+          "relation": "golden"
+        },
+        {
+          "id": "BG36_921_G",
+          "origin": "formal",
+          "relation": "golden"
+        }
+      ],
+      "definition": {
+        "id": "BG36_921",
+        "dbf_id": 133451,
+        "name": "Fleeing Fugitive",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "Whenever you cast a spell on this, gain +{0} Health.",
+        "atk": 5,
+        "health": 2,
+        "card_race": 92,
+        "tech_level": 1,
+        "cost": 3,
+        "script_data_num_1": 1,
+        "triple_upgrade_id": 133452,
+        "subset_naga": true,
+        "is_pool_minion": true,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "逃窜的纳迦",
+        "text_zh": "每当你对本随从施放法术，获得\n+{0}生命值。",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": [
+          "test_batch_econ_misc2.py"
+        ]
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_econ_misc2.py",
+          "line": 695,
+          "end_line": 728,
+          "sha256": "c7e0a705b96313e4531e5ce4209b6876fd052f37c1669d753b379a627aca6028"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG36_921_G",
+      "normal_id": "BG36_921",
+      "component": "W1",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": false,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG36_921",
+          "origin": "upstream",
+          "relation": "normal"
+        }
+      ],
+      "definition": {
+        "id": "BG36_921_G",
+        "dbf_id": 133452,
+        "name": "Fleeing Fugitive",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "Whenever you cast a spell on this, gain +{0} Health.",
+        "atk": 10,
+        "health": 4,
+        "card_race": 92,
+        "tech_level": 1,
+        "cost": 3,
+        "script_data_num_1": 2,
+        "triple_base_id": 133451,
+        "is_pool_minion": false,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "逃窜的纳迦",
+        "text_zh": "每当你对本随从施放法术，获得\n+{0}生命值。",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": [
+          "test_batch_econ_misc2.py"
+        ]
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_econ_misc2.py",
+          "line": 695,
+          "end_line": 728,
+          "sha256": "c7e0a705b96313e4531e5ce4209b6876fd052f37c1669d753b379a627aca6028"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG27_514",
+      "normal_id": "BG27_514",
+      "component": "W2_SPELLCRAFT",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": true,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG27_514_G",
+          "origin": "upstream",
+          "relation": "golden"
+        },
+        {
+          "id": "BG27_514_G",
+          "origin": "formal",
+          "relation": "golden"
+        }
+      ],
+      "definition": {
+        "id": "BG27_514",
+        "dbf_id": 103069,
+        "name": "Sea Witch Zar'jira",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "[x]<b>Spellcraft:</b> Choose a\ndifferent minion in the\n Tavern to get a copy of.",
+        "atk": 4,
+        "health": 5,
+        "card_race": 92,
+        "tech_level": 7,
+        "cost": 3,
+        "triple_upgrade_id": 103075,
+        "spellcraft_id": 103071,
+        "subset_naga": true,
+        "is_pool_minion": true,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "海巫扎尔吉拉",
+        "text_zh": "<b>塑造法术：</b>选择酒馆中一个不同的随从，获取一张复制。",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": []
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_misc.py",
+          "line": 1445,
+          "end_line": 1458,
+          "sha256": "e0e0a972914526eccbee6d0516967ea6018508cd90161e779f0322742e15827b"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG27_514_G",
+      "normal_id": "BG27_514",
+      "component": "W2_SPELLCRAFT",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": false,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG27_514",
+          "origin": "upstream",
+          "relation": "normal"
+        }
+      ],
+      "definition": {
+        "id": "BG27_514_G",
+        "dbf_id": 103075,
+        "name": "Sea Witch Zar'jira",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "[x]<b>Spellcraft:</b> Choose a\ndifferent minion in the\n Tavern to get 2 copies of.",
+        "atk": 8,
+        "health": 10,
+        "card_race": 92,
+        "tech_level": 7,
+        "cost": 3,
+        "triple_base_id": 103069,
+        "spellcraft_id": 103076,
+        "is_pool_minion": false,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "海巫扎尔吉拉",
+        "text_zh": "<b>塑造法术：</b>选择酒馆中一个不同的随从，获取2张复制。",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": []
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_misc.py",
+          "line": 1445,
+          "end_line": 1458,
+          "sha256": "e0e0a972914526eccbee6d0516967ea6018508cd90161e779f0322742e15827b"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG31_035",
+      "normal_id": "BG31_035",
+      "component": "W2_COUNTERS",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": true,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG31_035_G",
+          "origin": "upstream",
+          "relation": "golden"
+        },
+        {
+          "id": "BG31_035_G",
+          "origin": "formal",
+          "relation": "golden"
+        }
+      ],
+      "definition": {
+        "id": "BG31_035",
+        "dbf_id": 114816,
+        "name": "Groundbreaker",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "[x]After you play a Naga, gain\n+{1}/+{1}. <i>(Improved by\nevery 3 spells you've cast\nthis game!)</i>@[x]After you play a Naga,\ngain +{1}/+{1}.\n<i>(Cast {2}/3 spells\nto improve!)</i>",
+        "atk": 6,
+        "health": 4,
+        "card_race": 92,
+        "tech_level": 6,
+        "cost": 3,
+        "script_data_num_1": 3,
+        "script_data_num_2": 1,
+        "triple_upgrade_id": 114817,
+        "subset_naga": true,
+        "is_pool_minion": true,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "碎地者",
+        "text_zh": "在你使用一张纳迦牌后，获得+{1}/+{1}。<i>（在本局对战中，你每施放3个法术都会提升！）</i>@在你使用一张纳迦牌后，获得+{1}/+{1}。<i>（施放{2}/3个法术即可提升！）</i>",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": [
+          "test_batch_econ_misc.py"
+        ]
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_econ_misc.py",
+          "line": 602,
+          "end_line": 651,
+          "sha256": "19765fbdb7c4a87eb7548d690728746e8e71950d23b24bb5b8a909704cb901f7"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG31_035_G",
+      "normal_id": "BG31_035",
+      "component": "W2_COUNTERS",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": false,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG31_035",
+          "origin": "upstream",
+          "relation": "normal"
+        }
+      ],
+      "definition": {
+        "id": "BG31_035_G",
+        "dbf_id": 114817,
+        "name": "Groundbreaker",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "[x]After you play a Naga, gain\n+{1}/+{1}. <i>(Improved by\nevery 3 spells you've cast\nthis game!)</i>@[x]After you play a Naga,\ngain +{1}/+{1}.\n<i>(Cast {2}/3 spells\nto improve!)</i>",
+        "atk": 12,
+        "health": 8,
+        "card_race": 92,
+        "tech_level": 6,
+        "cost": 3,
+        "script_data_num_1": 3,
+        "script_data_num_2": 2,
+        "triple_base_id": 114816,
+        "is_pool_minion": false,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "碎地者",
+        "text_zh": "在你使用一张纳迦牌后，获得+{1}/+{1}。<i>（在本局对战中，你每施放3个法术都会提升！）</i>@在你使用一张纳迦牌后，获得+{1}/+{1}。<i>（施放{2}/3个法术即可提升！）</i>",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": [
+          "test_batch_econ_misc.py"
+        ]
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_econ_misc.py",
+          "line": 602,
+          "end_line": 651,
+          "sha256": "19765fbdb7c4a87eb7548d690728746e8e71950d23b24bb5b8a909704cb901f7"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG31_920",
+      "normal_id": "BG31_920",
+      "component": "W2_SPELLCRAFT",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": true,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG31_920_G",
+          "origin": "upstream",
+          "relation": "golden"
+        },
+        {
+          "id": "BG31_920_G",
+          "origin": "formal",
+          "relation": "golden"
+        }
+      ],
+      "definition": {
+        "id": "BG31_920",
+        "dbf_id": 115555,
+        "name": "Darkcrest Strategist",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "<b>Spellcraft:</b> Get a random Tier @ Naga. <i>(Improves each turn!)</i>",
+        "atk": 4,
+        "health": 5,
+        "card_race": 92,
+        "tech_level": 5,
+        "cost": 3,
+        "script_data_num_1": 1,
+        "triple_upgrade_id": 115556,
+        "spellcraft_id": 116478,
+        "subset_naga": true,
+        "is_pool_minion": true,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "暗潮战略专家",
+        "text_zh": "<b>塑造法术：</b>随机获取一张等级@的纳迦牌。<i>（每回合都会提升！）</i>",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": []
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_misc.py",
+          "line": 1287,
+          "end_line": 1320,
+          "sha256": "e0e0a972914526eccbee6d0516967ea6018508cd90161e779f0322742e15827b"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG31_920_G",
+      "normal_id": "BG31_920",
+      "component": "W2_SPELLCRAFT",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": false,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG31_920",
+          "origin": "upstream",
+          "relation": "normal"
+        }
+      ],
+      "definition": {
+        "id": "BG31_920_G",
+        "dbf_id": 115556,
+        "name": "Darkcrest Strategist",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "<b>Spellcraft:</b> Get two random Tier @ Naga. <i>(Improves each turn!)</i>",
+        "atk": 8,
+        "health": 10,
+        "card_race": 92,
+        "tech_level": 5,
+        "cost": 3,
+        "script_data_num_1": 1,
+        "triple_base_id": 115555,
+        "spellcraft_id": 116480,
+        "is_pool_minion": false,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "暗潮战略专家",
+        "text_zh": "<b>塑造法术：</b>随机获取两张等级@的纳迦牌。<i>（每回合都会提升！）</i>",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": []
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_misc.py",
+          "line": 1287,
+          "end_line": 1320,
+          "sha256": "e0e0a972914526eccbee6d0516967ea6018508cd90161e779f0322742e15827b"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG31_925",
+      "normal_id": "BG31_925",
+      "component": "W2_COUNTERS",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": true,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG31_925_G",
+          "origin": "formal",
+          "relation": "golden"
+        },
+        {
+          "id": "BG31_925_G",
+          "origin": "upstream",
+          "relation": "golden"
+        }
+      ],
+      "definition": {
+        "id": "BG31_925",
+        "dbf_id": 115565,
+        "name": "Showy Cyclist",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "[x]<b>Deathrattle:</b> Give all your\nNaga +{1}/+{3}. <i>(Improved\nby every 3 spells you've\ncast this game!)</i>@[x]<b>Deathrattle:</b> Give all\nyour Naga +{1}/+{3}.\n<i>(Cast {2}/3 spells\nto improve!)</i>",
+        "atk": 4,
+        "health": 2,
+        "card_race": 92,
+        "tech_level": 5,
+        "cost": 3,
+        "script_data_num_1": 3,
+        "script_data_num_2": 2,
+        "script_data_num_4": 1,
+        "triple_upgrade_id": 115566,
+        "subset_naga": true,
+        "deathrattle": true,
+        "is_pool_minion": true,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "显眼的骑手",
+        "text_zh": "<b>亡语：</b>使你的所有纳迦获得+{1}/+{3}。<i>（在本局对战中，你每施放3个法术都会提升！）</i>@<b>亡语：</b>使你的所有纳迦获得+{1}/+{3}。<i>（施放{2}/3个法术即可提升！）</i>",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": [
+          "test_batch_deathrattle.py"
+        ]
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_deathrattle.py",
+          "line": 1037,
+          "end_line": 1077,
+          "sha256": "cd8a5ecd2fa1ed5697a91ec1178a986dde889c769767afb78d8f779f7e884d9d"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG31_925_G",
+      "normal_id": "BG31_925",
+      "component": "W2_COUNTERS",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": false,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG31_925",
+          "origin": "upstream",
+          "relation": "normal"
+        }
+      ],
+      "definition": {
+        "id": "BG31_925_G",
+        "dbf_id": 115566,
+        "name": "Showy Cyclist",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "[x]<b>Deathrattle:</b> Give all your\nNaga +{1}/+{3}. <i>(Improved\nby every 3 spells you've\ncast this game!)</i>@[x]<b>Deathrattle:</b> Give all\nyour Naga +{1}/+{3}.\n<i>(Cast {2}/3 spells\nto improve!)</i>",
+        "atk": 8,
+        "health": 4,
+        "card_race": 92,
+        "tech_level": 5,
+        "cost": 3,
+        "script_data_num_1": 3,
+        "script_data_num_2": 4,
+        "script_data_num_4": 2,
+        "triple_base_id": 115565,
+        "deathrattle": true,
+        "is_pool_minion": false,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "显眼的骑手",
+        "text_zh": "<b>亡语：</b>使你的所有纳迦获得+{1}/+{3}。<i>（在本局对战中，你每施放3个法术都会提升！）</i>@<b>亡语：</b>使你的所有纳迦获得+{1}/+{3}。<i>（施放{2}/3个法术即可提升！）</i>",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": [
+          "test_batch_deathrattle.py"
+        ]
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_deathrattle.py",
+          "line": 1037,
+          "end_line": 1077,
+          "sha256": "cd8a5ecd2fa1ed5697a91ec1178a986dde889c769767afb78d8f779f7e884d9d"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG32_835",
+      "normal_id": "BG32_835",
+      "component": "W2_SPELLCRAFT",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": true,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG32_835_G",
+          "origin": "upstream",
+          "relation": "golden"
+        },
+        {
+          "id": "BG32_835_G",
+          "origin": "formal",
+          "relation": "golden"
+        }
+      ],
+      "definition": {
+        "id": "BG32_835",
+        "dbf_id": 119942,
+        "name": "Tranquil Meditative",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "[x]<b>Spellcraft:</b> Your Tavern\nspells give an extra\n+{0}/+{1} this game.",
+        "atk": 3,
+        "health": 8,
+        "card_race": 92,
+        "tech_level": 5,
+        "cost": 3,
+        "script_data_num_1": 1,
+        "script_data_num_2": 1,
+        "triple_upgrade_id": 119943,
+        "spellcraft_id": 121479,
+        "subset_naga": true,
+        "is_pool_minion": true,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "宁静的冥想者",
+        "text_zh": "<b>塑造法术：</b>在本局对战中，你的酒馆法术使随从额外获得+{0}/+{1}。",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": []
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_misc.py",
+          "line": 1535,
+          "end_line": 1548,
+          "sha256": "e0e0a972914526eccbee6d0516967ea6018508cd90161e779f0322742e15827b"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG32_835_G",
+      "normal_id": "BG32_835",
+      "component": "W2_SPELLCRAFT",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": false,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG32_835",
+          "origin": "upstream",
+          "relation": "normal"
+        }
+      ],
+      "definition": {
+        "id": "BG32_835_G",
+        "dbf_id": 119943,
+        "name": "Tranquil Meditative",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "[x]<b>Spellcraft:</b> Your Tavern\nspells give an extra\n+{0}/+{1} this game.",
+        "atk": 6,
+        "health": 16,
+        "card_race": 92,
+        "tech_level": 5,
+        "cost": 3,
+        "script_data_num_1": 2,
+        "script_data_num_2": 2,
+        "triple_base_id": 119942,
+        "spellcraft_id": 121480,
+        "is_pool_minion": false,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "宁静的冥想者",
+        "text_zh": "<b>塑造法术：</b>在本局对战中，你的酒馆法术使随从额外获得+{0}/+{1}。",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": []
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_misc.py",
+          "line": 1535,
+          "end_line": 1548,
+          "sha256": "e0e0a972914526eccbee6d0516967ea6018508cd90161e779f0322742e15827b"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG33_319",
+      "normal_id": "BG33_319",
+      "component": "W2_SPELLCRAFT",
+      "implementation_status": "IMPLEMENTED_BOUNDED_EXISTING_TAG4254_CLASSIFIER_CURRENT37_COMPLETENESS_UNKNOWN",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": false,
+        "raw_client_flags": {
+          "is_pool_minion": true,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "catalogue_only_target_membership_unknown"
+      ],
+      "dependencies": [
+        {
+          "id": "BG33_319_G",
+          "origin": "upstream",
+          "relation": "golden"
+        },
+        {
+          "id": "BG33_319_G",
+          "origin": "formal",
+          "relation": "golden"
+        }
+      ],
+      "definition": {
+        "id": "BG33_319",
+        "dbf_id": 122221,
+        "name": "Rimescale Priestess",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "<b>Spellcraft:</b> Get a random Tavern spell that gives stats.",
+        "atk": 3,
+        "health": 3,
+        "card_race": 92,
+        "tech_level": 4,
+        "cost": 3,
+        "triple_upgrade_id": 122222,
+        "spellcraft_id": 122259,
+        "subset_naga": true,
+        "is_pool_minion": true,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "霜鳞女祭司",
+        "text_zh": "<b>塑造法术：</b>随机获取一张能使随从获得属性值的酒馆法术牌。",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "unsupported",
+        "implementation_note": "no effect implementation",
+        "upstream_test_references": [
+          "test_batch_choose_one.py"
+        ]
+      },
+      "source_locations": {
+        "formal": null,
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG33_319_G",
+      "normal_id": "BG33_319",
+      "component": "W2_SPELLCRAFT",
+      "implementation_status": "IMPLEMENTED_BOUNDED_EXISTING_TAG4254_CLASSIFIER_CURRENT37_COMPLETENESS_UNKNOWN",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": false,
+        "raw_client_flags": {
+          "is_pool_minion": false,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "catalogue_only_target_membership_unknown"
+      ],
+      "dependencies": [
+        {
+          "id": "BG33_319",
+          "origin": "upstream",
+          "relation": "normal"
+        }
+      ],
+      "definition": {
+        "id": "BG33_319_G",
+        "dbf_id": 122222,
+        "name": "Rimescale Priestess",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "<b>Spellcraft:</b> Get 2 random Tavern spells that give stats.",
+        "atk": 6,
+        "health": 6,
+        "card_race": 92,
+        "tech_level": 4,
+        "cost": 3,
+        "triple_base_id": 122221,
+        "spellcraft_id": 122260,
+        "is_pool_minion": false,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "霜鳞女祭司",
+        "text_zh": "<b>塑造法术：</b>随机获取2张能使随从获得属性值的酒馆法术牌。",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "unsupported",
+        "implementation_note": "no effect implementation",
+        "upstream_test_references": [
+          "test_batch_choose_one.py"
+        ]
+      },
+      "source_locations": {
+        "formal": null,
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG35_921",
+      "normal_id": "BG35_921",
+      "component": "W2_COUNTERS",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": true,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG35_921_G",
+          "origin": "upstream",
+          "relation": "golden"
+        },
+        {
+          "id": "BG35_921_G",
+          "origin": "formal",
+          "relation": "golden"
+        }
+      ],
+      "definition": {
+        "id": "BG35_921",
+        "dbf_id": 130658,
+        "name": "Abyssal Bruiser",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "[x]<b>Divine Shield</b>\nHas +{0}/+{1} for each\nTavern spell you've\ncast this game.",
+        "atk": 2,
+        "health": 1,
+        "card_race": 92,
+        "tech_level": 4,
+        "cost": 3,
+        "script_data_num_1": 2,
+        "script_data_num_2": 1,
+        "triple_upgrade_id": 130659,
+        "subset_naga": true,
+        "divine_shield": true,
+        "is_pool_minion": true,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "深渊打手",
+        "text_zh": "<b>圣盾</b>。在本局对战中，你每施放一个酒馆法术，便拥有+{0}/+{1}。",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": [
+          "test_batch_counters.py"
+        ]
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_counters.py",
+          "line": 110,
+          "end_line": 154,
+          "sha256": "c09c6f315db5d6e894f36acac83a8d680642eec9043a7cd908359a69c62c527f"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG35_921_G",
+      "normal_id": "BG35_921",
+      "component": "W2_COUNTERS",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": false,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG35_921",
+          "origin": "upstream",
+          "relation": "normal"
+        }
+      ],
+      "definition": {
+        "id": "BG35_921_G",
+        "dbf_id": 130659,
+        "name": "Abyssal Bruiser",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "[x]<b>Divine Shield</b>\nHas +{0}/+{1} for each\nTavern spell you've\ncast this game.",
+        "atk": 4,
+        "health": 2,
+        "card_race": 92,
+        "tech_level": 4,
+        "cost": 3,
+        "script_data_num_1": 4,
+        "script_data_num_2": 2,
+        "triple_base_id": 130658,
+        "divine_shield": true,
+        "is_pool_minion": false,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "深渊打手",
+        "text_zh": "<b>圣盾</b>。在本局对战中，你每施放一个酒馆法术，便拥有+{0}/+{1}。",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": []
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_counters.py",
+          "line": 110,
+          "end_line": 154,
+          "sha256": "c09c6f315db5d6e894f36acac83a8d680642eec9043a7cd908359a69c62c527f"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG22_HERO_007",
+      "normal_id": "BG22_HERO_007",
+      "component": "AZSHARA",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": true,
+        "formal_public_pool": null,
+        "formal_factory_supported": false,
+        "raw_client_flags": {
+          "is_pool_minion": false,
+          "is_pool_spell": false,
+          "hero_draftable": true,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [
+          "NAGA"
+        ],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "client_flagged_candidate_not_server_verified"
+      ],
+      "dependencies": [
+        {
+          "id": "BG22_HERO_007p",
+          "origin": "formal",
+          "relation": "hero_power"
+        },
+        {
+          "id": "BG22_HERO_007p",
+          "origin": "upstream",
+          "relation": "hero_power"
+        }
+      ],
+      "definition": {
+        "id": "BG22_HERO_007",
+        "dbf_id": 79618,
+        "name": "Queen Azshara",
+        "card_set": 1453,
+        "card_type": 3,
+        "health": 30,
+        "rarity": 2,
+        "armor": 12,
+        "hero_draftable": true,
+        "companion_id": 77894,
+        "hero_power_dbf": 79619,
+        "subset_naga": true,
+        "is_pool_minion": false,
+        "is_pool_spell": false,
+        "duos_exclusive": false,
+        "name_zh": "艾萨拉女王",
+        "text_zh": "",
+        "source_build": "37.0.0.255130",
+        "active_candidate": true,
+        "implementation_status": "unsupported",
+        "implementation_note": "hero identity or enchantment metadata",
+        "upstream_test_references": []
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_hero_combat3.py",
+          "line": 756,
+          "end_line": 820,
+          "sha256": "db746c9b72c26f20d64296b4f9e40007aea22de7dac1d4d50af3b08c816ea1c8"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG22_HERO_007p",
+      "normal_id": "BG22_HERO_007p",
+      "component": "AZSHARA",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": false,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [],
+      "definition": {
+        "id": "BG22_HERO_007p",
+        "dbf_id": 79619,
+        "name": "Azshara's Ambition",
+        "card_set": 1453,
+        "card_type": 10,
+        "text": "[x]When your warband\nreaches 30 total Attack,\nbegin your Naga Conquest.@[x]When your warband\nreaches 30 total Attack,\nbegin your Naga Conquest.\n<i>({0} left!)</i>",
+        "cost": 0,
+        "script_data_num_2": 30,
+        "evolution_card_id": 80007,
+        "is_pool_minion": false,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "艾萨拉的野心",
+        "text_zh": "当你的战队总计达到30点攻击力时，开启纳迦远征。@当你的战队总计达到30点攻击力时，开启纳迦远征。<i>（还剩{0}点！）</i>",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": [
+          "test_batch_hero_combat3.py"
+        ]
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_hero_combat3.py",
+          "line": 756,
+          "end_line": 820,
+          "sha256": "db746c9b72c26f20d64296b4f9e40007aea22de7dac1d4d50af3b08c816ea1c8"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG32_837",
+      "normal_id": "BG32_837",
+      "component": "W3_TRIGGERED",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": true,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG32_837_G",
+          "origin": "upstream",
+          "relation": "golden"
+        },
+        {
+          "id": "BG32_837_G",
+          "origin": "formal",
+          "relation": "golden"
+        }
+      ],
+      "definition": {
+        "id": "BG32_837",
+        "dbf_id": 120905,
+        "name": "Fauna Whisperer",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "[x]At the end of your turn,\ncast Natural Blessing on\nadjacent minions.",
+        "atk": 4,
+        "health": 9,
+        "card_race": 92,
+        "tech_level": 6,
+        "cost": 3,
+        "triple_upgrade_id": 120906,
+        "evolution_card_id": 104472,
+        "subset_naga": true,
+        "is_pool_minion": true,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "动物低语者",
+        "text_zh": "在你的回合结束时，对相邻的随从施放自然祝福。",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": [
+          "test_batch_eot_sot.py"
+        ]
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_eot_sot.py",
+          "line": 327,
+          "end_line": 355,
+          "sha256": "a563c1ce311e3d99e3d492a749ffcf9364a881fd8ec4cd811b47ef275f6160f4"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG32_837_G",
+      "normal_id": "BG32_837",
+      "component": "W3_TRIGGERED",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": false,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG32_837",
+          "origin": "upstream",
+          "relation": "normal"
+        }
+      ],
+      "definition": {
+        "id": "BG32_837_G",
+        "dbf_id": 120906,
+        "name": "Fauna Whisperer",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "[x]At the end of your turn,\ncast Natural Blessing on\n__adjacent minions twice.",
+        "atk": 8,
+        "health": 18,
+        "card_race": 92,
+        "tech_level": 6,
+        "cost": 3,
+        "triple_base_id": 120905,
+        "evolution_card_id": 104472,
+        "is_pool_minion": false,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "动物低语者",
+        "text_zh": "在你的回合结束时，对相邻的随从施放自然祝福，触发两次。",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": [
+          "test_batch_eot_sot.py"
+        ]
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_eot_sot.py",
+          "line": 358,
+          "end_line": 372,
+          "sha256": "a563c1ce311e3d99e3d492a749ffcf9364a881fd8ec4cd811b47ef275f6160f4"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG34_925",
+      "normal_id": "BG34_925",
+      "component": "W3_TRIGGERED",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": true,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG34_925_G",
+          "origin": "formal",
+          "relation": "golden"
+        },
+        {
+          "id": "BG34_925_G",
+          "origin": "upstream",
+          "relation": "golden"
+        }
+      ],
+      "definition": {
+        "id": "BG34_925",
+        "dbf_id": 126916,
+        "name": "Seafloor Recruiter",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "<b>Rally:</b> Cast Chef's Choice on the minion to the right.",
+        "atk": 3,
+        "health": 5,
+        "card_race": 92,
+        "tech_level": 4,
+        "cost": 3,
+        "triple_upgrade_id": 126917,
+        "evolution_card_id": 105664,
+        "subset_naga": true,
+        "rally": true,
+        "is_pool_minion": true,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "海床招募者",
+        "text_zh": "<b>进击：</b>对本随从右边的随从施放主厨\n甄选。",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": [
+          "test_batch_rally2.py"
+        ]
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_rally2.py",
+          "line": 419,
+          "end_line": 463,
+          "sha256": "429e8fc28448f85be4f37b050078526bb1156faee4dfbc1e8220dda8283b04a4"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG34_925_G",
+      "normal_id": "BG34_925",
+      "component": "W3_TRIGGERED",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": false,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG34_925",
+          "origin": "upstream",
+          "relation": "normal"
+        }
+      ],
+      "definition": {
+        "id": "BG34_925_G",
+        "dbf_id": 126917,
+        "name": "Seafloor Recruiter",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "<b>Rally:</b> Cast Chef's Choice on the minion to the right twice.",
+        "atk": 6,
+        "health": 10,
+        "card_race": 92,
+        "tech_level": 4,
+        "cost": 3,
+        "triple_base_id": 126916,
+        "evolution_card_id": 105664,
+        "rally": true,
+        "is_pool_minion": false,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "海床招募者",
+        "text_zh": "<b>进击：</b>对本随从右边的随从施放主厨甄选，触发两次。",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": []
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_rally2.py",
+          "line": 466,
+          "end_line": 479,
+          "sha256": "429e8fc28448f85be4f37b050078526bb1156faee4dfbc1e8220dda8283b04a4"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG36_508",
+      "normal_id": "BG36_508",
+      "component": "W3_TRIGGERED",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": true,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG36_508_G",
+          "origin": "upstream",
+          "relation": "golden"
+        },
+        {
+          "id": "BG36_508_G",
+          "origin": "formal",
+          "relation": "golden"
+        }
+      ],
+      "definition": {
+        "id": "BG36_508",
+        "dbf_id": 132316,
+        "name": "Cagey Conjurer",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "[x]<b>Activate ({0}):</b> Cast {1}\nrandom Tavern spells\n__<i>(targets this if possible)</i>.",
+        "atk": 5,
+        "health": 3,
+        "card_race": 92,
+        "tech_level": 4,
+        "cost": 3,
+        "script_data_num_1": 1,
+        "script_data_num_2": 2,
+        "triple_upgrade_id": 132317,
+        "activate": true,
+        "activate_cost": 1,
+        "subset_naga": true,
+        "is_pool_minion": true,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "机警的咒术师",
+        "text_zh": "<b>发动（{0}）：</b>随机施放{1}个酒馆法术<i>（尽可能以本随从为目标）</i>。",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": [
+          "test_batch_activate.py",
+          "test_batch_unfreeze.py"
+        ]
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_unfreeze.py",
+          "line": 304,
+          "end_line": 359,
+          "sha256": "8329cc9cbcd924e8c56ba2521da405603db252844462f904a5f943ebb8589736"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    },
+    {
+      "id": "BG36_508_G",
+      "normal_id": "BG36_508",
+      "component": "W3_TRIGGERED",
+      "implementation_status": "IMPLEMENTED_SOURCE_AND_FOCUSED_COMBINED_CHECKS",
+      "eligibility": {
+        "formal_active_candidate": false,
+        "formal_public_pool": null,
+        "formal_factory_supported": true,
+        "raw_client_flags": {
+          "is_pool_minion": false,
+          "is_pool_spell": false,
+          "hero_draftable": false,
+          "duos_exclusive": false
+        },
+        "upstream_pool_tags": [],
+        "upstream_reachable": false,
+        "upstream_type_association": [],
+        "exact37_server_qualification": "UNKNOWN_NOT_INFERRED_FROM_FLAGS",
+        "qualification_action": "freeze a named source-backed roster; reject missing qualification, never silently union older pools"
+      },
+      "original_axes": [
+        "formal_executable"
+      ],
+      "dependencies": [
+        {
+          "id": "BG36_508",
+          "origin": "upstream",
+          "relation": "normal"
+        }
+      ],
+      "definition": {
+        "id": "BG36_508_G",
+        "dbf_id": 132317,
+        "name": "Cagey Conjurer",
+        "card_set": 1453,
+        "card_type": 4,
+        "text": "[x]<b>Activate ({0}):</b> Cast {1}\nrandom Tavern spells\n__<i>(targets this if possible)</i>.",
+        "atk": 10,
+        "health": 6,
+        "card_race": 92,
+        "tech_level": 4,
+        "cost": 3,
+        "script_data_num_1": 1,
+        "script_data_num_2": 4,
+        "triple_base_id": 132316,
+        "activate": true,
+        "activate_cost": 1,
+        "is_pool_minion": false,
+        "is_pool_spell": false,
+        "hero_draftable": false,
+        "duos_exclusive": false,
+        "name_zh": "机警的咒术师",
+        "text_zh": "<b>发动（{0}）：</b>随机施放{1}个酒馆法术<i>（尽可能以本随从为目标）</i>。",
+        "hero_power_dbf": 0,
+        "source_build": "37.0.0.255130",
+        "active_candidate": false,
+        "implementation_status": "ported",
+        "implementation_note": "ported equivalent effect; current patch interaction validation incomplete",
+        "upstream_test_references": [
+          "test_batch_activate.py",
+          "test_batch_unfreeze.py"
+        ]
+      },
+      "source_locations": {
+        "formal": {
+          "file": "vendor/hsrl2/scripts/batches/batch_unfreeze.py",
+          "line": 304,
+          "end_line": 359,
+          "sha256": "8329cc9cbcd924e8c56ba2521da405603db252844462f904a5f943ebb8589736"
+        },
+        "upstream": [],
+        "upstream_engine_mentions": []
+      },
+      "target_server_qualified": false
+    }
+  ],
+  "Tyrael_extra_existing_fee_repair": [
+    "BG36_356",
+    "BG36_356_G"
+  ],
+  "not_all_target37_remaining_defects": true
+}

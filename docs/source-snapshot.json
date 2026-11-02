@@ -1,0 +1,667 @@
+{
+  "date": "2026-11-03",
+  "scope": "Latest desktop and isolated live source; training has its own provenance. No private runtime data or weights.",
+  "files": [
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/atomic_io.py",
+      "source_sha256": "f33ab42422fb52ac67d4f8cf60b0484d9b3dfe0844760fe4737c08052d34cb6f",
+      "published_sha256": "c4c94778314da3a37967dedb6a93b985f41256e3b82ac1827076da7a50f03b8f"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/desktop.py",
+      "source_sha256": "b347091f70312a3eceb10a660860315dae5a17cd18f84d9b8a32e92f3a6943dd",
+      "published_sha256": "b347091f70312a3eceb10a660860315dae5a17cd18f84d9b8a32e92f3a6943dd"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/encoding.py",
+      "source_sha256": "6041cc6ffe517c29db8ab3a07a21724f23bd568f7182b5447d9380eec160a303",
+      "published_sha256": "aab181100e7cf518edd1a308b23dc6ace11d96028e53fee7bd2215fece8a79ad"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/engine.py",
+      "source_sha256": "5deb3304347481da9ddfece87a7ba3fc5edd1d08e3b8001a09c03300593df5d2",
+      "published_sha256": "ce7da96837c2c72d82bc4fc10cdac525f125df0770fd2066da106a0aaac6ffe9"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/legacy_model.py",
+      "source_sha256": "a418fa7cb8f5ea5a356612a7488db61a9ce95cf14488b84363f3ff7be9254a03",
+      "published_sha256": "c9561cae0c820643ec88565c026413781e7b7e6ca4ec1b52d2ceddfe97520954"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/lifecycle.py",
+      "source_sha256": "f11f936384ffba3eb042be90a73d16f1751c8816c8c6a34868b1df06e1fbddde",
+      "published_sha256": "b10755ba7743f5fc8179be8c3e3b42f65a804011c3b9bc383db2a6547aacbfa8"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/live.py",
+      "source_sha256": "d05f8fd5c5eb996a90a22d5c0897d807f15b8b6a10827a135d25b4f2d66ef18b",
+      "published_sha256": "6e1c7087a90284e5dae039be0f745f153081539c176a117c27553d81011f8e0b"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/live_adapter.py",
+      "source_sha256": "280bb85b0826b1dd588f74d00e2cd6c874a27b71ad91d7e90c8d5d0d9839039e",
+      "published_sha256": "280bb85b0826b1dd588f74d00e2cd6c874a27b71ad91d7e90c8d5d0d9839039e"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/live_adaptive.py",
+      "source_sha256": "befda06a3942c700e65ebe2ffbdcf71ae5f65303d51368d2761e1ce3d85f7ca2",
+      "published_sha256": "a9ca55291925d2625d5731db91f394cb2e7bdb4e6b36fc15b4259b27e103cf1f"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/live_calibration.py",
+      "source_sha256": "851b1f13d2cc4bb996c61820f2e6876586ee0186428634ebfc1b677650e1c47a",
+      "published_sha256": "ec3f69fd34c7e8e53c38b36e2ccefb8217951c7aa03faa2216182ee164144df5"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/live_client_races.py",
+      "source_sha256": "2bd9600d976e9ded0626cec0eadb6ceb1f7eb3c6f65dd667d960239cd6384279",
+      "published_sha256": "73c3129807a1ad8e371a06f3faefdfebfa91f42a8e9060763d0f1dc5ccc2bf22"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/live_controller.py",
+      "source_sha256": "668e67b5465d0aae936ed7c1d623b553f3d6cbb771fc187fe19c1c123be8f646",
+      "published_sha256": "ae216452ecedc1c08f0e2650dbbccb31b8290f665745fa1090968868e097ef8d"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/live_data.py",
+      "source_sha256": "3957637364c31eaa2fd5c50d02a4f04b732c1d88e37b360b6d648112abe3b580",
+      "published_sha256": "76ee6663453fbdadf1b35fc147c590bc90994c9f6ed2bd10a830e54568c05c0f"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/live_encoding.py",
+      "source_sha256": "3d3f8cbe6617715fedf9029fcc2982de0f54b57aa83baa4a4c7f934401a16af5",
+      "published_sha256": "39b741a5b78ca6312fdb0ee048666a8368994a5a229971ec9a70f2895ef9faad"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/live_legacy_layout.py",
+      "source_sha256": "975d46316856c92ec29e9196910c7c077c100a30e25a46c947974e534b3b0f3a",
+      "published_sha256": "887f47283060a4c8485ba6e91d07e13dd46390936ba0c4df6ba83e367a77dc49"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/live_legacy_menu.py",
+      "source_sha256": "ce1913ed944dce2d7b385641946138fdb90480fe6a028df5fb33829bab681da4",
+      "published_sha256": "f44bc6e919ddca864ddaa1cd832a2d4a65352f77713c633a47515497034cefc9"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/live_legacy_visual.py",
+      "source_sha256": "6c13b6c9338603fb031a85c90d0396f67bb8130d4732ae60326c4c16ede04c01",
+      "published_sha256": "f8e80b12e23cc38a4de52eb7c57a999773b0842231ea92081e4c6a2e327cd8ec"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/live_log_layout.py",
+      "source_sha256": "c1a05546578a641dc132b988f4e32c902e4fa98657b4e5fa1ca3d0c9070d2375",
+      "published_sha256": "a10168f742dbbb53ca268e66f8dfa6050def1f432028ba71310e629c6b9e3a16"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/live_menus.py",
+      "source_sha256": "08660be12cb79ad24fa5fd51c930274600fbecd56863de67343aa38c4da838f5",
+      "published_sha256": "d9608cfaa113abc980572142b1632bc9e76cd6c057d9e4c5f8e5b6ae9720d4dc"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/live_native.py",
+      "source_sha256": "69b0a937a0066c07a834f8082303b0c9cd6bbe83738537a3d6c907be3008015f",
+      "published_sha256": "69b0a937a0066c07a834f8082303b0c9cd6bbe83738537a3d6c907be3008015f"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/live_parser.py",
+      "source_sha256": "8875f81525cb973ab2b7aee418dcbee3c96fada99967e1ad58f5fa31a43f3e3d",
+      "published_sha256": "f3ed86ac7fafa4b6ed6b4d54ec345a49a3b380b7ebf063d4600be093798f7bb7"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/live_producer.py",
+      "source_sha256": "beb5604daf78ce19b5ec051054af98d66864c1b3e08cd7a889f93f5b002a2786",
+      "published_sha256": "8cf834ac483e2ecebfe9b54de22f96d058ab21c3bd08b0cdd8917cc82f7dddaf"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/live_public_vision.py",
+      "source_sha256": "3a296583186c655574fb40464c94f5108fe65f7bbd18a75e38bf766f2ef25a91",
+      "published_sha256": "8e502e157576e9ca382aec3ed85101122d0f31ad1ef9d1a8b4a5a95b7c4f5c58"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/live_queue.py",
+      "source_sha256": "ddde0b40dba0ff0b85deb93aec130e8aba200672a93a4a0e3e3bc3e3d12a134d",
+      "published_sha256": "38b9890c1854f2aaa9c9e39ac267a8c1926d3cd8f032469297d14bdc25c3344a"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/live_quick_setup.py",
+      "source_sha256": "282f93293c44eb21c9cbcd0160ccd988afd27e34a82be886fe98c3936c5f0490",
+      "published_sha256": "d7d86a4eb9d74f0b6b5cebd9b02112ff21fe919a6058ef44dbf99b638e4a870f"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/live_scene.py",
+      "source_sha256": "b5f4637edc895ed58a7b5b7d5ccc6d5c0cdd0076612fde1a2026e00460db8973",
+      "published_sha256": "4690102839aec560a8b4a155ef10a43b1c09a8be65b36ae514643ed197987e0f"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/live_setup.py",
+      "source_sha256": "b688c7a189843cecea3a7a68a25f43c2c2b8d729c53036e0004b568eedacf08b",
+      "published_sha256": "36e81f3ffd389b6794906c1fb5aac629ddc9dac6969cc49e0a42e2126dc55283"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/live_vision_bridge.py",
+      "source_sha256": "ef1b5df5dd21cc3172d2ec9e7613396fa9d99eb4431be2c63b1f04a3e0693914",
+      "published_sha256": "ef1b5df5dd21cc3172d2ec9e7613396fa9d99eb4431be2c63b1f04a3e0693914"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/migration.py",
+      "source_sha256": "565c2cb6c8317f670a5125c34e36cfd4004cc2990678fe0861595bdb1ecb005e",
+      "published_sha256": "b7d379394fd78427f6a24ffdc4e2f77c25703784272121288c6ea94f44727af1"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/model.py",
+      "source_sha256": "7a2b06120dddb2ef2a83092ef0e91883ed0d033faf2bd69897656cac0a687e03",
+      "published_sha256": "7a2b06120dddb2ef2a83092ef0e91883ed0d033faf2bd69897656cac0a687e03"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/opponents.py",
+      "source_sha256": "8622bd565dc255e7b4bbf17255f76fbc41eeb751f03dd25969d3508625eadf1c",
+      "published_sha256": "8622bd565dc255e7b4bbf17255f76fbc41eeb751f03dd25969d3508625eadf1c"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/policy_health.py",
+      "source_sha256": "25cba32e9cf1898ee63244467c48676d8ebc76ac7a9539d9d69668075f7ae396",
+      "published_sha256": "8c2cdc2efb1a43211e090bce70dd3d7b80584c266fc4190aa562a2487f11f694"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/policy_migration.py",
+      "source_sha256": "699c4eecf6c90195786bc39c2e0ebd52e0aaac4ca9f6b22ddd27e6c228b7831c",
+      "published_sha256": "ac4602bf158a4532dfea5153db77ea3abe0b6b55a1218b0087afa32d89759f08"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/policy_recovery.py",
+      "source_sha256": "cba04aaef26a7aad501d3c979a3d9659b508db8ac38610f3e09361684ab5392d",
+      "published_sha256": "565e7614bb797fbd26fb5910c8d4b6a6187c5e990c4973df3f591c206b08c83e"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/sampling_recovery.py",
+      "source_sha256": "664fd2d16f42ae7ab9150bd27bcb46322c7b43d08b44c1fa010f9fb24a2a6a5a",
+      "published_sha256": "fb6f3336b6de3c2a53e3747a807b11c0f81b7ba7174c06696b3d19f2ccfe8718"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/service.py",
+      "source_sha256": "77fba4fb924f145b54255a25150102c2a0fa25aa73175f5eff8868f3355cd4f0",
+      "published_sha256": "77fba4fb924f145b54255a25150102c2a0fa25aa73175f5eff8868f3355cd4f0"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/simulation.py",
+      "source_sha256": "445d286071ca592b33c0e3e9cedbb3a5e0e5e892ef9256112532b36b8f460ab4",
+      "published_sha256": "1ecf84e42bd2591104ae96880c5678e286821a637bb3543aeb1bde28554c1914"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/simulation_board.py",
+      "source_sha256": "f9a663bff70f1c05610d5a0d5f224c2aa65433f0cd53df489e3a9c9f5d923bb7",
+      "published_sha256": "d412cd16a658e1d93baa5f1d73814901bca4ec59d980123d577269482b8bfaa0"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/simulation_desktop.py",
+      "source_sha256": "07396db85c15471ee9ed09f7ab975e8f959339033e8cfd1d9d80a1cf7a41b998",
+      "published_sha256": "5fe5fec772f215374d8aef3139c532c3b37a3ce10f65e7ddd3132b7e839f03d7"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/simulation_policy.py",
+      "source_sha256": "7432d5464d6342f862c21408adc5576c163416b086ebf0f22cbf6c0f69321849",
+      "published_sha256": "34faa0c6fc36c480edc365a78b6dc5f951bae058feb255c0d1dd1e2e6f41e462"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/training.py",
+      "source_sha256": "63f3ec71ef8b07993faa135773c12f70d1a6d41aeef89c17a5d44fb2c8ef9514",
+      "published_sha256": "63f3ec71ef8b07993faa135773c12f70d1a6d41aeef89c17a5d44fb2c8ef9514"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/training_desktop.py",
+      "source_sha256": "1baae2a0ee14805c50c4c83c60294c5f5548dcbd5d8ffceba2307e8a78e3fe3c",
+      "published_sha256": "f6a413add918ad53da07eb2b49cf36a688237a4cb38e98a8d8becf6adce7a01c"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/training_recovery.py",
+      "source_sha256": "cf9f413486b48d3ae81a04770d465ed5e625f9cd11df6c81f0d63c81c6b2380b",
+      "published_sha256": "cf9f413486b48d3ae81a04770d465ed5e625f9cd11df6c81f0d63c81c6b2380b"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/windows_ocr.ps1",
+      "source_sha256": "9819e429352f8db54bb39b7c449b9127b0fa7dbbb675da42b37e598edad20f1e",
+      "published_sha256": "09fd05e45742e628a6631881414c0892803dd2fb0d5eba02af9f9df417008384"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/__init__.py",
+      "source_sha256": "002f693a698e6bab371290990097c1fb77d14a93665e0bbcda81ce9787d1c895",
+      "published_sha256": "bd2bf65901fba42ed2f9dcb1ffc0f6e3ea1aeb6af18d37c0bc8fe30d11535f47"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/tests/test_lifecycle.py",
+      "source_sha256": "4f5eb8e7b47df38dd41a2b5b1eb811e0383beef8cae06011e24bc7f482158e3a",
+      "published_sha256": "b94dcbe3b9e773171c7609e51916eb862e8bbe72abc5c1b0e9be1dd15539b3a0"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/tests/desktop/desktop_fixture_worker.py",
+      "source_sha256": "662417d4a0c1801650364a87e0e2a1e729a9a9983defa6312218fcaaee9d9c73",
+      "published_sha256": "3ad0962b45a9f842b50f475a2b4b47e34c2c0abf780b3c0127598bb09d805d51"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/tests/desktop/smoke_live_ui.py",
+      "source_sha256": "72c412a7bd6b3f026ea0635f742fc74e6d89f887a09480bd9a9c5278a12bbe85",
+      "published_sha256": "5721b3df5de019734971267d5a290dfb72e9b1017e49fd3c2c3537d0cc4f6a0e"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/tests/desktop/smoke_ui.py",
+      "source_sha256": "3ce73d98d71d2a19ec64eaab2b30b62ce785ffaf81ed6607449b5c5fefe97f01",
+      "published_sha256": "731173cd447a813c00bb0ace1ae897795295caf9f278b5204b8ceed955e68d86"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/tests/desktop/test_service.py",
+      "source_sha256": "3b892033ad71249e1a714ea2ed2287dd7663f410795e1f7af5c2b73a91e3badf",
+      "published_sha256": "059d4a9ff9ce92f049f0f5f3845dbbfff405f124ff8da71a65b15cf57f7a4fe4"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/tests/live/test_live.py",
+      "source_sha256": "3f64c8850d900ef702d2d8bfcd1081fc81dfa7d5cd20290cf3850e3be35cb6f9",
+      "published_sha256": "6813b13e1b37632f4b904aee33c2d92474de44e77931685b6070db8e18ac003a",
+      "publication_change": "Update stale fixtures: explicit unknown leaves and separate single-game/auto-queue expected outcomes; no production change"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/tests/training/test_core.py",
+      "source_sha256": "42de5859a0e59eec2b9f5753d43e8a0720a455223b821c097075827778e6a5c4",
+      "published_sha256": "5723e0bf3dda2cbdcfa74e0b35f7f6b1475e841f72c811762e0d8a0119e669de"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/tests/training/test_migration.py",
+      "source_sha256": "0c6d7015f5be93d2515b8823dc89d480c9ae51f72e16e32f72bc484edc122fa2",
+      "published_sha256": "f20e0e6245d2fefb62c00232aafeff1870f33de6511f7a459df762edc5b286dc"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/tests/training/test_opponents.py",
+      "source_sha256": "d8ce7eb25ee4de90cd1eac81b20aef2618dac617c13b7ec47d4f80a9abddeb92",
+      "published_sha256": "75f97ebc44bdffd663c244afd2990ee8d1b952a382216b341d07ef2d55121894"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/public_races/ATTRIBUTION.txt",
+      "source_sha256": "bb96c722a82ef1cc4b00ad3614734b74ef55356c554c92a44558ff4ba1214913",
+      "published_sha256": "2974a33761bfb07d5117ec1d790013e5cf55b3220f9c75e6d1271cd09ab6bfe6"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/public_races/audit_mono_disk.py",
+      "source_sha256": "a1bea05ea5978799cd84575712c51ae9fea3a1b3c2039c6820ccd8caeac5bccc",
+      "published_sha256": "f47ab618a1aa7876d77169fb566e21e1b6fc1060fd21551d446b8c88a541a563"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/public_races/build.ps1",
+      "source_sha256": "52a4a8d5d63c734398c12b8d12d1bc7e4902342708ae39f52a844a9529e35ddd",
+      "published_sha256": "3d339d454149e74cadd4509468b87f3dca6f88de2fd67cd5f3f90c288cc47037"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/public_races/LICENSE",
+      "source_sha256": "84853e30d4f9cccaaed700f563c7f7e2261d9d109fbacd5735a0d741802937f0",
+      "published_sha256": "66a7b449b27773499433e0b6c9d49427efe9adcc19343362d5a68e0bd3a97e15"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/public_races/Offsets.cs",
+      "source_sha256": "62b2da4f4922e7ce31b0fd064ea0c7495db9f38df6a4dd5bd8d4554383c7aefc",
+      "published_sha256": "86a58eac8c81dd32568afe5b41364f6fb63239c14882309396812ed1ba64f488"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/public_races/PublicRaces.cs",
+      "source_sha256": "0969afe36f231f441edae3231851e8b7d63607d2a655e0197e91798f7b737903",
+      "published_sha256": "f4818a58ccbaeb0ebb816ae4ef3c9e2ea51093a18912f7d5dd1857a790a4c823"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/public_races/README.txt",
+      "source_sha256": "ff6575d31feb0f3645a939321391b737cee296df1e10f11d91167f3f22b4ee6e",
+      "published_sha256": "f2a63d0022d05ac98a11d4b5c34b784e1d0bef35390416dc149ec9d8de069410"
+    },
+    {
+      "component": "desktop",
+      "file": "desktop/app/bgagent10/public_races/SelfTests.cs",
+      "source_sha256": "cf23c9f7bdc16313b28d0141f62811045999b9eca17722558f9eb6afa6b529f4",
+      "published_sha256": "28a3cdc7a2528f6135c3d1edc6af74b0a30477145af6861523f0a35880f90e70"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/desktop.py",
+      "source_sha256": "5f37dc7a37597aacdb67c8bdbe68e75e87a232a3b29cf8d6ae07521186f85d7c",
+      "published_sha256": "7da309f1335079c8c648cdf53d0de86f1a02a7f7205d00ff2b3a87a94338edf9"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/encoding.py",
+      "source_sha256": "6041cc6ffe517c29db8ab3a07a21724f23bd568f7182b5447d9380eec160a303",
+      "published_sha256": "aab181100e7cf518edd1a308b23dc6ace11d96028e53fee7bd2215fece8a79ad"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/engine.py",
+      "source_sha256": "5deb3304347481da9ddfece87a7ba3fc5edd1d08e3b8001a09c03300593df5d2",
+      "published_sha256": "ce7da96837c2c72d82bc4fc10cdac525f125df0770fd2066da106a0aaac6ffe9"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/legacy_model.py",
+      "source_sha256": "a418fa7cb8f5ea5a356612a7488db61a9ce95cf14488b84363f3ff7be9254a03",
+      "published_sha256": "c9561cae0c820643ec88565c026413781e7b7e6ca4ec1b52d2ceddfe97520954"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/lifecycle.py",
+      "source_sha256": "f11f936384ffba3eb042be90a73d16f1751c8816c8c6a34868b1df06e1fbddde",
+      "published_sha256": "b10755ba7743f5fc8179be8c3e3b42f65a804011c3b9bc383db2a6547aacbfa8"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live.py",
+      "source_sha256": "22f97e47f77c56a9e6de4f3a6d9fc6bcf187896c7e80c946a78b229d440a9916",
+      "published_sha256": "22f97e47f77c56a9e6de4f3a6d9fc6bcf187896c7e80c946a78b229d440a9916"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_adapter.py",
+      "source_sha256": "48fce0fdfc039f05b298cdb632cc1d37807cabe6d3e703fa34c82e7579ea1887",
+      "published_sha256": "48fce0fdfc039f05b298cdb632cc1d37807cabe6d3e703fa34c82e7579ea1887"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_adaptive.py",
+      "source_sha256": "befda06a3942c700e65ebe2ffbdcf71ae5f65303d51368d2761e1ce3d85f7ca2",
+      "published_sha256": "a9ca55291925d2625d5731db91f394cb2e7bdb4e6b36fc15b4259b27e103cf1f"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_calibration.py",
+      "source_sha256": "851b1f13d2cc4bb996c61820f2e6876586ee0186428634ebfc1b677650e1c47a",
+      "published_sha256": "ec3f69fd34c7e8e53c38b36e2ccefb8217951c7aa03faa2216182ee164144df5"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_client_races.py",
+      "source_sha256": "2bd9600d976e9ded0626cec0eadb6ceb1f7eb3c6f65dd667d960239cd6384279",
+      "published_sha256": "73c3129807a1ad8e371a06f3faefdfebfa91f42a8e9060763d0f1dc5ccc2bf22"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_controller.py",
+      "source_sha256": "a198a46aa6706d0ace208ed442db32ac33194ac76e28eb3463f400c768fe7bfa",
+      "published_sha256": "a198a46aa6706d0ace208ed442db32ac33194ac76e28eb3463f400c768fe7bfa"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_data.py",
+      "source_sha256": "3957637364c31eaa2fd5c50d02a4f04b732c1d88e37b360b6d648112abe3b580",
+      "published_sha256": "76ee6663453fbdadf1b35fc147c590bc90994c9f6ed2bd10a830e54568c05c0f"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_desktop.py",
+      "source_sha256": "968cb79630ffabea905f1a856e52048a9a0a0eda6ff0f2c8df8ea1d5d48be609",
+      "published_sha256": "968cb79630ffabea905f1a856e52048a9a0a0eda6ff0f2c8df8ea1d5d48be609"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_encoding.py",
+      "source_sha256": "3d3f8cbe6617715fedf9029fcc2982de0f54b57aa83baa4a4c7f934401a16af5",
+      "published_sha256": "39b741a5b78ca6312fdb0ee048666a8368994a5a229971ec9a70f2895ef9faad"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_legacy_gold.py",
+      "source_sha256": "d1261a0bd80ff03b02d3df6fa9d6124ca9ff929b72c81f2c2069c244741f4304",
+      "published_sha256": "d1261a0bd80ff03b02d3df6fa9d6124ca9ff929b72c81f2c2069c244741f4304"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_legacy_layout.py",
+      "source_sha256": "975d46316856c92ec29e9196910c7c077c100a30e25a46c947974e534b3b0f3a",
+      "published_sha256": "887f47283060a4c8485ba6e91d07e13dd46390936ba0c4df6ba83e367a77dc49"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_legacy_menu.py",
+      "source_sha256": "ce1913ed944dce2d7b385641946138fdb90480fe6a028df5fb33829bab681da4",
+      "published_sha256": "f44bc6e919ddca864ddaa1cd832a2d4a65352f77713c633a47515497034cefc9"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_legacy_visual.py",
+      "source_sha256": "abeca7f8d82a83fba77c3934f63375f8144f5689401cd4429073fa32f34d3b1a",
+      "published_sha256": "abeca7f8d82a83fba77c3934f63375f8144f5689401cd4429073fa32f34d3b1a"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_log_layout.py",
+      "source_sha256": "c1a05546578a641dc132b988f4e32c902e4fa98657b4e5fa1ca3d0c9070d2375",
+      "published_sha256": "a10168f742dbbb53ca268e66f8dfa6050def1f432028ba71310e629c6b9e3a16"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_menus.py",
+      "source_sha256": "dd5bd4052871c50297eaabea78d268553a87f0660f85902cb98c4be60c999a29",
+      "published_sha256": "2e825aae53de37226b2eec93a685848301bb7046ec90a1bce154d53a76c91ff8"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_model_info.py",
+      "source_sha256": "972b84bf17ab16ac01ca2622bf2613ffa7a5e96050b3d066d1c65a2f10b41dac",
+      "published_sha256": "972b84bf17ab16ac01ca2622bf2613ffa7a5e96050b3d066d1c65a2f10b41dac"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_model_rules.py",
+      "source_sha256": "33cc10eb29d86e0cdd89aef228f9c9f8966363baa70aeba3a1d1d0d7d04d6918",
+      "published_sha256": "33cc10eb29d86e0cdd89aef228f9c9f8966363baa70aeba3a1d1d0d7d04d6918"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_native.py",
+      "source_sha256": "8577cf4c9f80d385ec29ea4e6c492b5c8984dd2e50a6212cc5d967bec4e5739b",
+      "published_sha256": "8577cf4c9f80d385ec29ea4e6c492b5c8984dd2e50a6212cc5d967bec4e5739b"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_parser.py",
+      "source_sha256": "7c91838b576bc3fd4c7c0bb34d4215d4bcc77fe9edf8a12f4966683ba7c10aca",
+      "published_sha256": "d0cf61dff0b34de78249cd89ba73bbfec50c601af0d6c6c6adf65fb8ac2252a3"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_producer.py",
+      "source_sha256": "dcebe7afea0acfbecd9965b461ef50c22429356f94fbbfc29ecf69b08db66c9d",
+      "published_sha256": "66a797da02906ce936b96fe13c1659d94b0432d33517e9b33f811c54a0705fa5"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_public_vision.py",
+      "source_sha256": "3a296583186c655574fb40464c94f5108fe65f7bbd18a75e38bf766f2ef25a91",
+      "published_sha256": "8e502e157576e9ca382aec3ed85101122d0f31ad1ef9d1a8b4a5a95b7c4f5c58"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_queue.py",
+      "source_sha256": "ddde0b40dba0ff0b85deb93aec130e8aba200672a93a4a0e3e3bc3e3d12a134d",
+      "published_sha256": "38b9890c1854f2aaa9c9e39ac267a8c1926d3cd8f032469297d14bdc25c3344a"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_quick_setup.py",
+      "source_sha256": "282f93293c44eb21c9cbcd0160ccd988afd27e34a82be886fe98c3936c5f0490",
+      "published_sha256": "d7d86a4eb9d74f0b6b5cebd9b02112ff21fe919a6058ef44dbf99b638e4a870f"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_scene.py",
+      "source_sha256": "b5f4637edc895ed58a7b5b7d5ccc6d5c0cdd0076612fde1a2026e00460db8973",
+      "published_sha256": "4690102839aec560a8b4a155ef10a43b1c09a8be65b36ae514643ed197987e0f"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_setup.py",
+      "source_sha256": "d23e4cbf35e34c02246fb38bfe1250aa3b5033e3802f58e1a91956a1b6bbf7aa",
+      "published_sha256": "d23e4cbf35e34c02246fb38bfe1250aa3b5033e3802f58e1a91956a1b6bbf7aa"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_vision_bridge.py",
+      "source_sha256": "ef1b5df5dd21cc3172d2ec9e7613396fa9d99eb4431be2c63b1f04a3e0693914",
+      "published_sha256": "ef1b5df5dd21cc3172d2ec9e7613396fa9d99eb4431be2c63b1f04a3e0693914"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/live_workspace.py",
+      "source_sha256": "ded922f51e6283a9023b8e29785ecc50cba4963bdf7594597d0141f842c64310",
+      "published_sha256": "cd96a737ced3cdfb032424ab84c68963201706ad19007e111a4753492f063448"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/migration.py",
+      "source_sha256": "565c2cb6c8317f670a5125c34e36cfd4004cc2990678fe0861595bdb1ecb005e",
+      "published_sha256": "b7d379394fd78427f6a24ffdc4e2f77c25703784272121288c6ea94f44727af1"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/model.py",
+      "source_sha256": "7a2b06120dddb2ef2a83092ef0e91883ed0d033faf2bd69897656cac0a687e03",
+      "published_sha256": "7a2b06120dddb2ef2a83092ef0e91883ed0d033faf2bd69897656cac0a687e03"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/opponents.py",
+      "source_sha256": "eb237f46e633270d8694b5db2ba3684ee23e0345f39e6507b8773b6398b39f3a",
+      "published_sha256": "8c1aee7ec288d4a90d833b0e8a64fee61452cf48da4b26906d71dcc5ab2c58b8"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/service.py",
+      "source_sha256": "39d3d8c41d217813bb5026d95c5cf492a9e76f480425e78e30874a99d8825cd2",
+      "published_sha256": "006418ad0a474570ffa6be9b43b6eefc7a07d83a98055e5c312065b1ffc7dd8f"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/training.py",
+      "source_sha256": "fd715db9035c4d9c3d909daecd7c70081628920071b5e2c399874776f8ac79a2",
+      "published_sha256": "670534b00b14cc33d7edea2152e30ec2c3a0dbf6dfbd733c3a16290f47f3cab3"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/training_desktop.py",
+      "source_sha256": "f137e972f9e2cf9c5316928a9998a468ce935423bec995c2a4feb8f5ad98156a",
+      "published_sha256": "13332f14c7202bfdfa0596232a0dde4a55a49004ef415bc0f2f2e46247dc1a16"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/windows_ocr.ps1",
+      "source_sha256": "9819e429352f8db54bb39b7c449b9127b0fa7dbbb675da42b37e598edad20f1e",
+      "published_sha256": "09fd05e45742e628a6631881414c0892803dd2fb0d5eba02af9f9df417008384"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/__init__.py",
+      "source_sha256": "002f693a698e6bab371290990097c1fb77d14a93665e0bbcda81ce9787d1c895",
+      "published_sha256": "bd2bf65901fba42ed2f9dcb1ffc0f6e3ea1aeb6af18d37c0bc8fe30d11535f47"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/public_races/ATTRIBUTION.txt",
+      "source_sha256": "bb96c722a82ef1cc4b00ad3614734b74ef55356c554c92a44558ff4ba1214913",
+      "published_sha256": "2974a33761bfb07d5117ec1d790013e5cf55b3220f9c75e6d1271cd09ab6bfe6"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/public_races/audit_mono_disk.py",
+      "source_sha256": "a1bea05ea5978799cd84575712c51ae9fea3a1b3c2039c6820ccd8caeac5bccc",
+      "published_sha256": "f47ab618a1aa7876d77169fb566e21e1b6fc1060fd21551d446b8c88a541a563"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/public_races/build.ps1",
+      "source_sha256": "52a4a8d5d63c734398c12b8d12d1bc7e4902342708ae39f52a844a9529e35ddd",
+      "published_sha256": "3d339d454149e74cadd4509468b87f3dca6f88de2fd67cd5f3f90c288cc47037"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/public_races/LICENSE",
+      "source_sha256": "84853e30d4f9cccaaed700f563c7f7e2261d9d109fbacd5735a0d741802937f0",
+      "published_sha256": "66a7b449b27773499433e0b6c9d49427efe9adcc19343362d5a68e0bd3a97e15"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/public_races/Offsets.cs",
+      "source_sha256": "62b2da4f4922e7ce31b0fd064ea0c7495db9f38df6a4dd5bd8d4554383c7aefc",
+      "published_sha256": "86a58eac8c81dd32568afe5b41364f6fb63239c14882309396812ed1ba64f488"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/public_races/PublicRaces.cs",
+      "source_sha256": "0969afe36f231f441edae3231851e8b7d63607d2a655e0197e91798f7b737903",
+      "published_sha256": "f4818a58ccbaeb0ebb816ae4ef3c9e2ea51093a18912f7d5dd1857a790a4c823"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/public_races/README.txt",
+      "source_sha256": "ff6575d31feb0f3645a939321391b737cee296df1e10f11d91167f3f22b4ee6e",
+      "published_sha256": "f2a63d0022d05ac98a11d4b5c34b784e1d0bef35390416dc149ec9d8de069410"
+    },
+    {
+      "component": "live",
+      "file": "live/app/bgagent10/public_races/SelfTests.cs",
+      "source_sha256": "cf23c9f7bdc16313b28d0141f62811045999b9eca17722558f9eb6afa6b529f4",
+      "published_sha256": "28a3cdc7a2528f6135c3d1edc6af74b0a30477145af6861523f0a35880f90e70"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+Mono traversal concepts and Offsets.cs adapted from:
+https://github.com/BattlegroundsHelp/bgtracker
+MIT License, Copyright (c) 2026 the bgtracker contributors. Full license in LICENSE.
+
+Upstream files completely read before implementation:
+Mono.cs SHA256 7a09c6af6b31a08c33b399ce2200fdd9bf5bb59af513804ff608cbf05f83f3ff
+Offsets.cs original SHA256 1cb8d7dd29d8cf72050fb995a3e4f099b521c99b031f74be1e2b9b15c4e66669
+LICENSE SHA256 84853e30d4f9cccaaed700f563c7f7e2261d9d109fbacd5735a0d741802937f0
+
+No upstream Program.cs / HsBattlegrounds card reader is included or invoked.
+PublicRaces.cs is a narrowed implementation, not an unchanged upstream copy:
+- Only required class/field traversal, no card/entity-map dumps or private values.
+- Fixed original PE export search: iterate NumberOfNames, resolve ordinal -> function.
+- Exact x64 root-domain MOV RIP-relative + RET signature, bounds and read budgets.
+- Bounded domain/class/base chains and field/array/list counts; reject cycles/nulls.
+- Scope of process access is PROCESS_VM_READ | PROCESS_QUERY_INFORMATION (0x410).
+- No WriteProcessMemory, injection, thread creation, function invocation, or UI input.
+- Dispose through using on every post-attach failure path.
+- V2 corrects original instance_size144 to28 using installed Mono export machine code,
+  separately checks array element_size144, and pins the exact Mono DLL SHA.
+- Other inherited Unity Mono offsets retain version-risk and need user real-client acceptance.
+
+Installed public metadata pin used offline:
+D:/Hearthstone/Hearthstone_Data/Managed/Assembly-CSharp.dll
+SHA256 2408c5eae3d5ab083b8b290a7278147159e79a3c6e72e1d922ef44028ed16afb
+GameState.s_instance; m_gameEntity; m_createGamePhase; m_gameOver;
+GameState.m_availableRacesInBattlegroundsExcludingAmalgam : List<TAG_RACE>;
+GameEntity public Uuid property backing field <Uuid>k__BackingField : String.
+TAG_RACE: UNDEAD11/MURLOC14/DEMON15/MECHANICAL17/ELEMENTAL18/BEAST20/
+PIRATE23/DRAGON24/QUILBOAR43/NAGA92/ABERRATION126.
+INVALID0, ALL26, unknown IDs, duplicates, null/empty/oversized lists are rejected.
+Metadata read with ReflectionOnlyLoadFrom only, not executed and no client process attached.
+
+Exact public connection binding added after offline IL audit:
+Network.GotoGameServer(GameServerInfo,bool) first stores m_state.LastGameServerInfo;
+its logged game/client values come from that GameServerInfo's GameHandle/ClientHandle.
+Network is found only by exact service-class identity in
+ServiceManager.s_runtimeServices.m_services (or dynamic locator when runtime is null).
+The dictionary walk reads only service wrapper pointers and object class headers;
+it does not inspect service business data. Network.m_state is a VALUE TYPE:
+Mono struct field offsets include the 16-byte object header, subtracted for embedding.
+Read only LastGameServerInfo.<GameHandle>/<ClientHandle> backing fields, not
+SpectatorPassword, credentials, address strings, cards, entity maps or seed.
+Before/after handle+instance consistency is mandatory. CreateGamePhase must be
+CREATED=2 (actual pinned public enum INVALID=0, CREATING=1, CREATED=2).
+Network handles must then exactly match the current log connection in the Python bridge;
+the helper alone does not open logs, and pointers/Uuid alone do not prove log binding.

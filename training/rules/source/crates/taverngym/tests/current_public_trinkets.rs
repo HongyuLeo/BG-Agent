@@ -1,0 +1,32 @@
+//! Controlled contract cases from frozen F37 values/lifecycle, not a natural-offer proof.
+use taverngym::{Game,RulesConfig};
+use taverngym::cards::{cid,db};
+use taverngym::engine::Ctx;
+use taverngym::event::{Event,ev};
+use taverngym::script::{script,Me};
+use taverngym::state::Minion;
+use taverngym::types::Races;
+const L:&str="BG30_MagicItem_422";const D:&str="BG30_MagicItem_900t";
+fn game()->Game {Game::new(541,RulesConfig{num_players:2,..RulesConfig::default()})}
+fn body(eid:u32,r:Races)->Minion {let mut m=Minion::new(eid,cid("BG21_015"));m.races=r;m.set_stats(10,10);m}
+fn ctx(g:&mut Game)->Ctx<'_> {Ctx::new(g,[vec![body(101,Races::DRAGON),body(102,Races::ELEMENTAL)],vec![body(201,Races::DRAGON)]],[Some(0),Some(1)],false)}
+fn stats(c:&Ctx,e:u32)->(i32,i32){let m=c.find_any(e).unwrap();(m.atk,m.max_hp)}
+fn cast(side:usize,target:u32,card:&str)->Event {Event::SpellCast{side,target,card:cid(card),tavern:db().get(cid(card)).kind==taverngym::cards::CardKind::TavernSpell,data:0,opt:0}}
+fn play(side:usize,card:&str)->Event {Event::CardPlayed{side,card:cid(card),eid:102}}
+fn owned_me(card:&str)->Me {Me{side:0,eid:0,card:cid(card),golden:false,opt:0,pos:0,data:0}}
+#[test]fn actual_hooks_required_not_empty_registration(){for (id,bit) in [(L,ev::SPELL_CAST),(D,ev::CARD_PLAYED)] {let s=script(cid(id)).expect("missing exact target37 effect script");assert!(s.on_event.is_some());assert_eq!(s.listens&bit,bit);}}
+#[test]fn lorewalker_real_spell_kinds_and_frozen_four_four(){
+ for card in ["BG_TB_006","BG23_000t"] {let mut g=game();g.players[0].trinkets.push(cid(L));let mut c=ctx(&mut g);c.emit(cast(0,101,card));assert_eq!(stats(&c,101),(14,14));assert_eq!(stats(&c,102),(10,10));assert_eq!(stats(&c,201),(10,10));}
+}
+#[test]fn lorewalker_foreign_actor_nonspell_and_no_target_do_not_trigger(){let mut g=game();g.players[0].trinkets.push(cid(L));let mut c=ctx(&mut g);for e in [cast(1,101,"BG_TB_006"),cast(0,101,"TB_BaconShop_HP_087"),cast(0,0,"BG_TB_006"),cast(0,99999,"BG_TB_006")] {c.emit(e);}assert_eq!(stats(&c,101),(10,10));}
+#[test]fn lorewalker_dead_destroyed_target_and_combat_do_not_trigger(){for combat in [false,true] {let mut g=game();g.players[0].trinkets.push(cid(L));let mut a=body(101,Races::DRAGON);a.hp=0;let mut b=body(102,Races::DRAGON);b.destroyed=true;let mut c=Ctx::new(&mut g,[vec![a,b],vec![]],[Some(0),Some(1)],combat);c.emit(cast(0,101,"BG_TB_006"));c.emit(cast(0,102,"BG_TB_006"));assert_eq!(stats(&c,101),(10,10));assert_eq!(stats(&c,102),(10,10));}}
+#[test]fn removed_moved_or_dead_owner_source_is_not_current(){for id in [L,D] {for status in 0..3 {let mut g=game();g.players[0].trinkets.push(cid(id));if status==0 {g.players[0].trinkets.clear();}else if status==1 {g.players[0].trinkets.clear();g.players[1].trinkets.push(cid(id));}else {g.players[0].alive=false;}let mut c=ctx(&mut g);let fx=script(cid(id)).and_then(|s|s.on_event).expect("exact hook required for stale listener control");let e=if id==L{cast(0,101,"BG_TB_006")}else{play(0,"BG25_001")};fx(&mut c,owned_me(id),&e);assert_eq!(stats(&c,101),(10,10));}}}
+#[test]fn lorewalker_whenever_phase_is_once_per_actual_cast(){let mut g=game();g.players[0].trinkets.push(cid(L));let mut c=ctx(&mut g);for _ in 0..2 {c.spell_phase=1;c.emit(cast(0,101,"BG_TB_006"));c.spell_phase=2;c.emit(cast(0,101,"BG_TB_006"));}assert_eq!(stats(&c,101),(18,18));}
+#[test]fn marked_copy_instances_each_trigger_without_mix(){let mut g=game();g.players[0].trinkets=vec![cid(L),cid(L).copy()];let mut c=ctx(&mut g);c.emit(cast(0,101,"BG_TB_006"));assert_eq!(stats(&c,101),(18,18));}
+#[test]fn dragonwing_minion_and_spell_physical_events(){for card in ["BG25_001","BG28_810"] {let mut g=game();g.players[0].trinkets.push(cid(D));let mut c=ctx(&mut g);c.emit(play(0,card));assert_eq!(stats(&c,101),(16,14));assert_eq!(stats(&c,102),(10,10));assert_eq!(stats(&c,201),(10,10));}}
+#[test]fn dragonwing_ignores_foreign_cast_hero_power_and_noncard(){let mut g=game();g.players[0].trinkets.push(cid(D));let mut c=ctx(&mut g);for e in [play(1,"BG25_001"),play(0,"TB_BaconShop_HP_087"),cast(0,101,"BG_TB_006")] {c.emit(e);}assert_eq!(stats(&c,101),(10,10));}
+#[test]fn dragonwing_no_dragon_does_not_consume_selection_rng(){let mut g=game();g.players[0].trinkets.push(cid(D));let mut c=Ctx::new(&mut g,[vec![body(101,Races::ELEMENTAL)],vec![body(201,Races::DRAGON)]],[Some(0),Some(1)],false);let before=serde_json::to_string(&c.g.rng).unwrap();c.emit(play(0,"BG25_001"));assert_eq!(before,serde_json::to_string(&c.g.rng).unwrap());assert_eq!(stats(&c,101),(10,10));assert_eq!(stats(&c,201),(10,10));}
+#[test]fn dragonwing_dual_and_all_are_legal_but_dead_are_not(){for races in [Races::DRAGON.union(Races::ELEMENTAL),Races::ALL] {let mut g=game();g.players[0].trinkets.push(cid(D));let mut dead=body(102,Races::DRAGON);dead.hp=0;let mut c=Ctx::new(&mut g,[vec![body(101,races),dead],vec![]],[Some(0),Some(1)],false);c.emit(play(0,"BG25_001"));assert_eq!(stats(&c,101),(16,14));assert_eq!(stats(&c,102),(10,10));}}
+#[test]fn dragonwing_whenever_phase_one_event_one_buff(){let mut g=game();g.players[0].trinkets.push(cid(D));let mut c=ctx(&mut g);c.play_phase=1;c.emit(play(0,"BG25_001"));c.play_phase=2;c.emit(play(0,"BG25_001"));assert_eq!(stats(&c,101),(16,14));}
+#[test]fn both_owned_sources_do_not_cross_event_kinds(){let mut g=game();g.players[0].trinkets=vec![cid(L),cid(D)];let mut c=ctx(&mut g);c.emit(play(0,"BG28_810"));c.emit(cast(0,101,"BG_TB_006"));assert_eq!(stats(&c,101),(20,18));assert_eq!(stats(&c,102),(10,10));}
+#[test]fn dragonwing_uniform_eligible_set_and_exact_rng_replay(){let mut observed=std::collections::BTreeSet::new();for seed in 0..32 {let mut g=game();g.rng=taverngym::rng::Rng::new(seed);g.players[0].trinkets.push(cid(D));let mut c=Ctx::new(&mut g,[vec![body(101,Races::DRAGON),body(102,Races::ALL),body(103,Races::ELEMENTAL)],vec![body(201,Races::DRAGON)]],[Some(0),Some(1)],false);let rng=c.g.rng.clone();c.emit(play(0,"BG25_001"));let chosen=if stats(&c,101)==(16,14){101}else{102};observed.insert(chosen);assert_eq!(stats(&c,chosen),(16,14));assert_eq!(stats(&c,103),(10,10));assert_eq!(stats(&c,201),(10,10));let after=serde_json::to_string(&c.g.rng).unwrap();c.g.rng=rng;c.boards[0]=vec![body(101,Races::DRAGON),body(102,Races::ALL),body(103,Races::ELEMENTAL)];c.emit(play(0,"BG25_001"));assert_eq!(stats(&c,chosen),(16,14));assert_eq!(serde_json::to_string(&c.g.rng).unwrap(),after);}assert_eq!(observed.len(),2);}

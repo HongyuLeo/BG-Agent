@@ -1,0 +1,16 @@
+.venv/
+/build/
+/models/
+/data/
+/exports/
+READY.json
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+*.whl
+*.pt
+*.tmp*
+*.log
+rules/runtime/*.dist-info/
+build-rustup-init.sh

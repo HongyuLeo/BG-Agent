@@ -1,0 +1,217 @@
+{
+  "schema": "bg-new-rule-backend-v7-current9-roster",
+  "module": "backend.py",
+  "class": "Backend",
+  "dependency": "Exact inherited66fe source/native binary; field-wise data merge, zero new native builds",
+  "methods": {
+    "__init__": "Backend(seed=7, config=None, controls=None, episode_id=None); controls must be ordered permutation of every seat, defaults range(num_players); keyword policy_id='700-upstream-provisional-v1', other policies explicitly rejected",
+    "reset": "reset(seed, episode_id=None, force=False) -> public observe; active reset rejected unless force records abandonment",
+    "observe": "observe(seat=None) -> schema, seat, episode_id, revision, features[3227], cards[124], action_mask[245], diagnostics; numeric native player observation only, no view/debug/private snapshot",
+    "legal_actions": "legal_actions() -> ticket dicts with index/name/seat/revision/episode_id/token for current seat",
+    "step": "step(ticket) -> public observe; exact ticket equality/prestate token; wrong/illegal/stale/reentrant rejected with unchanged native raw and revision; reject log separate",
+    "snapshot": "snapshot() -> privileged envelope with strict build/config/schema/seed/episode/ordered controls/card-table/native full raw and checksum; NEVER policy input",
+    "restore": "restore(envelope) on same initialized episode/config/ordered controls -> public observe; rejects old/foreign/wrong envelope before loading",
+    "copy": "copy() -> independent Backend with same native raw and envelope identity",
+    "terminal_record": "terminal_record() -> None or diagnostics plus terminal numeric observation and privileged exact final snapshot; no auto-reset",
+    "reject_legacy_model": "reject_legacy_model(metadata) always rejects; no weight loading",
+    "batch": "BatchBackend(*args, **kwargs) explicitly raises NotImplementedError",
+    "qualification_report": "qualification_report(required_ids=None) -> source/target distinction, exact requested IDs, explicit unresolved reasons; never silently drops IDs",
+    "require_qualification": "require_qualification(target_rules,required_ids=None) explicitly rejects strict target qualification; no full37 acceptance"
+  },
+  "seat_schedule": "first needs_action seat in complete ordered controls; strictly sequential API even if native recruit seats simultaneous",
+  "transaction": "RLock+reentry guard; whole step/restore/reset including capture and final public projection is atomic: on exception exact native raw plus seed/private and public episode/revision/last-seat/terminal/history restored; rejection logs remain separate. Native-call failure continues to reject.",
+  "terminal": "done if native over, max_turns, combat guard, or serialized native stopped_reason; driver_guard/no_progress are truncations, never normal game terminations. Only enum reason is public; full state stays private. No placements invented for a driver stop. No auto-reset.",
+  "source_rules": "36.6.3.253932 executable baseline; target37.0.0.255130 NOT achieved",
+  "known_blocker": "QUALIFICATION_GATES and QUALIFICATION_UPDATES preserve full37/server/700/lifecycle/source135/independent final gates",
+  "component_tests": "Explicitly labelled private fixture import only via test helper constructing a matching envelope; never natural producer proof",
+  "policy_boundary": "Only observe output goes to policy. Trusted driver keeps exact action tickets/tokens and privileged snapshots. Policy returns an action index; driver selects corresponding current ticket. Python reflection is not an OS sandbox.",
+  "contract_revision": 10,
+  "public_episode_identity": "Random opaque nonce, copied/restored with episode; private caller label is never policy input",
+  "policy": "Fingerprint-bound700 working contract lead-closeout-20261030-v1 is closed for offline engineering; official37 semantics remain unconfirmed",
+  "native_target_overrides": {
+    "source_baseline_version": "36.6.3.253932",
+    "full_target37": false,
+    "target_build": "37.0.0.255130",
+    "exact_scoped_overrides": {
+      "BG30_MagicItem_422": {
+        "stats": [
+          4,
+          4
+        ],
+        "cost": 2,
+        "entry": "owned real SpellCast whenever phase"
+      },
+      "BG30_MagicItem_900t": {
+        "stats": [
+          6,
+          4
+        ],
+        "cost": 0,
+        "entry": "owned physical CardPlayed"
+      },
+      "BG32_815": {
+        "stats": [
+          1,
+          1
+        ],
+        "applications_non_naga": 2,
+        "applications_naga": 4
+      },
+      "BG35_922": {
+        "stats": [
+          2,
+          3
+        ],
+        "naga_total": [
+          4,
+          6
+        ]
+      }
+    },
+    "oracle": "Frozen F37 compiled dynamic values/public manifest and owned lifecycle sources; A MR2 independent scoped source intake",
+    "unknowns": [
+      "natural acquisition/offering of returned trinkets and spells",
+      "server37 roster/weights",
+      "actual-client transform/destroy micro-order"
+    ],
+    "native_source_metadata_not_relabelled": true,
+    "bulk30_primary_ids": [
+      "BG23_002",
+      "BG23_002_G",
+      "BG26_505",
+      "BG26_505_G",
+      "BG36_622",
+      "BG36_622_G",
+      "BG36_921",
+      "BG36_921_G",
+      "BG27_514",
+      "BG27_514_G",
+      "BG31_035",
+      "BG31_035_G",
+      "BG31_920",
+      "BG31_920_G",
+      "BG31_925",
+      "BG31_925_G",
+      "BG32_835",
+      "BG32_835_G",
+      "BG33_319",
+      "BG33_319_G",
+      "BG35_921",
+      "BG35_921_G",
+      "BG22_HERO_007",
+      "BG22_HERO_007p",
+      "BG32_837",
+      "BG32_837_G",
+      "BG34_925",
+      "BG34_925_G",
+      "BG36_508",
+      "BG36_508_G"
+    ],
+    "bulk30_scope": "Code support with retained source/eligibility restrictions",
+    "Tyrael_fee_policy": {
+      "ids": [
+        "BG36_356",
+        "BG36_356_G"
+      ],
+      "fee": 2,
+      "current_server_verified": false
+    },
+    "qualification_gates_SHA256": "34190871f613a69d2a4bb73984693d94a631fe8e553e616a708f2a12c9b97e2c",
+    "Rimescale_E03": {
+      "ids": [
+        "BG33_319",
+        "BG33_319_G"
+      ],
+      "max_random_tavern_spell_tier": "current_owner_tier",
+      "source": "retained direct user E03 contract",
+      "official_current37_verified": false,
+      "shared_explicit_tier_effects_unchanged": true,
+      "classifier_29_unchanged": true
+    },
+    "final_contracts": {
+      "Fandral_marker": "precise card-local combined before Discovered, exact copy+queue retention",
+      "Gunpowder": "threshold5, one payout per transaction, discard overflow, normal3/1 goldtwice",
+      "type_selection_ids": [
+        "BG35_912",
+        "EBG_Spell_038",
+        "BG36_MidGameEffect_000t82"
+      ],
+      "type_selection": "dual choose one own type, All one current lobby type, single no added draw",
+      "source135_annotations": "QUALIFICATION_UPDATES.json; no pool edits",
+      "source_only_six_cost_rows": [
+        "BG28_582",
+        "BG28_582_G",
+        "BG36_300",
+        "BG36_300_G",
+        "BG36_312",
+        "BG36_312_G"
+      ],
+      "qualification_updates_SHA256": "338655299d52667f4c1023ef8cc457fe9d8590bce24d2a96d1d04326032cf33e"
+    }
+  },
+  "target_roster_contract": {
+    "entry": "RulesConfig.target_roster / Backend(config.target_roster)",
+    "none": "absent or null preserves legacy serialized cfg and old initialization semantics",
+    "binding": {
+      "manifest_sha256": "SHA256 canonical UTF8 JSON; computed and checked in native and bridge",
+      "manifest": {
+        "ruleset_id": "nonempty string",
+        "target_build": "nonempty string",
+        "source_qualified": "bool=true declaration, not authentication",
+        "public_offer": {
+          "minion": "array of exact direct IDs",
+          "tavern_spell": "array of exact direct IDs",
+          "hero": "array of exact direct IDs",
+          "trinket": "array of exact direct IDs"
+        },
+        "supported_derived": "array of exact IDs; never union into direct",
+        "excluded": "array of exact IDs",
+        "source_unknown": "array of exact tracked IDs; uninstalled metadata may not bypass direct validation",
+        "derived_parents": [
+          {
+            "parent": "exact ID",
+            "child": "supported-derived exact ID"
+          }
+        ],
+        "denied_gift_pairs": [
+          {
+            "minion": "exact minion ID",
+            "gift": "exact DarkGift ID"
+          }
+        ],
+        "execution_identity_bindings": [
+          {
+            "source_parent": "hero ID",
+            "source_power": "that hero power ID",
+            "source_child_id": "retained source ID",
+            "source_child_dbf": "positive u32 provenance",
+            "execution_child_id": "existing supported-derived ID",
+            "execution_child_dbf": "must equal native dbf",
+            "decision_sha256": "64 lowercase hex provenance",
+            "evidence_sha256": "64 lowercase hex provenance"
+          }
+        ]
+      }
+    },
+    "digest_algorithm": "SHA256(json.dumps(manifest,sort_keys=True,ensure_ascii=False,separators=(comma,colon),allow_nan=False).encode(utf8))",
+    "retained_predicates": [
+      "existing lobby type/association/subset filters",
+      "existing hero_fits and bans",
+      "existing trinket eligibility/turn/board/exclusive predicates",
+      "existing native pair filters plus named exact pair denials"
+    ],
+    "derived_boundary": "validated record and explicit parent_route_allowed query; not universal callback deletion or new generation authorization",
+    "restoration": "entire verified config remains part of existing exact bridge snapshot binding; no policy use of private raw",
+    "runtime_update": "owner rebuild/rebind required; no new wheel in this package"
+  },
+  "active_named_binding_SHA256": "6b3c500670fb8b1928e4a92af22b1194fef8be197e240e251848547d89e2a3bb",
+  "actual_manifest_SHA256": "41f9f43010deeda6ee7a29ddce9af6e3297e9a72d422494b7e2f2d53084516fd",
+  "conditional_source_sidecar_SHA256": "02a88d6bbe7616e98a8fc72fdd6bcaaf33278d24d65d2fc436a7d7b26037ac7b",
+  "full37_complete": false,
+  "data_revision": "current9-paradox-binding-v1",
+  "working700_binding_SHA256": "b6980519286d73b6e689f6c6c4042ab4fd6899b38562b2f60d450ae2f4652caa",
+  "working700_contract_closed": true,
+  "working700_official_closed": false,
+  "quest38_source_producer_domain_closed": true,
+  "quest38_all_effects_accepted": false
+}

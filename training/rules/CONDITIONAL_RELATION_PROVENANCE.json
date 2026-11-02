@@ -1,0 +1,415 @@
+{
+  "contract_id": "azshara-maxwell-current-primary-conditional-v1",
+  "source_addendum_sha256": "af8a91783397aca3c320dd04d59f6a194d66b26b6f15ab7c93977cac4be37fe2",
+  "accepted_intake_sha256": "e2c6cf5f8792bb882ee3033aebeb2b05aa5dce1032a485e004f02957eb967bab",
+  "maxwell": {
+    "required_current_primary_power": [
+      "BG22_HERO_007p",
+      "BG22_HERO_007p2"
+    ],
+    "unknown_primary_secondary_fallback_allowed": false,
+    "portrait_alone_sufficient": false,
+    "other_portrait_with_valid_primary_not_disqualified": true,
+    "normal_trinket": "BG35_MagicItem_803",
+    "golden_trinket": "BG35_MagicItem_803t",
+    "ordinary_buddy": {
+      "id": "BG22_HERO_007_Buddy",
+      "dbf": 77894
+    },
+    "golden_buddy": {
+      "id": "BG22_HERO_007_Buddy_G",
+      "dbf": 77895,
+      "basis": "actual ordinary Buddy.golden pointer"
+    }
+  },
+  "portrait_transform": {
+    "from": "BG22_HERO_007",
+    "to": "BG22_HERO_007t",
+    "requires": "existing recruit30Attack transition from Ambition; borrowed power on other hero does not change portrait",
+    "authority": "retained engineering interpretation, not a fresh official portrait validation"
+  },
+  "config_parent_edges_are_declarative_not_slot_or_transition_oracles": true,
+  "no_unconditional_trinket_to_buddy_edge_added": true,
+  "no_new_runtime_schema_or_code_required_for_this_data_delta": true,
+  "data_revision": "current9-data-binding-v1",
+  "derived122_conditional_provenance": {
+    "name": "current-derived-conditional-provenance-closeout-v1",
+    "input_source_hash": "66fe411c53837a7b",
+    "base_manifest_sha256": "ea1f740ee4434c848140c5c08ab5b8da92efddc018f506cc568d46d362da2f1f",
+    "relation_table_sha256": "c5ad5e6cb9c6c519f24b796b0f5bf03c6cbf5810592d2340d92c4511b3b2bee7",
+    "maxwell": "Exact CURRENT primary HeroPower association, reject ambiguity/unknown primary; ordinary actual Hero.buddy, golden actual Buddy.golden; effect support guard, normal offer/payment/lobby/board predicates remain. No portrait/secondary fallback. Existing214 controlled purchase evidence reused, not fresh offering proof.",
+    "helpers": "Use each table exact path, source producer anchor and retained condition. No generic random/Tavern offering addition. Printed/pointer relation is not a behavior oracle.",
+    "source_only_effect_acceptance": false,
+    "actual_behavior_rows_this_run": null,
+    "qualification_not_promoted": true,
+    "fresh_natural_acquisition_claim": false,
+    "parent_route_query_is_not_complete_runtime_permission": true,
+    "retained_seven": [
+      {
+        "id": "BG23_HERO_201pt2",
+        "group": "CURRENT_PARENT_CONDITIONAL_HELPER_PROVENANCE",
+        "native_dbf": 91958,
+        "native_identity_exists": true,
+        "pinned_identity_dbf": 91958,
+        "actual_behavior_test_this_run": null,
+        "fresh_natural_acquisition_proven_this_run": false,
+        "metadata_path": [
+          "BG23_HERO_201",
+          "BG23_HERO_201pt2"
+        ],
+        "exact_path_evidence": [
+          {
+            "parent": "BG23_HERO_201",
+            "child": "BG23_HERO_201pt2",
+            "evidence": [
+              {
+                "kind": "sealedV2_explicit_dependency",
+                "relation": "official_catalogue_child"
+              }
+            ]
+          }
+        ],
+        "classification": "HISTORICAL_OR_CONDITIONAL_PRODUCER_UNPROVEN",
+        "specific_reason": "Only base201pt is created; counter scales it inline. Metadata variants are not a proven current producer domain.",
+        "root_class": "HISTORICAL_VARIANT_OR_INLINE_STATE_PRODUCER_UNPROVEN"
+      },
+      {
+        "id": "BG23_HERO_201pt3",
+        "group": "CURRENT_PARENT_CONDITIONAL_HELPER_PROVENANCE",
+        "native_dbf": 91959,
+        "native_identity_exists": true,
+        "pinned_identity_dbf": 91959,
+        "actual_behavior_test_this_run": null,
+        "fresh_natural_acquisition_proven_this_run": false,
+        "metadata_path": [
+          "BG23_HERO_201",
+          "BG23_HERO_201pt3"
+        ],
+        "exact_path_evidence": [
+          {
+            "parent": "BG23_HERO_201",
+            "child": "BG23_HERO_201pt3",
+            "evidence": [
+              {
+                "kind": "sealedV2_explicit_dependency",
+                "relation": "official_catalogue_child"
+              }
+            ]
+          }
+        ],
+        "classification": "HISTORICAL_OR_CONDITIONAL_PRODUCER_UNPROVEN",
+        "specific_reason": "Only base201pt is created; counter scales it inline. Metadata variants are not a proven current producer domain.",
+        "root_class": "HISTORICAL_VARIANT_OR_INLINE_STATE_PRODUCER_UNPROVEN"
+      },
+      {
+        "id": "BG23_HERO_201pt4",
+        "group": "CURRENT_PARENT_CONDITIONAL_HELPER_PROVENANCE",
+        "native_dbf": 91960,
+        "native_identity_exists": true,
+        "pinned_identity_dbf": 91960,
+        "actual_behavior_test_this_run": null,
+        "fresh_natural_acquisition_proven_this_run": false,
+        "metadata_path": [
+          "BG23_HERO_201",
+          "BG23_HERO_201pt4"
+        ],
+        "exact_path_evidence": [
+          {
+            "parent": "BG23_HERO_201",
+            "child": "BG23_HERO_201pt4",
+            "evidence": [
+              {
+                "kind": "sealedV2_explicit_dependency",
+                "relation": "official_catalogue_child"
+              }
+            ]
+          }
+        ],
+        "classification": "HISTORICAL_OR_CONDITIONAL_PRODUCER_UNPROVEN",
+        "specific_reason": "Only base201pt is created; counter scales it inline. Metadata variants are not a proven current producer domain.",
+        "root_class": "HISTORICAL_VARIANT_OR_INLINE_STATE_PRODUCER_UNPROVEN"
+      },
+      {
+        "id": "BG23_HERO_201pt5",
+        "group": "CURRENT_PARENT_CONDITIONAL_HELPER_PROVENANCE",
+        "native_dbf": 91961,
+        "native_identity_exists": true,
+        "pinned_identity_dbf": 91961,
+        "actual_behavior_test_this_run": null,
+        "fresh_natural_acquisition_proven_this_run": false,
+        "metadata_path": [
+          "BG23_HERO_201",
+          "BG23_HERO_201pt5"
+        ],
+        "exact_path_evidence": [
+          {
+            "parent": "BG23_HERO_201",
+            "child": "BG23_HERO_201pt5",
+            "evidence": [
+              {
+                "kind": "sealedV2_explicit_dependency",
+                "relation": "official_catalogue_child"
+              }
+            ]
+          }
+        ],
+        "classification": "HISTORICAL_OR_CONDITIONAL_PRODUCER_UNPROVEN",
+        "specific_reason": "Only base201pt is created; counter scales it inline. Metadata variants are not a proven current producer domain.",
+        "root_class": "HISTORICAL_VARIANT_OR_INLINE_STATE_PRODUCER_UNPROVEN"
+      },
+      {
+        "id": "BG23_HERO_201pt6",
+        "group": "CURRENT_PARENT_CONDITIONAL_HELPER_PROVENANCE",
+        "native_dbf": 91962,
+        "native_identity_exists": true,
+        "pinned_identity_dbf": 91962,
+        "actual_behavior_test_this_run": null,
+        "fresh_natural_acquisition_proven_this_run": false,
+        "metadata_path": [
+          "BG23_HERO_201",
+          "BG23_HERO_201pt6"
+        ],
+        "exact_path_evidence": [
+          {
+            "parent": "BG23_HERO_201",
+            "child": "BG23_HERO_201pt6",
+            "evidence": [
+              {
+                "kind": "sealedV2_explicit_dependency",
+                "relation": "official_catalogue_child"
+              }
+            ]
+          }
+        ],
+        "classification": "HISTORICAL_OR_CONDITIONAL_PRODUCER_UNPROVEN",
+        "specific_reason": "Only base201pt is created; counter scales it inline. Metadata variants are not a proven current producer domain.",
+        "root_class": "HISTORICAL_VARIANT_OR_INLINE_STATE_PRODUCER_UNPROVEN"
+      },
+      {
+        "id": "TB_BaconShop_HP_022t",
+        "group": "CURRENT_PARENT_CONDITIONAL_HELPER_PROVENANCE",
+        "native_dbf": 76964,
+        "native_identity_exists": true,
+        "pinned_identity_dbf": 76964,
+        "actual_behavior_test_this_run": null,
+        "fresh_natural_acquisition_proven_this_run": false,
+        "metadata_path": [
+          "TB_BaconShop_HERO_23",
+          "TB_BaconShop_HP_022t"
+        ],
+        "exact_path_evidence": [
+          {
+            "parent": "TB_BaconShop_HERO_23",
+            "child": "TB_BaconShop_HP_022t",
+            "evidence": [
+              {
+                "kind": "sealedV2_explicit_dependency",
+                "relation": "official_catalogue_child"
+              }
+            ]
+          }
+        ],
+        "classification": "HISTORICAL_OR_CONDITIONAL_PRODUCER_UNPROVEN",
+        "specific_reason": "022t metadata dependency exists, but no exact current producer identified in bounded named-hero source inspection. Not a confirmed code defect.",
+        "root_class": "CURRENT_PARENT_PRODUCER_RELATION_GAP_UNCONFIRMED"
+      },
+      {
+        "id": "TB_BaconShop_HP_065t2",
+        "group": "CURRENT_PARENT_CONDITIONAL_HELPER_PROVENANCE",
+        "native_dbf": 62035,
+        "native_identity_exists": true,
+        "pinned_identity_dbf": 62035,
+        "actual_behavior_test_this_run": null,
+        "fresh_natural_acquisition_proven_this_run": false,
+        "metadata_path": [
+          "TB_BaconShop_HERO_59",
+          "TB_BaconShop_HP_065",
+          "TB_BaconShop_HP_065t2"
+        ],
+        "exact_path_evidence": [
+          {
+            "parent": "TB_BaconShop_HERO_59",
+            "child": "TB_BaconShop_HP_065",
+            "evidence": [
+              {
+                "kind": "pinned37_exact_dbf_pointer",
+                "field": "hero_power_dbf",
+                "parent_dbf": 61910,
+                "child_dbf": 61915
+              },
+              {
+                "kind": "sealedV2_explicit_dependency",
+                "relation": "hero_power_dbf"
+              },
+              {
+                "kind": "sealedV2_explicit_dependency",
+                "relation": "official_catalogue_child"
+              },
+              {
+                "kind": "already_bound_explicit_relation"
+              }
+            ]
+          },
+          {
+            "parent": "TB_BaconShop_HP_065",
+            "child": "TB_BaconShop_HP_065t2",
+            "evidence": [
+              {
+                "kind": "pinned37_exact_dbf_pointer",
+                "field": "evolution_card_id",
+                "parent_dbf": 61915,
+                "child_dbf": 62035
+              },
+              {
+                "kind": "sealedV2_explicit_dependency",
+                "relation": "evolution_card_id"
+              }
+            ]
+          }
+        ],
+        "classification": "HISTORICAL_OR_CONDITIONAL_PRODUCER_UNPROVEN",
+        "specific_reason": "Current065 uses inline14Attack counter/uses_turn; secondary power script exists, but no exact current setter/transform to065t2 found in bounded route inspection.",
+        "root_class": "HISTORICAL_VARIANT_OR_INLINE_STATE_PRODUCER_UNPROVEN"
+      }
+    ],
+    "unselected129_unknown_rows_unchanged": true,
+    "owner_merge_requirement": "Owner separately adding two source-qualified direct trinkets662->664. Apply this delta only to supported_derived/source_unknown/derived_parents and append a named ruleset suffix; preserve separately reviewed direct updates, then hash actual combined manifest. Never replace owner config with supplied662-base candidate."
+  },
+  "relation_table_SHA256": "c5ad5e6cb9c6c519f24b796b0f5bf03c6cbf5810592d2340d92c4511b3b2bee7",
+  "OFFER10_delta_SHA256": "d9db14f91072319ed99007488d882119866df5a230fdf9609887d8dfde10f0ae",
+  "working700_binding": {
+    "policy_id": "700-upstream-provisional-v1",
+    "decision_revision": "lead-closeout-20261030-v1",
+    "ids": [
+      "BG36_700",
+      "BG36_700_G"
+    ],
+    "source_hash": "66fe411c53837a7b",
+    "pyd_SHA256": "b2cb2ffcd5e86eac2bd574fb04db642bf3d9410e457971c08a4f0999002c704d",
+    "working_contract_SHA256": "fb6483c66ef06d10eb8f1911d36711919155284ae5a95bf456fb9e483a244947",
+    "lead_decision_SHA256": "f27ccf4298a5064d602f2ccb513527281653441369689e461588e890f9fd4b61",
+    "field_adjudication_SHA256": "de0bf0c2765db3f366c186648ef9edd0fa044d791785a93c923d51d36c5e3c77",
+    "native_author_observation_SHA256": "9e371806858fa154f71b6e8a512909e5b4d45948cb64b94e19b63a53338585fa",
+    "strict_official": false,
+    "official_contract_closed": false,
+    "working_contract_closed": true,
+    "next_binding": "Queue these exact policy/data hashes for next combined metadata binding with other ready data packages; sealed current9 not edited here"
+  },
+  "Maxwell_domain_audit": {
+    "UTC": "2026-10-30T04:02:48.079913+00:00",
+    "status": "OWNER_CONSUMED_MAXWELL_OFFER_DOMAIN_NO_PRODUCTION_FIX",
+    "READY_SHA256": "25c328c381a3b3ef062042282d760bd843477fa0b4db5627a89ea5af86c718a3",
+    "RESULT_SHA256": "00ed460e437b293aafd91601e04e2514bac7ad70ad62a03f8da2c65abb2c9dba",
+    "verified_payload_files": 23,
+    "source_hash": "66fe411c53837a7b",
+    "focused_methods": 4,
+    "nature": "Implementer-focused verification and domain review, not substituted for independent C or official primary-domain proof",
+    "observations": {
+      "natural_draft_and_real_turn6": {
+        "unknown_still_unmapped": 8,
+        "Genn_actual_primary_change_maps_Buddy": true
+      },
+      "exact_unknown_primary_offer_calls": 288,
+      "original_portrait_valid_primary_positive_real_offers_payments_exact_buddy": 18,
+      "forced_pending_Choose_rejections_full_raw_unchanged": 18,
+      "116_hero_domain_preserved": true
+    },
+    "working_contract_consistency_closed": true,
+    "official_source_domain_closed": false,
+    "remaining_named_source_entries": 9,
+    "remaining_source_gates_SHA256": "02aa49e3e998fca9e4451fe0fabf5406f337fe549066a1138472f94fc641c80f",
+    "None_entry_initial_fixture_failure_preserved": true,
+    "tests_only_patch_received_as_evidence_not_applied": true,
+    "test_patch_SHA256": "d6d824ad7c0fa4d73c901be1f4b4fbf109972c7243e3bdcd99f87e889f36bfe5",
+    "production_or_pool_or_SUT_metadata_change": false,
+    "new_SUT_tests_or_wheel": false,
+    "full37_complete": false,
+    "next": "Controller intake; retain exact nine official-domain source gates without hero-pool shrink, replacement Buddy or duplicate old107 regression"
+  },
+  "qualification_not_promoted": true,
+  "quest38_domain_intake": {
+    "utc": "2026-10-30T04:12:07.038300+00:00",
+    "status": "ACCEPTED_SOURCE_AND_CONDITIONAL_PRODUCER_DOMAIN_ONLY",
+    "verified_delivery_files": 24,
+    "READY_SHA256": "0c21b4014a5dc0144aa40b968e71e2e0e9543104abc49a36556add138d3c5c1c",
+    "domain_contract_SHA256": "b3ab7a5c5328789ec32e384e43af98016950e93501a102b22dac2029f70d44f0",
+    "source_hash": "66fe411c53837a7b",
+    "candidate38": 38,
+    "lobby_combinations": 252,
+    "actual_Sire_seed": 9,
+    "component_quest_goal_completion_not_natural_full_play": true,
+    "full_raw_restore": true,
+    "test_reference_index_not_PASS": 27,
+    "effect_no_exact_reference": 11,
+    "effects_independent_assigned_by_reuse_assistant_not_duplicated": true,
+    "no_new_code_root_proved": true,
+    "full37_complete": false
+  },
+  "metadata_files_SHA256": {
+    "metadata/ELEVEN_EFFECT_EVIDENCE_GAPS.json": "d2d17fca4ba96cc4d639317af9a2704d40c8096cd31ca44966c44635d6b4d88f",
+    "metadata/FIELD_ADJUDICATION.json": "de0bf0c2765db3f366c186648ef9edd0fa044d791785a93c923d51d36c5e3c77",
+    "metadata/FINAL_DOMAIN38_CONTRACT.json": "b3ab7a5c5328789ec32e384e43af98016950e93501a102b22dac2029f70d44f0",
+    "metadata/LEAD_WORKING_POLICY_DECISION.json": "f27ccf4298a5064d602f2ccb513527281653441369689e461588e890f9fd4b61",
+    "metadata/POLICY_BINDING_RECEIPT.json": "b6980519286d73b6e689f6c6c4042ab4fd6899b38562b2f60d450ae2f4652caa",
+    "metadata/WORKING_CONTRACT.json": "fb6483c66ef06d10eb8f1911d36711919155284ae5a95bf456fb9e483a244947",
+    "metadata/PARADOX_LEAD_DECISION.json": "193b673719defdea126b6f671293670d5eb2401727dbcb06f54f9742121cf99e",
+    "metadata/PARADOX_SOURCE_QUALIFICATION.json": "65cea0660faf063cea659e27ef2feee3446129dc508e77d1df02cbbb9c0c6219",
+    "metadata/A5_SOURCE_INTAKE.json": "585d2aa56895b33c3fa9051ebede5db355756c635d2b4d5082074db4ac3ec284"
+  },
+  "named_paradox_five": {
+    "normal_ids": [
+      "BG36_360t3",
+      "BG36_360t4",
+      "BG36_360t5",
+      "BG36_360t6",
+      "BG36_360t9"
+    ],
+    "qualification_source_SHA256": "65cea0660faf063cea659e27ef2feee3446129dc508e77d1df02cbbb9c0c6219",
+    "lead_engineering_decision_SHA256": "193b673719defdea126b6f671293670d5eb2401727dbcb06f54f9742121cf99e",
+    "A5_source_intake_SHA256": "585d2aa56895b33c3fa9051ebede5db355756c635d2b4d5082074db4ac3ec284",
+    "actual_source_qualification_READY_SHA256": "e975cfc7e86dd7ed9bda2120f557abe3a0ada614740091647411db4dcbc14f1f",
+    "original_constructor_red_READY_SHA256": "2efccaedc84ecae789846404fdc3bc58be05b14884a4aa7706cade48773b40a9",
+    "route": "Direct source-qualified named candidates only; existing native exact selected-form filter reduces to one per lobby. No symbolic/golden/generic-derived admission.",
+    "retained_bans": "Actual tier5 normalt4 with Undead; actual tier5/t6 with Yshaarj when Aberration in lobby.",
+    "new_effect_behavior_acceptance": false,
+    "full_rules_complete": false
+  },
+  "Maxwell_direct_pool_correction_255130": {
+    "scope": "Exact Maxwell direct-offer admission correction; not Buddy outcome change",
+    "source": {
+      "url": "https://news.blizzard.com/en-us/article/24293284/36-2-2-patch-notes",
+      "resolved_url": "https://news.blizzard.com/en-us/article/24293284/36-2-2-patch-notes",
+      "official_patch": "36.2.2",
+      "effective_date": "2026-08-18",
+      "retrieved_utc": "2026-11-01T00:45:16.333257+00:00",
+      "archived_html_sha256": "9a169553d1578956337263a90dd8a68b31874028ea12bb2bf0aef62d4ad093c8",
+      "finding": "Official lesser and greater Trinket Pool Changes explicitly remove Maxwell Sticker."
+    },
+    "target_xml": {
+      "path": "reference-only/CardDefs.Bacon-37.0.0.255130.xml",
+      "sha256": "c60d62b350f2d0361cd88b12e4941bfe6a9f24125c1af003858adb7728b3f413",
+      "tag": {
+        "enumID": 3407,
+        "name": "BACON_TRINKET"
+      },
+      "absent_for": [
+        "BG35_MagicItem_803",
+        "BG35_MagicItem_803t"
+      ],
+      "controls_present_for": [
+        "BG35_MagicItem_818",
+        "BG35_MagicItem_931",
+        "BG36_MagicItem_206"
+      ]
+    },
+    "superseded_source": "Season14-trinkets published2026-07-27/effective2026-08-04 Staying is older than explicit2026-08-18 removal.",
+    "37_0_return": "No Maxwell re-admission found in inspected official37.0 note or stored37.0/37.0.1 source records. Absence corroborates continuity, not standalone removal evidence.",
+    "changed_ids": [
+      "BG35_MagicItem_803",
+      "BG35_MagicItem_803t"
+    ],
+    "original_red_retained": "REPRODUCTION.json in parent lane",
+    "buddy_settlement_unchanged": true,
+    "no_hero_pool_change": true
+  }
+}

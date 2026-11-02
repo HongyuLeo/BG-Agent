@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-03",
+  "environment": {
+    "platform": "WSL Ubuntu 24.04 x86_64",
+    "python": "3.12",
+    "torch": "2.8.0+cpu",
+    "numpy": "2.2.6",
+    "maturin": "1.15.0",
+    "rust": "1.98.1",
+    "existing_dependencies_reused": true
+  },
+  "native_source_hash": "13d71ac51a979679",
+  "initialization": "random micro seed 197; no private weights",
+  "unit_checks_passed": 3,
+  "first_run": {
+    "completed_lobbies": 2,
+    "optimizer_updates": 26,
+    "quarantined_errors": 0,
+    "elapsed_seconds": 32.59,
+    "saved_pause_confirmed": true
+  },
+  "resumed_run": {
+    "additional_lobbies": 1,
+    "cumulative_lobbies": 3,
+    "cumulative_updates": 44,
+    "quarantined_errors": 0,
+    "state": "completed"
+  },
+  "export": {
+    "files": 10,
+    "all_sha256_verified": true
+  },
+  "rust_files_unchanged_from_source_zip": 161,
+  "not_verified": [
+    "clean-machine dependency installation",
+    "CUDA",
+    "cloud platform",
+    "cross-platform checkpoint migration",
+    "long-term stability",
+    "ladder strength",
+    "complete target rules parity"
+  ]
+}

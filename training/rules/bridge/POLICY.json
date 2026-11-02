@@ -1,0 +1,17 @@
+{
+  "policy_id": "700-upstream-provisional-v1",
+  "target": "native own-board plus own-Tavern Murloc/All excluding source",
+  "cancel_commit": "native free cancel, commit cost/use on valid choice",
+  "authority": "Named engineering working policy, approved for offline candidate only; not official37",
+  "700_contract_verified": false,
+  "strict37_rules_complete": false,
+  "strict_gate": "Official target/charge/cancel/no-target/distribution/current-golden-body source semantics and exact server roster/weights remain unproven; offline working contract adopted separately. Full37 unavailable.",
+  "source_decision_SHA": "6312f1c2b331bdc781f4238f3c9a3749e4e95ae6d888a3fd89cf495c8db4b7cb",
+  "working_contract_closed": true,
+  "official_contract_closed": false,
+  "working_decision_revision": "lead-closeout-20261030-v1",
+  "working_contract_SHA256": "fb6483c66ef06d10eb8f1911d36711919155284ae5a95bf456fb9e483a244947",
+  "working_lead_decision_SHA256": "f27ccf4298a5064d602f2ccb513527281653441369689e461588e890f9fd4b61",
+  "contract_verified_field_means": "700_contract_verified retains official-oracle qualification; working-contract closure is explicit and separate",
+  "all_six_fallback": "One selection invocation from frozen six-domain fallback, not a guarantee of one raw u64 draw"
+}

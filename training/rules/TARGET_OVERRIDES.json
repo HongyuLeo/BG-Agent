@@ -1,0 +1,121 @@
+{
+  "source_baseline_version": "36.6.3.253932",
+  "full_target37": false,
+  "target_build": "37.0.0.255130",
+  "exact_scoped_overrides": {
+    "BG30_MagicItem_422": {
+      "stats": [
+        4,
+        4
+      ],
+      "cost": 2,
+      "entry": "owned real SpellCast whenever phase"
+    },
+    "BG30_MagicItem_900t": {
+      "stats": [
+        6,
+        4
+      ],
+      "cost": 0,
+      "entry": "owned physical CardPlayed"
+    },
+    "BG32_815": {
+      "stats": [
+        1,
+        1
+      ],
+      "applications_non_naga": 2,
+      "applications_naga": 4
+    },
+    "BG35_922": {
+      "stats": [
+        2,
+        3
+      ],
+      "naga_total": [
+        4,
+        6
+      ]
+    }
+  },
+  "oracle": "Frozen F37 compiled dynamic values/public manifest and owned lifecycle sources; A MR2 independent scoped source intake",
+  "unknowns": [
+    "natural acquisition/offering of returned trinkets and spells",
+    "server37 roster/weights",
+    "actual-client transform/destroy micro-order"
+  ],
+  "native_source_metadata_not_relabelled": true,
+  "bulk30_primary_ids": [
+    "BG23_002",
+    "BG23_002_G",
+    "BG26_505",
+    "BG26_505_G",
+    "BG36_622",
+    "BG36_622_G",
+    "BG36_921",
+    "BG36_921_G",
+    "BG27_514",
+    "BG27_514_G",
+    "BG31_035",
+    "BG31_035_G",
+    "BG31_920",
+    "BG31_920_G",
+    "BG31_925",
+    "BG31_925_G",
+    "BG32_835",
+    "BG32_835_G",
+    "BG33_319",
+    "BG33_319_G",
+    "BG35_921",
+    "BG35_921_G",
+    "BG22_HERO_007",
+    "BG22_HERO_007p",
+    "BG32_837",
+    "BG32_837_G",
+    "BG34_925",
+    "BG34_925_G",
+    "BG36_508",
+    "BG36_508_G"
+  ],
+  "bulk30_scope": "Code support with retained source/eligibility restrictions",
+  "Tyrael_fee_policy": {
+    "ids": [
+      "BG36_356",
+      "BG36_356_G"
+    ],
+    "fee": 2,
+    "current_server_verified": false
+  },
+  "qualification_gates_SHA256": "34190871f613a69d2a4bb73984693d94a631fe8e553e616a708f2a12c9b97e2c",
+  "Rimescale_E03": {
+    "ids": [
+      "BG33_319",
+      "BG33_319_G"
+    ],
+    "max_random_tavern_spell_tier": "current_owner_tier",
+    "source": "retained direct user E03 contract",
+    "official_current37_verified": false,
+    "shared_explicit_tier_effects_unchanged": true,
+    "classifier_29_unchanged": true
+  },
+  "final_contracts": {
+    "Fandral_marker": "precise card-local combined before Discovered, exact copy+queue retention",
+    "Gunpowder": "threshold5, one payout per transaction, discard overflow, normal3/1 goldtwice",
+    "type_selection_ids": [
+      "BG35_912",
+      "EBG_Spell_038",
+      "BG36_MidGameEffect_000t82"
+    ],
+    "type_selection": "dual choose one own type, All one current lobby type, single no added draw",
+    "source135_annotations": "QUALIFICATION_UPDATES.json; no pool edits",
+    "source_only_six_cost_rows": [
+      "BG28_582",
+      "BG28_582_G",
+      "BG36_300",
+      "BG36_300_G",
+      "BG36_312",
+      "BG36_312_G"
+    ],
+    "qualification_updates_SHA256": "338655299d52667f4c1023ef8cc457fe9d8590bce24d2a96d1d04326032cf33e"
+  }
+}

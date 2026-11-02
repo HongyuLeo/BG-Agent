@@ -1,0 +1,3 @@
+# Preserve source bytes: rule and model contracts depend on exact hashes.
+* -text
+*.sh text eol=lf

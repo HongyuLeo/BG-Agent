@@ -1,0 +1,963 @@
+{
+  "repository": "https://github.com/MCG-NJU/AutoTavern",
+  "commit": "fb61201a557ddd36a411cf44aac51ce4d9b606ce",
+  "tree": "c40b8465ce85f3e678a3a03e09d8b18fc04e6c03",
+  "source_root": "reference-only/AutoTavern-fb61201a557ddd36a411cf44aac51ce4d9b606ce",
+  "archive_sha256": "bd9b55275207042618dfcfec15f2a84e5141d0dad8130f22f40126047b7f532e",
+  "file_count": 190,
+  "files": [
+    {
+      "path": ".editorconfig",
+      "bytes": 236,
+      "sha256": "69200c43ae56bb50042889a9dbdc13721a933ca252770b7fb0ec90e10f362222"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 45,
+      "sha256": "00da0cfcafb61f1198fcf46b775c0bd797419e66a5b7ffca3fb34a231b0d6e15"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 514,
+      "sha256": "a7d42a7524c4ee0dd521cbebe53ce355829811c88fb14035a586f8b05c3e8d8c"
+    },
+    {
+      "path": "Cargo.lock",
+      "bytes": 5345,
+      "sha256": "5b733fbd5438688aa6a7ea463a64f8874d6bf1719b767fe877552e524f5d09a7"
+    },
+    {
+      "path": "Cargo.toml",
+      "bytes": 424,
+      "sha256": "8a5030b0de95453d06c044c542b462e22c4929a82328580276292185513f64a5"
+    },
+    {
+      "path": "CITATION.cff",
+      "bytes": 786,
+      "sha256": "05b9dd41090df13d2908fa007b6847fc9068ed6b734211c32f4aa9923200a552"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1079,
+      "sha256": "d2cae314b54e2093866b9972facb4c1724a6adcb322e7fb19a8c2431c1cdd551"
+    },
+    {
+      "path": "NOTICE",
+      "bytes": 1439,
+      "sha256": "87c819b8b5de1ae9fd025f34b191192eaa1d3cbddbca33f9b1f11949c713b784"
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 836,
+      "sha256": "afe2c4a81e53fe42c46014bb53f38670e76c88833eea373d15badd72a0fc0305"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7349,
+      "sha256": "39045ded95ebb3ab63d3957792b775589a15b534a9bbc73641aef427577fb356"
+    },
+    {
+      "path": "rust-toolchain.toml",
+      "bytes": 66,
+      "sha256": "a7a23801522d469e93021507fc88e9f5651056fce0e6aa22b3d3157c5f3dc6fe"
+    },
+    {
+      "path": "rustfmt.toml",
+      "bytes": 16,
+      "sha256": "7e1c845eb4c10735ee1060760592a18b47a53aaf45e63b7e0932c005b523a6ea"
+    },
+    {
+      "path": ".github\\workflows\\ci.yml",
+      "bytes": 859,
+      "sha256": "bea27480dcee0445e574f1fb7774c3e436bc7c1f8490e9985f8749f2cef85477"
+    },
+    {
+      "path": "crates\\taverngym\\Cargo.toml",
+      "bytes": 377,
+      "sha256": "f7e01e3482a70ec782cc04970a1bd7d769a08955d108a0acb10ac3af22364bed"
+    },
+    {
+      "path": "crates\\taverngym\\data\\cards.json",
+      "bytes": 1753327,
+      "sha256": "429305fb9dd53e6c5240bf5219a747602e96d7a0e4bbd19a0d65b8b044ed6168"
+    },
+    {
+      "path": "crates\\taverngym\\examples\\bench.rs",
+      "bytes": 1849,
+      "sha256": "ec2b378a8005b79b8acfdfd6bc7edff9e7dcc65c9215816e5b1292afd302d22b"
+    },
+    {
+      "path": "crates\\taverngym\\examples\\content_report.rs",
+      "bytes": 5449,
+      "sha256": "595ec82e38f5ff22a7b72c633484fd73fed464891860cfbd642f17fa7f653e91"
+    },
+    {
+      "path": "crates\\taverngym\\examples\\fuzz.rs",
+      "bytes": 5753,
+      "sha256": "e9b5047b8ee9457c68529585e617ebdac855d44983fd006b0e24a6c6e9ae2635"
+    },
+    {
+      "path": "crates\\taverngym\\examples\\play.rs",
+      "bytes": 1266,
+      "sha256": "1abb38199865ceb6a79ab8b624ef82379caeabd298f8d3b8c5069dd30578ee74"
+    },
+    {
+      "path": "crates\\taverngym\\examples\\stress.rs",
+      "bytes": 1788,
+      "sha256": "a585bfe36422ddc0562e47961e9674ca0041dfd72b5882973fe3d052f47219fe"
+    },
+    {
+      "path": "crates\\taverngym\\src\\actions.rs",
+      "bytes": 15859,
+      "sha256": "c44915a4236a945d0a76e577953e00cad87118b8b78eae341776cd19a1aa9e1d"
+    },
+    {
+      "path": "crates\\taverngym\\src\\batch.rs",
+      "bytes": 18059,
+      "sha256": "946bc0f161885e53e5ae4a9afa9a67a447b7c422af430ed1fb636122e09b76d2"
+    },
+    {
+      "path": "crates\\taverngym\\src\\bot.rs",
+      "bytes": 8716,
+      "sha256": "63b24e6d48a65bab585c415753b437804e6039b71d6b6fb5a5f3f497e4789855"
+    },
+    {
+      "path": "crates\\taverngym\\src\\cards.rs",
+      "bytes": 14866,
+      "sha256": "f29c413770185a301ca98ce491ac283b4b6cf4ba05934ef4b0fcfeace8bcb1e0"
+    },
+    {
+      "path": "crates\\taverngym\\src\\combat.rs",
+      "bytes": 25638,
+      "sha256": "101b429ab3c8153d7f03daa634d8301612b22b36591399f3cd199ffaac29a3cd"
+    },
+    {
+      "path": "crates\\taverngym\\src\\config.rs",
+      "bytes": 25019,
+      "sha256": "e39d896b31d1a61edaa7962a08776a6d284f99d473165b46c0d6827861e46368"
+    },
+    {
+      "path": "crates\\taverngym\\src\\debug.rs",
+      "bytes": 63653,
+      "sha256": "40f98a1f0b7201f3a4c1595364b0a58969ad77744b24a0434d5dab8a896a8d9b"
+    },
+    {
+      "path": "crates\\taverngym\\src\\engine.rs",
+      "bytes": 201651,
+      "sha256": "1f1631b225c92d83fe41314f38cf179d5734928bae4f1a35bca499320408c023"
+    },
+    {
+      "path": "crates\\taverngym\\src\\env.rs",
+      "bytes": 5606,
+      "sha256": "99dfdd9dfe92cfd3fe6d7cf4f80fcbf4344fbfc9e67cb32e6f52c2e88247bf5a"
+    },
+    {
+      "path": "crates\\taverngym\\src\\event.rs",
+      "bytes": 8051,
+      "sha256": "89f3231bee8e390e846e8940e6bdad8a36bdd5468f709e0c18c68d4e99807809"
+    },
+    {
+      "path": "crates\\taverngym\\src\\experimental.rs",
+      "bytes": 5986,
+      "sha256": "3c174ea10d152d683ab52f3352f796018f3403edb9f4ad3f68b69848b8ac929b"
+    },
+    {
+      "path": "crates\\taverngym\\src\\flow.rs",
+      "bytes": 51167,
+      "sha256": "2646872f6924017d4bb30e65a85b5af22580d34ddfb722406ea114bd7ea410d1"
+    },
+    {
+      "path": "crates\\taverngym\\src\\guard.rs",
+      "bytes": 7641,
+      "sha256": "a6c2e9695bb74de54cd2adf5f5b588507c53d419481c328d5be2ec0812d7f72c"
+    },
+    {
+      "path": "crates\\taverngym\\src\\invariants.rs",
+      "bytes": 5378,
+      "sha256": "0b9f919ec49c1a87f9d991747ea1d49a2f22e47d242554498a4ccb758d77d872"
+    },
+    {
+      "path": "crates\\taverngym\\src\\lib.rs",
+      "bytes": 2051,
+      "sha256": "20237a9ba3aab67b9c912dc462ee4aaef93e11707a1a60862ec0c2bf0de79b1a"
+    },
+    {
+      "path": "crates\\taverngym\\src\\obs.rs",
+      "bytes": 15636,
+      "sha256": "906b2612ffc6eec44b7055f27c8fb31807f30477b0065a3df5bfd80808d7faa1"
+    },
+    {
+      "path": "crates\\taverngym\\src\\recruit.rs",
+      "bytes": 113666,
+      "sha256": "32b73659ff96c51c1df743d32fa17a43e5dcc538746fa24a9c8e0fb6523feac3"
+    },
+    {
+      "path": "crates\\taverngym\\src\\rng.rs",
+      "bytes": 3589,
+      "sha256": "cf0a954f165814f746b3eb478797b3ed39d47ff8362b289d1926764a981bcb2e"
+    },
+    {
+      "path": "crates\\taverngym\\src\\script.rs",
+      "bytes": 19608,
+      "sha256": "90e56e23b563952de3ee114dab9225f30845e815d06bcb038dedf574d4150385"
+    },
+    {
+      "path": "crates\\taverngym\\src\\state.rs",
+      "bytes": 43487,
+      "sha256": "dc0821061add3285c94ef3eafea84ad79ca223cec18a9d3b10ce38b7288203ea"
+    },
+    {
+      "path": "crates\\taverngym\\src\\types.rs",
+      "bytes": 6516,
+      "sha256": "1b3bb9e4dd3395b1205a1eaaab8aa2bbd8e9152ac188a97bfd91038d6165dc21"
+    },
+    {
+      "path": "crates\\taverngym\\src\\workers.rs",
+      "bytes": 851,
+      "sha256": "decec43d9a3483e8e68fc35569209306f7d34bc53f2abe98776ceecc7a42457f"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\aberrations.rs",
+      "bytes": 11723,
+      "sha256": "0424bf1c9aa42bd33a2419f0e149c972aa2f8616c473305a97046ab94b704126"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\beasts.rs",
+      "bytes": 10427,
+      "sha256": "740a233bc3f8399ed31d5b92396fe45142667fe9682febc29dc945798a560644"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\buddies_a.rs",
+      "bytes": 30707,
+      "sha256": "5888c32dca61898af3fb00bc154b4147c597ff14d0a5af280518a44ec0315bf4"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\buddies_b.rs",
+      "bytes": 28541,
+      "sha256": "c0c21663d326236158f64e2ac074e7a133d53693303c837237522f4e71299147"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\buddies_c.rs",
+      "bytes": 38171,
+      "sha256": "95e2f26b7335218d2a4f1204e370767b023405fba5c2b6826594e404d0c3606b"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\darkmoon.rs",
+      "bytes": 16799,
+      "sha256": "f3dbc4bd103f5cc2b7e7fdbdba4cf1b6fcb9c58e788137b890677fc123bbbdb1"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\demons_p1.rs",
+      "bytes": 9226,
+      "sha256": "15dde14f1e18595283cf62ed4e4e9ca07bd986f71cbb65649c4879fbf5192585"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\demons.rs",
+      "bytes": 17017,
+      "sha256": "9c835db9229a52791717bf2613450080d0add5ce2eebdf90ed4389ffc1d5f749"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\dragons.rs",
+      "bytes": 10526,
+      "sha256": "f45509cf23b9ee1ba9ea68183681e35dbb587e74e4543ea615191d041db6ecab"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\elementals.rs",
+      "bytes": 12917,
+      "sha256": "e1265d078e2dc44fc0aee03899edf52e7f81c393687ae0dd016f308c062e79d7"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\gifts.rs",
+      "bytes": 38464,
+      "sha256": "07519eedb74d2cdba3141a807f5b25d6b9fc653efffdee02702d17ca24ffad51"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\helpful.rs",
+      "bytes": 9718,
+      "sha256": "48b7a63fefef0fb1fc81147a4601330202dc4c6f0a23489e8ebfda9010c38418"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\hero_powers.rs",
+      "bytes": 9190,
+      "sha256": "57375fe9ec573bd65d62e10ed8fcd0907949ffd1bc938a2f9e83f5cee531fa09"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\heroes_active.rs",
+      "bytes": 17683,
+      "sha256": "dc06d11c5a171d7e0afeb8fd434496c773cfe6f2beb2b5ebd3c312964334e969"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\heroes_combat.rs",
+      "bytes": 16806,
+      "sha256": "6e62985b677deae3bda36f90eb878d09150f55c892c02dd40ca0ca0353912d9e"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\heroes_eco.rs",
+      "bytes": 25106,
+      "sha256": "09781798e7e1d7c2088c7cc05b58e18f598f614dee53d9a16796b5888aaaaabc"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\heroes_gen.rs",
+      "bytes": 26200,
+      "sha256": "f374883a95440e416c86cde38e09362db280a9e701f8717f3e9c8683174b5c7a"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\heroes_special.rs",
+      "bytes": 11842,
+      "sha256": "8b4afe543661e435abba89408df0d39449890e7f34069d9a7e5fdf729dceedee"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\heroes.rs",
+      "bytes": 15602,
+      "sha256": "1c0a84a511f055d9679ae56495038dcc4e74cde581127d20cac441b7a8ee5a5f"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\mechs_p1.rs",
+      "bytes": 8071,
+      "sha256": "9f6c6abc33572943b55915cffc434d7a22b4a3474c551066c43db868e8cbd9a5"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\mechs.rs",
+      "bytes": 7419,
+      "sha256": "e6c35513f96abd69bfcbdd09e79c36f5166a4be4c97c08e9a63b8720d87a94af"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\minions.rs",
+      "bytes": 36146,
+      "sha256": "a10d81a229f76d3be32047404e2a81e8a7a4633255d1ada12f586f6374d7a761"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\mod.rs",
+      "bytes": 61396,
+      "sha256": "acee6d511871eee620751bdc4efd0d376b2540b84a11f6d3165ccc8a23efdd66"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\murlocs_p1.rs",
+      "bytes": 14437,
+      "sha256": "b4cf425b9e3c11bc4dc75b0d0ae87c430d721e7a71c87f1d826bf1e255bfd98c"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\murlocs.rs",
+      "bytes": 4387,
+      "sha256": "3e27904fac7cc6a141f0957281b1f8183caae5542beb62ff8a5d949724100f5e"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\naga.rs",
+      "bytes": 12141,
+      "sha256": "0cbffe59fe59a0f256dfa054ec22db613dc30f95d39bed1198b955aff6ae09ec"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\neutral.rs",
+      "bytes": 5059,
+      "sha256": "4be858d65fd3dcdc042ce508600b16c384f457fcf4486fec147c42c8f46228c0"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\pirates_p1.rs",
+      "bytes": 5741,
+      "sha256": "d1f4210d754a91e9dc7de597a4c4c1ee436bf55a8c49361b537fc6242120e9b6"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\pirates.rs",
+      "bytes": 6635,
+      "sha256": "675daba235d0d0267b44155f02edde19b32079b887ea8b4121dd13f40b354dfc"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\putricide.rs",
+      "bytes": 14700,
+      "sha256": "ccdf6349126c42196c37360be3f9589a3ee39f172c264d66adab15f335e10f56"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\quests.rs",
+      "bytes": 69407,
+      "sha256": "c590f37796c0f3cbeb2acb016623a68307cf7c0a1890b33f6b564505d480994b"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\quilboar_p1.rs",
+      "bytes": 6467,
+      "sha256": "f55e4e9d3f84603a3354167a50a8fc9da4fcadf09face538bab44694bd0825a7"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\quilboar.rs",
+      "bytes": 8706,
+      "sha256": "c2606ec3973cf9c3a728fc34aa7ab06c21c52a060c475af95230f025b1cfe829"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\secrets.rs",
+      "bytes": 11675,
+      "sha256": "39833ad779f4fc861d6c019ab8439a6827d077e86beb43412848a880ff938f14"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\spells_p2.rs",
+      "bytes": 17317,
+      "sha256": "d4ad8517526442060832e326a5a07b42d42bfccb07ccec1f9a30882a9902e232"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\spells.rs",
+      "bytes": 20592,
+      "sha256": "92988eafddf6c2705354cb60856c5c32c0c211d7b4731ae318713a6c2e9b6f8a"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\starcraft.rs",
+      "bytes": 24726,
+      "sha256": "d4719dacace45513fadae241d00bcbb27e2002a8b796db22e0c7311dbf164130"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\tier7.rs",
+      "bytes": 12037,
+      "sha256": "496fcbc096eaa640b7270e17b3b8a034801e1ea7211bf27be07fe4729f0765a3"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\timewarp.rs",
+      "bytes": 16322,
+      "sha256": "5fa9c91996fcc9061f9bbe7a451730e8515cfbba85a62b457427b68f2f05e489"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\trinket_offers.rs",
+      "bytes": 10015,
+      "sha256": "64d3b97a39ac00f2e64b73312304f563813c8ef9d268da2a1245b7fe0e52f1c5"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\trinkets_p1.rs",
+      "bytes": 21920,
+      "sha256": "731d1cd90ab7dd3728fd1d5d47ca9b2778db422ea5040ea6fcb65e31daef41c2"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\trinkets_p2.rs",
+      "bytes": 28480,
+      "sha256": "d4ec4060f2bbb0ed593fdec59767c590ac3d6e15134b263825f77f445a08c377"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\trinkets_p3.rs",
+      "bytes": 24793,
+      "sha256": "2569ec9877f7776556995cdc25353261d82ddac1157d063d6a0658a7d10bf206"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\trinkets_p4.rs",
+      "bytes": 22114,
+      "sha256": "f2d660fbb911038bee5f710265e1fd6061a48af4869c7f65cfb714981432c167"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\trinkets_p5.rs",
+      "bytes": 9081,
+      "sha256": "77948d68c666a201d6a576088a7c66798962203ec115d1a44cf5c74eee3a5d88"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\trinkets_p6.rs",
+      "bytes": 15981,
+      "sha256": "cecdd6ce77356f379622da5ee0b259c59760d14028bcb48b962d2e833fa375b3"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\trinkets_p7.rs",
+      "bytes": 12547,
+      "sha256": "52a0f70e723a11396f1009eb33813c1e6ab7a18791bede1fa8f48d4d9882d948"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\trinkets_p8.rs",
+      "bytes": 17815,
+      "sha256": "533b84931500d16ece9f7a9676f89595813ddf8c33df01c0fce4e475284c48cf"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\trinkets.rs",
+      "bytes": 12331,
+      "sha256": "59515a98349b664e0a83753616f736499b5c5f7050e40ab605b429f36885d8a1"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\tw_beasts.rs",
+      "bytes": 16883,
+      "sha256": "2be388806ef87b206d06746c2d862eeb95aaf7d23f941714ec7c19fb5861915a"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\tw_demons.rs",
+      "bytes": 9217,
+      "sha256": "516fa7c4de426d1a9f4752e389164a5f1815f25b0103c3d8188a1ee528e08006"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\tw_dragons_pirates.rs",
+      "bytes": 13174,
+      "sha256": "a4e777537777f61ac3089e413dc4c60ef241af28e3004d9a399c0f90d413d4ca"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\tw_elementals.rs",
+      "bytes": 12977,
+      "sha256": "beace9d59da8bfff7962ddaeb1d23f2919fcba4bb2a437f3a48da267798c0938"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\tw_murlocs_mechs.rs",
+      "bytes": 14739,
+      "sha256": "ce98772b0001ac4e1d8220ade0f424009a06f73a676a9f0bbf10c25418acd4ff"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\tw_quilboar_neutral.rs",
+      "bytes": 24653,
+      "sha256": "3462fa3e5a37c2529a195bd58a630916244d2b15a3d70e4266ece211f6979918"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\tw_spells.rs",
+      "bytes": 14509,
+      "sha256": "1fdf4dee2c6f593a8a4ff4e199dd13fa1a677337c950d10e84de8429aef7d1bd"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\tw_undead.rs",
+      "bytes": 12259,
+      "sha256": "fe7da8a20f99e328690c06620e50c7495589039b76ca3bb86c6eb99eacb2bc39"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\undead.rs",
+      "bytes": 7034,
+      "sha256": "60caf79485a5308f93895ee9bcfb3497b4dcb00e634f8b778ed1d147aac7d672"
+    },
+    {
+      "path": "crates\\taverngym\\src\\content\\yogg.rs",
+      "bytes": 4759,
+      "sha256": "fa16ee0a9eb9c0eaf980e738398e4303aba157a13e99af3c2f783b1db68f805f"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\buddies_a.rs",
+      "bytes": 6192,
+      "sha256": "0fbcc3e6b7aaf5eac2eca16ee42e0f0149aac0fa62c359fda9694413041be462"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\buddies_b.rs",
+      "bytes": 7053,
+      "sha256": "ba83981b470f93805ac9d3c1737e92bbc11d732e7ecc1a5f3125cdf732ef3d9b"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\buddies_c.rs",
+      "bytes": 7489,
+      "sha256": "9eb8944f079814a92cc58635ced326afb088b203957f09d838fd1316e1aef2f5"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\cards_content.rs",
+      "bytes": 26301,
+      "sha256": "8833892bb156645febf9cc64c376f71cee3fc7940f7371c4f3086c120d630f73"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\cards_core.rs",
+      "bytes": 8344,
+      "sha256": "9056cdb28550b0a72ce02672a5c122b73314203c1dddb6098884fcf5f22ad060"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\cards_diagnostics.rs",
+      "bytes": 4800,
+      "sha256": "23b73e66c32fa3c82ebf4dfe1b08b9b26535bf0313b1643ed869ba5805a5b1c8"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\cards_heroes.rs",
+      "bytes": 29507,
+      "sha256": "bfe1c81afb8b1e8a250aa86eed7ee93ef1dd564879c229b58d984123e4050869"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\combat_analytics.rs",
+      "bytes": 6399,
+      "sha256": "798a107d01e905c1662eec2e06d23146ad4c1263bb71e3148781114232c03d94"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\complex_interactions.rs",
+      "bytes": 33366,
+      "sha256": "20193a62c26e62093610c41ec1efda942f4990fde612f99fdbc85c982d660827"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\experimental_rules.rs",
+      "bytes": 20150,
+      "sha256": "42a1f65fae2968ab6e93746448987b031df037e76b3c25e62bacb016f8d034bb"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\games.rs",
+      "bytes": 5340,
+      "sha256": "a6334d9fb2fa2eeae3b611fd11d12dd015f22aae4f7744a5e4a93281cf917b95"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\mechanics.rs",
+      "bytes": 511546,
+      "sha256": "2287f55b257f9f9be196b654fafcd3e82f371a121566a0aa2161c58f040a7fb1"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\persistence.rs",
+      "bytes": 3790,
+      "sha256": "a368955c5f9455ea5e1bca14b4d73606bf9cf5fa31481c465bc1f65b3330dc99"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\recruit_batches.rs",
+      "bytes": 12954,
+      "sha256": "1059b59a94fee22f1845e0dc245c976757308f49dd366301974cc058db1cc25c"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\s_tier_engines.rs",
+      "bytes": 30520,
+      "sha256": "ae1461f2ef512126957967d547efec1c5ff1ec21e3551237514e979becd7a4b0"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\scoreboard.rs",
+      "bytes": 1986,
+      "sha256": "5197d65795ea444918b10e55a1733b2d8de0ea6491e1b1f5ced7ac2cc21f4961"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\shown_heroes.rs",
+      "bytes": 12667,
+      "sha256": "8e748342b50d75f89a378930edddd9be27ba056e5199c596a00b5465084e56b2"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\shown_minions_a.rs",
+      "bytes": 14694,
+      "sha256": "7a98023521d900885a0b17dad0b7f4d29c72368ae7e6206d98ca72bc86ba4ea9"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\shown_minions_b.rs",
+      "bytes": 12296,
+      "sha256": "f7ed1757d3323a91fa7c92716f5215fac61afdb6f4541509a2ed21e48bdd86e7"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\shown_spells.rs",
+      "bytes": 11626,
+      "sha256": "de8406d7492de7fa5f8e207e42c247883fd6ff8bd423a0da9dd77764176ebe84"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\shown_timewarp.rs",
+      "bytes": 14085,
+      "sha256": "95c066654311c774fbab9be008e566b9cbf69df306de0298a24241a4b4d2de86"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\shown_trinkets_a.rs",
+      "bytes": 14474,
+      "sha256": "ffeeb759753a858b2fc426d65cad15d6652e7bdd24c1aaa773a2993e10cacb10"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\shown_trinkets_b.rs",
+      "bytes": 9979,
+      "sha256": "554f88fcfd1dcf056eac76b108a3df44d88f3211d910afa5e8b8e930c3584335"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\shown.rs",
+      "bytes": 8057,
+      "sha256": "9caebd09e630151d40d5c7457f5fb480c199fd1e60b3f059b6c323413334cc65"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\tw_beasts.rs",
+      "bytes": 13713,
+      "sha256": "a2b26c8e2b39292662a8f0d2cc71b87610c3ed0c3cce36454c2d3a541fe74241"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\tw_demons.rs",
+      "bytes": 8630,
+      "sha256": "1502e3b277bfa5b61785b53a9193f5fe7d84ae6af81dc31aca041cdc1a88cb77"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\tw_dragons_pirates.rs",
+      "bytes": 15151,
+      "sha256": "5a170f22200ae80e10a0e41bc18560ca45f414439791e0f6c61865c13710318e"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\tw_elementals.rs",
+      "bytes": 8947,
+      "sha256": "ec510eecc37cfabbd334014bc2846a62366379ab6e9a4f199e0c26728c93bb71"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\tw_engine.rs",
+      "bytes": 7111,
+      "sha256": "c101bf1f2ceed48d780f98c830f0b18f55fbbcadf3a781de7a8aac9e5bb95a61"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\tw_murlocs_mechs.rs",
+      "bytes": 11839,
+      "sha256": "84bf28058c6039bd443a5e76048903b1d8ec77fbe03b1b503562317bdd9953ac"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\tw_quilboar_neutral.rs",
+      "bytes": 15163,
+      "sha256": "fcfd481e62ea4d59b7acb70d2cd46dbf6c20ce6f0f07887e4a8c3de5d238373a"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\tw_spells.rs",
+      "bytes": 12342,
+      "sha256": "4885cc0cf586e6edd10f8f9c1746855013f7e1eef929dac08a3d4a4701b036dc"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\tw_undead.rs",
+      "bytes": 14366,
+      "sha256": "a3b50909aa54a925f8742d83ecc5eb99f4b02952ed96e60ec97553c522487eb9"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\validation.rs",
+      "bytes": 21373,
+      "sha256": "b7110ccc1285095cae0f9411c9313b156eb516489534dbea5e5dcfdca541a2c0"
+    },
+    {
+      "path": "crates\\taverngym\\tests\\common\\mod.rs",
+      "bytes": 4131,
+      "sha256": "614baca7dbfd4b481c9eb7821fe9bce5d908561baa484ee165f192948d1563b8"
+    },
+    {
+      "path": "crates\\taverngym-py\\build.rs",
+      "bytes": 2845,
+      "sha256": "9edc566185dcce6f5659af041e4c3feff5e12e3aaa7d54909f1db4b5a22bb973"
+    },
+    {
+      "path": "crates\\taverngym-py\\Cargo.toml",
+      "bytes": 427,
+      "sha256": "22b700f9005bd24a78db49c274e8b12d69be62d85912790161057bb75a6f7940"
+    },
+    {
+      "path": "crates\\taverngym-py\\src\\lib.rs",
+      "bytes": 19110,
+      "sha256": "f62f5e043135b81042386497fbc13be4c29b5f29ffedc06f254641b4de6f7f7b"
+    },
+    {
+      "path": "docs\\ARCHITECTURE.md",
+      "bytes": 20430,
+      "sha256": "8024810b522d771503301dd0d35eca36bc89e27f347d0b174e30ba9eed7e40b5"
+    },
+    {
+      "path": "docs\\CONTENT.md",
+      "bytes": 75212,
+      "sha256": "03b32f5d05600d8a213ececfe9c261c363fb341087944853148bbd90f9445aff"
+    },
+    {
+      "path": "docs\\TAVERNBENCH.md",
+      "bytes": 3718,
+      "sha256": "cd9fe6ba0fd7d30481237262c43f4f82e6078bf538b38759ddc51b3f150cd6d6"
+    },
+    {
+      "path": "docs\\TAVERNGYM.md",
+      "bytes": 5440,
+      "sha256": "85af9ab8708444899470b3267080a7e92fd20521df83ef13b7fe4cdfeabac550"
+    },
+    {
+      "path": "docs\\TIMEWARP.md",
+      "bytes": 7252,
+      "sha256": "c9002b3d97efbcd0445bc381248baa9ba2d634560ee6866186ed7cf28a78f11e"
+    },
+    {
+      "path": "docs\\assets\\autotavern-banner.png",
+      "bytes": 2753685,
+      "sha256": "56d5c78bd8e5339312ff104848af7371c9f6df2efff20f3dc6ead55e840d64c3"
+    },
+    {
+      "path": "docs\\assets\\autotavern-emblem.png",
+      "bytes": 1686778,
+      "sha256": "a3631fffa792a7b40ac0636236d6e70ae148c304d9e0dc3e18fa42e8ebc1bed9"
+    },
+    {
+      "path": "python\\taverngym\\__init__.py",
+      "bytes": 3018,
+      "sha256": "4de0f7c29590c2c9a62a0bfabbad44c767765bcb933f7a086a87899d42222970"
+    },
+    {
+      "path": "python\\taverngym\\batch.py",
+      "bytes": 4135,
+      "sha256": "4c574338a50389510bc819921206c06e857653ac9bc9265551b75c21b8fe2b79"
+    },
+    {
+      "path": "python\\taverngym\\env.py",
+      "bytes": 1861,
+      "sha256": "10e83b97aca073f006fbe31ec7f385cc1340f5c11b36cadc7d7f993b5680246b"
+    },
+    {
+      "path": "tavernbench\\data\\eval\\labels.jsonl",
+      "bytes": 61493,
+      "sha256": "99447d4fbafd9b3748a0460b02598a4b7244897ab4313a081bfdff0fb579f940"
+    },
+    {
+      "path": "tavernbench\\data\\eval\\prompts.jsonl",
+      "bytes": 1230334,
+      "sha256": "0c9b15d239585a9069b6d8c07bb674db0a0d3e7aa876f84e3452866ff160d590"
+    },
+    {
+      "path": "tavernbench\\data\\eval\\states.jsonl.gz",
+      "bytes": 1959697,
+      "sha256": "3f8ebeeae90c4a846344dd53672747d30f61b57203f8607d5b6bd55d8a54cdad"
+    },
+    {
+      "path": "tavernbench\\data\\full\\labels.jsonl",
+      "bytes": 157383,
+      "sha256": "cfb321bbf7ed0538999949abf1a7189bc9a17d3522240ecbe219dd02325464c6"
+    },
+    {
+      "path": "tavernbench\\data\\full\\prompts.jsonl",
+      "bytes": 3060716,
+      "sha256": "58caa46d3dd0b186f05688dae40044acd382e5db641790988c4dc4f6a4bfce33"
+    },
+    {
+      "path": "tavernbench\\data\\full\\states.jsonl.gz",
+      "bytes": 3621580,
+      "sha256": "a3ce5adfdaf28b3d4f5864893e5316129bf8f3b31f51552348d7fa2cfdfaf101"
+    },
+    {
+      "path": "tavernbench\\results\\eval\\claude-opus-5.5\\answers.jsonl",
+      "bytes": 130421,
+      "sha256": "69059038b56a3811fa35e632b557201824ee84781ba4eb903f556ed27af5fa4d"
+    },
+    {
+      "path": "tavernbench\\results\\eval\\claude-sonnet-5.5\\answers.jsonl",
+      "bytes": 76807,
+      "sha256": "aada12f7b5ddc56c0ec4f179afbb4dd5045e5291082622a6a71f5b0515f846eb"
+    },
+    {
+      "path": "tavernbench\\results\\eval\\deepseek-v4.1-flash\\answers.jsonl",
+      "bytes": 97329,
+      "sha256": "4053213f88b09d9375b1122cf5bfd55a52238f8063be1b495c29329e1a6e1e8c"
+    },
+    {
+      "path": "tavernbench\\results\\eval\\gemini-3.8-flash\\answers.jsonl",
+      "bytes": 89238,
+      "sha256": "ef3211c187113a83dcfbc3809314c77bbb1d37bec263d3ba88da684785bd3a7f"
+    },
+    {
+      "path": "tavernbench\\results\\eval\\glm-5.3\\answers.jsonl",
+      "bytes": 89284,
+      "sha256": "9df83781f188413a428062499f5dad60e5345e487da6f734a5ac5684ac098e5a"
+    },
+    {
+      "path": "tavernbench\\results\\eval\\gpt-6-astra\\answers.jsonl",
+      "bytes": 82925,
+      "sha256": "b48f5643adce84287e7176e4542e353a2326acb36bcf4a7de3c304534fceaad7"
+    },
+    {
+      "path": "tavernbench\\results\\eval\\gpt-6.1-sol\\answers.jsonl",
+      "bytes": 83402,
+      "sha256": "b3ed6ddd33030315f592c216f022be5b72b0da5509a7d38e751dce819238e835"
+    },
+    {
+      "path": "tavernbench\\results\\eval\\grok-4.7\\answers.jsonl",
+      "bytes": 85923,
+      "sha256": "bec4d5065ea3b416ac204ad1f97f2d75c58f09dfb63e55e7f67adcbc1256bf5c"
+    },
+    {
+      "path": "tavernbench\\results\\eval\\intern-s2-preview\\answers.jsonl",
+      "bytes": 87522,
+      "sha256": "d537f9b0f79f626412ed9ff22ff0141b542e73ca1b82ed128f2f6eb47be64f7f"
+    },
+    {
+      "path": "tavernbench\\results\\eval\\jev\\answers.jsonl",
+      "bytes": 310125,
+      "sha256": "bf4261d17d6f04c38680a73d0fae203ff26c860aebbd1307fd8a4a3e1fb51fb2"
+    },
+    {
+      "path": "tavernbench\\results\\eval\\kimi-k2.6\\answers.jsonl",
+      "bytes": 2119874,
+      "sha256": "a538a6acc3137b1d919355e7d309f29c8ad2ae4a3ac460d232ec02ebd82e1f7b"
+    },
+    {
+      "path": "tavernbench\\results\\eval\\tavernagent\\answers.jsonl",
+      "bytes": 42100,
+      "sha256": "f9332394d2d79fbb811e6fc92bf84ca49c9b5a2fbd98fe37eb52f17d33cff3a3"
+    },
+    {
+      "path": "tavernbench\\results\\tools\\deepseek-v4.1-flash\\answers.jsonl",
+      "bytes": 58573,
+      "sha256": "dd9163a0745e6c429f47d227b7058cfa0bdd9cfd7b314c75ac2eb1ef08ac13a6"
+    },
+    {
+      "path": "tavernbench\\results\\tools\\glm-5.3\\answers.jsonl",
+      "bytes": 29635,
+      "sha256": "1ab367ed5af4dee2971dcd20152092b20921c715a2d01f1ec332397844708a0e"
+    },
+    {
+      "path": "tavernbench\\results\\tools\\gpt-6-astra\\answers.jsonl",
+      "bytes": 28062,
+      "sha256": "bb051a1ff697b562ab6dce682311133b876985b606f6dadf2be298e1b8388fa0"
+    },
+    {
+      "path": "tavernbench\\results\\tools\\intern-s2-preview\\answers.jsonl",
+      "bytes": 41908,
+      "sha256": "f44805a54c7b27e37eba50bbf6611ce077577b001d2d213e9b5f10ce93eab166"
+    },
+    {
+      "path": "tavernbench\\results\\tools\\kimi-k2.6\\answers.jsonl",
+      "bytes": 95115,
+      "sha256": "a21fa0cce43092f410c1b20368dda928668a86206afef84ea72457a0d1b3a0fa"
+    },
+    {
+      "path": "tavernbench\\tavernbench\\__init__.py",
+      "bytes": 92,
+      "sha256": "b42b143eb4b0ac931cdc6b37da678316045a8cf8c7a2100d54620bf1e2ebb603"
+    },
+    {
+      "path": "tavernbench\\tavernbench\\chance.py",
+      "bytes": 2226,
+      "sha256": "6f3db0f3c9bc36ce94d0e7d3bbcccaae0ef13fc6faf38ca8fe08894b27596eff"
+    },
+    {
+      "path": "tavernbench\\tavernbench\\engine.py",
+      "bytes": 10016,
+      "sha256": "a457a6662c8eaf36c9beb442962bd3d1d9e6e6e4204f4a61a0847a6e5b4d178f"
+    },
+    {
+      "path": "tavernbench\\tavernbench\\render.py",
+      "bytes": 3786,
+      "sha256": "fbff99423b3cc2f23f3b9ff430d209633df4e4508455775571731a2dcdc98bba"
+    },
+    {
+      "path": "tavernbench\\tavernbench\\report.py",
+      "bytes": 5742,
+      "sha256": "ac073887d8606914fb8138bbe3433131cb090012c5aeeefa5548c570f0217f35"
+    },
+    {
+      "path": "tavernbench\\tavernbench\\run_claude.py",
+      "bytes": 3250,
+      "sha256": "478d9696e74336de2f71a764c81c88c5ebac0bf86b87fadc1f444cd0a24eaaa8"
+    },
+    {
+      "path": "tavernbench\\tavernbench\\run_jev.py",
+      "bytes": 11950,
+      "sha256": "dd278b6b2c0c458623676a1b58b97dc114bed13610a1a4adc4410b7e667c78d2"
+    },
+    {
+      "path": "tavernbench\\tavernbench\\run_openai.py",
+      "bytes": 9487,
+      "sha256": "9d74cfb0b8589dc26af35c2b760f4168e849be23b8fdcc925c2db6392f6cef64"
+    },
+    {
+      "path": "tavernbench\\tavernbench\\run_tools.py",
+      "bytes": 14082,
+      "sha256": "c55de800bcbacce38fa99e3fb8cffe64d7d666c6b0f97a0277b66cd77471912c"
+    },
+    {
+      "path": "tavernbench\\tavernbench\\score.py",
+      "bytes": 7135,
+      "sha256": "5fd3ea670c607bbc6a46ac8c9d92af6d88a2253677ab872552e387b02cd1d62e"
+    },
+    {
+      "path": "tests\\test_batch.py",
+      "bytes": 3753,
+      "sha256": "b06c73aea61fc39f7459af1a7676b58c47c2b0f78dee867f4375c3c8b930bdaf"
+    },
+    {
+      "path": "tests\\test_debug.py",
+      "bytes": 7579,
+      "sha256": "1b7ae1e83f5538d001a860d9829ac2da84b79953e9bac1c5f11db2426432280b"
+    },
+    {
+      "path": "tests\\test_env.py",
+      "bytes": 5840,
+      "sha256": "d94dd20927b77e68b9bf03a74f57e2b6e0cf8e034baf79ee554a73fdc8fd641a"
+    },
+    {
+      "path": "tests\\test_rules.py",
+      "bytes": 8689,
+      "sha256": "5360b08ca98b360cdf6abad3c5995321bcc72f9ca4077ede855ef83d88ebffc1"
+    },
+    {
+      "path": "tests\\test_smoke.py",
+      "bytes": 1170,
+      "sha256": "a8bb969b0f061c26055e384230f69bee580f123b20a28f92a31cebfd73fe0f1a"
+    },
+    {
+      "path": "tests\\test_tavernbench.py",
+      "bytes": 3162,
+      "sha256": "8df4b4222514750822d4065a178a5c56cf150a9dd2e6c390b8c8e8ae63b971c0"
+    },
+    {
+      "path": "tools\\gen_carddb.py",
+      "bytes": 12115,
+      "sha256": "abc8b99a66407d413425f817d6b0d6bf1c4089178e4d973c0d74b29e215ec45a"
+    },
+    {
+      "path": "tools\\overlays\\36.6.3.json",
+      "bytes": 36130,
+      "sha256": "aa90a0588f2613783f3e4b4c51a2a24065771f6af5841abbe6d9370e61650d5c"
+    }
+  ],
+  "build_verified": false,
+  "rule_accuracy_verified": false,
+  "source_read_only_by_protocol": true
+}

@@ -1,0 +1,54 @@
+{
+  "manifest": {
+    "ruleset_id": "unit-fixture-explicit-not-official",
+    "target_build": "fixture37",
+    "source_qualified": true,
+    "public_offer": {
+      "minion": [
+        "BG23_000"
+      ],
+      "tavern_spell": [
+        "BG28_168"
+      ],
+      "hero": [
+        "TB_BaconShop_HERO_34",
+        "BG34_HERO_004"
+      ],
+      "trinket": [
+        "BG30_MagicItem_801"
+      ]
+    },
+    "supported_derived": [
+      "BG23_000_G",
+      "BG23_000t"
+    ],
+    "excluded": [
+      "BG23_004"
+    ],
+    "source_unknown": [
+      "BG31_920"
+    ],
+    "derived_parents": [
+      {
+        "parent": "BG23_000",
+        "child": "BG23_000_G"
+      },
+      {
+        "parent": "BG23_000",
+        "child": "BG23_000t"
+      }
+    ],
+    "denied_gift_pairs": [
+      {
+        "minion": "BG23_318",
+        "gift": "BG36_MidGameEffect_000t16"
+      },
+      {
+        "minion": "BG23_318_G",
+        "gift": "BG36_MidGameEffect_000t16"
+      }
+    ],
+    "execution_identity_bindings": []
+  },
+  "manifest_sha256": "1d7c5242244ad3315b4aa64d45a204f4fb6bb179deed57de2541028b9b625454"
+}

@@ -1,0 +1,1466 @@
+diff --git a/crates/taverngym/examples/owner_same_effect_raw.rs b/crates/taverngym/examples/owner_same_effect_raw.rs
+new file mode 100644
+index 0000000..f718803
+--- /dev/null
++++ b/crates/taverngym/examples/owner_same_effect_raw.rs
+@@ -0,0 +1,2 @@
++//! Capture privileged raw state for same-effect-set before/after optional-entry comparison.
++fn main(){let mut args=std::env::args().skip(1);let seed:u64=args.next().expect("seed").parse().unwrap();let output=args.next().expect("output file");let g=taverngym::Game::new(seed,taverngym::RulesConfig::default());let raw=serde_json::to_string(&g).unwrap();std::fs::write(output,raw).unwrap();}
+diff --git a/crates/taverngym/examples/target_roster_check.rs b/crates/taverngym/examples/target_roster_check.rs
+new file mode 100644
+index 0000000..65d2e38
+--- /dev/null
++++ b/crates/taverngym/examples/target_roster_check.rs
+@@ -0,0 +1,10 @@
++//! Validate a separately frozen external binding without creating a game or changing a pool.
++fn main() {
++ let path=std::env::args().nth(1).expect("usage: target_roster_check <binding.json>");
++ let binding:serde_json::Value=serde_json::from_str(&std::fs::read_to_string(path).unwrap()).unwrap();
++ let cfg=serde_json::json!({"target_roster":binding});
++ match taverngym::RulesConfig::from_json(&cfg.to_string()) {
++  Ok(c)=>println!("{}",serde_json::json!({"accepted":true,"ruleset_id":c.target_roster.as_ref().unwrap().manifest.ruleset_id,"game_created":false})),
++  Err(e)=>{println!("{}",serde_json::json!({"accepted":false,"reason":e,"game_created":false}));std::process::exit(1)}
++ }
++}
+diff --git a/crates/taverngym/examples/target_roster_none_raw.rs b/crates/taverngym/examples/target_roster_none_raw.rs
+new file mode 100644
+index 0000000..f718803
+--- /dev/null
++++ b/crates/taverngym/examples/target_roster_none_raw.rs
+@@ -0,0 +1,2 @@
++//! Capture privileged raw state for same-effect-set before/after optional-entry comparison.
++fn main(){let mut args=std::env::args().skip(1);let seed:u64=args.next().expect("seed").parse().unwrap();let output=args.next().expect("output file");let g=taverngym::Game::new(seed,taverngym::RulesConfig::default());let raw=serde_json::to_string(&g).unwrap();std::fs::write(output,raw).unwrap();}
+diff --git a/crates/taverngym/src/config.rs b/crates/taverngym/src/config.rs
+index 629f436..17efaf9 100644
+--- a/crates/taverngym/src/config.rs
++++ b/crates/taverngym/src/config.rs
+@@ -18,6 +18,9 @@ pub enum ContentMode {
+ #[derive(Clone, Debug, Serialize, Deserialize)]
+ #[serde(default)]
+ pub struct RulesConfig {
++    /// Explicit source-bound offering contract; None preserves the original pool semantics.
++    #[serde(default, skip_serializing_if = "Option::is_none")]
++    pub target_roster: Option<crate::roster::TargetRoster>,
+     pub num_players: usize,
+     pub content: ContentMode,
+ 
+@@ -226,6 +229,7 @@ pub struct RulesConfig {
+ impl Default for RulesConfig {
+     fn default() -> Self {
+         RulesConfig {
++            target_roster: None,
+             num_players: 8,
+             content: ContentMode::Implemented,
+             start_gold: 3,
+@@ -327,10 +331,11 @@ impl RulesConfig {
+ 
+     /// The fields that are not written while they have their default (the default config
+     /// stays the same): `from_json` knows them by name.
+-    const UNWRITTEN_AT_DEFAULT: [&'static str; 3] =
+-        ["hero_bans", "freeze_presses_per_turn", "experimental_mode"];
++    const UNWRITTEN_AT_DEFAULT: [&'static str; 4] =
++        ["hero_bans", "freeze_presses_per_turn", "experimental_mode", "target_roster"];
+ 
+     pub fn validate(&self) -> Result<(), String> {
++        if let Some(roster) = &self.target_roster { roster.validate(self)?; }
+         let (b, h, s) = (self.board_size, self.hand_size, 7 + self.shop_spell_slots);
+         if !(1..=7).contains(&b) {
+             return Err(format!("board_size {b} must be 1..=7"));
+@@ -610,3 +615,4 @@ mod tests {
+         assert_eq!(c.damage_cap(9, 4), None);
+     }
+ }
++
+diff --git a/crates/taverngym/src/content/gifts.rs b/crates/taverngym/src/content/gifts.rs
+index 8ef7531..dc1bd23 100644
+--- a/crates/taverngym/src/content/gifts.rs
++++ b/crates/taverngym/src/content/gifts.rs
+@@ -620,6 +620,9 @@ pub fn gift_fits(
+     def: &crate::cards::CardDef,
+     lowest: u8,
+ ) -> bool {
++    if c.g.cfg.target_roster.as_ref().is_some_and(|r| r.manifest.denied_gift_pairs.iter().any(|pair| pair.minion == def.id && pair.gift == db().get(gift).id)) {
++        return false;
++    }
+     // Hot path (every candidate x gift of each offer): the sets are resolved to CardIds once.
+     struct Sets {
+         battlecry: Vec<CardId>,
+diff --git a/crates/taverngym/src/content/imperial_defender.rs b/crates/taverngym/src/content/imperial_defender.rs
+new file mode 100644
+index 0000000..4c11536
+--- /dev/null
++++ b/crates/taverngym/src/content/imperial_defender.rs
+@@ -0,0 +1,28 @@
++//! Exact Imperial Defender dependency for Maxwell's ordinary / Golden Buddy.
++use super::*;
++
++pub fn scripts() -> Vec<(&'static str, Script)> {
++    vec![("BG22_HERO_007_Buddy", Script {
++        start_of_turn: Some(|c, me| {
++            if let Some(m) = c.minion_mut(me.eid) { m.counter = 0; }
++        }),
++        on_event: Some(|c, me, e| {
++            let Event::SpellCast { side, card, target, data, opt, .. } = e else { return };
++            // The engine records friendliness before the spell resolves, including a
++            // target removed by that spell. Self, Tavern and untargeted casts do not count.
++            if *side != me.side || *target == me.eid || !c.cast_on_friendly { return; }
++            let Some(m) = c.minion_mut(me.eid) else { return };
++            if !m.alive() || m.counter != 0 { return; }
++            // Spend the entity's one use before nested "you cast" events can re-enter.
++            // Golden casts twice in that use; it does not gain a second use.
++            m.counter = 1;
++            for _ in 0..me.g() {
++                if !c.minion(me.eid).is_some_and(|m| m.alive()) { break; }
++                c.you_cast(me.side, *card, *data, me.eid, *opt);
++            }
++        }),
++        listens: ev::SPELL_CAST,
++        flags: flag::TURN_USES,
++        ..E
++    })]
++}
+diff --git a/crates/taverngym/src/content/maxwell.rs b/crates/taverngym/src/content/maxwell.rs
+new file mode 100644
+--- /dev/null
++++ b/crates/taverngym/src/content/maxwell.rs
+@@ -0,0 +1,77 @@
++//! Exact Buddy acquisition for Maxwell; no generic/previous-hero fallback.
++use super::*;
++use crate::state::Player;
++use crate::cards::CardKind;
++
++pub fn is_maxwell(card: CardId) -> bool {
++    matches!(db().get(card).id.as_str(), "BG35_MagicItem_803" | "BG35_MagicItem_803t")
++}
++
++/// Existing Player contract: `hero_power()` is the CURRENT primary power; extras
++/// occupy later slots. This is deliberately not the player's original hero portrait.
++pub fn buddy_for_player(player: &Player, golden: bool) -> Result<CardId, &'static str> {
++    let power = player.hero_power().ok_or("Maxwell: no primary Hero Power")?.base();
++    if db().get(power).kind != CardKind::HeroPower {
++        return Err("Maxwell: primary power has no Hero Power identity");
++    }
++    // Inge alternates these exact forms in heroes_active::inge_form; the same
++    // Buddy relation is already explicit in buddies_c::power_buddy. This is a
++    // form of the CURRENT primary power, never the original portrait or extras.
++    let power = match db().get(power).id.as_str() {
++        "BG26_HERO_102p2" => cid("BG26_HERO_102p"),
++        _ => power,
++    };
++    let mut buddy = None;
++    for hero in db().iter().filter(|h| h.kind == CardKind::Hero && h.hero_power == Some(power)) {
++        if let Some(b) = hero.buddy {
++            if buddy.is_some_and(|previous| previous != b) {
++                return Err("Maxwell: ambiguous primary-power Buddy association");
++            }
++            buddy = Some(b);
++        }
++    }
++    let buddy = buddy.ok_or("Maxwell: primary power has no Buddy association")?;
++    let result = if golden {
++        db().get(buddy).golden.ok_or("Maxwell: Buddy has no explicit Golden relation")?
++    } else {
++        buddy
++    };
++    if !crate::script::implemented(result) {
++        return Err("Maxwell: exact associated Buddy effect is unsupported");
++    }
++    Ok(result)
++}
++
++pub fn preflight(player: &Player, card: CardId) -> Result<(), &'static str> {
++    if is_maxwell(card) {
++        buddy_for_player(player, db().get(card).id == "BG35_MagicItem_803t")?;
++    }
++    Ok(())
++}
++
++fn gain(c: &mut Ctx, me: Me) {
++    let result = c.player_ref(me.side)
++        .ok_or("Maxwell: missing owner")
++        .and_then(|p| buddy_for_player(p, db().get(me.card).id == "BG35_MagicItem_803t"));
++    match result {
++        Ok(buddy) => { c.give_card(me.side, buddy); }
++        // Normal public acquisition is preflighted before payment/pop. Direct
++        // debug/effect grants still record the precise failure, never substitute.
++        Err(reason) => c.g.log.push(reason.to_owned()),
++    }
++}
++
++pub fn scripts() -> Vec<(&'static str, Script)> {
++    vec![
++        ("BG35_MagicItem_803", Script {
++            on_attach: Some(gain),
++            offer_ok: Some(|g, p| buddy_for_player(&g.players[p], false).is_ok()),
++            ..E
++        }),
++        ("BG35_MagicItem_803t", Script {
++            on_attach: Some(gain),
++            offer_ok: Some(|g, p| buddy_for_player(&g.players[p], true).is_ok()),
++            ..E
++        }),
++    ]
++}
+diff --git a/crates/taverngym/src/content/mod.rs b/crates/taverngym/src/content/mod.rs
+index 9bed5ce..0692b57 100644
+--- a/crates/taverngym/src/content/mod.rs
++++ b/crates/taverngym/src/content/mod.rs
+@@ -40,6 +40,8 @@ mod heroes_azshara;
+ pub use heroes_azshara::azshara_check;
+ pub use heroes_special::gift_discover_source;
+ mod mechs;
++pub mod maxwell;
++pub mod imperial_defender;
+ mod mechs_p1;
+ mod minions;
+ mod murlocs;
+@@ -146,6 +148,8 @@ pub const TAVERN_COIN: &str = "BG28_810";
+ /// Every script, keyed by card id (normal form; golden forms resolve automatically).
+ pub fn all_scripts() -> Vec<(&'static str, Script)> {
+     let mut v = minions::scripts();
++    v.extend(maxwell::scripts());
++    v.extend(imperial_defender::scripts());
+     v.extend(naga_counters_w2::scripts());
+     v.extend(murlocs::scripts());
+     v.extend(murlocs_p1::scripts());
+@@ -1624,6 +1628,23 @@ pub fn distinct_types_of(races: &[Races]) -> i32 {
+     n
+ }
+ 
++/// E04 numeric type count: both bits of a dual-type minion count; each living
++/// physical ALL minion adds one. This is not an assignment of distinct bodies
++/// to types (`one_minion_per_type`); it never consumes random choices.
++/// Working authority: user E04 contract, races.py::count_distinct_types.
++fn numeric_type_count(c: &Ctx, side: Side) -> i32 {
++    let mut types = Races::NONE;
++    let mut all = 0;
++    for m in c.boards[side].iter().filter(|m| m.alive()) {
++        if m.races == Races::ALL {
++            all += 1;
++        } else {
++            types = types.union(m.races);
++        }
++    }
++    types.0.count_ones() as i32 + all
++}
++
+ pub fn distinct_type_count(c: &mut Ctx, side: Side) -> i32 {
+     one_minion_per_type(c, side, |_| true).len() as i32
+ }
+diff --git a/crates/taverngym/src/content/pirates.rs b/crates/taverngym/src/content/pirates.rs
+index 9815e32..80631f6 100644
+--- a/crates/taverngym/src/content/pirates.rs
++++ b/crates/taverngym/src/content/pirates.rs
+@@ -80,8 +80,7 @@ pub fn scripts() -> Vec<(&'static str, Script)> {
+                 ..E
+             },
+         ),
+-        // Lovesick Balladist: Battlecry: give a Pirate +2 Health, improved (by the base, as every
+-        // "improve") by each Gold spent this turn (golden: twice).
++        // Lovesick Balladist: frozen working formula is base2 + Gold spent; golden repeats twice.
+         (
+             "BG26_814",
+             Script {
+@@ -93,16 +92,19 @@ pub fn scripts() -> Vec<(&'static str, Script)> {
+                         .player_ref(me.side)
+                         .map(|p| p.stats.gold_spent_turn)
+                         .unwrap_or(0);
+-                    for _ in 0..me.g() {
+-                        c.buff(t, 0, 2 * (1 + spent));
+-                    }
++                    // Frozen formal semantic reference: each spent Gold adds one,
++                    // independently of the current printed base2. This formula remains
++                    // a declared working contract, not a fresh official37 ruling.
++                    let health = 2i32.saturating_add(spent);
++                    let attack = if has_trinket(c, me.side, "BG30_MagicItem_987") { health } else { 0 };
++                    for _ in 0..me.g() { c.buff(t, attack, health); }
+                 }),
+                 battlecry_target: TargetSpec::FriendlyRaceOther(Races::PIRATE),
+                 // "Battlecry: Give a Pirate +2 Health. (Improved by each Gold you spent this
+                 // turn!)"; golden: "+2 Health twice."
+                 shown: Some(|c, sh| {
+                     let spent = c.player_ref(sh.side).map_or(0, |p| p.stats.gold_spent_turn);
+-                    vec![2 * (1 + spent)]
++                    vec![2i32.saturating_add(spent)]
+                 }),
+                 ..E
+             },
+diff --git a/crates/taverngym/src/content/quests.rs b/crates/taverngym/src/content/quests.rs
+index 994e1db..b0a908d 100644
+--- a/crates/taverngym/src/content/quests.rs
++++ b/crates/taverngym/src/content/quests.rs
+@@ -999,7 +999,7 @@ pub fn scripts() -> Vec<(&'static str, Script)> {
+             "BG24_Reward_331",
+             Script {
+                 end_of_turn: Some(|c, me| {
+-                    let k = distinct_type_count(c, me.side);
++                    let k = numeric_type_count(c, me.side);
+                     if k > 0 {
+                         for t in c.friendly(me.side) {
+                             c.buff(t, k, k);
+diff --git a/crates/taverngym/src/content/spells_p2.rs b/crates/taverngym/src/content/spells_p2.rs
+index 6fae3cc..4d66195 100644
+--- a/crates/taverngym/src/content/spells_p2.rs
++++ b/crates/taverngym/src/content/spells_p2.rs
+@@ -436,7 +436,7 @@ pub fn scripts() -> Vec<(&'static str, Script)> {
+                 // "Give your minions +3/+3. Repeat for each different friendly minion type."
+                 shown: Some(|c, sh| shown_spell_stats(c, sh, 3, 3)),
+                 ..plain(|c, me, _| {
+-                    let n = 1 + distinct_type_count(c, me.side);
++                    let n = 1 + numeric_type_count(c, me.side);
+                     for _ in 0..n {
+                         for x in c.friendly(me.side) {
+                             spell_buff(c, me, x, 3, 3);
+diff --git a/crates/taverngym/src/content/trinkets.rs b/crates/taverngym/src/content/trinkets.rs
+index 730575a..d45a3db 100644
+--- a/crates/taverngym/src/content/trinkets.rs
++++ b/crates/taverngym/src/content/trinkets.rs
+@@ -16,8 +16,42 @@ pub(super) fn shown_turn_left(c: &Ctx, sh: &Shown, uses: i32) -> i32 {
+     (uses - c.turn_data(sh.side, sh.card)).max(0)
+ }
+ 
++// Frozen E04 working contract for numeric type counts: ordinary types form a
++// union; each All minion adds one. Do not use one-minion-per-type target matching.
++fn lavish_cape(c: &mut Ctx, me: Me) {
++    let mut types = Races::NONE;
++    let mut all = 0usize;
++    for m in c.boards[me.side].iter().filter(|m| m.alive()) {
++        if m.races == Races::ALL { all += 1; } else { types = types.union(m.races); }
++    }
++    let count = types.iter().count() + all;
++    for _ in 0..count { super::yogg::cast_random_spell(c, me.side); }
++}
+ pub fn scripts() -> Vec<(&'static str, Script)> {
+     vec![
++        // Sacrificial Altar: true removal, not death or sale. Gold follows the
++        // number of bodies actually taken, including generated bodies without pool copies.
++        ("BG32_MagicItem_844", Script {
++            on_attach: Some(|c, me| {
++                let removed = std::mem::take(&mut c.boards[me.side]);
++                let count = removed.len() as i32;
++                if !c.combat { for m in &removed { c.g.pool.return_minion(m); } }
++                c.gain_gold(me.side, 3 * count);
++            }),
++            ..E
++        }),
++        // Balladist Portrait. The exact Balladist callback handles its Attack aura.
++        ("BG30_MagicItem_987", Script {
++            on_attach: Some(|c, me| give_n(c, me.side, "BG26_814", 1)),
++            start_of_turn: Some(|c, me| give_n(c, me.side, "BG26_814", 1)),
++            ..E
++        }),
++        // Lavish Cape casts immediately and each turn; it does not give spells to hand.
++        ("BG32_MagicItem_286", Script {
++            on_attach: Some(lavish_cape),
++            start_of_turn: Some(lavish_cape),
++            ..E
++        }),
+         // Target37 Lorewalker Scroll: each real owner cast on a living minion.
+         // The existing "Whenever you cast" phase dispatch runs this before the effect;
+         // client transform/destroy micro-order remains separately unqualified.
+diff --git a/crates/taverngym/src/content/trinkets_p3.rs b/crates/taverngym/src/content/trinkets_p3.rs
+index 865969a..fc592d6 100644
+--- a/crates/taverngym/src/content/trinkets_p3.rs
++++ b/crates/taverngym/src/content/trinkets_p3.rs
+@@ -545,7 +545,7 @@ pub fn scripts() -> Vec<(&'static str, Script)> {
+             "BG36_MagicItem_220",
+             Script {
+                 start_of_turn: Some(|c, me| {
+-                    let n = distinct_type_count(c, me.side);
++                    let n = numeric_type_count(c, me.side);
+                     c.gain_gold(me.side, n);
+                 }),
+                 ..E
+diff --git a/crates/taverngym/src/content/trinkets_p5.rs b/crates/taverngym/src/content/trinkets_p5.rs
+index c9b6680..c7173d4 100644
+--- a/crates/taverngym/src/content/trinkets_p5.rs
++++ b/crates/taverngym/src/content/trinkets_p5.rs
+@@ -120,6 +120,43 @@ pub fn scripts() -> Vec<(&'static str, Script)> {
+                 ..E
+             },
+         ),
++        // Deathtouch Apple: three successful Undead regrants per turn. Reuse the
++        // existing serialized turn_data, which survives combat and resets on turn start.
++        (
++            "BG35_MagicItem_731",
++            Script {
++                on_event: Some(|c, me, e| {
++                    if let Event::Reborn { side, eid } = e
++                        && *side == me.side
++                        && c.turn_data(me.side, me.card) < 3
++                        && c.minion(*eid).is_some_and(|m| m.alive() && m.is(Races::UNDEAD))
++                    {
++                        c.add_turn_data(me.side, me.card, 1);
++                        c.give_kw(*eid, Kw::REBORN);
++                    }
++                }),
++                listens: ev::REBORN,
++                ..E
++            },
++        ),
++        // The successfully Reborn body has entered before this event and shares
++        // Deathwhisper Sticker's +2/+2 with the other live friendly minions.
++        (
++            "BG36_MagicItem_205",
++            Script {
++                on_event: Some(|c, me, e| {
++                    if let Event::Reborn { side, .. } = e
++                        && *side == me.side
++                    {
++                        for eid in c.friendly(me.side) {
++                            c.buff(eid, 2, 2);
++                        }
++                    }
++                }),
++                listens: ev::REBORN,
++                ..E
++            },
++        ),
+         // Funeral Wreath: after a friendly minion is Reborn, get a plain copy of it (3 times
+         // per combat).
+         (
+diff --git a/crates/taverngym/src/content/trinkets_p7.rs b/crates/taverngym/src/content/trinkets_p7.rs
+index beab0d5..c0e18b7 100644
+--- a/crates/taverngym/src/content/trinkets_p7.rs
++++ b/crates/taverngym/src/content/trinkets_p7.rs
+@@ -7,6 +7,28 @@ use super::*;
+ const SATELLITE: &str = "BG31_171t";
+ const FROSTLING: &str = "BG26_537";
+ 
++fn copper_coil(step: i32) -> Script {
++    Script {
++        on_event: Some(|c, me, e| {
++            if let Event::Magnetized { side, host, .. } = e
++                && *side == me.side
++            {
++                let step = if db().get(me.card).id == "BG35_MagicItem_300" { 1 } else { 2 };
++                let k = step * (1 + c.card_level(me.side, me.card));
++                c.buff(*host, k, k);
++                c.improve_card(me.side, me.card);
++            }
++        }),
++        listens: ev::MAGNETIZED,
++        shown: Some(if step == 1 {
++            |c, sh| { let k = 1 + c.card_level(sh.side, sh.card); vec![k, k] }
++        } else {
++            |c, sh| { let k = 2 * (1 + c.card_level(sh.side, sh.card)); vec![k, k] }
++        }),
++        ..E
++    }
++}
++
+ fn kw_random(c: &mut Ctx, side: Side, r: Races, n: usize, kw: Kw) {
+     let mut v = c.friendly_where(side, |m| m.is(r));
+     c.g.rng.shuffle(&mut v);
+@@ -200,27 +222,11 @@ pub fn scripts() -> Vec<(&'static str, Script)> {
+                 ..E
+             },
+         ),
+-        // Copper Coil: whenever you Magnetize a minion, give it +2/+2 and improve this.
++        // Exact lesser and greater identities keep independent improvement counters.
++        ("BG35_MagicItem_300", copper_coil(1)),
+         (
+             "BG35_MagicItem_300t",
+-            Script {
+-                on_event: Some(|c, me, e| {
+-                    if let Event::Magnetized { side, host, .. } = e
+-                        && *side == me.side
+-                    {
+-                        let k = 2 * (1 + c.card_level(me.side, me.card));
+-                        c.buff(*host, k, k);
+-                        c.improve_card(me.side, me.card);
+-                    }
+-                }),
+-                listens: ev::MAGNETIZED,
+-                // "Whenever you Magnetize a minion, give it +2/+2 and improve this."
+-                shown: Some(|c, sh| {
+-                    let k = 2 * (1 + c.card_level(sh.side, sh.card));
+-                    vec![k, k]
+-                }),
+-                ..E
+-            },
++            copper_coil(2),
+         ),
+         // Protective Ring: SoC give 4 random friendly Pirates Divine Shield.
+         (
+diff --git a/crates/taverngym/src/content/trinkets_p8.rs b/crates/taverngym/src/content/trinkets_p8.rs
+index d506230..4db0f57 100644
+--- a/crates/taverngym/src/content/trinkets_p8.rs
++++ b/crates/taverngym/src/content/trinkets_p8.rs
+@@ -6,6 +6,26 @@ use super::*;
+ 
+ const GOLEM: &str = "BG30_MagicItem_442t";
+ 
++fn double_stitch(c: &mut Ctx, me: Me, target: EntityId) {
++    let Some((side, _)) = c.locate(target) else { return };
++    if side != me.side { return; }
++    let Some((a, h)) = c.minion(target).filter(|m| m.alive()).map(|m| (m.atk, m.hp)) else { return };
++    // Use the same current-stat doubling as the existing Rat in a Cage/Ultralisk effects.
++    c.buff(target, a, h);
++    let Some((side, pos)) = c.locate(target) else { return };
++    if side != me.side { return; }
++    let minion = c.boards[side].remove(pos);
++    // Like Maiev, a locked arrival must not triple before its lock is applied.
++    let prior = std::mem::replace(&mut c.no_triples, true);
++    let hid = c.add_to_hand(side, Item::Minion(minion));
++    if let Some(hid) = hid
++        && let Some(h) = c.player(side).and_then(|p| p.hand.iter_mut().find(|h| h.hid == hid))
++    {
++        h.locked = 1;
++    }
++    c.no_triples = prior;
++}
++
+ /// "Spellcraft: X" trinket: its temporary spell on purchase and at each turn start.
+ macro_rules! spellcraft_trinket {
+     ($spell:literal) => {
+@@ -184,6 +204,12 @@ pub fn writhing_tentacles(c: &mut Ctx, side: Side, m: &Minion) {
+ 
+ pub fn scripts() -> Vec<(&'static str, Script)> {
+     vec![
++        ("BG35_MagicItem_838", spellcraft_trinket!("BG35_MagicItem_838t")),
++        ("BG35_MagicItem_838t", Script {
++            spell: Some(double_stitch),
++            spell_target: TargetSpec::Friendly,
++            ..E
++        }),
+         // Quilligraphy Set: Avenge (3): Blood Gems +1 Health (greater: Avenge (4): +1/+1).
+         (
+             "BG30_MagicItem_410",
+diff --git a/crates/taverngym/src/flow.rs b/crates/taverngym/src/flow.rs
+index 00d051c..820be00 100644
+--- a/crates/taverngym/src/flow.rs
++++ b/crates/taverngym/src/flow.rs
+@@ -152,9 +152,9 @@ impl Game {
+             // Tier 7 minions share the pool too (5 copies each; only Tier 7 Taverns draw them).
+             .filter(|c| {
+                 let t7 = c.pools.tier7 && c.normal.is_none();
+-                (c.pools.minion || t7) && c.kind == CardKind::Minion
++                cfg.target_roster.as_ref().map_or(c.pools.minion || t7, |r| r.direct("minion", &c.id)) && c.kind == CardKind::Minion
+             })
+-            .filter(|c| c.tier >= 1 && (c.tier <= cfg.max_regular_tier || c.pools.tier7))
++            .filter(|c| c.tier >= 1 && (c.tier <= cfg.max_regular_tier || c.pools.tier7 || (cfg.target_roster.is_some() && c.tier == 7)))
+             .filter(|c| {
+                 if c.id.starts_with("BG36_360t") {
+                     return c.cid == paradox;
+@@ -165,7 +165,7 @@ impl Game {
+             // Graverobber: Undead; client subset tag) need that type in the lobby.
+             .filter(|c| c.assoc.is_none() || c.assoc.intersects(lobby))
+             .filter(|c| content_ok(c.cid))
+-            .filter(|c| !cfg.strict_pool_tag || c.pool_tag <= 1)
++            .filter(|c| cfg.target_roster.is_some() || !cfg.strict_pool_tag || c.pool_tag <= 1)
+             .filter(|c| !cfg.excluded_cards.contains(&c.id))
+             .map(|c| c.cid)
+             .collect();
+@@ -180,7 +180,7 @@ impl Game {
+         let spell_universe: Vec<CardId> = d
+             .iter()
+             // Tier 7 spells are in the pool too; only a Tier 7 Tavern draws them.
+-            .filter(|c| c.pools.spell && c.kind == CardKind::TavernSpell && c.tier <= 7)
++            .filter(|c| cfg.target_roster.as_ref().map_or(c.pools.spell, |r| r.direct("tavern_spell", &c.id)) && c.kind == CardKind::TavernSpell && c.tier <= 7)
+             .filter(|c| content_ok(c.cid) && script(c.cid).is_some())
+             // Spells tied to a minion type (Bounties: Pirates, Cloning Conch: Murlocs...)
+             // need that type in the lobby (client subset tags, `CardDef::lobby_req`).
+@@ -191,13 +191,14 @@ impl Game {
+             .collect();
+         let trinket_universe: Vec<CardId> = d
+             .iter()
+-            .filter(|c| c.pools.trinket && c.kind.is_trinket())
++            .filter(|c| cfg.target_roster.as_ref().map_or(c.pools.trinket, |r| r.direct("trinket", &c.id)) && c.kind.is_trinket())
+             // Bundle condition `lobby_or_offer_association`: a trinket associated with minion types
+             // needs at least one of them in the lobby (exact weights unknown).
+             .filter(|c| c.assoc.is_none() || c.assoc.intersects(lobby))
+             // Aberration-subset trinkets (Deity, discard...) need Aberrations in the lobby.
+             .filter(|c| c.lobby_req.is_none() || c.lobby_req.intersects(lobby))
+             .filter(|c| script(c.cid).is_some() || cfg.content == ContentMode::AllVanilla)
++            .filter(|c| cfg.target_roster.is_none() || !cfg.excluded_cards.contains(&c.id))
+             .map(|c| c.cid)
+             .collect();
+         let gift_universe: Vec<CardId> = d
+@@ -213,7 +214,7 @@ impl Game {
+             .filter(|c| !cfg.experimental_mode || crate::experimental::hero_allowed(c))
+             .filter(|c| {
+                 if cfg.hero_pool.is_empty() {
+-                    c.pools.hero
++                    cfg.target_roster.as_ref().map_or(c.pools.hero, |r| r.direct("hero", &c.id))
+                         && hero_fits_from(&cfg, lobby, yshaarj, c, HERO_BANS_BEFORE_SHUFFLE)
+                 } else {
+                     cfg.hero_pool.contains(&c.id)
+diff --git a/crates/taverngym/src/lib.rs b/crates/taverngym/src/lib.rs
+index 0c7921a..ad1b02f 100644
+--- a/crates/taverngym/src/lib.rs
++++ b/crates/taverngym/src/lib.rs
+@@ -21,6 +21,7 @@ pub mod bot;
+ pub mod cards;
+ pub mod combat;
+ pub mod config;
++pub mod roster;
+ pub mod content;
+ pub mod debug;
+ pub mod engine;
+diff --git a/crates/taverngym/src/recruit.rs b/crates/taverngym/src/recruit.rs
+index 9052151..5753388 100644
+--- a/crates/taverngym/src/recruit.rs
++++ b/crates/taverngym/src/recruit.rs
+@@ -2396,6 +2396,11 @@ impl Game {
+         if self.players[p].pending.is_empty() {
+             return Err("nothing to choose");
+         }
++        if let Some(Pending::Trinket { options, .. }) = self.players[p].pending.last()
++            && let Some(&card) = options.get(i)
++        {
++            crate::content::maxwell::preflight(&self.players[p], card)?;
++        }
+         if !self.option_legal(p, i) {
+             return Err("that option can't be chosen");
+         }
+diff --git a/crates/taverngym/src/roster.rs b/crates/taverngym/src/roster.rs
+new file mode 100644
+index 0000000..dc30923
+--- /dev/null
++++ b/crates/taverngym/src/roster.rs
+@@ -0,0 +1,95 @@
++//! Explicit target offering contract. A source-qualified declaration is not source authentication.
++use serde::{Deserialize,Serialize};
++use crate::{cards::db,script::{implemented,script},config::{RulesConfig,ContentMode}};
++#[derive(Clone,Debug,Serialize,Deserialize)]
++#[serde(deny_unknown_fields)]
++pub struct DirectOffers {pub minion:Vec<String>,pub tavern_spell:Vec<String>,pub hero:Vec<String>,pub trinket:Vec<String>}
++#[derive(Clone,Debug,Serialize,Deserialize)]
++#[serde(deny_unknown_fields)]
++pub struct DerivedParent {pub parent:String,pub child:String}
++#[derive(Clone,Debug,Serialize,Deserialize)]
++#[serde(deny_unknown_fields)]
++pub struct DeniedGiftPair {pub minion:String,pub gift:String}
++#[derive(Clone,Debug,Serialize,Deserialize)]
++#[serde(deny_unknown_fields)]
++pub struct ExecutionIdentityBinding {pub source_parent:String,pub source_power:String,pub source_child_id:String,pub source_child_dbf:u32,pub execution_child_id:String,pub execution_child_dbf:u32,pub decision_sha256:String,pub evidence_sha256:String}
++#[derive(Clone,Debug,Serialize,Deserialize)]
++#[serde(deny_unknown_fields)]
++pub struct TargetManifest {
++ pub ruleset_id:String,pub target_build:String,pub source_qualified:bool,
++ pub public_offer:DirectOffers,pub supported_derived:Vec<String>,pub excluded:Vec<String>,pub source_unknown:Vec<String>,pub derived_parents:Vec<DerivedParent>,pub denied_gift_pairs:Vec<DeniedGiftPair>,pub execution_identity_bindings:Vec<ExecutionIdentityBinding>,
++}
++#[derive(Clone,Debug,Serialize,Deserialize)]
++#[serde(deny_unknown_fields)]
++pub struct TargetRoster {pub manifest_sha256:String,pub manifest:TargetManifest}
++impl TargetRoster {
++ pub fn direct(&self,kind:&str,id:&str)->bool {let p=&self.manifest.public_offer;let ids=match kind {"minion"=>&p.minion,"tavern_spell"=>&p.tavern_spell,"hero"=>&p.hero,"trinket"=>&p.trinket,_=>return false};ids.iter().any(|x|x==id)}
++ /// Query the declared parent route only. This does not rewrite historical copy/transform callbacks.
++ pub fn parent_route_allowed(&self,parent:&str,child:&str)->bool {
++  !self.manifest.excluded.iter().chain(self.manifest.source_unknown.iter()).any(|id|id==parent)
++   && self.manifest.supported_derived.iter().any(|id|id==child)
++   && self.manifest.derived_parents.iter().any(|r|r.parent==parent&&r.child==child)
++ }
++ pub fn digest(&self)->String {
++  // serde_json::Value uses sorted object keys; array order and UTF-8 strings are retained.
++  let bytes=serde_json::to_vec(&serde_json::to_value(&self.manifest).unwrap()).unwrap();sha256(&bytes)
++ }
++ pub fn validate(&self,cfg:&RulesConfig)->Result<(),String> {
++  let fail=|why:&str|Err(format!("target_roster: {why}"));
++  if self.manifest.ruleset_id.trim().is_empty()||self.manifest.target_build.trim().is_empty(){return fail("named ruleset/build required")}
++  if !self.manifest.source_qualified{return fail("source-qualified declaration required (not authentication)")}
++  if self.manifest_sha256!=self.digest(){return fail("manifest SHA256 mismatch")}
++  if cfg.content!=ContentMode::Implemented||!cfg.hero_pool.is_empty()||cfg.experimental_mode{return fail("Implemented content, no experimental mode or hero_pool override required")}
++  let m=&self.manifest;let d=db();let mut seen=std::collections::HashSet::new();
++  for ids in [&m.public_offer.minion,&m.public_offer.tavern_spell,&m.public_offer.hero,&m.public_offer.trinket,&m.supported_derived,&m.excluded,&m.source_unknown] {
++   for id in ids {if !seen.insert(id){return fail("duplicate or overlapping identity")};if id.is_empty() || !id.bytes().all(|b| b.is_ascii_alphanumeric() || b == b'_') {return fail("invalid identity syntax")}
++    if d.find(id).is_none() && !m.source_unknown.contains(id) {
++     let parents:Vec<_>=m.derived_parents.iter().filter(|link| &link.child==id).collect();
++     let inactive=m.supported_derived.contains(id)&&!parents.is_empty()&&parents.iter().all(|link|m.excluded.contains(&link.parent)||m.source_unknown.contains(&link.parent));
++     if !inactive{return fail(&format!("unknown active identity {id}"))}
++    }}
++  }
++  for (kind,ids) in [("minion",&m.public_offer.minion),("tavern_spell",&m.public_offer.tavern_spell),("hero",&m.public_offer.hero),("trinket",&m.public_offer.trinket)] {
++   for id in ids {let c=d.get(d.id(id));
++    if c.normal.is_some(){return fail(&format!("derived/golden identity cannot be direct: {id}"))}
++    let ok=match kind {"minion"=>c.kind==crate::cards::CardKind::Minion&&c.tier>=1&&c.tier<=7&&implemented(c.cid),"tavern_spell"=>c.kind==crate::cards::CardKind::TavernSpell&&c.tier>=1&&c.tier<=7&&implemented(c.cid)&&script(c.cid).is_some(),"hero"=>c.kind==crate::cards::CardKind::Hero&&c.hero_power.is_some_and(|p|script(p).is_some()),"trinket"=>c.kind.is_trinket()&&script(c.cid).is_some(),_=>false};
++    if !ok{return fail(&format!("unsupported or wrong direct category: {id}"))}
++   }
++  }
++  let mut links=std::collections::HashSet::new();
++  for link in &m.derived_parents {
++   if (d.find(&link.parent).is_none()&&!m.source_unknown.contains(&link.parent))||!m.supported_derived.contains(&link.child)||link.parent==link.child||!links.insert((&link.parent,&link.child)){return fail("invalid/duplicate or excluded/unknown parent route")}
++  }
++  let mut pairs=std::collections::HashSet::new();
++  for pair in &m.denied_gift_pairs {
++   if !d.find(&pair.minion).is_some_and(|id| d.get(id).kind==crate::cards::CardKind::Minion)||!d.find(&pair.gift).is_some_and(|id| d.get(id).kind==crate::cards::CardKind::DarkGift)||!pairs.insert((&pair.minion,&pair.gift)){return fail("unknown/wrong type/duplicate exact gift pair")}
++  }
++  for binding in &m.execution_identity_bindings {
++   let hex=|s:&str|s.len()==64&&s.bytes().all(|b|b.is_ascii_digit()||(b'a'..=b'f').contains(&b));
++   let parent=d.find(&binding.source_parent);let power=d.find(&binding.source_power);let child=d.find(&binding.execution_child_id);
++   if !hex(&binding.decision_sha256)||!hex(&binding.evidence_sha256)||binding.source_child_id.is_empty()||binding.source_child_dbf==0||!parent.is_some_and(|id|d.get(id).kind==crate::cards::CardKind::Hero&&d.get(id).hero_power==power)||!power.is_some_and(|id|d.get(id).kind==crate::cards::CardKind::HeroPower)||!child.is_some_and(|id|d.get(id).dbf==binding.execution_child_dbf)||!m.supported_derived.contains(&binding.execution_child_id){return fail("invalid version identity provenance")}
++  }
++  // This is an offering boundary and an explicit dependency record, not a universal
++  // runtime ban on old transform/copy callbacks. Derivation does not add a pool member.
++  Ok(())
++ }
++}
++// SHA-256 without adding a toolchain dependency. Used only for configuration validation.
++fn sha256(input:&[u8])->String {
++ const K:[u32;64]=[0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
++ let mut bytes=input.to_vec();let bits=(bytes.len() as u64)*8;bytes.push(0x80);while bytes.len()%64!=56{bytes.push(0)}bytes.extend_from_slice(&bits.to_be_bytes());
++ let mut h:[u32;8]=[0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
++ for chunk in bytes.chunks_exact(64){let mut w=[0u32;64];for (i,c) in chunk.chunks_exact(4).enumerate(){w[i]=u32::from_be_bytes(c.try_into().unwrap())}for i in 16..64{let s0=w[i-15].rotate_right(7)^w[i-15].rotate_right(18)^(w[i-15]>>3);let s1=w[i-2].rotate_right(17)^w[i-2].rotate_right(19)^(w[i-2]>>10);w[i]=w[i-16].wrapping_add(s0).wrapping_add(w[i-7]).wrapping_add(s1)}
++ let [mut a,mut b,mut c,mut d,mut e,mut f,mut g,mut x]=h;
++ for i in 0..64{let s1=e.rotate_right(6)^e.rotate_right(11)^e.rotate_right(25);let ch=(e&f)^(!e&g);let t1=x.wrapping_add(s1).wrapping_add(ch).wrapping_add(K[i]).wrapping_add(w[i]);let s0=a.rotate_right(2)^a.rotate_right(13)^a.rotate_right(22);let maj=(a&b)^(a&c)^(b&c);let t2=s0.wrapping_add(maj);x=g;g=f;f=e;e=d.wrapping_add(t1);d=c;c=b;b=a;a=t1.wrapping_add(t2)}
++ for (v,n) in h.iter_mut().zip([a,b,c,d,e,f,g,x]){*v=v.wrapping_add(n)}
++ }h.iter().map(|n|format!("{n:08x}")).collect()
++}
++#[cfg(test)] mod tests {#[test]fn sha_known_vectors(){assert_eq!(super::sha256(b""),"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855");assert_eq!(super::sha256(b"abc"),"ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad");}}
++
++#[cfg(test)] mod legacy_tests {
++ #[test] fn none_full_raw_matches_frozen_native_seed97() {
++  let raw=serde_json::to_string(&crate::Game::new(97,crate::RulesConfig::default())).unwrap();
++  assert_eq!(super::sha256(raw.as_bytes()),include_str!("../tests/fixtures/legacy_raw_seed97.sha256").trim());
++ }
++}
+diff --git a/crates/taverngym/tests/current_magnetic_lock.rs b/crates/taverngym/tests/current_magnetic_lock.rs
+new file mode 100644
+index 0000000..76dcdbf
+--- /dev/null
++++ b/crates/taverngym/tests/current_magnetic_lock.rs
+@@ -0,0 +1,40 @@
++mod common;
++use common::*;
++use taverngym::debug::{DebugCmd,run_debug};
++
++fn raw(g:&Game)->String{serde_json::to_string(g).unwrap()}
++fn dump(name:&str,g:&Game){if let Ok(p)=std::env::var("EVIDENCE_DIR"){std::fs::create_dir_all(&p).unwrap();std::fs::write(std::path::Path::new(&p).join(format!("{name}.json")),raw(g)).unwrap();}}
++fn trinket(g:&mut Game,id:&str){run_debug(g,DebugCmd::GiveTrinket{p:0,card:id.into()}).unwrap();g.players[0].pending.clear();}
++fn stitch(g:&mut Game,eid:u32){let hand=g.players[0].hand.iter().position(|h|h.item.card()==cid("BG35_MagicItem_838t")).unwrap();g.apply(0,Action::Play{hand,pos:0}).unwrap();let Some(Pending::Target{options,..})=g.players[0].pending.last() else{panic!("real838t must offer an exact friendly target")};assert!(options.contains(&eid));let i=options.iter().position(|x|*x==eid).unwrap();g.apply(0,Action::Choose(i)).unwrap();}
++
++#[test]
++fn base_coil_public_magnetize_keeps_300_and_300t_levels_separate(){
++ let mut g=game(901);trinket(&mut g,"BG35_MagicItem_300");trinket(&mut g,"BG35_MagicItem_300t");set_board(&mut g,0,&["BG26_147"]);let base=g.players[0].board[0].atk;
++ dump("coil_before",&g);
++ for _ in 0..2{give(&mut g,0,"BG34_Giant_610t");let hand=g.players[0].hand.len()-1;g.apply(0,Action::Magnetize{hand,board:0}).unwrap();}
++ dump("coil_after",&g);assert_eq!(g.players[0].board[0].atk,base+8+1+2+2+4,"base1/2 and greater2/4 must both react with distinct identity levels");
++}
++#[test]
++fn greater_coil_neighbor_control_unchanged(){let mut g=game(902);trinket(&mut g,"BG35_MagicItem_300t");set_board(&mut g,0,&["BG26_147"]);let base=g.players[0].board[0].atk;for _ in 0..2{give(&mut g,0,"BG34_Giant_610t");let hand=g.players[0].hand.len()-1;g.apply(0,Action::Magnetize{hand,board:0}).unwrap();}assert_eq!(g.players[0].board[0].atk,base+8+2+4);}
++#[test]
++fn needle_grants_exact_temporary_spellcraft(){let mut g=game(903);trinket(&mut g,"BG35_MagicItem_838");dump("needle_grant",&g);let h=g.players[0].hand.iter().find(|h|h.item.card()==cid("BG35_MagicItem_838t")).expect("Needle must grant exact838t on attach");assert!(h.temporary);assert_eq!(h.src,0);}
++#[test]
++fn needle_exact_entity_locked_no_triple_and_raw_restore(){
++ let mut g=game(904);set_board(&mut g,0,&["BG26_147","BGS_115"]);let eid=g.players[0].board[0].eid;g.players[0].board[0].set_stats(7,9);g.players[0].board[0].give(Kw::DIVINE_SHIELD);let attached=cid("BG31_171t");g.players[0].board[0].attached.push(attached);give(&mut g,0,"BG26_147");give(&mut g,0,"BG26_147");give(&mut g,0,"BG35_MagicItem_838t");g.cfg.triple_copies=3;assert!(g.players[0].board.iter().any(|m|m.eid==eid));dump("needle_before_play",&g);
++ let input=raw(&g);let mut restored:Game=serde_json::from_str(&input).unwrap();assert_eq!(raw(&restored),input);
++ for x in [&mut g,&mut restored]{stitch(x,eid);assert!(!x.players[0].board.iter().any(|m|m.eid==eid));let h=x.players[0].hand.iter().find(|h|h.hid==eid).expect("same exact returned entity");assert_eq!(h.locked,1);let Item::Minion(m)=&h.item else{panic!()};assert_eq!((m.atk,m.hp,m.max_hp),(14,18,18));assert!(m.has(Kw::DIVINE_SHIELD));assert_eq!(m.attached,vec![attached]);assert_eq!(x.players[0].hand.iter().filter(|h|h.item.card()==cid("BG26_147")).count(),3,"locked third must not triple on arrival");let hand=x.players[0].hand.iter().position(|h|h.hid==eid).unwrap();assert!(x.apply(0,Action::Play{hand,pos:0}).is_err());}
++ dump("needle_after_locked",&g);assert_eq!(raw(&g),raw(&restored));
++}
++#[test]
++fn needle_fullhand_controlled_effect_cast_uses_existing_overflow(){
++ let mut g=game(905);set_board(&mut g,0,&["BGS_115"]);let eid=g.players[0].board[0].eid;for _ in 0..g.cfg.hand_size{give(&mut g,0,"BG28_810");}dump("fullhand_before_effect",&g);g.with_recruit(0,|c|c.cast_spell(0,cid("BG35_MagicItem_838t"),0,eid,0));dump("fullhand_after",&g);
++ assert_eq!(g.players[0].hand.len(),g.cfg.hand_size);assert!(g.players[0].hand.iter().all(|h|h.item.card()==cid("BG28_810")));assert!(!g.players[0].board.iter().any(|m|m.eid==eid));assert!(!g.players[0].hand.iter().any(|h|h.hid==eid));assert!(g.players[0].hand_queue.is_empty(),"ordinary838t does not gain new generic hand protection");
++}
++#[test]
++fn needle_friendly_target_scope_rejects_other_owner(){let mut g=game(906);set_board(&mut g,0,&["BGS_115"]);set_board(&mut g,1,&["BGS_115"]);let own=g.players[0].board[0].eid;let other=g.players[1].board[0].eid;give(&mut g,0,"BG35_MagicItem_838t");let hand=g.players[0].hand.len()-1;g.apply(0,Action::Play{hand,pos:0}).unwrap();let Some(Pending::Target{options,..})=g.players[0].pending.last() else{panic!("targeted spell required")};assert!(options.contains(&own));assert!(!options.contains(&other));}
++#[test]
++fn needle_locked_hand_combat_boundary_and_next_own_turn_unlock(){
++ let mut g=game(907);g.cfg.max_combat_attacks=1;set_board(&mut g,0,&["BG32_330","BG34_140"]);set_board(&mut g,1,&["BGS_115"]);g.players[1].board[0].set_stats(0,1000);let eid=g.players[0].board[0].eid;give(&mut g,0,"BG35_MagicItem_838t");stitch(&mut g,eid);let locked=raw(&g);let mut control=g.clone();control.players[0].hand.iter_mut().find(|h|h.hid==eid).unwrap().locked=0;let positive=fight(&mut control);let blocked=fight(&mut g);assert_eq!(blocked.stats[0].summons,0,"locked Scout cannot be summoned from hand");assert!(positive.stats[0].summons>0,"unlocked same Scout really triggers the existing combat hand mechanism");assert_eq!(g.players[0].hand.iter().find(|h|h.hid==eid).unwrap().locked,1);dump("locked_after_combat",&g);assert_eq!(g.players[0].board.len(),1);let mut clone:Game=serde_json::from_str(&locked).unwrap();end_turn_all(&mut clone);let h=clone.players[0].hand.iter().find(|h|h.hid==eid).expect("locked minion retained through real round");assert_eq!(h.locked,0);dump("unlocked_next_own_turn",&clone);
++}
++#[test]
++fn needle_unused_token_expires_then_one_new_token_is_granted(){let mut g=game(908);g.cfg.max_combat_attacks=1;trinket(&mut g,"BG35_MagicItem_838");let old=g.players[0].hand.iter().find(|h|h.item.card()==cid("BG35_MagicItem_838t")).expect("initial token").hid;end_turn_all(&mut g);let tokens:Vec<_>=g.players[0].hand.iter().filter(|h|h.item.card()==cid("BG35_MagicItem_838t")).collect();assert_eq!(tokens.len(),1);assert_ne!(tokens[0].hid,old);assert!(tokens[0].temporary);}
+diff --git a/crates/taverngym/tests/current_reborn_trinkets.rs b/crates/taverngym/tests/current_reborn_trinkets.rs
+new file mode 100644
+index 0000000..9694568
+--- /dev/null
++++ b/crates/taverngym/tests/current_reborn_trinkets.rs
+@@ -0,0 +1,50 @@
++use taverngym::{Game,RulesConfig};
++use taverngym::actions::Action;
++use taverngym::cards::cid;
++use taverngym::engine::Ctx;
++use taverngym::state::Minion;
++use taverngym::types::Kw;
++const APPLE:&str="BG35_MagicItem_731";
++const STICKER:&str="BG36_MagicItem_205";
++fn game()->Game{let mut g=Game::new(21,RulesConfig{num_players:2,record_log:true,lesser_trinket_turn:0,greater_trinket_turn:0,..Default::default()});for p in 0..2{g.apply(p,Action::Choose(0)).unwrap();}for p in &mut g.players{p.pending.clear();p.board.clear();p.hand.clear();p.shop.clear();p.powers.clear();p.effects.clear();p.quests.clear();p.trinkets.clear();p.counters.clear();p.turn_data.clear();p.stats=Default::default();p.gold=30;p.tier=6;p.health=1000;p.armor=0;p.skipping=false;}g.next_eid=100;g.turn=7;g}
++fn raw(g:&Game)->String{serde_json::to_string(g).unwrap()}
++fn context(g:&mut Game)->Ctx<'_>{let boards=[g.players[0].board.clone(),g.players[1].board.clone()];Ctx::new(g,boards,[Some(0),Some(1)],true)}
++fn body(e:u32,id:&str)->Minion{Minion::new(e,cid(id))}
++#[test]fn apple_real_reborn_new_lives_regrant_only_first_three_successes(){
++ let mut g=game();g.players[0].trinkets.push(cid(APPLE));g.players[0].board.push(body(10,"BG25_001"));let mut c=context(&mut g);let mut seen=vec![10];
++ for i in 0..4{let old=c.boards[0][0].eid;c.destroy(old);c.resolve_deaths();assert_eq!(c.boards[0].len(),1);let m=&c.boards[0][0];assert!(!seen.contains(&m.eid));seen.push(m.eid);assert_eq!(m.has(Kw::REBORN),i<3,"each actual new body gets Reborn for first3 only");assert_eq!(c.turn_data(0,cid(APPLE)),(i+1).min(3));}
++ assert_eq!(c.cstats[0].reborns,4);
++}
++#[test]fn apple_limit_is_shared_across_friendly_undead_bodies(){
++ let mut g=game();g.players[0].trinkets.push(cid(APPLE));g.players[0].board=vec![body(10,"BG25_001"),body(11,"BG25_001")];let mut c=context(&mut g);for (i,pos) in [0usize,1,0,1].into_iter().enumerate(){let old=c.boards[0][pos].eid;c.destroy(old);c.resolve_deaths();assert_eq!(c.boards[0][pos].has(Kw::REBORN),i<3);assert_eq!(c.turn_data(0,cid(APPLE)),(i as i32+1).min(3));}assert_eq!(c.cstats[0].reborns,4);
++}
++#[test]fn apple_non_undead_reborn_does_not_spend_its_limit(){
++ let mut g=game();g.players[0].trinkets.push(cid(APPLE));let mut m=body(10,"BGS_004");m.give(Kw::REBORN);g.players[0].board.push(m);let mut c=context(&mut g);c.destroy(10);c.resolve_deaths();assert_eq!(c.cstats[0].reborns,1);assert_eq!(c.turn_data(0,cid(APPLE)),0);assert!(!c.boards[0][0].has(Kw::REBORN));
++}
++#[test]fn sticker_actual_reborn_buffs_new_body_and_all_other_live_friends(){
++ let mut g=game();g.players[0].trinkets.push(cid(STICKER));g.players[0].board=vec![body(10,"BG25_001"),body(11,"BGS_004")];let mut c=context(&mut g);c.destroy(10);c.resolve_deaths();let new=&c.boards[0][0];assert_ne!(new.eid,10);assert_eq!((new.atk,new.hp,new.max_hp),(4,3,3));let other=c.minion(11).unwrap();assert_eq!((other.atk,other.hp,other.max_hp),(3,5,5));assert_eq!(c.cstats[0].reborns,1);
++}
++#[test]fn opposite_owners_and_event_side_are_isolated(){
++ let mut g=game();g.players[0].trinkets.push(cid(APPLE));g.players[1].trinkets.push(cid(STICKER));g.players[0].board.push(body(10,"BG25_001"));g.players[1].board.push(body(20,"BG25_001"));let mut c=context(&mut g);c.destroy(20);c.resolve_deaths();assert_eq!(c.turn_data(0,cid(APPLE)),0);assert_eq!((c.boards[1][0].atk,c.boards[1][0].max_hp),(4,3));c.destroy(10);c.resolve_deaths();assert!(c.boards[0][0].has(Kw::REBORN));assert_eq!((c.boards[0][0].atk,c.boards[0][0].max_hp),(2,1));assert_eq!((c.boards[1][0].atk,c.boards[1][0].max_hp),(4,3));assert_eq!(c.turn_data(0,cid(APPLE)),1);
++}
++#[test]fn deathrattle_fills_last_space_failed_reborn_emits_neither_trinket_effect(){
++ let mut g=game();g.players[0].trinkets=vec![cid(APPLE),cid(STICKER)];let mut rat=body(10,"BG19_010");rat.give(Kw::REBORN);g.players[0].board.push(rat);for e in 11..17{g.players[0].board.push(body(e,"BGS_004"));}let mut c=context(&mut g);c.destroy(10);c.resolve_deaths();assert_eq!(c.boards[0].len(),7);assert_eq!(c.cstats[0].reborns,0);assert_eq!(c.turn_data(0,cid(APPLE)),0);assert_eq!(c.boards[0].iter().filter(|m|m.card==cid("BG19_010t")).count(),1);for m in c.boards[0].iter().filter(|m|m.card==cid("BGS_004")){assert_eq!((m.atk,m.max_hp),(1,3));}
++}
++fn battle_game()->Game{let mut g=game();g.players[0].board=vec![body(10,"BG25_001"),body(11,"BGS_004")];let mut enemy=body(20,"BGS_004");enemy.set_stats(100,10000);g.players[1].board.push(enemy);g}
++#[test]fn apple_cap_is_per_turn_across_combats_and_real_turn_start_resets(){
++ let mut g=battle_game();g.players[0].trinkets.push(cid(APPLE));let saved_board=g.players[0].board.clone();let out=g.simulate_combat(0,Some(1),None);assert!(!out.truncated);assert_eq!(out.stats[0].reborns,4);assert_eq!(g.players[0].board,saved_board);assert_eq!(g.players[0].turn_data.iter().find(|x|x.0==cid(APPLE)).unwrap().1,3);let out=g.simulate_combat(0,Some(1),None);assert!(!out.truncated);assert_eq!(out.stats[0].reborns,1);g.start_turn();assert!(!g.players[0].turn_data.iter().any(|x|x.0==cid(APPLE)));let out=g.simulate_combat(0,Some(1),None);assert!(!out.truncated);assert_eq!(out.stats[0].reborns,4);
++}
++#[test]fn both_trinkets_real_combat_three_regrants_four_buff_events_and_recruit_rollback_raw_restore(){
++ let mut g=battle_game();g.players[0].trinkets=vec![cid(APPLE),cid(STICKER)];let before=raw(&g);let board=g.players[0].board.clone();let mut clone=g.clone();let mut restored:Game=serde_json::from_str(&before).unwrap();
++ for b in [&mut g,&mut clone,&mut restored]{let out=b.simulate_combat(0,Some(1),None);assert!(!out.truncated);assert_eq!(out.stats[0].reborns,4);assert_eq!(b.players[0].board,board);assert!(b.last_frames.iter().any(|f|f.boards[0].iter().any(|m|m.eid==11 && m.atk==9 && m.max_hp==11)));assert_eq!(b.players[0].turn_data.iter().find(|x|x.0==cid(APPLE)).unwrap().1,3);}
++ assert_eq!(raw(&g),raw(&clone));assert_eq!(raw(&g),raw(&restored));
++}
++#[test]fn midturn_limit_is_serialized_and_next_real_turn_resets_all_restored_branches(){
++ let mut g=battle_game();g.players[0].trinkets.push(cid(APPLE));assert_eq!(g.simulate_combat(0,Some(1),None).stats[0].reborns,4);let prefix=raw(&g);let mut restored:Game=serde_json::from_str(&prefix).unwrap();for b in [&mut g,&mut restored]{let out=b.simulate_combat(0,Some(1),None);assert!(!out.truncated);assert_eq!(out.stats[0].reborns,1);}assert_eq!(raw(&g),raw(&restored));for b in [&mut g,&mut restored]{b.start_turn();let out=b.simulate_combat(0,Some(1),None);assert!(!out.truncated);assert_eq!(out.stats[0].reborns,4);}assert_eq!(raw(&g),raw(&restored));
++}
++#[test]fn reversing_the_two_owned_trinket_slots_keeps_each_scoped_effect_once(){
++ for trinkets in [vec![cid(APPLE),cid(STICKER)],vec![cid(STICKER),cid(APPLE)]]{let mut g=game();g.players[0].trinkets=trinkets;g.players[0].board=vec![body(10,"BG25_001"),body(11,"BGS_004")];let mut c=context(&mut g);c.destroy(10);c.resolve_deaths();assert_eq!(c.cstats[0].reborns,1);assert!(c.boards[0][0].has(Kw::REBORN));assert_eq!((c.boards[0][0].atk,c.boards[0][0].max_hp),(4,3));assert_eq!((c.minion(11).unwrap().atk,c.minion(11).unwrap().max_hp),(3,5));assert_eq!(c.turn_data(0,cid(APPLE)),1);}
++}
++#[test]fn sticker_applies_after_non_undead_reborn_and_combat_stats_do_not_leak(){
++ let mut g=battle_game();g.players[0].trinkets.push(cid(STICKER));let mut m=body(10,"BGS_004");m.give(Kw::REBORN);g.players[0].board[0]=m;let board=g.players[0].board.clone();let out=g.simulate_combat(0,Some(1),None);assert!(!out.truncated);assert_eq!(out.stats[0].reborns,1);assert_eq!(g.players[0].board,board);assert!(g.last_frames.iter().any(|f|f.boards[0].iter().any(|m|m.eid!=10 && m.eid!=11 && m.atk==3 && m.max_hp==5)));
++}
+diff --git a/crates/taverngym/tests/current_trinkets_small.rs b/crates/taverngym/tests/current_trinkets_small.rs
+new file mode 100644
+index 0000000..c8f2902
+--- /dev/null
++++ b/crates/taverngym/tests/current_trinkets_small.rs
+@@ -0,0 +1,70 @@
++use taverngym::{Game,RulesConfig};
++use taverngym::actions::Action;
++use taverngym::cards::{cid,db};
++use taverngym::state::{Minion,Pending,ShopSlot,Item};
++use taverngym::script::script;
++const ALTAR:&str="BG32_MagicItem_844";const PORTRAIT:&str="BG30_MagicItem_987";const CAPE:&str="BG32_MagicItem_286";
++fn game()->Game {
++ let mut g=Game::new(719,RulesConfig{num_players:2,record_log:true,lesser_trinket_turn:0,greater_trinket_turn:0,..Default::default()});
++ for p in 0..2 {g.apply(p,Action::Choose(0)).unwrap();}
++ for p in &mut g.players {p.pending.clear();p.hand.clear();p.board.clear();p.shop.clear();p.powers.clear();p.effects.clear();p.quests.clear();p.trinkets.clear();p.counters.clear();p.stats=Default::default();p.gold=30;p.tier=6;p.skipping=false;}
++ g.next_eid=200;g
++}
++fn body(e:u32,id:&str)->Minion {let mut m=Minion::new(e,cid(id));m.set_stats(10,10);m}
++fn raw(g:&Game)->String {serde_json::to_string(g).unwrap()}
++fn give(g:&mut Game,id:&str){g.with_recruit(0,|c|{c.give_card(0,cid(id));});}
++fn offer(g:&mut Game,id:&str,free:bool){g.players[0].pending.push(Pending::Trinket{options:vec![cid(id)],free,replace:None});}
++fn acquire(g:&mut Game,id:&str){offer(g,id,true);g.apply(0,Action::Choose(0)).unwrap();}
++fn target(g:&mut Game,e:u32){let opts=match g.players[0].pending.last().unwrap(){Pending::Target{options,..}=>options,_=>panic!()};let i=opts.iter().position(|x|*x==e).unwrap();g.apply(0,Action::Choose(i)).unwrap();}
++fn narrow(g:&mut Game,id:&str){let card=cid(id);assert!(g.spell_universe.contains(&card),"must only narrow existing source candidates: {id}");g.spell_universe=vec![card];}
++#[test]fn exact_callbacks_exist(){for id in [ALTAR,PORTRAIT,CAPE]{assert!(script(cid(id)).and_then(|s|s.on_attach).is_some(),"{id}");}for id in [PORTRAIT,CAPE]{assert!(script(cid(id)).and_then(|s|s.start_of_turn).is_some(),"{id}");}}
++#[test]fn altar_public_paid_choose_actual_removals_no_sold_death_or_foreign_effects(){
++ for count in [0,2,7] {
++  let mut g=game();for i in 0..count {let ids=["BGS_115","BG19_010","BG26_810","BG23_004","BG23_000","BG24_017","AT_121"];let id=ids[i as usize];g.with_recruit(0,|c|{let mut m=c.new_minion(0,cid(id));c.take_pool_copy(&mut m);c.boards[0].push(m);});}
++  g.players[1].board.push(body(101,"BG26_810"));give(&mut g,"BG26_810");g.players[0].shop.push(ShopSlot::new(102,Item::Minion(body(102,"BGS_115"))));
++  let foreign=g.players[1].clone();let hand=g.players[0].hand.clone();let shop=g.players[0].shop.clone();
++  let returns:Vec<_>=g.players[0].board.iter().map(|m|(m.card,m.pool_copies)).collect();let original_pool=g.pool.clone();
++  assert_eq!(g.players[0].board.len(),count as usize);let price=g.trinket_price(0,cid(ALTAR));offer(&mut g,ALTAR,false);let prefix=raw(&g);let mut clone=g.clone();let mut restored:Game=serde_json::from_str(&prefix).unwrap();
++  for b in [&mut g,&mut clone,&mut restored] {
++   b.apply(0,Action::Choose(0)).unwrap();assert!(b.players[0].board.is_empty());assert_eq!(b.players[0].gold,30-price+3*count);
++   assert_eq!(serde_json::to_string(&b.players[0].hand).unwrap(),serde_json::to_string(&hand).unwrap());assert_eq!(serde_json::to_string(&b.players[0].shop).unwrap(),serde_json::to_string(&shop).unwrap());assert_eq!(serde_json::to_string(&b.players[1]).unwrap(),serde_json::to_string(&foreign).unwrap());
++   for card in [cid("BGS_115"),cid("BG19_010")] {let n:u8=returns.iter().filter(|(c,_)|*c==card).map(|(_,n)|*n).sum();assert_eq!(b.pool.get(card),original_pool.get(card)+n as u16);}
++  }
++  assert_eq!(raw(&g),raw(&clone));assert_eq!(raw(&g),raw(&restored));
++ }
++}
++#[test]fn portrait_public_acquire_turn_start_and_full_hand_fifo(){
++ let mut g=game();acquire(&mut g,PORTRAIT);assert_eq!(g.players[0].hand.len(),1);assert_eq!(g.players[0].hand[0].item.card(),cid("BG26_814"));g.start_turn();assert_eq!(g.players[0].hand.len(),2);
++ let mut full=game();for _ in 0..full.cfg.hand_size {give(&mut full,"BG28_810");}acquire(&mut full,PORTRAIT);assert_eq!(full.players[0].hand_queue.len(),1);let promised=full.players[0].hand_queue_marks[0].hid;full.start_turn();assert_eq!(full.players[0].hand_queue.len(),2);
++ let prefix=raw(&full);let mut twin=full.clone();let mut restored:Game=serde_json::from_str(&prefix).unwrap();for b in [&mut full,&mut twin,&mut restored]{b.apply(0,Action::Play{hand:0,pos:0}).unwrap();assert_eq!(b.players[0].hand.len(),10);assert_eq!(b.players[0].hand_queue.len(),1);assert!(b.players[0].hand.iter().any(|h|h.hid==promised && h.item.card()==cid("BG26_814")));}assert_eq!(raw(&full),raw(&twin));assert_eq!(raw(&full),raw(&restored));
++}
++#[test]fn balladist_normal_gold_real_spend_additive_health_and_portrait_only_attack(){
++ for (id,n) in [("BG26_814",1),("BG26_814_G",2)] {for owned in [false,true] {
++  let mut g=game();if owned {acquire(&mut g,PORTRAIT);g.players[0].hand.clear();}
++  g.players[0].board.push(body(101,"BG26_810"));g.players[1].board.push(body(102,"BG26_810"));g.players[0].shop.push(ShopSlot::new(103,Item::Minion(body(103,"BGS_115"))));g.apply(0,Action::Buy(0)).unwrap();assert_eq!(g.players[0].stats.gold_spent_turn,3);
++  give(&mut g,id);let h=g.players[0].hand.len()-1;g.apply(0,Action::Play{hand:h,pos:1}).unwrap();let prefix=raw(&g);let mut clone=g.clone();let mut restored:Game=serde_json::from_str(&prefix).unwrap();
++  for b in [&mut g,&mut clone,&mut restored] {target(b,101);let m=&b.players[0].board[0];assert_eq!((m.atk,m.max_hp),(10+if owned {5*n}else{0},10+5*n));assert_eq!(b.players[1].board[0].atk,10);}
++  assert_eq!(raw(&g),raw(&clone));assert_eq!(raw(&g),raw(&restored));
++ }}
++}
++#[test]fn balladist_zero_spend_neighbor_target_and_unrelated_gem_not_modified(){
++ for id in ["BG26_814","BG26_814_G"] {
++  let mut g=game();acquire(&mut g,PORTRAIT);g.players[0].hand.clear();g.players[0].board.push(body(101,"BG26_810"));give(&mut g,id);g.apply(0,Action::Play{hand:0,pos:1}).unwrap();
++  let source=g.players[0].board[1].eid;let opts=match g.players[0].pending.last().unwrap(){Pending::Target{options,..}=>options,_=>panic!()};assert!(!opts.contains(&source),"preserve existing played Battlecry no-self targeting contract");target(&mut g,101);
++  let n=if id.ends_with("_G"){2}else{1};assert_eq!((g.players[0].board[0].atk,g.players[0].board[0].max_hp),(10+2*n,10+2*n));let before=(g.players[0].board[0].atk,g.players[0].board[0].max_hp);g.with_recruit(0,|c|c.you_cast(0,cid("BG20_GEM"),0,101,0));assert_eq!((g.players[0].board[0].atk,g.players[0].board[0].max_hp),(before.0+1,before.1+1));
++ }
++}#[test]fn cape_counts_union_dual_all_each_one_and_casts_even_with_full_hand(){
++ for (ids,count) in [(vec![],0),(vec!["BG23_004","BG23_004"],1),(vec!["BG25_039"],2),(vec!["BG24_017"],1),(vec!["BG24_017","BG24_017"],2),(vec!["BG25_039","BG24_017","BG23_004"],3),(vec!["AT_121"],0)] {
++  let mut g=game();for (i,id) in ids.iter().enumerate(){g.players[0].board.push(body(101+i as u32,id));}for _ in 0..g.cfg.hand_size {give(&mut g,"BG28_810");}narrow(&mut g,"BG28_810");offer(&mut g,CAPE,true);let prefix=raw(&g);let mut clone=g.clone();let mut restored:Game=serde_json::from_str(&prefix).unwrap();
++  for b in [&mut g,&mut clone,&mut restored] {b.apply(0,Action::Choose(0)).unwrap();assert_eq!(b.players[0].gold,30+count);assert_eq!(b.players[0].stats.spells_cast,count);assert_eq!(b.players[0].hand.len(),10);assert!(b.players[0].hand_queue.is_empty());}
++  assert_eq!(raw(&g),raw(&clone));assert_eq!(raw(&g),raw(&restored));
++ }
++}
++#[test]fn cape_turn_start_actual_cast_chain_and_e03_tier_boundary(){
++ let mut g=game();g.players[0].board.push(body(101,"BG25_039"));narrow(&mut g,"BG28_810");acquire(&mut g,CAPE);let before=g.players[0].stats.spells_cast;g.start_turn();assert_eq!(g.players[0].stats.spells_cast,before+2);assert!(g.players[0].hand.is_empty());
++ let mut above=game();above.players[0].board.push(body(101,"BG23_004"));let card=*above.spell_universe.iter().find(|id|db().get(**id).tier>1).unwrap();above.spell_universe=vec![card];above.players[0].tier=1;let rng=above.rng.clone();acquire(&mut above,CAPE);assert_eq!(above.players[0].stats.spells_cast,0);assert_eq!(above.rng,rng);
++}
++#[test]fn cape_legal_random_target_and_no_target_skip_frozen_helper_policy(){
++ let mut g=game();g.players[0].board.extend([body(101,"BG23_004"),body(102,"BG23_004")]);narrow(&mut g,"BG28_503");acquire(&mut g,CAPE);let sum:i32=g.players[0].board.iter().map(|m|m.max_hp).sum();assert_eq!(sum,23);assert_eq!(g.players[0].stats.spells_cast,1);assert!(g.players[0].pending.is_empty());
++ let mut none=game();none.players[0].board.push(body(101,"BG23_004"));narrow(&mut none,"BG28_604");let rng=none.rng.clone();acquire(&mut none,CAPE);assert_eq!(none.players[0].stats.spells_cast,0);assert_ne!(none.rng,rng);assert_eq!(none.players[0].board[0].max_hp,10);assert!(none.players[0].pending.is_empty());
++}
+diff --git a/crates/taverngym/tests/fixtures/legacy_raw_seed97.sha256 b/crates/taverngym/tests/fixtures/legacy_raw_seed97.sha256
+new file mode 100644
+index 0000000..2d3f921
+--- /dev/null
++++ b/crates/taverngym/tests/fixtures/legacy_raw_seed97.sha256
+@@ -0,0 +1 @@
++5900f99bafdf9a9466667f36c920d4168b7826117fd9c74b5c1239cc4de9d0c2
+\ No newline at end of file
+diff --git a/crates/taverngym/tests/fixtures/target_roster.json b/crates/taverngym/tests/fixtures/target_roster.json
+new file mode 100644
+index 0000000..53a393d
+--- /dev/null
++++ b/crates/taverngym/tests/fixtures/target_roster.json
+@@ -0,0 +1,45 @@
++{
++  "manifest": {
++    "ruleset_id": "unit-fixture-explicit-not-official",
++    "target_build": "fixture37",
++    "source_qualified": true,
++    "public_offer": {
++      "minion": [
++        "BG23_000"
++      ],
++      "tavern_spell": [
++        "BG28_168"
++      ],
++      "hero": [
++        "TB_BaconShop_HERO_34",
++        "BG34_HERO_004"
++      ],
++      "trinket": [
++        "BG30_MagicItem_801"
++      ]
++    },
++    "supported_derived": [
++      "BG23_000_G",
++      "BG23_000t"
++    ],
++    "excluded": [
++      "BG23_004"
++    ],
++    "source_unknown": [
++      "BG31_920"
++    ],
++    "derived_parents": [
++      {
++        "parent": "BG23_000",
++        "child": "BG23_000_G"
++      },
++      {
++        "parent": "BG23_000",
++        "child": "BG23_000t"
++      }
++    ],
++    "denied_gift_pairs": [],
++    "execution_identity_bindings": []
++  },
++  "manifest_sha256": "bcfb5580e73cbea6ea26dbdb564d0a58646d41a04c5a8e09c5d093d573a72efc"
++}
+\ No newline at end of file
+diff --git a/crates/taverngym/tests/fixtures/target_roster_pairs.json b/crates/taverngym/tests/fixtures/target_roster_pairs.json
+new file mode 100644
+index 0000000..2d8d72d
+--- /dev/null
++++ b/crates/taverngym/tests/fixtures/target_roster_pairs.json
+@@ -0,0 +1,54 @@
++{
++  "manifest": {
++    "ruleset_id": "unit-fixture-explicit-not-official",
++    "target_build": "fixture37",
++    "source_qualified": true,
++    "public_offer": {
++      "minion": [
++        "BG23_000"
++      ],
++      "tavern_spell": [
++        "BG28_168"
++      ],
++      "hero": [
++        "TB_BaconShop_HERO_34",
++        "BG34_HERO_004"
++      ],
++      "trinket": [
++        "BG30_MagicItem_801"
++      ]
++    },
++    "supported_derived": [
++      "BG23_000_G",
++      "BG23_000t"
++    ],
++    "excluded": [
++      "BG23_004"
++    ],
++    "source_unknown": [
++      "BG31_920"
++    ],
++    "derived_parents": [
++      {
++        "parent": "BG23_000",
++        "child": "BG23_000_G"
++      },
++      {
++        "parent": "BG23_000",
++        "child": "BG23_000t"
++      }
++    ],
++    "denied_gift_pairs": [
++      {
++        "minion": "BG23_318",
++        "gift": "BG36_MidGameEffect_000t16"
++      },
++      {
++        "minion": "BG23_318_G",
++        "gift": "BG36_MidGameEffect_000t16"
++      }
++    ],
++    "execution_identity_bindings": []
++  },
++  "manifest_sha256": "1d7c5242244ad3315b4aa64d45a204f4fb6bb179deed57de2541028b9b625454"
++}
+\ No newline at end of file
+diff --git a/crates/taverngym/tests/imperial_defender.rs b/crates/taverngym/tests/imperial_defender.rs
+new file mode 100644
+index 0000000..e3fa3d5
+--- /dev/null
++++ b/crates/taverngym/tests/imperial_defender.rs
+@@ -0,0 +1,89 @@
++//! Controlled native-state contracts; these fixtures do not establish fresh Azshara draftability.
++use taverngym::{Action, Game, RulesConfig};
++use taverngym::cards::{cid, db};
++use taverngym::state::{Item, Pending};
++use taverngym::types::{EntityId, Kw, Races};
++
++fn game() -> Game {
++    let mut g=Game::new(977,RulesConfig{num_players:2,triple_copies:99,lesser_trinket_turn:0,greater_trinket_turn:0,..RulesConfig::default()});
++    for p in 0..2 {g.apply(p,Action::Choose(0)).unwrap();}
++    for p in &mut g.players {p.pending.clear();p.hand.clear();p.board.clear();p.shop.clear();p.trinkets.clear();p.effects.clear();p.quests.clear();p.powers.clear();p.gold=30;p.skipping=false;p.stats=Default::default();}
++    g
++}
++fn body(g:&mut Game,id:&str)->EntityId {
++    let m=g.with_recruit(0,|c| c.new_minion(0,cid(id)));let e=m.eid;g.players[0].board.push(m);e
++}
++fn raw(g:&Game)->String {serde_json::to_string(g).unwrap()}
++fn stats(g:&Game,e:EntityId)->(i32,i32) {let m=g.players[0].board.iter().find(|m|m.eid==e).unwrap();(m.atk,m.hp)}
++fn cast(g:&mut Game,id:&str,data:i32,opt:usize,target:Option<EntityId>) {
++    g.with_recruit(0,|c| {c.add_to_hand(0,Item::Spell{card:cid(id),data});});
++    let hand=g.players[0].hand.len()-1;g.apply(0,Action::Play{hand,pos:0}).unwrap();
++    if matches!(g.players[0].pending.last(),Some(Pending::ChooseOne{..})){g.apply(0,Action::Choose(opt)).unwrap();}
++    if let Some(target)=target {
++        let Some(Pending::Target{options,..})=g.players[0].pending.last() else {panic!("target menu for {id}")};
++        let n=options.iter().position(|e|*e==target).expect("real target menu contains target");g.apply(0,Action::Choose(n)).unwrap();
++    }
++    assert!(g.players[0].pending.is_empty());
++}
++fn acquire(g:&mut Game,golden:bool)->EntityId {
++    if g.players[0].powers.is_empty() {g.with_recruit(0,|c| c.set_hero_power(0,0,cid("BG22_HERO_007p2")));}
++    let id=if golden{"BG35_MagicItem_803t"}else{"BG35_MagicItem_803"};
++    g.players[0].pending.push(Pending::Trinket{options:vec![cid(id)],free:false,replace:None});
++    g.apply(0,Action::Choose(0)).unwrap();
++    let hand=g.players[0].hand.len()-1;
++    let expected=db().get(cid("BG22_HERO_007_Buddy")).golden.filter(|_|golden).unwrap_or(cid("BG22_HERO_007_Buddy"));
++    assert_eq!(g.players[0].hand[hand].item.card(),expected);
++    g.apply(0,Action::Play{hand,pos:g.players[0].board.len()}).unwrap();
++    g.players[0].board.last().unwrap().eid
++}
++
++#[test]fn purchase_play_recast_once_and_reset_next_turn() {
++    for golden in [false,true] {
++        let mut g=game();let target=body(&mut g,"BG23_002");let buddy=acquire(&mut g,golden);let base=stats(&g,buddy);let n=if golden{2}else{1};
++        cast(&mut g,"BG20_GEM",0,0,Some(target));assert_eq!(stats(&g,buddy),(base.0+n,base.1+n));assert_eq!(g.players[0].stats.spells_cast,1+n);
++        cast(&mut g,"BG20_GEM",0,0,Some(target));assert_eq!(stats(&g,buddy),(base.0+n,base.1+n));
++        let before=stats(&g,buddy);g.start_turn();assert!(g.players[0].pending.is_empty());
++        cast(&mut g,"BG20_GEM",0,0,Some(target));assert_eq!(stats(&g,buddy),(before.0+n,before.1+n));
++    }
++}
++#[test]fn self_untargeted_and_tavern_casts_do_not_spend_the_use() {
++    let mut g=game();let target=body(&mut g,"BG23_002");let buddy=acquire(&mut g,false);
++    cast(&mut g,"BG20_GEM",0,0,Some(buddy));let base=stats(&g,buddy);
++    cast(&mut g,"BG28_810",0,0,None);
++    let m=g.with_recruit(0,|c| c.new_minion(0,cid("BG23_002")));let sid=m.eid;g.players[0].shop.push(taverngym::state::ShopSlot::new(sid,Item::Minion(m)));
++    cast(&mut g,"BG36_624",0,0,Some(sid));assert_eq!(stats(&g,buddy),base);
++    cast(&mut g,"BG20_GEM",0,0,Some(target));assert_eq!(stats(&g,buddy),(base.0+1,base.1+1));
++}
++#[test]fn choose_one_and_spell_data_are_preserved() {
++    for golden in [false,true] {
++        let mut g=game();let target=body(&mut g,"BG23_002");let buddy=acquire(&mut g,golden);let b=stats(&g,buddy);let n=if golden{2}else{1};
++        cast(&mut g,"BG31_880",0,1,Some(target));assert_eq!(stats(&g,buddy),(b.0+n,b.1+3*n));
++        g.start_turn();g.players[0].board.iter_mut().find(|m|m.eid==buddy).unwrap().races=Races::NAGA.union(Races::QUILBOAR);
++        cast(&mut g,"BG20_GEM",2,0,Some(target));assert!(g.players[0].board.iter().find(|m|m.eid==buddy).unwrap().kw.has(Kw::DIVINE_SHIELD));
++    }
++}
++#[test]fn two_buddies_reenter_safely_and_spend_each_entity_once() {
++    for golden in [false,true] {
++        let mut g=game();let target=body(&mut g,"BG23_002");let a=acquire(&mut g,golden);let b=acquire(&mut g,golden);let sa=stats(&g,a);let sb=stats(&g,b);let n=if golden{2}else{1};
++        cast(&mut g,"BG20_GEM",0,0,Some(target));assert_eq!(stats(&g,a),(sa.0+n,sa.1+n));assert_eq!(stats(&g,b),(sb.0+n,sb.1+n));assert_eq!(g.players[0].stats.spells_cast,1+2*n);
++        cast(&mut g,"BG20_GEM",0,0,Some(target));assert_eq!(stats(&g,a),(sa.0+n,sa.1+n));assert_eq!(stats(&g,b),(sb.0+n,sb.1+n));
++    }
++}
++#[test]fn complete_raw_clone_restore_before_and_after_use_continue_identically() {
++    for golden in [false,true] {for used in [false,true] {
++        let mut g=game();let target=body(&mut g,"BG23_002");acquire(&mut g,golden);
++        if used {cast(&mut g,"BG20_GEM",0,0,Some(target));}
++        let original=raw(&g);let mut c=g.clone();let mut r:Game=serde_json::from_str(&original).unwrap();r.check_loaded().unwrap();assert_eq!(raw(&c),original);assert_eq!(raw(&r),original);
++        for x in [&mut g,&mut c,&mut r] {cast(x,"BG31_880",0,1,Some(target));x.start_turn();cast(x,"BG20_GEM",0,0,Some(target));}
++        assert_eq!(raw(&g),raw(&c));assert_eq!(raw(&g),raw(&r));
++    }}
++}
++#[test]fn conditional_ambition_transform_preserves_other_hero_and_exact_buddy() {
++    for golden in [false,true] {
++        let mut g=game();let original_hero=g.players[0].hero;let target=body(&mut g,"BG23_002");g.players[0].board[0].atk=29;
++        g.with_recruit(0,|c| c.set_hero_power(0,0,cid("BG22_HERO_007p")));
++        assert_eq!(g.players[0].hero_power(),Some(cid("BG22_HERO_007p")));
++        cast(&mut g,"BG20_GEM",0,0,Some(target));assert_eq!(g.players[0].hero_power(),Some(cid("BG22_HERO_007p2")));assert_eq!(g.players[0].hero,original_hero);
++        acquire(&mut g,golden);
++    }
++}
+diff --git a/crates/taverngym/tests/maxwell_buddy.rs b/crates/taverngym/tests/maxwell_buddy.rs
+new file mode 100644
+index 0000000..907a5a4
+--- /dev/null
++++ b/crates/taverngym/tests/maxwell_buddy.rs
+@@ -0,0 +1,41 @@
++use taverngym::{Game,RulesConfig,Action};
++use taverngym::cards::{cid,db};
++use taverngym::script::script;
++use taverngym::state::{Pending,HeroPowerState};
++include!("maxwell_mapping_oracle.inc");
++fn game(hero:&str,power:&str)->Game {
++ let mut g=Game::new(977,RulesConfig{num_players:2,triple_copies:99,lesser_trinket_turn:0,greater_trinket_turn:0,..RulesConfig::default()});
++ for p in 0..2 {g.apply(p,Action::Choose(0)).unwrap();}
++ for p in &mut g.players {p.pending.clear();p.hand.clear();p.board.clear();p.shop.clear();p.trinkets.clear();p.effects.clear();p.quests.clear();p.gold=30;p.skipping=false;}
++ g.players[0].hero=Some(cid(hero));g.players[0].powers=vec![HeroPowerState::new(cid(power))];g
++}
++fn offer(g:&mut Game,id:&str){g.players[0].pending.push(Pending::Trinket{options:vec![cid(id)],free:false,replace:None});}
++fn raw(g:&Game)->String{serde_json::to_string(g).unwrap()}
++#[test]fn exact_two_scripts_have_acquisition_hooks(){for id in ["BG35_MagicItem_803","BG35_MagicItem_803t"]{assert!(script(cid(id)).and_then(|s|s.on_attach).is_some(),"missing Maxwell callback {id}");}}
++#[test]fn all_current116_heroes_actual_public_acquisition_or_explicit_unknown_failure(){
++ assert_eq!(MAP.len(),116);let mut mapped=0;let mut unknown=0;
++ for &(hero,power,buddy,gold) in MAP {for (id,want) in [("BG35_MagicItem_803",buddy),("BG35_MagicItem_803t",gold)] {
++  let mut g=game(hero,power);offer(&mut g,id);let before=raw(&g);let result=g.apply(0,Action::Choose(0));
++  if let Some(want)=want {result.unwrap();assert_eq!(g.players[0].hand.len(),1,"{hero} {id}");assert_eq!(g.players[0].hand[0].item.card(),cid(want));assert_eq!(g.players[0].trinkets,vec![cid(id)]);assert_eq!(g.players[0].gold,30-db().get(cid(id)).cost);mapped+=1;}
++  else {assert!(result.is_err(),"unknown Buddy mapping must fail explicitly for {hero}");assert_eq!(raw(&g),before);unknown+=1;}
++ }}assert_eq!(mapped,214);assert_eq!(unknown,18);
++}
++#[test]fn current_primary_power_not_original_hero_or_secondary_power(){
++ let a=MAP.iter().find(|r|r.2.is_some()).unwrap();let b=MAP.iter().find(|r|r.2.is_some()&&r.2!=a.2).unwrap();
++ let mut g=game(a.0,b.1);g.players[0].powers.push(HeroPowerState::new(cid(a.1)));offer(&mut g,"BG35_MagicItem_803");g.apply(0,Action::Choose(0)).unwrap();assert_eq!(g.players[0].hand[0].item.card(),cid(b.2.unwrap()));
++ // Primary is an explicitly documented Player contract; never fall back to a known secondary.
++ let u=MAP.iter().find(|r|r.2.is_none()).unwrap();let mut g=game(a.0,u.1);g.players[0].powers.push(HeroPowerState::new(cid(a.1)));offer(&mut g,"BG35_MagicItem_803");let before=raw(&g);assert!(g.apply(0,Action::Choose(0)).is_err());assert_eq!(before,raw(&g));
++}
++#[test]fn transformed_azshara_power_uses_actual_same_buddy_relation(){for hero in ["BG22_HERO_007","BG22_HERO_007t"] {for id in ["BG35_MagicItem_803","BG35_MagicItem_803t"] {let power=db().get(cid(hero)).hero_power.unwrap();let mut g=game(hero,&db().get(power).id);offer(&mut g,id);g.apply(0,Action::Choose(0)).unwrap();let b=db().get(cid(hero)).buddy.unwrap();let expected=if id.ends_with("803t"){db().get(b).golden.unwrap()}else{b};assert_eq!(g.players[0].hand[0].item.card(),expected);}}}
++#[test]fn full_raw_copy_restore_identical_public_purchase_and_generated_play(){
++ let a=MAP.iter().find(|r|r.2.is_some()).unwrap();for id in ["BG35_MagicItem_803","BG35_MagicItem_803t"] {let mut g=game(a.0,a.1);offer(&mut g,id);let before=raw(&g);let mut c=g.clone();let mut r:Game=serde_json::from_str(&before).unwrap();r.check_loaded().unwrap();assert_eq!(raw(&c),before);assert_eq!(raw(&r),before);for x in [&mut g,&mut c,&mut r] {x.apply(0,Action::Choose(0)).unwrap();x.apply(0,Action::Play{hand:0,pos:0}).unwrap();}assert_eq!(raw(&g),raw(&c));assert_eq!(raw(&g),raw(&r));}
++}
++#[test]fn unknown_power_and_missing_power_refuse_without_payment(){for powers in [vec![],vec![HeroPowerState::new(cid("BG28_810"))]] {let mut g=game(MAP[0].0,MAP[0].1);g.players[0].powers=powers;offer(&mut g,"BG35_MagicItem_803t");let before=raw(&g);assert!(g.apply(0,Action::Choose(0)).is_err());assert_eq!(before,raw(&g));}}
++#[test]fn transformed_azshara_real_unsupported_dependency_is_explicit_and_atomic(){
++ for hero in ["BG22_HERO_007","BG22_HERO_007t"] {for id in ["BG35_MagicItem_803","BG35_MagicItem_803t"] {
++  let h=db().get(cid(hero));let buddy=h.buddy.unwrap();let buddy=if id.ends_with("803t"){db().get(buddy).golden.unwrap()}else{buddy};
++  assert!(!taverngym::script::implemented(buddy),"existing dependency gap must not be hidden");
++  let mut g=game(hero,&db().get(h.hero_power.unwrap()).id);offer(&mut g,id);let before=raw(&g);
++  assert_eq!(g.apply(0,Action::Choose(0)),Err("Maxwell: exact associated Buddy effect is unsupported"));assert_eq!(raw(&g),before);
++ }}
++}
+diff --git a/crates/taverngym/tests/maxwell_mapping_oracle.inc b/crates/taverngym/tests/maxwell_mapping_oracle.inc
+new file mode 100644
+index 0000000..807a6e7
+--- /dev/null
++++ b/crates/taverngym/tests/maxwell_mapping_oracle.inc
+@@ -0,0 +1,119 @@
++// Exact current source-qualified hero/power/Buddy metadata oracle, all116 retained.
++const MAP: &[(&str,&str,Option<&str>,Option<&str>)]=&[
++("BG20_HERO_100","BG20_HERO_100p",Some("BG20_HERO_100_Buddy"),Some("BG20_HERO_100_Buddy_G")),
++("BG20_HERO_101","BG20_HERO_101p",Some("BG20_HERO_101_Buddy"),Some("BG20_HERO_101_Buddy_G")),
++("BG20_HERO_102","BG20_HERO_102p",Some("BG20_HERO_102_Buddy"),Some("BG20_HERO_102_Buddy_G")),
++("BG20_HERO_103","BG20_HERO_103p",Some("BG20_HERO_103_Buddy"),Some("BG20_HERO_103_Buddy_G")),
++("BG20_HERO_201","BG20_HERO_201p",Some("BG20_HERO_201_Buddy"),Some("BG20_HERO_201_Buddy_G")),
++("BG20_HERO_202","BG20_HERO_202p",Some("BG20_HERO_202_Buddy"),Some("BG20_HERO_202_Buddy_G")),
++("BG20_HERO_242","BG20_HERO_242p",Some("BG20_HERO_242_Buddy"),Some("BG20_HERO_242_Buddy_G")),
++("BG20_HERO_280","BG20_HERO_280p5",Some("BG20_HERO_280_Buddy"),Some("BG20_HERO_280_Buddy_G")),
++("BG20_HERO_282","BG20_HERO_282p",Some("BG20_HERO_282_Buddy"),Some("BG20_HERO_282_Buddy_G")),
++("BG20_HERO_283","BG20_HERO_283p",Some("BG20_HERO_283_Buddy"),Some("BG20_HERO_283_Buddy_G")),
++("BG20_HERO_301","BG20_HERO_301p",Some("BG20_HERO_301_Buddy"),Some("BG20_HERO_301_Buddy_G")),
++("BG21_HERO_000","BG21_HERO_000p",Some("BG21_HERO_000_Buddy"),Some("BG21_HERO_000_Buddy_G")),
++("BG21_HERO_010","BG21_HERO_010p",Some("BG21_HERO_010_Buddy"),Some("BG21_HERO_010_Buddy_G")),
++("BG21_HERO_020","BG21_HERO_020p",Some("BG21_HERO_020_Buddy"),Some("BG21_HERO_020_Buddy_G")),
++("BG21_HERO_030","BG21_HERO_030p",Some("BG21_HERO_030_Buddy"),Some("BG21_HERO_030_Buddy_G")),
++("BG22_HERO_000","BG22_HERO_000p_Alt",Some("BG22_HERO_000_Buddy"),Some("BG22_HERO_000_Buddy_G")),
++("BG22_HERO_001","BG22_HERO_001p",Some("BG22_HERO_001_Buddy"),Some("BG22_HERO_001_Buddy_G")),
++("BG22_HERO_002","BG22_HERO_002p",Some("BG22_HERO_002_Buddy"),Some("BG22_HERO_002_Buddy_G")),
++("BG22_HERO_003","BG22_HERO_003p",Some("BG22_HERO_003_Buddy"),Some("BG22_HERO_003_Buddy_G")),
++("BG22_HERO_004","BG22_HERO_004p",Some("BG22_HERO_004_Buddy"),Some("BG22_HERO_004_Buddy_G")),
++("BG22_HERO_200","BG22_HERO_200p",Some("BG22_HERO_200_Buddy"),Some("BG22_HERO_200_Buddy_G")),
++("BG22_HERO_201","BG22_HERO_201p",Some("BG22_HERO_201_Buddy"),Some("BG22_HERO_201_Buddy_G")),
++("BG22_HERO_305","BG22_HERO_305p",Some("BG22_HERO_305_Buddy"),Some("BG22_HERO_305_Buddy_G")),
++("BG23_HERO_201","BG23_HERO_201p",Some("BG23_HERO_201_Buddy"),Some("BG23_HERO_201_Buddy_G")),
++("BG23_HERO_303","BG23_HERO_303p2",Some("BG23_HERO_303_Buddy"),Some("BG23_HERO_303_Buddy_G")),
++("BG23_HERO_305","BG23_HERO_305p",Some("BG23_HERO_305_Buddy"),Some("BG23_HERO_305_Buddy_G")),
++("BG23_HERO_306","BG23_HERO_306p",Some("BG23_HERO_306_Buddy"),Some("BG23_HERO_306_Buddy_G")),
++("BG24_HERO_100","BG24_HERO_100p",Some("BG24_HERO_100_Buddy"),Some("BG24_HERO_100_Buddy_G")),
++("BG24_HERO_204","BG24_HERO_204p",Some("BG24_HERO_204_Buddy"),Some("BG24_HERO_204_Buddy_G")),
++("BG25_HERO_100","BG25_HERO_100p",Some("BG25_HERO_100_Buddy"),Some("BG25_HERO_100_Buddy_G")),
++("BG25_HERO_103","BG25_HERO_103p",Some("BG25_HERO_103_Buddy"),Some("BG25_HERO_103_Buddy_G")),
++("BG25_HERO_105","BG25_HERO_105p",Some("BG25_HERO_105_Buddy"),Some("BG25_HERO_105_Buddy_G")),
++("BG26_HERO_101","BG26_HERO_101p",Some("BG26_HERO_101_Buddy"),Some("BG26_HERO_101_Buddy_G")),
++("BG26_HERO_102","BG26_HERO_102p",Some("BG26_HERO_102_Buddy"),Some("BG26_HERO_102_Buddy_G")),
++("BG26_HERO_104","BG26_HERO_104p",Some("BG26_HERO_104_Buddy"),Some("BG26_HERO_104_Buddy_G")),
++("BG27_HERO_801","BG27_HERO_801p2",Some("BG27_HERO_801_Buddy"),Some("BG27_HERO_801_Buddy_G")),
++("BG28_HERO_400","BG28_HERO_400p",Some("BG28_HERO_400_Buddy"),Some("BG28_HERO_400_Buddy_G")),
++("BG28_HERO_800","BG28_HERO_800p",Some("BG28_HERO_800_Buddy"),Some("BG28_HERO_800_Buddy_G")),
++("BG28_HERO_801","BG28_HERO_801p",Some("BG28_HERO_801_Buddy"),Some("BG28_HERO_801_Buddy_G")),
++("BG30_HERO_304","BG30_HERO_304p",Some("BG30_HERO_304_Buddy"),Some("BG30_HERO_304_Buddy_G")),
++("BG31_HERO_003","BG31_HERO_003p",Some("BG31_HERO_003_Buddy"),Some("BG31_HERO_003_Buddy_G")),
++("BG31_HERO_005","BG31_HERO_005p",Some("BG31_HERO_005_Buddy"),Some("BG31_HERO_005_Buddy_G")),
++("BG31_HERO_006","BG31_HERO_006p",Some("BG31_HERO_006_Buddy"),Some("BG31_HERO_006_Buddy_G")),
++("BG31_HERO_801","BG31_HERO_801p",Some("BG31_HERO_801_Buddy"),Some("BG31_HERO_801_Buddy_G")),
++("BG31_HERO_802","BG31_HERO_802p",Some("BG31_HERO_802_Buddy"),Some("BG31_HERO_802_Buddy_G")),
++("BG31_HERO_811","BG31_HERO_811p",Some("BG31_HERO_811_Buddy"),Some("BG31_HERO_811_Buddy_G")),
++("BG32_HERO_001","BG32_HERO_001p",Some("BG32_HERO_001_Buddy"),Some("BG32_HERO_001_Buddy_G")),
++("BG32_HERO_002","BG32_HERO_002p",Some("BG32_HERO_002_Buddy"),Some("BG32_HERO_002_Buddy_G")),
++("BG33_HERO_001","BG33_HERO_001p_ALT",Some("BG33_HERO_000_Buddy"),Some("BG33_HERO_000_Buddy_G")),
++("BG34_HERO_000","BG34_HERO_000p",None,None),
++("BG34_HERO_001","BG34_HERO_001p",None,None),
++("BG34_HERO_002","BG34_HERO_002p",None,None),
++("BG34_HERO_004","BG34_HERO_004p",None,None),
++("BG35_HERO_001","BG35_HERO_001p",None,None),
++("BG36_HERO_000","BG36_HERO_000p",None,None),
++("BG36_HERO_002","BG36_HERO_002p",None,None),
++("BG36_HERO_101","BG36_HERO_101p",None,None),
++("BG36_HERO_105","BG36_HERO_105p",None,None),
++("TB_BaconShop_HERO_01","TB_BaconShop_HP_001",Some("TB_BaconShop_HERO_01_Buddy"),Some("TB_BaconShop_HERO_01_Buddy_G")),
++("TB_BaconShop_HERO_02","TB_BaconShop_HP_011",Some("TB_BaconShop_HERO_02_Buddy"),Some("TB_BaconShop_HERO_02_Buddy_G")),
++("TB_BaconShop_HERO_08","TB_BaconShop_HP_069",Some("TB_BaconShop_HERO_08_Buddy"),Some("TB_BaconShop_HERO_08_Buddy_G")),
++("TB_BaconShop_HERO_10","TB_BaconShop_HP_008",Some("TB_BaconShop_HERO_10_Buddy"),Some("TB_BaconShop_HERO_10_Buddy_G")),
++("TB_BaconShop_HERO_11","TB_BaconShop_HP_087",Some("TB_BaconShop_HERO_11_Buddy"),Some("TB_BaconShop_HERO_11_Buddy_G")),
++("TB_BaconShop_HERO_12","TB_BaconShop_HP_041",Some("TB_BaconShop_HERO_12_Buddy"),Some("TB_BaconShop_HERO_12_Buddy_G")),
++("TB_BaconShop_HERO_14","TB_BaconShop_HP_037a",Some("TB_BaconShop_HERO_14_Buddy"),Some("TB_BaconShop_HERO_14_Buddy_G")),
++("TB_BaconShop_HERO_15","TB_BaconShop_HP_010",Some("TB_BaconShop_HERO_15_Buddy"),Some("TB_BaconShop_HERO_15_Buddy_G")),
++("TB_BaconShop_HERO_16","TB_BaconShop_HP_044",Some("TB_BaconShop_HERO_16_Buddy"),Some("TB_BaconShop_HERO_16_Buddy_G")),
++("TB_BaconShop_HERO_17","TB_BaconShop_HP_015",Some("TB_BaconShop_HERO_17_Buddy"),Some("TB_BaconShop_HERO_17_Buddy_G")),
++("TB_BaconShop_HERO_18","TB_BaconShop_HP_072",Some("TB_BaconShop_HERO_18_Buddy"),Some("TB_BaconShop_HERO_18_Buddy_G")),
++("TB_BaconShop_HERO_21","TB_BaconShop_HP_020",Some("TB_BaconShop_HERO_21_Buddy"),Some("TB_BaconShop_HERO_21_Buddy_G")),
++("TB_BaconShop_HERO_22","TB_BaconShop_HP_024",Some("TB_BaconShop_HERO_22_Buddy"),Some("TB_BaconShop_HERO_22_Buddy_G")),
++("TB_BaconShop_HERO_23","TB_BaconShop_HP_022",Some("TB_BaconShop_HERO_23_Buddy"),Some("TB_BaconShop_HERO_23_Buddy_G")),
++("TB_BaconShop_HERO_25","TB_BaconShop_HP_049",Some("TB_BaconShop_HERO_25_Buddy"),Some("TB_BaconShop_HERO_25_Buddy_G")),
++("TB_BaconShop_HERO_27","TB_BaconShop_HP_014",Some("TB_BaconShop_HERO_27_Buddy"),Some("TB_BaconShop_HERO_27_Buddy_G")),
++("TB_BaconShop_HERO_28","TB_BaconShop_HP_028",Some("TB_BaconShop_HERO_28_Buddy"),Some("TB_BaconShop_HERO_28_Buddy_G")),
++("TB_BaconShop_HERO_29","TB_BaconShop_HP_104",Some("TB_BaconShop_HERO_29_Buddy"),Some("TB_BaconShop_HERO_29_Buddy_G")),
++("TB_BaconShop_HERO_33","TB_BaconShop_HP_033",Some("TB_BaconShop_HERO_33_Buddy"),Some("TB_BaconShop_HERO_33_Buddy_G")),
++("TB_BaconShop_HERO_34","TB_BaconShop_HP_035",Some("TB_BaconShop_HERO_34_Buddy"),Some("TB_BaconShop_HERO_34_Buddy_G")),
++("TB_BaconShop_HERO_35","TB_BaconShop_HP_039t",Some("TB_BaconShop_HERO_35_Buddy"),Some("TB_BaconShop_HERO_35_Buddy_G")),
++("TB_BaconShop_HERO_36","TB_BaconShop_HP_042",Some("TB_BaconShop_HERO_36_Buddy"),Some("TB_BaconShop_HERO_36_Buddy_G")),
++("TB_BaconShop_HERO_37","TB_BaconShop_HP_036",Some("TB_BaconShop_HERO_37_Buddy"),Some("TB_BaconShop_HERO_37_Buddy_G")),
++("TB_BaconShop_HERO_38","TB_BaconShop_HP_038",Some("TB_BaconShop_HERO_38_Buddy"),Some("TB_BaconShop_HERO_38_Buddy_G")),
++("TB_BaconShop_HERO_39","TB_BaconShop_HP_040",Some("TB_BaconShop_HERO_39_Buddy"),Some("TB_BaconShop_HERO_39_Buddy_G")),
++("TB_BaconShop_HERO_40","TB_BaconShop_HP_057",Some("TB_BaconShop_HERO_40_Buddy"),Some("TB_BaconShop_HERO_40_Buddy_G")),
++("TB_BaconShop_HERO_41","TB_BaconShop_HP_046",Some("TB_BaconShop_HERO_41_Buddy"),Some("TB_BaconShop_HERO_41_Buddy_G")),
++("TB_BaconShop_HERO_42","TB_BaconShop_HP_047",Some("TB_BaconShop_HERO_42_Buddy"),Some("TB_BaconShop_HERO_42_Buddy_G")),
++("TB_BaconShop_HERO_43","TB_BaconShop_HP_048",Some("TB_BaconShop_HERO_43_Buddy"),Some("TB_BaconShop_HERO_43_Buddy_G")),
++("TB_BaconShop_HERO_45","TB_BaconShop_HP_053",Some("TB_BaconShop_HERO_45_Buddy"),Some("TB_BaconShop_HERO_45_Buddy_G")),
++("TB_BaconShop_HERO_49","TB_BaconShop_HP_054",Some("TB_BaconShop_HERO_49_Buddy"),Some("TB_BaconShop_HERO_49_Buddy_G")),
++("TB_BaconShop_HERO_50","TB_BaconShop_HP_077",Some("TB_BaconShop_HERO_50_Buddy"),Some("TB_BaconShop_HERO_50_Buddy_G")),
++("TB_BaconShop_HERO_52","TB_BaconShop_HP_061",Some("TB_BaconShop_HERO_52_Buddy"),Some("TB_BaconShop_HERO_52_Buddy_G")),
++("TB_BaconShop_HERO_53","TB_BaconShop_HP_062",Some("TB_BaconShop_HERO_53_Buddy"),Some("TB_BaconShop_HERO_53_Buddy_G")),
++("TB_BaconShop_HERO_55","TB_BaconShop_HP_056",Some("TB_BaconShop_HERO_55_Buddy"),Some("TB_BaconShop_HERO_55_Buddy_G")),
++("TB_BaconShop_HERO_56","TB_BaconShop_HP_064",Some("TB_BaconShop_HERO_56_Buddy"),Some("TB_BaconShop_HERO_56_Buddy_G")),
++("TB_BaconShop_HERO_57","TB_BaconShop_HP_063",Some("TB_BaconShop_HERO_57_Buddy"),Some("TB_BaconShop_HERO_57_Buddy_G")),
++("TB_BaconShop_HERO_58","TB_BaconShop_HP_052",Some("TB_BaconShop_HERO_58_Buddy"),Some("TB_BaconShop_HERO_58_Buddy_G")),
++("TB_BaconShop_HERO_59","TB_BaconShop_HP_065",Some("TB_BaconShop_HERO_59_Buddy"),Some("TB_BaconShop_HERO_59_Buddy_G")),
++("TB_BaconShop_HERO_60","TB_BaconShop_HP_066",Some("TB_BaconShop_HERO_60_Buddy"),Some("TB_BaconShop_HERO_60_Buddy_G")),
++("TB_BaconShop_HERO_62","TB_BaconShop_HP_068",Some("TB_BaconShop_HERO_62_Buddy"),Some("TB_BaconShop_HERO_62_Buddy_G")),
++("TB_BaconShop_HERO_64","TB_BaconShop_HP_074",Some("TB_BaconShop_HERO_64_Buddy"),Some("TB_BaconShop_HERO_64_Buddy_G")),
++("TB_BaconShop_HERO_67","TB_BaconShop_HP_075",Some("TB_BaconShop_HERO_67_Buddy"),Some("TB_BaconShop_HERO_67_Buddy_G")),
++("TB_BaconShop_HERO_68","TB_BaconShop_HP_076",Some("TB_BaconShop_HERO_68_Buddy"),Some("TB_BaconShop_HERO_68_Buddy_G")),
++("TB_BaconShop_HERO_70","TB_BaconShop_HP_080",Some("TB_BaconShop_HERO_70_Buddy"),Some("TB_BaconShop_HERO_70_Buddy_G")),
++("TB_BaconShop_HERO_702","TB_BaconShop_HP_702t",Some("TB_BaconShop_HERO_702_Buddy"),Some("TB_BaconShop_HERO_702_Buddy_G")),
++("TB_BaconShop_HERO_71","TB_BaconShop_HP_084",Some("TB_BaconShop_HERO_71_Buddy"),Some("TB_BaconShop_HERO_71_Buddy_G")),
++("TB_BaconShop_HERO_72","TB_BaconShop_HP_081",Some("TB_BaconShop_HERO_72_Buddy"),Some("TB_BaconShop_HERO_72_Buddy_G")),
++("TB_BaconShop_HERO_74","TB_BaconShop_HP_082",Some("TB_BaconShop_HERO_74_Buddy"),Some("TB_BaconShop_HERO_74_Buddy_G")),
++("TB_BaconShop_HERO_75","TB_BaconShop_HP_085t",Some("TB_BaconShop_HERO_75_Buddy"),Some("TB_BaconShop_HERO_75_Buddy_G")),
++("TB_BaconShop_HERO_76","TB_BaconShop_HP_086",Some("TB_BaconShop_HERO_76_Buddy"),Some("TB_BaconShop_HERO_76_Buddy_G")),
++("TB_BaconShop_HERO_78","TB_BaconShop_HP_088",Some("TB_BaconShop_HERO_78_Buddy"),Some("TB_BaconShop_HERO_78_Buddy_G")),
++("TB_BaconShop_HERO_90","TB_BaconShop_HP_101",Some("TB_BaconShop_HERO_90_Buddy"),Some("TB_BaconShop_HERO_90_Buddy_G")),
++("TB_BaconShop_HERO_91","TB_BaconShop_HP_102",Some("TB_BaconShop_HERO_91_Buddy"),Some("TB_BaconShop_HERO_91_Buddy_G")),
++("TB_BaconShop_HERO_92","TB_BaconShop_HP_103",Some("TB_BaconShop_HERO_92_Buddy"),Some("TB_BaconShop_HERO_92_Buddy_G")),
++("TB_BaconShop_HERO_93","TB_BaconShop_HP_105",Some("TB_BaconShop_HERO_93_Buddy"),Some("TB_BaconShop_HERO_93_Buddy_G")),
++("TB_BaconShop_HERO_94","TB_BaconShop_HP_106",Some("TB_BaconShop_HERO_94_Buddy"),Some("TB_BaconShop_HERO_94_Buddy_G")),
++("TB_BaconShop_HERO_95","TB_BaconShop_HP_107",Some("TB_BaconShop_HERO_95_Buddy"),Some("TB_BaconShop_HERO_95_Buddy_G")),
++];
+diff --git a/crates/taverngym/tests/maxwell_routes.rs b/crates/taverngym/tests/maxwell_routes.rs
+new file mode 100644
+index 0000000..2542435
+--- /dev/null
++++ b/crates/taverngym/tests/maxwell_routes.rs
+@@ -0,0 +1,27 @@
++//! Evidence for named frozen native routes only, not universal reachability proof.
++use taverngym::{Action,Game,RulesConfig};
++use taverngym::cards::{cid,db};
++use taverngym::state::Pending;
++
++#[test]fn frozen_shared_pools_and_real_finley_menu_do_not_offer_azshara() {
++    let ambition=cid("BG22_HERO_007p");let conquest=cid("BG22_HERO_007p2");let buddy=cid("BG22_HERO_007_Buddy");
++    // Exhaust the full metadata producer roots, before any lobby-type filtering.
++    let hero_roots:Vec<_>=db().iter().filter(|c|c.pools.hero).collect();assert!(!hero_roots.is_empty());
++    for h in &hero_roots {assert_ne!(h.hero_power,Some(ambition));assert_ne!(h.hero_power,Some(conquest));assert_ne!(h.buddy,Some(buddy));}
++    let finley=hero_roots.iter().find(|h|h.hero_power==Some(cid("TB_BaconShop_HP_057"))).expect("Finley remains in original hero pool").cid;
++    let (seed,mut g,n)=(0..1024).find_map(|seed| {
++        let g=Game::new(seed,RulesConfig{num_players:2,..RulesConfig::default()});
++        let Some(Pending::HeroSelect{options})=g.players[0].pending.last() else {return None};
++        options.iter().position(|c|*c==finley).map(|n|(seed,g,n))
++    }).expect("unmodified natural hero offers contain Finley in bounded search");
++    assert!(g.cfg.hero_pool.is_empty());assert!(g.cfg.hero_bans.is_empty());
++    g.apply(0,Action::Choose(n)).unwrap();g.apply(1,Action::Choose(0)).unwrap();
++    let all=taverngym::content::hero_power_pool(&g);
++    assert!(!all.contains(&ambition));assert!(!all.contains(&conquest));
++    // Buddy-pool implementation is private; its absent root is checked above.
++    // Do not expose a production API solely for this evidence fixture.
++    let Some(Pending::HeroPowerChoice{options,slot})=g.players[0].pending.last() else {panic!("real Finley discovery menu")};
++    assert_eq!(*slot,0);assert_eq!(options.len(),3);assert!(options.iter().all(|c|all.contains(c)));let selected=options[0];
++    println!("natural Finley seed={seed}; full hero metadata roots={}; lobby power candidates={}; menu={:?}",hero_roots.len(),all.len(),options.iter().map(|c|&db().get(*c).id).collect::<Vec<_>>());
++    g.apply(0,Action::Choose(0)).unwrap();assert_eq!(g.players[0].hero_power(),Some(selected));
++}
+diff --git a/crates/taverngym/tests/numeric_e04.rs b/crates/taverngym/tests/numeric_e04.rs
+new file mode 100644
+index 0000000..074b7f6
+--- /dev/null
++++ b/crates/taverngym/tests/numeric_e04.rs
+@@ -0,0 +1,19 @@
++use taverngym::{Game,RulesConfig};
++use taverngym::cards::cid;
++use taverngym::actions::Action;
++use taverngym::script::{script,Me};
++use taverngym::types::Races;
++use taverngym::state::{Minion,Item};
++fn game(masks:&[Races])->Game{let mut g=Game::new(719,RulesConfig{num_players:2,lesser_trinket_turn:0,greater_trinket_turn:0,timewarp_enabled:false,record_log:false,..RulesConfig::default()});for p in 0..2{g.apply(p,Action::Choose(0)).unwrap();}for p in &mut g.players{p.board.clear();p.hand.clear();p.shop.clear();p.powers.clear();p.rewards.clear();p.quests.clear();p.effects.clear();p.trinkets.clear();p.pending.clear();p.gold=30;p.health=100;p.armor=0;p.tier=6;}
++for r in masks{let mut m=Minion::new(g.alloc_eid(),cid("BG25_001"));m.races=*r;m.set_stats(2,6);g.players[0].board.push(m);}g}
++fn me(id:&str)->Me{Me{side:0,eid:0,card:cid(id),golden:false,opt:0,pos:0,data:0}}
++fn cases()->Vec<(Vec<Races>,i32)>{vec![(vec![Races::QUILBOAR.union(Races::UNDEAD)],2),(vec![Races::QUILBOAR,Races::QUILBOAR],1),(vec![Races::ALL],1),(vec![Races::ALL,Races::ALL],2),(vec![Races::QUILBOAR.union(Races::UNDEAD),Races::ALL],3),(vec![Races::NONE],0),(vec![],0)]}
++#[test]fn crystal_numeric_dual_all_duplicate_typeless_boundaries(){for(masks,n)in cases(){let mut g=game(&masks);let rng=serde_json::to_string(&g.rng).unwrap();g.with_recruit(0,|c|{script(cid("BG36_MagicItem_220")).unwrap().start_of_turn.unwrap()(c,me("BG36_MagicItem_220"));});assert_eq!(g.players[0].gold,30+n,"{masks:?}");assert_eq!(serde_json::to_string(&g.rng).unwrap(),rng,"numeric type count must not draw RNG");}}
++#[test]fn mayhem_numeric_actual_endturn_boundary(){for(masks,n)in cases(){let mut g=game(&masks);g.players[0].rewards.push(cid("BG24_Reward_331"));g.apply(0,Action::EndTurn).unwrap();for m in &g.players[0].board{assert_eq!((m.atk,m.max_hp),(2+n,6+n),"{masks:?}");}}}
++#[test]fn tableware_numeric_actual_spell_play_boundary(){for(masks,n)in cases(){let mut g=game(&masks);g.with_recruit(0,|c|{c.add_to_hand(0,Item::spell(cid("BG34_272")));});g.apply(0,Action::Play{hand:0,pos:0}).unwrap();for m in &g.players[0].board{assert_eq!((m.atk,m.max_hp),(2+3*(1+n),6+3*(1+n)),"{masks:?}");}}}
++#[test]fn crystal_real_next_turn_base4_plus_dual2_exact_raw_restore(){let mut g=game(&[Races::QUILBOAR.union(Races::UNDEAD)]);g.players[0].trinkets.push(cid("BG36_MagicItem_220"));let raw=serde_json::to_string(&g).unwrap();let mut restored:Game=serde_json::from_str(&raw).unwrap();let mut cloned=g.clone();for x in [&mut g,&mut restored,&mut cloned]{x.apply(0,Action::EndTurn).unwrap();x.apply(1,Action::EndTurn).unwrap();assert_eq!(x.turn,2);assert_eq!(x.players[0].gold,6);assert_eq!(x.players[1].gold,4);}assert_eq!(serde_json::to_string(&g).unwrap(),serde_json::to_string(&restored).unwrap());assert_eq!(serde_json::to_string(&g).unwrap(),serde_json::to_string(&cloned).unwrap());}
++#[test]fn numeric_dead_and_opponent_isolation(){let mut g=game(&[Races::QUILBOAR]);let mut dead=Minion::new(g.alloc_eid(),cid("BG25_001"));dead.races=Races::UNDEAD.union(Races::DRAGON);dead.hp=0;g.players[0].board.push(dead);let mut other=Minion::new(g.alloc_eid(),cid("BG25_001"));other.races=Races::ALL;g.players[1].board.push(other);let opp=serde_json::to_string(&g.players[1]).unwrap();g.with_recruit(0,|c|script(cid("BG36_MagicItem_220")).unwrap().start_of_turn.unwrap()(c,me("BG36_MagicItem_220")));assert_eq!(g.players[0].gold,31);assert_eq!(serde_json::to_string(&g.players[1]).unwrap(),opp);}
++#[test]fn buddy_entity_assignment_threshold_is_unchanged(){let mut g=game(&[Races::QUILBOAR.union(Races::UNDEAD),Races::DRAGON.union(Races::BEAST)]);g.with_recruit(0,|c|{assert_eq!(taverngym::content::distinct_type_count(c,0),2);assert_eq!(taverngym::content::one_minion_per_type(c,0,|_|true).len(),2);});}
++#[test]fn numeric_union_plus_each_all_has_no_new_type_or_entity_cap(){let masks=[Races::QUILBOAR.union(Races::UNDEAD),Races::BEAST.union(Races::DRAGON),Races::ELEMENTAL.union(Races::MECH),Races::MURLOC.union(Races::PIRATE),Races::DEMON.union(Races::ABERRATION),Races::ALL,Races::ALL];let mut g=game(&masks);g.with_recruit(0,|c|script(cid("BG36_MagicItem_220")).unwrap().start_of_turn.unwrap()(c,me("BG36_MagicItem_220")));assert_eq!(g.players[0].gold,42,"F count_distinct_types has no cap: ten union bits plus two physical All");}
++#[test]fn mayhem_and_tableware_exact_raw_clone_restore_rng(){for spell in [false,true]{let mut g=game(&[Races::QUILBOAR.union(Races::UNDEAD),Races::ALL]);if spell{g.with_recruit(0,|c|{c.add_to_hand(0,Item::spell(cid("BG34_272")));});}else{g.players[0].rewards.push(cid("BG24_Reward_331"));}let raw=serde_json::to_string(&g).unwrap();let mut restore:Game=serde_json::from_str(&raw).unwrap();let mut clone=g.clone();for x in [&mut g,&mut restore,&mut clone]{x.apply(0,if spell{Action::Play{hand:0,pos:0}}else{Action::EndTurn}).unwrap();}assert_eq!(serde_json::to_string(&g).unwrap(),serde_json::to_string(&restore).unwrap());assert_eq!(serde_json::to_string(&g).unwrap(),serde_json::to_string(&clone).unwrap());}}
++#[test]fn actual_buddy_hook_does_not_treat_two_dual_bodies_as_four_bodies(){let mut g=game(&[Races::QUILBOAR.union(Races::UNDEAD),Races::DRAGON.union(Races::BEAST)]);let mut buddy=Minion::new(g.alloc_eid(),cid("TB_BaconShop_HERO_14_Buddy"));buddy.set_stats(1,1);let e=buddy.eid;g.players[0].board.push(buddy);g.with_recruit(0,|c|{let mut m=me("TB_BaconShop_HERO_14_Buddy");m.eid=e;script(m.card).unwrap().start_of_combat.unwrap()(c,m);});let b=g.players[0].board.iter().find(|m|m.eid==e).unwrap();assert_eq!((b.atk,b.max_hp),(1,1));}
+diff --git a/crates/taverngym/tests/target_roster.rs b/crates/taverngym/tests/target_roster.rs
+new file mode 100644
+index 0000000..d9e3d25
+--- /dev/null
++++ b/crates/taverngym/tests/target_roster.rs
+@@ -0,0 +1,72 @@
++use taverngym::{Game,RulesConfig};
++use taverngym::cards::{cid,db};
++use serde_json::{json,Value};
++#[test]
++fn named_target_roster_is_an_actual_constructor_input() {
++ let cfg=json!({"target_roster":{"manifest_sha256":"0000000000000000000000000000000000000000000000000000000000000000","manifest":{"ruleset_id":"test","target_build":"37","source_qualified":true,"public_offer":{"minion":[],"tavern_spell":[],"hero":[],"trinket":[]},"supported_derived":[],"excluded":[],"source_unknown":[],"derived_parents":[]}}});
++ let result=RulesConfig::from_json(&cfg.to_string());
++ assert!(!result.as_ref().err().is_some_and(|e|e.contains("unknown field \"target_roster\"")),"no target roster application entry: {:?}",result.err());
++}
++fn fixture()->Value {serde_json::from_str(include_str!("fixtures/target_roster.json")).unwrap()}
++fn config(roster:Value)->Value {json!({"num_players":2,"hero_choices":1,"guaranteed_heroes":[],"lobby_races":1,"lobby_types":["NAGA"],"target_roster":roster})}
++fn seal(v:&mut Value) {let r:taverngym::roster::TargetRoster=serde_json::from_value(v["target_roster"].clone()).unwrap();v["target_roster"]["manifest_sha256"]=json!(r.digest());}
++fn construct(v:&Value)->Game {Game::new(17,RulesConfig::from_json(&v.to_string()).unwrap())}
++#[test]
++fn python_sha256_fixture_matches_native_canonical_digest_and_explicit_universes() {
++ let r:taverngym::roster::TargetRoster=serde_json::from_value(fixture()).unwrap();assert_eq!(r.digest(),r.manifest_sha256);
++ let g=construct(&config(fixture()));assert_eq!(g.universe,vec![cid("BG23_000")]);assert_eq!(g.spell_universe,vec![cid("BG28_168")]);assert_eq!(g.trinket_universe,vec![cid("BG30_MagicItem_801")]);assert!(!g.universe.contains(&cid("BG23_000_G")));assert!(!g.universe.contains(&cid("BG31_920")));assert!(!g.universe.contains(&cid("BG23_004")));
++}
++#[test]
++fn manifest_never_enables_a_type_and_existing_hero_lobby_bans_still_apply() {
++ let mut v=config(fixture());v["lobby_types"]=json!(["ABERRATION"]);let g=construct(&v);assert!(!g.universe.contains(&cid("BG23_000")));for p in &g.players {let taverngym::state::Pending::HeroSelect{options}=&p.pending[0] else{panic!()};assert!(!options.contains(&cid("BG34_HERO_004")));}
++}
++#[test]
++fn digest_overlap_unknown_golden_unsupported_and_force_override_fail_visibly() {
++ let mut cases=Vec::new();let mut bad=config(fixture());bad["target_roster"]["manifest_sha256"]=json!("0".repeat(64));cases.push(bad);
++ for (path,id) in [("minion","BG23_000"),("minion","BG23_000_G"),("minion","NOT_A_CARD"),("minion","AT_121")] {let mut v=config(fixture());v["target_roster"]["manifest"]["public_offer"][path].as_array_mut().unwrap().push(json!(id));seal(&mut v);cases.push(v);}
++ let mut v=config(fixture());v["hero_pool"]=json!(["BG34_HERO_004"]);cases.push(v);
++ let mut v=config(fixture());v["target_roster"]["manifest"]["source_qualified"]=json!(false);seal(&mut v);cases.push(v);
++ let mut v=config(fixture());v["target_roster"]["manifest"]["public_offer"]["minion"].as_array_mut().unwrap().push(json!("BG31_920"));seal(&mut v);cases.push(v);
++ for (i,v) in cases.iter().enumerate(){assert!(RulesConfig::from_json(&v.to_string()).is_err(),"accepted invalid case {i}");}
++}
++#[test]
++fn none_preserves_original_serialized_config_and_exact_state_rng_replay() {
++ let original=RulesConfig::from_json("{}").unwrap();assert!(serde_json::to_value(&original).unwrap().get("target_roster").is_none());
++ let a=Game::new(97,original);let b=Game::new(97,RulesConfig::from_json("{\"target_roster\":null}").unwrap());assert_eq!(serde_json::to_string(&a).unwrap(),serde_json::to_string(&b).unwrap());
++ let g=construct(&config(fixture()));let raw=serde_json::to_string(&g).unwrap();let copy:Game=serde_json::from_str(&raw).unwrap();assert_eq!(serde_json::to_string(&copy).unwrap(),raw);
++ let roster=copy.cfg.target_roster.as_ref().unwrap();assert_eq!(roster.digest(),roster.manifest_sha256);
++}
++#[test]
++fn target_trinket_exclusion_is_honored_without_changing_legacy_path() {let mut v=config(fixture());v["excluded_cards"]=json!(["BG30_MagicItem_801"]);let g=construct(&v);assert!(g.trinket_universe.is_empty());}
++#[test]
++fn denied_gift_pair_is_an_actual_native_candidate_filter_with_neighbor_control() {
++ let roster:Value=serde_json::from_str(include_str!("fixtures/target_roster_pairs.json")).unwrap();let mut g=construct(&config(roster));
++ g.with_recruit(0,|c|{let gift=cid("BG36_MidGameEffect_000t16");for id in ["BG23_318","BG23_318_G"] {assert!(!taverngym::content::gift_fits(c,0,gift,db().get(cid(id)),1),"denied pair allowed {id}");}assert!(taverngym::content::gift_fits(c,0,gift,db().get(cid("BG19_010")),1));});
++ let mut legacy=Game::new(17,RulesConfig::default());legacy.with_recruit(0,|c|assert!(taverngym::content::gift_fits(c,0,cid("BG36_MidGameEffect_000t16"),db().get(cid("BG23_318")),1)));
++}
++#[test]
++fn uninstalled_source_unknown_is_metadata_not_a_public_bypass_and_disabled_parent_stays_inactive() {
++ let mut v=config(fixture());v["target_roster"]["manifest"]["source_unknown"].as_array_mut().unwrap().push(json!("UNINSTALLED_ANOMALY_ID"));seal(&mut v);assert!(RulesConfig::from_json(&v.to_string()).is_ok());
++ v["target_roster"]["manifest"]["public_offer"]["minion"].as_array_mut().unwrap().push(json!("UNINSTALLED_ANOMALY_ID"));seal(&mut v);assert!(RulesConfig::from_json(&v.to_string()).is_err());
++ let mut v=config(fixture());v["target_roster"]["manifest"]["public_offer"]["minion"]=json!([]);v["target_roster"]["manifest"]["excluded"].as_array_mut().unwrap().push(json!("BG23_000"));seal(&mut v);let cfg=RulesConfig::from_json(&v.to_string()).unwrap();assert!(!cfg.target_roster.as_ref().unwrap().parent_route_allowed("BG23_000","BG23_000_G"));
++}
++#[test]
++fn invalid_exact_gift_pair_type_identity_and_duplicate_reject() {
++ for pairs in [json!([{"minion":"BG23_318","gift":"NOT_A_GIFT"}]),json!([{"minion":"BG28_168","gift":"BG36_MidGameEffect_000t16"}]),json!([{"minion":"BG23_318","gift":"BG36_MidGameEffect_000t16"},{"minion":"BG23_318","gift":"BG36_MidGameEffect_000t16"}])] {let mut v=config(fixture());v["target_roster"]["manifest"]["denied_gift_pairs"]=pairs;seal(&mut v);assert!(RulesConfig::from_json(&v.to_string()).is_err());}
++}
++#[test]
++fn actual_mukla_producer_and_bg_banana_effect_keep_exact_identity_through_restore() {
++ use taverngym::actions::Action;
++ let cfg=RulesConfig::from_json("{\"num_players\":2,\"hero_choices\":1,\"hero_pool\":[\"TB_BaconShop_HERO_38\"],\"guaranteed_heroes\":[]}").unwrap();let mut g=Game::new(17,cfg);
++ for p in 0..2 {g.apply(p,Action::Choose(0)).unwrap();}
++ let token=cid("BG_EX1_014t");let hand=g.players[0].hand.iter().position(|h|h.item.card()==token).expect("fixed producer prefix yielded no ordinary Banana");assert!(db().find("EX1_014t").is_none());
++ let target=g.with_recruit(0,|c|{let m=c.new_minion(0,cid("BG23_000"));let id=m.eid;c.boards[0].push(m);id});let m=&g.players[0].board[0];let before=(m.atk,m.max_hp);let raw=serde_json::to_string(&g).unwrap();let mut restored:Game=serde_json::from_str(&raw).unwrap();assert_eq!(serde_json::to_string(&restored).unwrap(),raw);assert_eq!(restored.players[0].hand[hand].item.card(),token);
++ for state in [&mut g,&mut restored] {state.apply(0,Action::Play{hand,pos:0}).unwrap();let taverngym::state::Pending::Target{options,..}=state.players[0].pending.last().unwrap()else{panic!()};let i=options.iter().position(|id|*id==target).unwrap();state.apply(0,Action::Choose(i)).unwrap();assert_eq!((state.players[0].board[0].atk,state.players[0].board[0].max_hp),(before.0+1,before.1+1));}
++ assert_eq!(serde_json::to_string(&g).unwrap(),serde_json::to_string(&restored).unwrap());
++}
++#[test]
++fn version_identity_record_binds_exact_execution_dbf_without_creating_an_alias() {
++ let mut v=config(fixture());v["target_roster"]["manifest"]["supported_derived"].as_array_mut().unwrap().push(json!("BG_EX1_014t"));
++ v["target_roster"]["manifest"]["execution_identity_bindings"]=json!([{"source_parent":"TB_BaconShop_HERO_38","source_power":"TB_BaconShop_HP_038","source_child_id":"EX1_014t","source_child_dbf":1694,"execution_child_id":"BG_EX1_014t","execution_child_dbf":122906,"decision_sha256":"70d124053eb457b2994c0058735698f7abbfd4b6fbee0fa49fd278acd43676bb","evidence_sha256":"56b5b01d500ccb1128caae7a51f6b507ddab6cedaff062446b70a81cc2ca0fb3"}]);seal(&mut v);assert!(RulesConfig::from_json(&v.to_string()).is_ok());assert!(db().find("EX1_014t").is_none());assert_eq!(db().get(cid("BG_EX1_014t")).dbf,122906);
++ v["target_roster"]["manifest"]["execution_identity_bindings"][0]["execution_child_dbf"]=json!(1694);seal(&mut v);assert!(RulesConfig::from_json(&v.to_string()).is_err());
++}
+diff --git a/crates/taverngym/tests/maxwell_inge.rs b/crates/taverngym/tests/maxwell_inge.rs
+new file mode 100644
+--- /dev/null
++++ b/crates/taverngym/tests/maxwell_inge.rs
+@@ -0,0 +1,42 @@
++use taverngym::{Action,Game};
++use taverngym::cards::{cid,db};
++use taverngym::state::{HeroPowerState,Pending};
++
++fn snapshot_game()->Game {
++    let path=std::env::var("BG_MAXWELL_SNAPSHOT").expect("exact private snapshot required");
++    let value:serde_json::Value=serde_json::from_str(&std::fs::read_to_string(path).unwrap()).unwrap();
++    let raw=value["snapshot"]["payload"]["native_raw"].as_str().unwrap();
++    let mut game:Game=serde_json::from_str(raw).unwrap();
++    game.check_loaded().unwrap();
++    assert_eq!(serde_json::to_string(&game).unwrap(),raw);
++    game
++}
++
++#[test]
++fn original_seed1025_unedited_snapshot_purchase_succeeds() {
++    let mut g=snapshot_game();
++    assert_eq!(g.players[0].powers[0].card,cid("BG26_HERO_102p2"));
++    let hand=g.players[0].hand.len();let gold=g.players[0].gold;
++    g.apply(0,Action::Choose(0)).unwrap();
++    assert_eq!(g.players[0].hand.len(),hand+1);
++    assert_eq!(g.players[0].hand.last().unwrap().item.card(),cid("BG26_HERO_102_Buddy"));
++    assert_eq!(g.players[0].gold,gold-db().get(cid("BG35_MagicItem_803")).cost);
++    assert!(g.players[0].trinkets.contains(&cid("BG35_MagicItem_803")));
++}
++
++#[test]
++fn both_forms_normal_and_golden_exact_buddy_with_unrelated_portrait() {
++    for power in ["BG26_HERO_102p","BG26_HERO_102p2"] {
++        for (trinket,buddy) in [("BG35_MagicItem_803","BG26_HERO_102_Buddy"),("BG35_MagicItem_803t","BG26_HERO_102_Buddy_G")] {
++            let mut g=snapshot_game();
++            // Deliberate identity controls only: never use the unrelated portrait's Buddy.
++            g.players[0].hero=Some(cid("BG22_HERO_007"));
++            g.players[0].powers=vec![HeroPowerState::new(cid(power))];
++            g.players[0].pending=vec![Pending::Trinket{options:vec![cid(trinket)],free:false,replace:None}];
++            let gold=g.players[0].gold;
++            g.apply(0,Action::Choose(0)).unwrap();
++            assert_eq!(g.players[0].hand.last().unwrap().item.card(),cid(buddy));
++            assert_eq!(g.players[0].gold,gold-db().get(cid(trinket)).cost);
++        }
++    }
++}

@@ -1,0 +1,19 @@
+{
+  "base_package_sha256": "d052ad172e40efd0c829b0326e20295f2848360063bc20fafebc79a5debe6bf9",
+  "rules_variant": "rules-candidate-20261101-maxwell-pool-v2 (bundled cloud ZIP snapshot)",
+  "native_source_hash": "13d71ac51a979679",
+  "upstream_repository": "https://github.com/MCG-NJU/AutoTavern",
+  "upstream_commit": "fb61201a557ddd36a411cf44aac51ce4d9b606ce",
+  "continuous_patch": "Verified EXPECTED and AFTER SHA256 before extracting embedded training.py, cloud_run.py and cloud_schedule.py",
+  "excluded": [
+    "private pretrained checkpoints",
+    "private package provenance",
+    "upstream benchmark result transcripts"
+  ],
+  "public_metadata_changes": [
+    "source reference paths sanitized",
+    "local native binding generated on build",
+    "exact runtime resume only; no checkpoint ports",
+    "Git attributes preserve frozen source bytes; ignore paths scoped to generated training directories"
+  ]
+}

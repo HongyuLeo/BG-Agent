@@ -1,0 +1,60 @@
+{
+  "workers": 1,
+  "rounds": 1,
+  "games_per_round": 2,
+  "eval_every_games": 0,
+  "eval_games": 2,
+  "eval_opponent": "mixed",
+  "learning_rate": 3e-05,
+  "ppo_epochs": 2,
+  "model_preset": "micro",
+  "device": "cpu",
+  "seed": 197,
+  "resume_from": "models/scratch-initial.pt",
+  "gamma": 1.0,
+  "gae_lambda": 0.995,
+  "ppo_clip": 0.2,
+  "sequence_length": 32,
+  "burn_in": 8,
+  "max_decisions": 30000,
+  "max_grad_norm": 0.5,
+  "target_kl": 0.03,
+  "entropy_coefficient": 0.01,
+  "value_coefficient": 0.5,
+  "placement_coefficient": 0.05,
+  "torch_threads": 2,
+  "live_data_root": null,
+  "auxiliary_batch_size": 16,
+  "auxiliary_updates": 0,
+  "auxiliary_sequence_length": 16,
+  "train_opponents": "mixed",
+  "train_opponent_pool": [
+    {
+      "kind": "scripted",
+      "style": "random",
+      "weight": 1
+    },
+    {
+      "kind": "scripted",
+      "style": "balanced",
+      "weight": 1
+    }
+  ],
+  "eval_opponent_pool": [
+    {
+      "kind": "scripted",
+      "style": "random",
+      "weight": 1
+    },
+    {
+      "kind": "scripted",
+      "style": "balanced",
+      "weight": 1
+    }
+  ],
+  "continue_on_episode_error": false,
+  "max_consecutive_failed_lobbies": 10,
+  "rules_path": "rules",
+  "keep_checkpoints": 5,
+  "min_free_disk_gb": 2
+}
